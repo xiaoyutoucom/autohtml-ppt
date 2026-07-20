@@ -233,11 +233,16 @@ autohtml-ppt/
 
 ## Sponsors
 
-Voluntary support keeps the project moving — **not required to use the software**.
+Voluntary — **not required** to use the software. Scan WeChat Pay (ID `xiaoyutoucom`):
 
-See **[SPONSORS.md](./SPONSORS.md)** for WeChat Pay QR (ID `xiaoyutoucom`) and [GitHub Sponsors](https://github.com/sponsors/xiaoyutoucom).
+<p align="center">
+  <img src="docs/assets/sponsors/wechat-qr.png" alt="WeChat Pay QR for sponsors" width="240" />
+  <br />
+  <em>WeChat tip QR · WeChat ID xiaoyutoucom</em>
+</p>
 
-Need custom work? **[SERVICES.md](./SERVICES.md)** — paid themes, full training decks, white-label (remove attribution fingerprint).
+Tiers & [GitHub Sponsors](https://github.com/sponsors/xiaoyutoucom) → **[SPONSORS.md](./SPONSORS.md)**  
+Paid customization / white-label → **[SERVICES.md](./SERVICES.md)**
 
 ---
 

@@ -485,7 +485,8 @@
         "Runner": ["--advance", "门禁链", "Delegate", "Lint 盖章", "--status", "--next", "--lint", "online", "offline", "总控"],
         "Skill Rules Lint": ["教写对", "定义错", "pass/fail", "cleaned_rules", "lint_cleaned", "登录@admin", "valid_tags", "STAGE_META", "S1", "Gate"],
         "闭环": ["收集", "处理", "生成", "复盘", "Rules/Skill", "飞轮", "blocker", "Fragment", "越跑越稳", "人审异常"],
-        "思考与行动": ["五件套", "--advance", "Gate", "稳定用多久", "动手", "--next", "--lint", "Progress", "Rules", "参考资料"]
+        "思考与行动": ["五件套", "--advance", "Gate", "稳定用多久", "动手", "--next", "--lint", "Progress", "Rules", "参考资料"],
+        "开源与赞助": ["MIT", "Star", "微信赞助", "GitHub", "Gitee", "Sponsors", "xiaoyutoucom", "白标", "定制", "扫码"]
       };
 
       function parseAiChipsAttr(raw) {
@@ -860,6 +861,14 @@
           links: false, linkDist: 0, linkOp: 0, linkW: 0,
           hover: ["bubble"], grabDist: 180, bubbleSize: 6,
           twinkle: false, fps: 40
+        },
+        sponsor_glow: {
+          count: 48, area: 920, shape: "circle", colorMode: "teal",
+          opMin: 0.2, opMax: 0.7, szMin: 1.6, szMax: 4.2,
+          speed: 0.45, dir: "none", straight: false, random: true,
+          links: true, linkDist: 170, linkOp: 0.28, linkW: 1,
+          hover: ["grab", "bubble"], grabDist: 260, bubbleSize: 9,
+          twinkle: true, fps: 42
         }
       };
 
@@ -897,7 +906,8 @@
         "Runner": "runner_burst",
         "Skill Rules Lint": "srl_glyphs",
         "闭环": "loop_flow",
-        "思考与行动": "takeaway_snow"
+        "思考与行动": "takeaway_snow",
+        "开源与赞助": "sponsor_glow"
       };
 
       function resolveColorPalette(mode, colors) {

@@ -212,9 +212,16 @@ python -m tools.export_training_ppt
 
 ## 赞助
 
-自愿支持即可，**不是使用前提**。渠道与档位见 **[SPONSORS.md](./SPONSORS.md)**（微信收款码 / 微信号 `xiaoyutoucom` / GitHub Sponsors）。
+自愿支持即可，**不是使用前提**。微信扫码即可赞助（微信号 `xiaoyutoucom`）。
 
-需要定制主题、代做整套培训课件、白标去掉指纹 → **[SERVICES.md](./SERVICES.md)**，邮件询价。
+<p align="center">
+  <img src="docs/assets/sponsors/wechat-qr.png" alt="微信收款码赞助" width="240" />
+  <br />
+  <em>微信扫一扫赞助 · 也可加微信号 xiaoyutoucom</em>
+</p>
+
+更多档位与 [GitHub Sponsors](https://github.com/sponsors/xiaoyutoucom) → **[SPONSORS.md](./SPONSORS.md)**  
+定制主题 / 代做课件 / 白标 → **[SERVICES.md](./SERVICES.md)**
 
 ---
 

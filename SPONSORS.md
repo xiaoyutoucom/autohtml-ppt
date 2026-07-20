@@ -11,13 +11,11 @@
 | **微信** | 扫下方收款码，或加微信号 **`xiaoyutoucom`** 说明赞助 |
 | **爱发电** | 可选，有主页后再补链接 |
 
-### 微信收款码
+### 微信收款码（扫码即可赞助）
 
-<p align="center">
-  <img src="docs/assets/sponsors/wechat-qr.png" alt="WeChat Pay QR — xiaoyutoucom" width="280" />
-  <br />
-  <em>微信扫码赞助 · 微信号 xiaoyutoucom</em>
-</p>
+![微信收款码 · xiaoyutoucom](docs/assets/sponsors/wechat-qr.png)
+
+微信号：**xiaoyutoucom**（也可搜号说明赞助）
 
 ### 作者如何开通 GitHub Sponsors（一次性）
 

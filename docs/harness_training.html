@@ -47,6 +47,7 @@
   <link rel="stylesheet" href="deck/slides/30-Skill-Rules-Lint.css" data-slide="Skill Rules Lint" />
   <link rel="stylesheet" href="deck/slides/31-闭环.css" data-slide="闭环" />
   <link rel="stylesheet" href="deck/slides/32-思考与行动.css" data-slide="思考与行动" />
+  <link rel="stylesheet" href="deck/slides/33-开源与赞助.css" data-slide="开源与赞助" />
 </head>
 <body>
 <div class="scanlines" aria-hidden="true"></div>
@@ -1053,6 +1054,65 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       </div>
     </section>
 
+<section class="slide slide-sponsor" data-title="开源与赞助">
+      <div class="kicker"><i data-lucide="heart-handshake" class="icon"></i>Open Source · Sponsors</div>
+      <h2>开源仓库 · 欢迎 Star 与赞助</h2>
+      <p class="lead sponsor-lead">MIT 免费使用（含商用）· 扫码赞助非强制 · 觉得有用再支持一下</p>
+
+      <div class="sponsor-board">
+        <div class="sponsor-main">
+          <div class="sponsor-quote">Tech Training Deck · autohtml-ppt</div>
+          <p class="sponsor-blurb">单文件 HTML 培训幻灯片 · 离线可演示 · AI Agent 可改页 · 导出 PPTX</p>
+
+          <div class="sponsor-links" aria-label="项目地址">
+            <a class="sponsor-link" href="https://github.com/xiaoyutoucom/autohtml-ppt" target="_blank" rel="noopener noreferrer">
+              <span class="sponsor-link-icon"><i data-lucide="github"></i></span>
+              <span class="sponsor-link-body">
+                <strong>GitHub</strong>
+                <em>github.com/xiaoyutoucom/autohtml-ppt</em>
+              </span>
+            </a>
+            <a class="sponsor-link" href="https://gitee.com/xiaoyutou_647/autohtml-ppt" target="_blank" rel="noopener noreferrer">
+              <span class="sponsor-link-icon gitee"><i data-lucide="git-branch"></i></span>
+              <span class="sponsor-link-body">
+                <strong>码云 Gitee</strong>
+                <em>gitee.com/xiaoyutou_647/autohtml-ppt</em>
+              </span>
+            </a>
+            <a class="sponsor-link" href="https://github.com/sponsors/xiaoyutoucom" target="_blank" rel="noopener noreferrer">
+              <span class="sponsor-link-icon sponsors"><i data-lucide="heart"></i></span>
+              <span class="sponsor-link-body">
+                <strong>GitHub Sponsors</strong>
+                <em>github.com/sponsors/xiaoyutoucom</em>
+              </span>
+            </a>
+            <a class="sponsor-link" href="mailto:xiaoyutoucom@gmail.com">
+              <span class="sponsor-link-icon mail"><i data-lucide="mail"></i></span>
+              <span class="sponsor-link-body">
+                <strong>定制 / 白标询价</strong>
+                <em>xiaoyutoucom@gmail.com</em>
+              </span>
+            </a>
+          </div>
+
+          <div class="title-meta sponsor-meta">
+            <span class="badge">微信号 xiaoyutoucom</span>
+            <span class="badge">Fingerprint TTD-2026-XIAOYUTOUCOM</span>
+            <span class="badge">© 2026 xiaoyutoucom</span>
+          </div>
+        </div>
+
+        <aside class="sponsor-qr-card" aria-label="微信赞助收款码">
+          <div class="sponsor-qr-glow" aria-hidden="true"></div>
+          <div class="sponsor-qr-label">微信扫码赞助</div>
+          <figure class="sponsor-qr-fig">
+            <img src="assets/sponsors/wechat-qr.png" alt="微信收款码 · xiaoyutoucom" width="280" height="280" />
+          </figure>
+          <p class="sponsor-qr-hint">打开微信 · 扫一扫即可<br />也可搜微信号 <strong>xiaoyutoucom</strong></p>
+        </aside>
+      </div>
+    </section>
+
 </div><!-- /#deck -->
 
   <div id="deckAttribution" class="deck-attribution" hidden aria-label="项目归属"></div>
@@ -1588,7 +1648,8 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         "Runner": ["--advance", "门禁链", "Delegate", "Lint 盖章", "--status", "--next", "--lint", "online", "offline", "总控"],
         "Skill Rules Lint": ["教写对", "定义错", "pass/fail", "cleaned_rules", "lint_cleaned", "登录@admin", "valid_tags", "STAGE_META", "S1", "Gate"],
         "闭环": ["收集", "处理", "生成", "复盘", "Rules/Skill", "飞轮", "blocker", "Fragment", "越跑越稳", "人审异常"],
-        "思考与行动": ["五件套", "--advance", "Gate", "稳定用多久", "动手", "--next", "--lint", "Progress", "Rules", "参考资料"]
+        "思考与行动": ["五件套", "--advance", "Gate", "稳定用多久", "动手", "--next", "--lint", "Progress", "Rules", "参考资料"],
+        "开源与赞助": ["MIT", "Star", "微信赞助", "GitHub", "Gitee", "Sponsors", "xiaoyutoucom", "白标", "定制", "扫码"]
       };
 
       function parseAiChipsAttr(raw) {
@@ -1963,6 +2024,14 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
           links: false, linkDist: 0, linkOp: 0, linkW: 0,
           hover: ["bubble"], grabDist: 180, bubbleSize: 6,
           twinkle: false, fps: 40
+        },
+        sponsor_glow: {
+          count: 48, area: 920, shape: "circle", colorMode: "teal",
+          opMin: 0.2, opMax: 0.7, szMin: 1.6, szMax: 4.2,
+          speed: 0.45, dir: "none", straight: false, random: true,
+          links: true, linkDist: 170, linkOp: 0.28, linkW: 1,
+          hover: ["grab", "bubble"], grabDist: 260, bubbleSize: 9,
+          twinkle: true, fps: 42
         }
       };
 
@@ -2000,7 +2069,8 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         "Runner": "runner_burst",
         "Skill Rules Lint": "srl_glyphs",
         "闭环": "loop_flow",
-        "思考与行动": "takeaway_snow"
+        "思考与行动": "takeaway_snow",
+        "开源与赞助": "sponsor_glow"
       };
 
       function resolveColorPalette(mode, colors) {

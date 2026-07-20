@@ -224,7 +224,7 @@ python -m tools.export_training_ppt
 
 ```text
 USDT · TRC20 only
-TF2a7bf6KZfkBi9vbkNAoc41rF63QSxbVx
+TEGYcyUFuGshMySR3Y89AFpCDeihozNT7E
 ```
 
 更多档位 → **[SPONSORS.md](./SPONSORS.md)**  

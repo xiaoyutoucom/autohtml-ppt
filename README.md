@@ -245,7 +245,7 @@ Voluntary — **not required**. WeChat tip or **USDT on Tron (TRC20) only**:
 
 ```text
 USDT · TRC20 only
-TF2a7bf6KZfkBi9vbkNAoc41rF63QSxbVx
+TEGYcyUFuGshMySR3Y89AFpCDeihozNT7E
 ```
 
 Tiers → **[SPONSORS.md](./SPONSORS.md)**  

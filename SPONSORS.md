@@ -8,7 +8,7 @@
 | 渠道 | 说明 |
 |------|------|
 | **微信** | 扫下方收款码，或加微信号 **`xiaoyutoucom`** |
-| **USDT（币安充值）** | 仅 **Tron · TRC20**，见下方地址与二维码 |
+| **USDT** | 仅 **Tron · TRC20**，见下方地址与二维码 |
 | **爱发电** | 可选，有主页后再补链接 |
 | **邮箱** | [xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com) |
 
@@ -26,7 +26,7 @@
 |--|--|
 | 资产 | **USDT** |
 | 网络 | **Tron (TRC20)** |
-| 地址 | `TF2a7bf6KZfkBi9vbkNAoc41rF63QSxbVx` |
+| 地址 | `TEGYcyUFuGshMySR3Y89AFpCDeihozNT7E` |
 
 ![USDT TRC20 收款码](docs/assets/sponsors/usdt-trc20-qr.png)
 

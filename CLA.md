@@ -2,15 +2,15 @@
 
 Thank you for contributing to **Tech Training Deck / autohtml-ppt**.
 
-This project is **dual-licensed** (AGPL-3.0-or-later **or** a paid Commercial License).  
-To accept your contribution and keep selling commercial licenses, we need you to agree to the following.
+This project is **dual-licensed** (Personal / Non-Commercial free **or** a paid Commercial License).  
+To accept your contribution and keep offering commercial licenses, we need you to agree to the following.
 
 ## Individual CLA
 
 By submitting a pull request, issue patch, or other contribution, you (“Contributor”) agree that:
 
 1. You are the author of the contribution, or you have the legal right to submit it.  
-2. You grant **xiaoyutoucom** a perpetual, worldwide, non-exclusive, royalty-free license to use, modify, relicense (including under AGPL and under commercial terms), and distribute your contribution as part of this project.  
+2. You grant **xiaoyutoucom** a perpetual, worldwide, non-exclusive, royalty-free license to use, modify, relicense (including under the Personal / Non-Commercial terms and under commercial terms), and distribute your contribution as part of this project.  
 3. You retain copyright of your contribution.  
 4. Your contribution is provided “AS IS”, without warranty.
 

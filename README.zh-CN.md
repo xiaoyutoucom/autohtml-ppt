@@ -1,6 +1,6 @@
 # Tech Training Deck · autohtml-ppt
 
-[![License](https://img.shields.io/badge/license-AGPL--3.0%20OR%20Commercial-blue.svg)](#协议)
+[![License](https://img.shields.io/badge/license-个人免费%20%7C%20商用收费-blue.svg)](#协议)
 [![GitHub](https://img.shields.io/badge/GitHub-xiaoyutoucom-181717?logo=github)](https://github.com/xiaoyutoucom/autohtml-ppt)
 [![Gitee](https://img.shields.io/badge/Gitee-码云-xiaoyutou__647-C71D23?logo=gitee)](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 [![Offline](https://img.shields.io/badge/离线-file%3A%2F%2F%20可用-success)](#快速开始)
@@ -140,7 +140,7 @@ python tools/capture_readme_gifs.py    # 动态 GIF
 | **溯源** | 公开指纹徽章 · `TTD-2026-XIAOYUTOUCOM` |
 | **离线** | `docs/assets/vendor/` · 支持 `file://` |
 | **写作** | 模块化 `docs/deck/` · `build_deck.py` · Cursor/CC/Codex 等可移植 Skill |
-| **协议** | AGPL-3.0 **或** 商业许可（`COMMERCIAL.md`） |
+| **协议** | 个人免费 · 公司/商用收费（`LICENSE` / `COMMERCIAL.md`） |
 
 ### 写作与 AI 协作
 - 权威源码：**`docs/deck/`**  
@@ -209,14 +209,15 @@ python -m tools.export_training_ppt
 
 ## 协议
 
-本项目采用 **双许可**：
+**个人非商业免费；公司使用与任何商用均需付费授权。**
 
-| 路径 | 说明 |
-|------|------|
-| **开源** | [AGPL-3.0-or-later](https://www.gnu.org/licenses/agpl-3.0.html)：可免费使用/修改/分发，须遵守 AGPL（含 copyleft / 网络提供义务） |
-| **商业** | 闭源产品、SaaS、白标，或不想履行 AGPL 义务 → 购买商业许可，见 [COMMERCIAL.md](./COMMERCIAL.md) |
+| 谁 | 费用 | 依据 |
+|----|------|------|
+| **个人**，非商业学习 / 个人备课 | 免费 | [`LICENSE`](./LICENSE) Part A |
+| **公司 / 组织**（含内部培训） | 收费 | [`COMMERCIAL.md`](./COMMERCIAL.md) |
+| **任何商用**（SaaS、嵌入产品、收费培训、白标、对外交付） | 收费 | [`COMMERCIAL.md`](./COMMERCIAL.md) |
 
-溯源指纹：`TTD-2026-XIAOYUTOUCOM`（`docs/deck/provenance.json`）。除非商业合同另有约定，请保留归属标识。
+溯源指纹：`TTD-2026-XIAOYUTOUCOM`（`docs/deck/provenance.json`）。除非商业合同约定可去除，请保留归属标识。
 
 **镜像：** [GitHub](https://github.com/xiaoyutoucom/autohtml-ppt) · [码云 Gitee](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 

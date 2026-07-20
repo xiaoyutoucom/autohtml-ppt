@@ -15,7 +15,7 @@
 
 ## License reminder
 
-Contributions are accepted under the dual-license model (AGPL + Commercial).  
+Contributions are accepted under the dual-license model (Personal / Non-Commercial + Commercial).  
 See [LICENSE](./LICENSE), [COMMERCIAL.md](./COMMERCIAL.md), and [CLA.md](./CLA.md).
 
 ## Questions

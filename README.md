@@ -1,6 +1,6 @@
 # Tech Training Deck · autohtml-ppt
 
-[![License](https://img.shields.io/badge/license-AGPL--3.0%20OR%20Commercial-blue.svg)](#license)
+[![License](https://img.shields.io/badge/license-Personal%20free%20%7C%20Commercial%20paid-blue.svg)](#license)
 [![GitHub](https://img.shields.io/badge/GitHub-xiaoyutoucom-181717?logo=github)](https://github.com/xiaoyutoucom/autohtml-ppt)
 [![Gitee](https://img.shields.io/badge/Gitee-xiaoyutou__647-C71D23?logo=gitee)](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 [![Offline](https://img.shields.io/badge/offline-file%3A%2F%2F%20ready-success)](#quick-start)
@@ -139,7 +139,7 @@ python tools/capture_readme_gifs.py    # animated GIFs
 | **Provenance** | Public fingerprint badge · `TTD-2026-XIAOYUTOUCOM` |
 | **Offline** | Vendored libs under `docs/assets/vendor/` · `file://` OK |
 | **Authoring** | Modular `docs/deck/` · `build_deck.py` · portable skill for Cursor/CC/Codex/… |
-| **License** | AGPL-3.0 **or** Commercial (`COMMERCIAL.md`) |
+| **License** | Personal free · Company/commercial paid (`LICENSE` / `COMMERCIAL.md`) |
 
 ---
 
@@ -230,14 +230,15 @@ autohtml-ppt/
 
 ## License
 
-This project is **dual-licensed**:
+**Personal use is free. Company use and any commercial use require a paid license.**
 
-| Path | Terms |
-|------|--------|
-| **Open source** | [AGPL-3.0-or-later](https://www.gnu.org/licenses/agpl-3.0.html) — free to use, modify, and distribute if you comply with the AGPL (including copyleft / network obligations). |
-| **Commercial** | Closed-source products, SaaS, OEM/white-label, or use without AGPL obligations — purchase a commercial license. See [COMMERCIAL.md](./COMMERCIAL.md). |
+| Who | Cost | Terms |
+|-----|------|--------|
+| **Natural person**, non-commercial (learning / personal prep) | Free | [`LICENSE`](./LICENSE) Part A |
+| **Company / organization** (including internal training) | Paid | [`COMMERCIAL.md`](./COMMERCIAL.md) |
+| **Any commercial use** (SaaS, embedding, paid courses, white-label, client delivery) | Paid | [`COMMERCIAL.md`](./COMMERCIAL.md) |
 
-Attribution / provenance fingerprint: `TTD-2026-XIAOYUTOUCOM` (see `docs/deck/provenance.json`). Please keep the required attribution unless your commercial agreement says otherwise.
+Attribution fingerprint: `TTD-2026-XIAOYUTOUCOM` (`docs/deck/provenance.json`). Keep it unless your commercial agreement waives attribution.
 
 **Mirrors:** [GitHub](https://github.com/xiaoyutoucom/autohtml-ppt) · [Gitee](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 

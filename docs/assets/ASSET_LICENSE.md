@@ -1,6 +1,6 @@
 # Media & illustration assets
 
-© 2026 xiaoyutoucom — same dual license as the repository (`LICENSE` / `COMMERCIAL.md`).
+© 2026 xiaoyutoucom — same MIT license as the repository (`LICENSE`), unless noted below.
 
 ## Diagrams (`docs/assets/*.png`)
 

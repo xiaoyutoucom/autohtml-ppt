@@ -1,78 +1,21 @@
-Tech Training Deck / autohtml-ppt
+MIT License
+
 Copyright (c) 2026 xiaoyutoucom
 
-SPDX-License-Identifier: LicenseRef-Personal-NonCommercial OR LicenseRef-Commercial
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-================================================================================
-SUMMARY (non-binding; full terms below)
-================================================================================
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-- Personal / non-commercial use by a natural person: FREE under Part A.
-- Company / organization use, or any commercial use: PAID license under Part B
-  (see COMMERCIAL.md). Contact: xiaoyutoucom@gmail.com
-
-This is a source-available dual-license model. It is intentionally NOT a
-permissive OSI license such as MIT/Apache (those allow free commercial use).
-
-================================================================================
-PART A — PERSONAL / NON-COMMERCIAL LICENSE (FREE)
-================================================================================
-
-Permission is hereby granted, free of charge, to any natural person obtaining
-a copy of this software and associated documentation files (the "Software"),
-to use, copy, modify, and redistribute the Software, subject to the following
-conditions:
-
-1. Personal / non-commercial only
-   You may use the Software only as a natural person for personal learning,
-   personal teaching preparation, or other non-commercial purposes.
-
-2. No company / organization use under Part A
-   Use by or for a company, enterprise, government body, school as an
-   institution, or other organization — including internal corporate training,
-   client delivery, or product embedding — requires Part B.
-
-3. No commercial use under Part A
-   You may not sell, rent, or offer paid services based on the Software;
-   may not embed it in a commercial product or SaaS; and may not use it to
-   deliver paid training or consulting without Part B.
-
-4. Attribution
-   You must retain copyright notices, this license text, and the project
-   provenance / attribution marks (see docs/deck/provenance.json) unless a
-   Part B agreement expressly waives them.
-
-5. Redistribution of source
-   If you redistribute the Software (modified or not) under Part A, you must
-   include this LICENSE and make clear that company / commercial use requires
-   a paid license (COMMERCIAL.md).
-
-6. No warranty
-   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-   FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-   DEALINGS IN THE SOFTWARE.
-
-================================================================================
-PART B — COMMERCIAL LICENSE (PAID)
-================================================================================
-
-Commercial use, company / organization use, OEM / white-label, SaaS, paid
-training delivery, or removal of attribution requires a separate written
-commercial license from the copyright holder.
-
-Contact: xiaoyutoucom@gmail.com
-Details: COMMERCIAL.md
-
-Until a Part B agreement is signed, Part A applies — and company / commercial
-use is not permitted under Part A.
-
-================================================================================
-THIRD-PARTY COMPONENTS
-================================================================================
-
-Vendored libraries under docs/assets/vendor/ remain under their own licenses.
-See THIRD_PARTY_NOTICES.md.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

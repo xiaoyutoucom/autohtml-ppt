@@ -8,15 +8,10 @@
 
 ## Pull requests
 
-1. Sign the [CLA](./CLA.md) in the PR description.  
-2. Keep changes focused (one concern per PR).  
-3. Rebuild if you touch deck source; smoke-test `docs/harness_training.html`.  
-4. Prefer English commit messages; Chinese OK for content/docs.
-
-## License reminder
-
-Contributions are accepted under the dual-license model (Personal / Non-Commercial + Commercial).  
-See [LICENSE](./LICENSE), [COMMERCIAL.md](./COMMERCIAL.md), and [CLA.md](./CLA.md).
+1. Keep changes focused (one concern per PR).  
+2. Rebuild if you touch deck source; smoke-test `docs/harness_training.html`.  
+3. Prefer English commit messages; Chinese OK for content/docs.  
+4. Contributions are accepted under the [MIT License](./LICENSE) (see [CLA.md](./CLA.md)).
 
 ## Questions
 

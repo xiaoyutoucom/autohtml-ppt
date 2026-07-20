@@ -38,7 +38,7 @@
     "productName": "Tech Training Deck",
     "version": "0.1.0",
     "copyright": "© 2026 xiaoyutoucom",
-    "license": "Personal-NonCommercial OR Commercial",
+    "license": "MIT",
     "homepage": "https://github.com/xiaoyutoucom/autohtml-ppt",
     "contact": "xiaoyutoucom@gmail.com",
     "requireAttribution": true

@@ -1,13 +1,12 @@
 # 发布说明（作者用）
 
-对外一步步教程请看：**[HOW_TO_PUBLISH.zh-CN.md](./HOW_TO_PUBLISH.zh-CN.md)**
+对外一步步教程：**[HOW_TO_PUBLISH.zh-CN.md](./HOW_TO_PUBLISH.zh-CN.md)**
 
-## 许可模型（已落地）
+## 当前模型
 
-| 谁 | 费用 |
-|----|------|
-| 个人非商业 | 免费（`LICENSE` Part A） |
-| 公司 / 组织 / 任何商用 | 收费（`COMMERCIAL.md`） |
+- **协议：** MIT（个人/公司均可免费使用，含商用）  
+- **自愿赞助：** [SPONSORS.md](./SPONSORS.md)  
+- **付费服务：** [SERVICES.md](./SERVICES.md)（定制 / 代做 / 白标）
 
 ## 远程地址
 

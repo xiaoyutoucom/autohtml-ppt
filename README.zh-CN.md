@@ -1,9 +1,10 @@
 # Tech Training Deck · autohtml-ppt
 
-[![License](https://img.shields.io/badge/license-个人免费%20%7C%20商用收费-blue.svg)](#协议)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-xiaoyutoucom-181717?logo=github)](https://github.com/xiaoyutoucom/autohtml-ppt)
 [![Gitee](https://img.shields.io/badge/Gitee-码云-xiaoyutou__647-C71D23?logo=gitee)](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 [![Offline](https://img.shields.io/badge/离线-file%3A%2F%2F%20可用-success)](#快速开始)
+[![Sponsors](https://img.shields.io/badge/赞助-欢迎-ea4aaa)](./SPONSORS.md)
 
 [English](./README.md) | **简体中文**
 
@@ -11,6 +12,8 @@
 > **不只 Cursor**：Claude Code、Codex 等主流 AI 编码工具都能直接按同一套 Skill 改页。
 
 **作者：** [xiaoyutoucom](https://github.com/xiaoyutoucom) · © 2026 xiaoyutoucom · 邮箱：[xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com)
+
+**赞助 / 付费定制：** [SPONSORS.md](./SPONSORS.md) · [SERVICES.md](./SERVICES.md)（主题、代做课件、白标）
 
 <p align="center">
   <img src="docs/assets/screenshots/preview.gif" alt="Tech Training Deck 动态预览" width="900" />
@@ -140,7 +143,7 @@ python tools/capture_readme_gifs.py    # 动态 GIF
 | **溯源** | 公开指纹徽章 · `TTD-2026-XIAOYUTOUCOM` |
 | **离线** | `docs/assets/vendor/` · 支持 `file://` |
 | **写作** | 模块化 `docs/deck/` · `build_deck.py` · Cursor/CC/Codex 等可移植 Skill |
-| **协议** | 个人免费 · 公司/商用收费（`LICENSE` / `COMMERCIAL.md`） |
+| **协议** | MIT · 欢迎赞助与付费定制（`SPONSORS.md` / `SERVICES.md`） |
 
 ### 写作与 AI 协作
 - 权威源码：**`docs/deck/`**  
@@ -203,21 +206,23 @@ python -m tools.export_training_ppt
 | 导出 PPTX | 原生 | 弱 | ✅ 浏览器 + CLI |
 | AI 改页 | 差 | 一般 | ✅ 模块化 + 多工具 Skill |
 | 画笔/总览/演示热区 | 插件 | 插件 | ✅ 内置 |
-| 商用双许可路径 | — | 看项目 | ✅ 面向双许可设计 |
+| MIT + 多工具 AI Skill | — | 看项目 | ✅ 可移植 Skill |
+
+---
+
+## 赞助
+
+自愿支持即可，**不是使用前提**。渠道与档位见 **[SPONSORS.md](./SPONSORS.md)**（GitHub Sponsors / 爱发电 / 微信）。
+
+需要定制主题、代做整套培训课件、白标去掉指纹 → **[SERVICES.md](./SERVICES.md)**，邮件询价。
 
 ---
 
 ## 协议
 
-**个人非商业免费；公司使用与任何商用均需付费授权。**
+采用 **[MIT License](./LICENSE)**。个人与公司均可免费使用（含商用）。
 
-| 谁 | 费用 | 依据 |
-|----|------|------|
-| **个人**，非商业学习 / 个人备课 | 免费 | [`LICENSE`](./LICENSE) Part A |
-| **公司 / 组织**（含内部培训） | 收费 | [`COMMERCIAL.md`](./COMMERCIAL.md) |
-| **任何商用**（SaaS、嵌入产品、收费培训、白标、对外交付） | 收费 | [`COMMERCIAL.md`](./COMMERCIAL.md) |
-
-溯源指纹：`TTD-2026-XIAOYUTOUCOM`（`docs/deck/provenance.json`）。除非商业合同约定可去除，请保留归属标识。
+再分发时请保留版权声明。公开溯源徽章（`TTD-2026-XIAOYUTOUCOM`，见 `docs/deck/provenance.json`）便于归属与发现；若交付客户需要去掉，可走付费白标服务。
 
 **镜像：** [GitHub](https://github.com/xiaoyutoucom/autohtml-ppt) · [码云 Gitee](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 
@@ -227,7 +232,7 @@ python -m tools.export_training_ppt
 
 - Issue：GitHub / Gitee  
 - 邮箱：[xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com)  
-- 商业授权：[COMMERCIAL.md](./COMMERCIAL.md)
+- 赞助：[SPONSORS.md](./SPONSORS.md) · 付费服务：[SERVICES.md](./SERVICES.md)
 
 ---
 

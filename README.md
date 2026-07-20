@@ -1,15 +1,18 @@
 # Tech Training Deck · autohtml-ppt
 
-[![License](https://img.shields.io/badge/license-Personal%20free%20%7C%20Commercial%20paid-blue.svg)](#license)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-xiaoyutoucom-181717?logo=github)](https://github.com/xiaoyutoucom/autohtml-ppt)
 [![Gitee](https://img.shields.io/badge/Gitee-xiaoyutou__647-C71D23?logo=gitee)](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 [![Offline](https://img.shields.io/badge/offline-file%3A%2F%2F%20ready-success)](#quick-start)
+[![Sponsors](https://img.shields.io/badge/Sponsors-welcome-ea4aaa?logo=githubsponsors)](./SPONSORS.md)
 
 **English** | [简体中文](./README.zh-CN.md)
 
 > Beautiful, flipable **single-file HTML slide decks** for technical training — a modern PowerPoint alternative that runs offline, exports PPTX, and is authored as modular pages **any mainstream AI coding agent** can maintain — not Cursor-only.
 
 **Author:** [xiaoyutoucom](https://github.com/xiaoyutoucom) · © 2026 xiaoyutoucom · Contact: [xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com)
+
+**Sponsors / paid help:** [SPONSORS.md](./SPONSORS.md) · [SERVICES.md](./SERVICES.md) (themes, custom decks, white-label)
 
 <p align="center">
   <img src="docs/assets/screenshots/preview.gif" alt="Tech Training Deck preview — flipable HTML slides" width="900" />
@@ -139,7 +142,7 @@ python tools/capture_readme_gifs.py    # animated GIFs
 | **Provenance** | Public fingerprint badge · `TTD-2026-XIAOYUTOUCOM` |
 | **Offline** | Vendored libs under `docs/assets/vendor/` · `file://` OK |
 | **Authoring** | Modular `docs/deck/` · `build_deck.py` · portable skill for Cursor/CC/Codex/… |
-| **License** | Personal free · Company/commercial paid (`LICENSE` / `COMMERCIAL.md`) |
+| **License** | MIT · sponsors & paid services welcome (`SPONSORS.md` / `SERVICES.md`) |
 
 ---
 
@@ -191,7 +194,7 @@ python -m tools.export_training_ppt
 ```text
 autohtml-ppt/
 ├── README.md / README.zh-CN.md
-├── COMMERCIAL.md              # Commercial licensing contact
+├── SPONSORS.md / SERVICES.md  # Sponsorship & paid customization
 ├── requirements.txt
 ├── docs/
 │   ├── harness_training.html  # Built demo (open this)
@@ -224,21 +227,25 @@ autohtml-ppt/
 | Export real PPTX | native | limited | ✅ browser + Playwright |
 | AI-friendly page edits | poor | medium | ✅ modular deck + multi-agent skill |
 | Annotate / overview / present hot-zone | add-ins | plugins | ✅ built-in |
-| Dual-license commercial path | N/A | varies | ✅ designed for it |
+| MIT + AI-agent authoring skill | N/A | varies | ✅ portable skill docs |
+
+---
+
+## Sponsors
+
+Voluntary support keeps the project moving — **not required to use the software**.
+
+See **[SPONSORS.md](./SPONSORS.md)** for GitHub Sponsors, 爱发电 (Afdian), and WeChat tip options.
+
+Need custom work? **[SERVICES.md](./SERVICES.md)** — paid themes, full training decks, white-label (remove attribution fingerprint).
 
 ---
 
 ## License
 
-**Personal use is free. Company use and any commercial use require a paid license.**
+Released under the **[MIT License](./LICENSE)**. Personal and company use (including commercial) is allowed.
 
-| Who | Cost | Terms |
-|-----|------|--------|
-| **Natural person**, non-commercial (learning / personal prep) | Free | [`LICENSE`](./LICENSE) Part A |
-| **Company / organization** (including internal training) | Paid | [`COMMERCIAL.md`](./COMMERCIAL.md) |
-| **Any commercial use** (SaaS, embedding, paid courses, white-label, client delivery) | Paid | [`COMMERCIAL.md`](./COMMERCIAL.md) |
-
-Attribution fingerprint: `TTD-2026-XIAOYUTOUCOM` (`docs/deck/provenance.json`). Keep it unless your commercial agreement waives attribution.
+Please keep copyright notices when you redistribute. The public provenance badge (`TTD-2026-XIAOYUTOUCOM` in `docs/deck/provenance.json`) helps attribution and discovery; removing it for a client deliverable can be arranged as a paid white-label service.
 
 **Mirrors:** [GitHub](https://github.com/xiaoyutoucom/autohtml-ppt) · [Gitee](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 
@@ -248,16 +255,15 @@ Attribution fingerprint: `TTD-2026-XIAOYUTOUCOM` (`docs/deck/provenance.json`). 
 
 - Blank “starter deck” template without Harness-specific narrative  
 - English sample course pack  
-- Optional commercial license-key build flavor  
-- Theme marketplace / white-label packaging  
+- Theme packs / white-label packaging as a service  
 
 ---
 
 ## Support
 
-- Issues: GitHub / Gitee issue trackers  
+- Issues: GitHub / Gitee  
 - Email: [xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com)  
-- Commercial licensing: [COMMERCIAL.md](./COMMERCIAL.md)
+- Sponsors: [SPONSORS.md](./SPONSORS.md) · Paid services: [SERVICES.md](./SERVICES.md)
 
 ---
 

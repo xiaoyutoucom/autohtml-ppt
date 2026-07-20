@@ -5,13 +5,13 @@
 | 优先级 | 做法 |
 |--------|------|
 | 攒 star | **MIT**，个人公司都能放心用 |
-| 收赞助 | [SPONSORS.md](./SPONSORS.md)（GitHub Sponsors / 爱发电 / 微信） |
+| 收赞助 | [SPONSORS.md](./SPONSORS.md)（微信收款码为主，可选爱发电） |
 | 收服务费 | [SERVICES.md](./SERVICES.md)（定制主题、代做课件、白标） |
 
 仓库简介可写：
 
 ```text
-Offline HTML training slides · MIT · AI-agent friendly · Sponsors welcome
+Offline HTML training slides · MIT · AI-agent friendly · WeChat tips welcome
 ```
 
 ---
@@ -21,11 +21,10 @@ Offline HTML training slides · MIT · AI-agent friendly · Sponsors welcome
 | # | 内容 | 状态 |
 |---|------|------|
 | 1 | **微信收款码** + 微信号 `xiaoyutoucom` | ✅ 已写入 `docs/assets/sponsors/wechat-qr.png` / `SPONSORS.md` |
-| 2 | **GitHub Sponsors** | ⏳ 需你在网页开通（步骤见 `SPONSORS.md`） |
-| 3 | **爱发电**（可选） | 有主页再补链接 |
-| 4 | 邮箱 `xiaoyutoucom@gmail.com` | ✅ 已写好 |
+| 2 | **爱发电**（可选） | 有主页再补链接 |
+| 3 | 邮箱 `xiaoyutoucom@gmail.com` | ✅ 已写好 |
 
-微信已就绪；**GitHub Sponsors 必须你自己登录账号开通**，仓库链接已预填。
+不使用 GitHub Sponsors；国内以微信收款码为主。
 
 ---
 
@@ -40,7 +39,7 @@ Offline HTML training slides · MIT · AI-agent friendly · Sponsors welcome
 About 建议：
 
 ```text
-Offline HTML training deck. MIT. Sponsors & paid customization welcome.
+Offline HTML training deck. MIT. WeChat tips & paid customization welcome.
 ```
 
 Topics：`html` `slides` `ppt` `training` `offline` `mit`
@@ -78,17 +77,16 @@ git push -u gitee main
 
 ## 第 5 步：补齐赞助链接后
 
-1. 编辑 `SPONSORS.md`，换成真实爱发电 URL  
-2. 放入 `docs/assets/sponsors/wechat-qr.png`  
-3. 确认 GitHub Sponsors 页面可打开  
-4. `git add` → `commit` → `push` 两边  
+1. （可选）编辑 `SPONSORS.md`，补爱发电 URL  
+2. `git add` → `commit` → `push` 两边  
 
 ---
 
 ## 第 6 步：发布后自检
 
 - [ ] GitHub License 显示 MIT  
-- [ ] README 有 Sponsors / 赞助入口  
+- [ ] README 有微信赞助入口  
+ 
 - [ ] 没有「公司必须付费才能用」的表述  
 - [ ] Clone 后能打开 `docs/harness_training.html`  
 

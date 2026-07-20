@@ -486,7 +486,7 @@
         "Skill Rules Lint": ["教写对", "定义错", "pass/fail", "cleaned_rules", "lint_cleaned", "登录@admin", "valid_tags", "STAGE_META", "S1", "Gate"],
         "闭环": ["收集", "处理", "生成", "复盘", "Rules/Skill", "飞轮", "blocker", "Fragment", "越跑越稳", "人审异常"],
         "思考与行动": ["五件套", "--advance", "Gate", "稳定用多久", "动手", "--next", "--lint", "Progress", "Rules", "参考资料"],
-        "开源与赞助": ["MIT", "Star", "微信赞助", "GitHub", "Gitee", "Sponsors", "xiaoyutoucom", "白标", "定制", "扫码"]
+        "开源与赞助": ["MIT", "Star", "微信赞助", "GitHub", "Gitee", "扫码", "xiaoyutoucom", "白标", "定制", "邮箱"]
       };
 
       function parseAiChipsAttr(raw) {

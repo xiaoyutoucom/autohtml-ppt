@@ -4,7 +4,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-xiaoyutoucom-181717?logo=github)](https://github.com/xiaoyutoucom/autohtml-ppt)
 [![Gitee](https://img.shields.io/badge/Gitee-xiaoyutou__647-C71D23?logo=gitee)](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 [![Offline](https://img.shields.io/badge/offline-file%3A%2F%2F%20ready-success)](#quick-start)
-[![Sponsors](https://img.shields.io/badge/Sponsors-welcome-ea4aaa?logo=githubsponsors)](./SPONSORS.md)
+[![Sponsor](https://img.shields.io/badge/WeChat-sponsor-07C160?logo=wechat&logoColor=white)](./SPONSORS.md)
 
 **English** | [简体中文](./README.zh-CN.md)
 
@@ -12,7 +12,7 @@
 
 **Author:** [xiaoyutoucom](https://github.com/xiaoyutoucom) · © 2026 xiaoyutoucom · Contact: [xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com)
 
-**Sponsors / paid help:** [SPONSORS.md](./SPONSORS.md) · [SERVICES.md](./SERVICES.md) (themes, custom decks, white-label)
+**Sponsor / paid help:** [SPONSORS.md](./SPONSORS.md) (WeChat tip) · [SERVICES.md](./SERVICES.md) (themes, custom decks, white-label)
 
 <p align="center">
   <img src="docs/assets/screenshots/preview.gif" alt="Tech Training Deck preview — flipable HTML slides" width="900" />
@@ -241,7 +241,7 @@ Voluntary — **not required** to use the software. Scan WeChat Pay (ID `xiaoyut
   <em>WeChat tip QR · WeChat ID xiaoyutoucom</em>
 </p>
 
-Tiers & [GitHub Sponsors](https://github.com/sponsors/xiaoyutoucom) → **[SPONSORS.md](./SPONSORS.md)**  
+Tiers → **[SPONSORS.md](./SPONSORS.md)**  
 Paid customization / white-label → **[SERVICES.md](./SERVICES.md)**
 
 ---
@@ -268,7 +268,7 @@ Please keep copyright notices when you redistribute. The public provenance badge
 
 - Issues: GitHub / Gitee  
 - Email: [xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com)  
-- Sponsors: [SPONSORS.md](./SPONSORS.md) · Paid services: [SERVICES.md](./SERVICES.md)
+- WeChat sponsor: [SPONSORS.md](./SPONSORS.md) · Paid services: [SERVICES.md](./SERVICES.md)
 
 ---
 

@@ -4,7 +4,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-xiaoyutoucom-181717?logo=github)](https://github.com/xiaoyutoucom/autohtml-ppt)
 [![Gitee](https://img.shields.io/badge/Gitee-xiaoyutou__647-C71D23?logo=gitee)](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 [![Offline](https://img.shields.io/badge/离线-file%3A%2F%2F%20可用-success)](#快速开始)
-[![Sponsors](https://img.shields.io/badge/赞助-欢迎-ea4aaa)](./SPONSORS.md)
+[![Sponsor](https://img.shields.io/badge/微信-赞助-07C160)](./SPONSORS.md)
 
 [English](./README.md) | **简体中文**
 
@@ -220,7 +220,7 @@ python -m tools.export_training_ppt
   <em>微信扫一扫赞助 · 也可加微信号 xiaoyutoucom</em>
 </p>
 
-更多档位与 [GitHub Sponsors](https://github.com/sponsors/xiaoyutoucom) → **[SPONSORS.md](./SPONSORS.md)**  
+更多档位 → **[SPONSORS.md](./SPONSORS.md)**  
 定制主题 / 代做课件 / 白标 → **[SERVICES.md](./SERVICES.md)**
 
 ---

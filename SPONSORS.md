@@ -41,7 +41,7 @@
 ## 邮箱
 
 [xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com)  
-（对公、发票等可先邮件沟通）
+（可先邮件沟通）
 
 ---
 

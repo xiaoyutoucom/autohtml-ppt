@@ -1,0 +1,4 @@
+/* 单页样式：仅作用于 data-title="Skill Rules Lint" */
+.slide[data-title="Skill Rules Lint"] {
+  /* 例：--ink: #fde047; */
+}

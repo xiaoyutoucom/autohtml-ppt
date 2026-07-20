@@ -1,0 +1,4 @@
+/* 单页样式：仅作用于 data-title="模块一" */
+.slide[data-title="模块一"] {
+  /* 例：--ink: #fde047; */
+}

@@ -1,0 +1,107 @@
+<section class="slide" data-title="为什么火了">
+      <div class="kicker">为什么突然火了？</div>
+      <h2>瓶颈不在模型，在环境和流程</h2>
+      <p class="lead" style="margin-bottom:.55rem;font-size:.95rem">悬停卡片查看详情 · 同一结论：Harness 决定上限</p>
+      <div class="case-grid">
+        <div class="case-card" tabindex="0">
+          <div class="era">Benchmark</div>
+          <h3>LangChain 实验</h3>
+          <p>同一模型，只优化 Harness → 编码榜从 30 名开外冲进<strong class="strong">前 5</strong></p>
+          <div class="hint-hover">悬停查看详情 →</div>
+          <div class="case-detail">
+            <h4>LangChain · 同模型换 Harness</h4>
+            <ul>
+              <li>控制变量：模型不变，只改工具链 / 提示编排 / 反馈环</li>
+              <li>结果：编码基准排名大幅跃升（30+ → Top 5）</li>
+              <li>启示：名次差往往来自「怎么用」，不是「换更强模型」</li>
+            </ul>
+            <div class="src">行业常引案例 · Harness 杠杆效应</div>
+          </div>
+        </div>
+
+        <div class="case-card" tabindex="0">
+          <div class="era">OpenAI</div>
+          <h3>Codex 百万行工程</h3>
+          <p>3→7 人小团队，Harness 引导生成约<strong class="strong">100 万行</strong>代码并内部上线</p>
+          <div class="hint-hover">悬停查看详情 →</div>
+          <div class="case-detail">
+            <h4>OpenAI · Harness Engineering</h4>
+            <ul>
+              <li>~5 个月 · ~1500 PR · 人均约 3.5 PR/天</li>
+              <li>应用逻辑 / 测试 / CI / 文档 / 可观测，几乎全由 Codex 写</li>
+              <li>关键：隔离 worktree、日志指标可查、目标可验证（如启动 &lt;800ms）</li>
+              <li>官方估计：约手工 1/10 时间建成可上线产品</li>
+            </ul>
+            <div class="src">openai.com/index/harness-engineering</div>
+          </div>
+        </div>
+
+        <div class="case-card" tabindex="0">
+          <div class="era">Cursor</div>
+          <h3>Coinbase 产线加速</h3>
+          <p>想法→上线从 20 天压到约<strong class="strong">1.8 天</strong>（约 90%），Agent 主导 PR</p>
+          <div class="hint-hover">悬停查看详情 →</div>
+          <div class="case-detail">
+            <h4>Coinbase × Cursor · Agent-first</h4>
+            <ul>
+              <li>2400+ 开发者日常使用；约 75% PR 由 Agent 创建</li>
+              <li>想法→首个 PR：约 8 天 → &lt;30 分钟</li>
+              <li>人均每周少约 7 小时手写；PR 合并量约 +55%</li>
+              <li>手段：Plan Mode + 工单直达 Agent + 速度跑（speedrun）冲 PR</li>
+            </ul>
+            <div class="src">cursor.com/blog/coinbase</div>
+          </div>
+        </div>
+
+        <div class="case-card" tabindex="0">
+          <div class="era">Anthropic</div>
+          <h3>长程 Agent 架构</h3>
+          <p>Initializer + Coding Agent；<strong class="strong">生成与评审分离</strong>，长任务才稳</p>
+          <div class="hint-hover">悬停查看详情 →</div>
+          <div class="case-detail">
+            <h4>Anthropic · Long-running Harness</h4>
+            <ul>
+              <li>痛点：Agent 自评「Done」，UI/API 却一塌糊涂</li>
+              <li>做法：拆任务的 Initializer + 逐步实现的 Coding Agent</li>
+              <li>再加 Generator–Evaluator：别让「写代码的人」给自己打分</li>
+              <li>启示：长任务可靠性来自角色分工与验收环，不是更长 prompt</li>
+            </ul>
+            <div class="src">Harness Design for Long-Running Apps</div>
+          </div>
+        </div>
+
+        <div class="case-card" tabindex="0">
+          <div class="era">Eval</div>
+          <h3>同模型分差 40+ 分</h3>
+          <p>Sonnet 在 GAIA 上因 Harness 不同，可从约 31% 拉到<strong class="strong">74%</strong></p>
+          <div class="hint-hover">悬停查看详情 →</div>
+          <div class="case-detail">
+            <h4>同模型 · 不同 Harness 分差</h4>
+            <ul>
+              <li>公开讨论：Sonnet 4.5 在 GAIA 约 30.91% → 74.55%</li>
+              <li>分差约 43 分，几乎全部归因于工具边界 / 编排 / 反馈</li>
+              <li>结论：评测榜上的「模型战」很多其实是「Harness 战」</li>
+            </ul>
+            <div class="src">Agentic Harness Engineering 综述讨论</div>
+          </div>
+        </div>
+
+        <div class="case-card" tabindex="0">
+          <div class="era">Community</div>
+          <h3>Ralph 过夜闭环</h3>
+          <p>写清 PRD，把 Agent <strong class="strong">循环跑到做完</strong> —— 社区证明「能过夜」</p>
+          <div class="hint-hover">悬停查看详情 →</div>
+          <div class="case-detail">
+            <h4>Ralph Pattern · 自主过夜</h4>
+            <ul>
+              <li>核心：PRD 条目化 + 循环调用 Claude Code / Amp 等直到清零</li>
+              <li>Harness 提供：目标清单、失败重试、产物落盘、停止条件</li>
+              <li>价值：演示「无人值守」不是玄学，是可复制的运行时模式</li>
+              <li>边界：仍需验收与护栏，否则会「假完成」</li>
+            </ul>
+            <div class="src">Geoffrey Huntley · Ralph Pattern</div>
+          </div>
+        </div>
+      </div>
+      <div class="formula" style="margin-top:.85rem">行业共识：AI 编程的瓶颈不在模型有多聪明，而在你围绕模型搭的环境和流程够不够好。</div>
+    </section>

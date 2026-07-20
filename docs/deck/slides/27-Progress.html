@@ -1,0 +1,31 @@
+<section class="slide" data-title="Progress">
+      <div class="kicker">五件套 · Progress</div>
+      <h2>进度看板 = 唯一事实来源</h2>
+      <p class="lead" style="margin-bottom:.55rem;font-size:.92rem">内含 S0–S9 · Runner 读写 · Gate 嵌在阶段块里</p>
+      <div class="layout-split">
+        <div class="split-body">
+          <h3 style="color:var(--ink);margin-bottom:.45rem">本仓记什么</h3>
+          <ul>
+            <li>阶段 <code>status</code>：done / pending</li>
+            <li>产物 <code>file</code>：指向 runnable / cleaned 等</li>
+            <li><code>gate</code>：Lint 后由 Runner 写入 pass/fail</li>
+            <li><code>notes</code>：fix / feedback / blocker</li>
+          </ul>
+          <span class="cite-path">路径约定 harness/core/paths.py · L28 progress_path · L118 load · L140 save</span>
+        </div>
+        <div class="split-media">
+          <div class="kicker" style="margin-bottom:.35rem">SPECCONFIG 实例</div>
+          <pre style="font-size:.78rem"># cases/SPECCONFIG/progress.yaml · L7–
+- case_id: case_customer_product_config_dialogs
+  stages:
+    s0_raw: { status: done }          # L10
+    s1_cleaned: { status: pending }   # L12
+    s5_runnable:
+      status: done                    # L23
+      file: cases/SPECCONFIG/runnable/
+        case_customer_product_config_dialogs.yaml  # L25</pre>
+          <span class="cite-path">cases/SPECCONFIG/progress.yaml · L7–L25</span>
+        </div>
+      </div>
+      <div class="formula" style="margin-top:.7rem">Gate 写入：harness/runner.py · L519 — <code>block["gate"] = {"status": "pass" if ok else "fail"}</code></div>
+    </section>

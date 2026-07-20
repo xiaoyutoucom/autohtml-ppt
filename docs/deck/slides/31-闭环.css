@@ -1,0 +1,4 @@
+/* 单页样式：仅作用于 data-title="闭环" */
+.slide[data-title="闭环"] {
+  /* 例：--ink: #fde047; */
+}

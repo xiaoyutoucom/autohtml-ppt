@@ -1,0 +1,235 @@
+{
+  "slides": [
+    {
+      "index": 0,
+      "title": "封面",
+      "slug": "00-封面",
+      "html": "00-封面.html",
+      "css": "00-封面.css"
+    },
+    {
+      "index": 1,
+      "title": "目录",
+      "slug": "01-目录",
+      "html": "01-目录.html",
+      "css": "01-目录.css"
+    },
+    {
+      "index": 2,
+      "title": "01 演示",
+      "slug": "02-01-演示",
+      "html": "02-01-演示.html",
+      "css": "02-01-演示.css"
+    },
+    {
+      "index": 3,
+      "title": "自动化演示",
+      "slug": "03-自动化演示",
+      "html": "03-自动化演示.html",
+      "css": "03-自动化演示.css"
+    },
+    {
+      "index": 4,
+      "title": "客户端演示",
+      "slug": "04-客户端演示",
+      "html": "04-客户端演示.html",
+      "css": "04-客户端演示.css"
+    },
+    {
+      "index": 5,
+      "title": "现场跑全量",
+      "slug": "05-现场跑全量",
+      "html": "05-现场跑全量.html",
+      "css": "05-现场跑全量.css"
+    },
+    {
+      "index": 6,
+      "title": "02 认识",
+      "slug": "06-02-认识",
+      "html": "06-02-认识.html",
+      "css": "06-02-认识.css"
+    },
+    {
+      "index": 7,
+      "title": "三大痛点",
+      "slug": "07-三大痛点",
+      "html": "07-三大痛点.html",
+      "css": "07-三大痛点.css"
+    },
+    {
+      "index": 8,
+      "title": "更隐蔽的坑",
+      "slug": "08-更隐蔽的坑",
+      "html": "08-更隐蔽的坑.html",
+      "css": "08-更隐蔽的坑.css"
+    },
+    {
+      "index": 9,
+      "title": "Harness 是什么",
+      "slug": "09-Harness-是什么",
+      "html": "09-Harness-是什么.html",
+      "css": "09-Harness-是什么.css"
+    },
+    {
+      "index": 10,
+      "title": "为什么火了",
+      "slug": "10-为什么火了",
+      "html": "10-为什么火了.html",
+      "css": "10-为什么火了.css"
+    },
+    {
+      "index": 11,
+      "title": "提示词工程",
+      "slug": "11-提示词工程",
+      "html": "11-提示词工程.html",
+      "css": "11-提示词工程.css"
+    },
+    {
+      "index": 12,
+      "title": "上下文工程",
+      "slug": "12-上下文工程",
+      "html": "12-上下文工程.html",
+      "css": "12-上下文工程.css"
+    },
+    {
+      "index": 13,
+      "title": "Harness 工程",
+      "slug": "13-Harness-工程",
+      "html": "13-Harness-工程.html",
+      "css": "13-Harness-工程.css"
+    },
+    {
+      "index": 14,
+      "title": "层层包含",
+      "slug": "14-层层包含",
+      "html": "14-层层包含.html",
+      "css": "14-层层包含.css"
+    },
+    {
+      "index": 15,
+      "title": "公式",
+      "slug": "15-公式",
+      "html": "15-公式.html",
+      "css": "15-公式.css"
+    },
+    {
+      "index": 16,
+      "title": "公式总览",
+      "slug": "16-公式总览",
+      "html": "16-公式总览.html",
+      "css": "16-公式总览.css"
+    },
+    {
+      "index": 17,
+      "title": "03 架构",
+      "slug": "17-03-架构",
+      "html": "17-03-架构.html",
+      "css": "17-03-架构.css"
+    },
+    {
+      "index": 18,
+      "title": "模块一",
+      "slug": "18-模块一",
+      "html": "18-模块一.html",
+      "css": "18-模块一.css"
+    },
+    {
+      "index": 19,
+      "title": "模块二",
+      "slug": "19-模块二",
+      "html": "19-模块二.html",
+      "css": "19-模块二.css"
+    },
+    {
+      "index": 20,
+      "title": "模块三",
+      "slug": "20-模块三",
+      "html": "20-模块三.html",
+      "css": "20-模块三.css"
+    },
+    {
+      "index": 21,
+      "title": "模块四",
+      "slug": "21-模块四",
+      "html": "21-模块四.html",
+      "css": "21-模块四.css"
+    },
+    {
+      "index": 22,
+      "title": "模块五",
+      "slug": "22-模块五",
+      "html": "22-模块五.html",
+      "css": "22-模块五.css"
+    },
+    {
+      "index": 23,
+      "title": "本质收束",
+      "slug": "23-本质收束",
+      "html": "23-本质收束.html",
+      "css": "23-本质收束.css"
+    },
+    {
+      "index": 24,
+      "title": "04 实践",
+      "slug": "24-04-实践",
+      "html": "24-04-实践.html",
+      "css": "24-04-实践.css"
+    },
+    {
+      "index": 25,
+      "title": "实践框架",
+      "slug": "25-实践框架",
+      "html": "25-实践框架.html",
+      "css": "25-实践框架.css"
+    },
+    {
+      "index": 26,
+      "title": "Stage",
+      "slug": "26-Stage",
+      "html": "26-Stage.html",
+      "css": "26-Stage.css"
+    },
+    {
+      "index": 27,
+      "title": "Progress",
+      "slug": "27-Progress",
+      "html": "27-Progress.html",
+      "css": "27-Progress.css"
+    },
+    {
+      "index": 28,
+      "title": "Progress 实战",
+      "slug": "28-Progress-实战",
+      "html": "28-Progress-实战.html",
+      "css": "28-Progress-实战.css"
+    },
+    {
+      "index": 29,
+      "title": "Runner",
+      "slug": "29-Runner",
+      "html": "29-Runner.html",
+      "css": "29-Runner.css"
+    },
+    {
+      "index": 30,
+      "title": "Skill Rules Lint",
+      "slug": "30-Skill-Rules-Lint",
+      "html": "30-Skill-Rules-Lint.html",
+      "css": "30-Skill-Rules-Lint.css"
+    },
+    {
+      "index": 31,
+      "title": "闭环",
+      "slug": "31-闭环",
+      "html": "31-闭环.html",
+      "css": "31-闭环.css"
+    },
+    {
+      "index": 32,
+      "title": "思考与行动",
+      "slug": "32-思考与行动",
+      "html": "32-思考与行动.html",
+      "css": "32-思考与行动.css"
+    }
+  ]
+}

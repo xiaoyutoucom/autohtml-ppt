@@ -1,0 +1,29 @@
+<section class="slide" data-title="Progress 实战">
+      <div class="kicker">五件套 · Progress</div>
+      <h2>看卡点 · 写 Notes · 再推进</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3>S3 trace（按 ordinal）</h3>
+          <p>Progress 里 <code>s3_actions.executed_trace</code> 记录每步 AUTO / TODO-ACTION 是否 passed；未清完不能 mark done。</p>
+          <span class="cite-path">字段约定见 docs/HARNESS_GUIDE.md · L21（S3 --advance 一次一格）</span>
+          <pre style="margin-top:.55rem;box-shadow:none;font-size:.74rem">python -m harness.runner --next \
+  --case case_customer_product_config_dialogs \
+  --product SPECCONFIG
+# CLI 入口 harness/runner.py · L1812–1815</pre>
+        </div>
+        <div class="card featured">
+          <h3>Notes 三种类型</h3>
+          <p><span class="tag ok">fix</span> 结案已修复</p>
+          <p><span class="tag warn">feedback</span> 反馈 → 改 Rules</p>
+          <p><span class="tag danger">blocker</span> 阻断同 action lint</p>
+          <pre style="margin-top:.55rem;box-shadow:none;font-size:.74rem">python -m harness.runner --note \
+  --case … --stage s3_actions \
+  --type fix --msg "已验证…"
+# --note · L1817；cmd_note · L1643</pre>
+        </div>
+      </div>
+      <ul style="margin-top:.85rem">
+        <li>gate 过期 → 先 <code>--lint</code> 前置阶段，再 <code>--advance</code></li>
+        <li>设计原则：每产品线一份 progress · <span class="cite-path">docs/HARNESS_GUIDE.md · L5</span></li>
+      </ul>
+    </section>

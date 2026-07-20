@@ -1,0 +1,709 @@
+/* 20 套培训页主题：html[data-theme="N"] */
+:root {
+  --theme-name: "深空青光";
+  --bg-top: #080d14;
+  --glow-a: rgba(34,211,238,0.16);
+  --glow-b: rgba(251,146,60,0.12);
+  --glow-c: rgba(45,212,191,0.06);
+  --grid-alpha: 0.06;
+  --scan-opacity: 0.045;
+  --hud-opacity: 1;
+}
+
+html[data-theme="1"] {
+  --theme-name: "深空青光";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #060a10;
+  --paper-2: #0a1018;
+  --panel: rgba(10,18,30,0.82);
+  --line: rgba(34,211,238,0.2);
+  --teal: #2dd4bf;
+  --teal-deep: #14b8a6;
+  --neon: #22d3ee;
+  --signal: #fb923c;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --bg-top: #080d14;
+  --glow-a: rgba(34,211,238,0.16);
+  --glow-b: rgba(251,146,60,0.12);
+  --glow-c: rgba(45,212,191,0.06);
+  --radius: 18px;
+  --scan-opacity: 0.045;
+  --hud-opacity: 1;
+  --grid-alpha: 0.06;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #22d3ee 28%, transparent);
+  --neon-soft: color-mix(in srgb, #22d3ee 35%, transparent);
+}
+
+html[data-theme="2"] {
+  --theme-name: "墨玉翠绿";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #06140f;
+  --paper-2: #0a1c14;
+  --panel: rgba(8,28,20,0.86);
+  --line: rgba(52,211,153,0.22);
+  --teal: #34d399;
+  --teal-deep: #059669;
+  --neon: #6ee7b7;
+  --signal: #f59e0b;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --bg-top: #071a12;
+  --glow-a: rgba(52,211,153,0.18);
+  --glow-b: rgba(245,158,11,0.10);
+  --glow-c: rgba(16,185,129,0.08);
+  --radius: 16px;
+  --scan-opacity: 0.03;
+  --hud-opacity: 1;
+  --grid-alpha: 0.05;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #6ee7b7 28%, transparent);
+  --neon-soft: color-mix(in srgb, #6ee7b7 35%, transparent);
+}
+
+html[data-theme="3"] {
+  --theme-name: "曜石琥珀";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #120c08;
+  --paper-2: #1a120c;
+  --panel: rgba(28,18,10,0.88);
+  --line: rgba(251,191,36,0.22);
+  --teal: #fbbf24;
+  --teal-deep: #d97706;
+  --neon: #fcd34d;
+  --signal: #fb7185;
+  --ok: #86efac;
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --bg-top: #1a1008;
+  --glow-a: rgba(251,191,36,0.16);
+  --glow-b: rgba(251,113,133,0.10);
+  --glow-c: rgba(217,119,6,0.08);
+  --radius: 14px;
+  --scan-opacity: 0.035;
+  --hud-opacity: 1;
+  --grid-alpha: 0.05;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #fcd34d 28%, transparent);
+  --neon-soft: color-mix(in srgb, #fcd34d 35%, transparent);
+}
+
+html[data-theme="4"] {
+  --theme-name: "工业板岩";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #0f141a;
+  --paper-2: #151c24;
+  --panel: rgba(20,28,36,0.9);
+  --line: rgba(148,163,184,0.28);
+  --teal: #94a3b8;
+  --teal-deep: #64748b;
+  --neon: #cbd5e1;
+  --signal: #38bdf8;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --bg-top: #121820;
+  --glow-a: rgba(148,163,184,0.12);
+  --glow-b: rgba(56,189,248,0.10);
+  --glow-c: rgba(100,116,139,0.08);
+  --radius: 10px;
+  --scan-opacity: 0.02;
+  --hud-opacity: 0.7;
+  --grid-alpha: 0.04;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #cbd5e1 28%, transparent);
+  --neon-soft: color-mix(in srgb, #cbd5e1 35%, transparent);
+}
+
+html[data-theme="5"] {
+  --theme-name: "极地冰原";
+  --theme-mode: light;
+  --ink: #0f2744;
+  --ink-soft: #0f2744;
+  --muted: #5c738a;
+  --paper: #eef6fb;
+  --paper-2: #e2eef7;
+  --panel: rgba(255,255,255,0.82);
+  --line: rgba(14,116,144,0.18);
+  --teal: #0e7490;
+  --teal-deep: #155e75;
+  --neon: #0284c7;
+  --signal: #c2410c;
+  --ok: #15803d;
+  --warn: #b45309;
+  --danger: #b91c1c;
+  --bg-top: #f5fafc;
+  --glow-a: rgba(2,132,199,0.12);
+  --glow-b: rgba(194,65,12,0.08);
+  --glow-c: rgba(14,116,144,0.06);
+  --radius: 20px;
+  --scan-opacity: 0;
+  --hud-opacity: 0.35;
+  --grid-alpha: 0.04;
+  --shadow: 0 14px 36px rgba(15, 23, 42, 0.1);
+  --glow: none;
+  --neon-soft: color-mix(in srgb, #0284c7 28%, transparent);
+}
+
+html[data-theme="6"] {
+  --theme-name: "雨林夜色";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #0a1610;
+  --paper-2: #102018;
+  --panel: rgba(12,32,22,0.88);
+  --line: rgba(74,222,128,0.2);
+  --teal: #4ade80;
+  --teal-deep: #16a34a;
+  --neon: #86efac;
+  --signal: #f97316;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --bg-top: #0c1a12;
+  --glow-a: rgba(74,222,128,0.14);
+  --glow-b: rgba(249,115,22,0.10);
+  --glow-c: rgba(22,163,74,0.07);
+  --radius: 22px;
+  --scan-opacity: 0.04;
+  --hud-opacity: 1;
+  --grid-alpha: 0.045;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #86efac 28%, transparent);
+  --neon-soft: color-mix(in srgb, #86efac 35%, transparent);
+}
+
+html[data-theme="7"] {
+  --theme-name: "珊瑚暗礁";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #140a0e;
+  --paper-2: #1c1014;
+  --panel: rgba(32,14,20,0.88);
+  --line: rgba(244,114,182,0.22);
+  --teal: #fb7185;
+  --teal-deep: #e11d48;
+  --neon: #fda4af;
+  --signal: #22d3ee;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #fb7185;
+  --bg-top: #1a0c12;
+  --glow-a: rgba(251,113,133,0.16);
+  --glow-b: rgba(34,211,238,0.10);
+  --glow-c: rgba(244,114,182,0.08);
+  --radius: 18px;
+  --scan-opacity: 0.04;
+  --hud-opacity: 1;
+  --grid-alpha: 0.05;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #fda4af 28%, transparent);
+  --neon-soft: color-mix(in srgb, #fda4af 35%, transparent);
+}
+
+html[data-theme="8"] {
+  --theme-name: "蓝图草稿";
+  --theme-mode: light;
+  --ink: #0b1f3a;
+  --ink-soft: #0b1f3a;
+  --muted: #5a7190;
+  --paper: #e8f0fa;
+  --paper-2: #dce7f5;
+  --panel: rgba(255,255,255,0.78);
+  --line: rgba(37,99,235,0.2);
+  --teal: #2563eb;
+  --teal-deep: #1d4ed8;
+  --neon: #3b82f6;
+  --signal: #ea580c;
+  --ok: #16a34a;
+  --warn: #ca8a04;
+  --danger: #dc2626;
+  --bg-top: #f0f5fc;
+  --glow-a: rgba(37,99,235,0.10);
+  --glow-b: rgba(234,88,12,0.07);
+  --glow-c: rgba(59,130,246,0.06);
+  --radius: 8px;
+  --scan-opacity: 0;
+  --hud-opacity: 0.4;
+  --grid-alpha: 0.07;
+  --shadow: 0 14px 36px rgba(15, 23, 42, 0.1);
+  --glow: none;
+  --neon-soft: color-mix(in srgb, #3b82f6 28%, transparent);
+}
+
+html[data-theme="9"] {
+  --theme-name: "碳纤维红";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #0a0a0a;
+  --paper-2: #121212;
+  --panel: rgba(18,18,18,0.92);
+  --line: rgba(239,68,68,0.28);
+  --teal: #ef4444;
+  --teal-deep: #b91c1c;
+  --neon: #f87171;
+  --signal: #fbbf24;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #ef4444;
+  --bg-top: #0e0e0e;
+  --glow-a: rgba(239,68,68,0.14);
+  --glow-b: rgba(251,191,36,0.08);
+  --glow-c: rgba(120,120,120,0.06);
+  --radius: 6px;
+  --scan-opacity: 0.05;
+  --hud-opacity: 1;
+  --grid-alpha: 0.035;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #f87171 28%, transparent);
+  --neon-soft: color-mix(in srgb, #f87171 35%, transparent);
+}
+
+html[data-theme="10"] {
+  --theme-name: "暖砂工坊";
+  --theme-mode: light;
+  --ink: #2a2118;
+  --ink-soft: #2a2118;
+  --muted: #7a6a56;
+  --paper: #f3ebe1;
+  --paper-2: #ebe0d2;
+  --panel: rgba(255,252,247,0.86);
+  --line: rgba(180,83,9,0.18);
+  --teal: #b45309;
+  --teal-deep: #92400e;
+  --neon: #c2410c;
+  --signal: #0f766e;
+  --ok: #166534;
+  --warn: #b45309;
+  --danger: #b91c1c;
+  --bg-top: #f7f1e8;
+  --glow-a: rgba(194,65,12,0.10);
+  --glow-b: rgba(15,118,110,0.08);
+  --glow-c: rgba(180,83,9,0.06);
+  --radius: 16px;
+  --scan-opacity: 0;
+  --hud-opacity: 0.3;
+  --grid-alpha: 0.035;
+  --shadow: 0 14px 36px rgba(15, 23, 42, 0.1);
+  --glow: none;
+  --neon-soft: color-mix(in srgb, #c2410c 28%, transparent);
+}
+
+html[data-theme="11"] {
+  --theme-name: "终端酸绿";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #020805;
+  --paper-2: #06140c;
+  --panel: rgba(0,20,10,0.9);
+  --line: rgba(74,222,128,0.35);
+  --teal: #4ade80;
+  --teal-deep: #22c55e;
+  --neon: #4ade80;
+  --signal: #a3e635;
+  --ok: #4ade80;
+  --warn: #eab308;
+  --danger: #f87171;
+  --bg-top: #03100a;
+  --glow-a: rgba(74,222,128,0.14);
+  --glow-b: rgba(163,230,53,0.08);
+  --glow-c: rgba(34,197,94,0.06);
+  --radius: 4px;
+  --scan-opacity: 0.08;
+  --hud-opacity: 1;
+  --grid-alpha: 0.08;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #4ade80 28%, transparent);
+  --neon-soft: color-mix(in srgb, #4ade80 35%, transparent);
+}
+
+html[data-theme="12"] {
+  --theme-name: "深海蓝渊";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #020617;
+  --paper-2: #0a1628;
+  --panel: rgba(8,20,40,0.9);
+  --line: rgba(56,189,248,0.22);
+  --teal: #38bdf8;
+  --teal-deep: #0284c7;
+  --neon: #7dd3fc;
+  --signal: #f472b6;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --bg-top: #04101f;
+  --glow-a: rgba(56,189,248,0.16);
+  --glow-b: rgba(244,114,182,0.08);
+  --glow-c: rgba(2,132,199,0.08);
+  --radius: 18px;
+  --scan-opacity: 0.04;
+  --hud-opacity: 1;
+  --grid-alpha: 0.05;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #7dd3fc 28%, transparent);
+  --neon-soft: color-mix(in srgb, #7dd3fc 35%, transparent);
+}
+
+html[data-theme="13"] {
+  --theme-name: "铜作车间";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #1a120c;
+  --paper-2: #241810;
+  --panel: rgba(36,24,14,0.9);
+  --line: rgba(217,119,6,0.28);
+  --teal: #d97706;
+  --teal-deep: #b45309;
+  --neon: #f59e0b;
+  --signal: #14b8a6;
+  --ok: #86efac;
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --bg-top: #20160e;
+  --glow-a: rgba(217,119,6,0.16);
+  --glow-b: rgba(20,184,166,0.08);
+  --glow-c: rgba(180,83,9,0.08);
+  --radius: 12px;
+  --scan-opacity: 0.03;
+  --hud-opacity: 0.8;
+  --grid-alpha: 0.04;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #f59e0b 28%, transparent);
+  --neon-soft: color-mix(in srgb, #f59e0b 35%, transparent);
+}
+
+html[data-theme="14"] {
+  --theme-name: "瓷白墨线";
+  --theme-mode: light;
+  --ink: #111827;
+  --ink-soft: #111827;
+  --muted: #6b7280;
+  --paper: #f8fafc;
+  --paper-2: #f1f5f9;
+  --panel: rgba(255,255,255,0.92);
+  --line: rgba(15,23,42,0.12);
+  --teal: #0f172a;
+  --teal-deep: #1e293b;
+  --neon: #334155;
+  --signal: #dc2626;
+  --ok: #15803d;
+  --warn: #b45309;
+  --danger: #b91c1c;
+  --bg-top: #ffffff;
+  --glow-a: rgba(15,23,42,0.04);
+  --glow-b: rgba(220,38,38,0.05);
+  --glow-c: rgba(51,65,85,0.04);
+  --radius: 12px;
+  --scan-opacity: 0;
+  --hud-opacity: 0.25;
+  --grid-alpha: 0.03;
+  --shadow: 0 14px 36px rgba(15, 23, 42, 0.1);
+  --glow: none;
+  --neon-soft: color-mix(in srgb, #334155 28%, transparent);
+}
+
+html[data-theme="15"] {
+  --theme-name: "岩浆余烬";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #140808;
+  --paper-2: #1c0c0c;
+  --panel: rgba(36,12,12,0.9);
+  --line: rgba(249,115,22,0.28);
+  --teal: #f97316;
+  --teal-deep: #c2410c;
+  --neon: #fb923c;
+  --signal: #facc15;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #ef4444;
+  --bg-top: #1a0a08;
+  --glow-a: rgba(249,115,22,0.18);
+  --glow-b: rgba(250,204,21,0.08);
+  --glow-c: rgba(194,65,12,0.10);
+  --radius: 16px;
+  --scan-opacity: 0.04;
+  --hud-opacity: 1;
+  --grid-alpha: 0.045;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #fb923c 28%, transparent);
+  --neon-soft: color-mix(in srgb, #fb923c 35%, transparent);
+}
+
+html[data-theme="16"] {
+  --theme-name: "冰川雾霭";
+  --theme-mode: light;
+  --ink: #1e3a4c;
+  --ink-soft: #1e3a4c;
+  --muted: #6b8696;
+  --paper: #edf4f7;
+  --paper-2: #e2ecf1;
+  --panel: rgba(255,255,255,0.8);
+  --line: rgba(100,116,139,0.2);
+  --teal: #475569;
+  --teal-deep: #334155;
+  --neon: #0ea5e9;
+  --signal: #db2777;
+  --ok: #059669;
+  --warn: #d97706;
+  --danger: #e11d48;
+  --bg-top: #f4f8fa;
+  --glow-a: rgba(14,165,233,0.10);
+  --glow-b: rgba(219,39,119,0.06);
+  --glow-c: rgba(71,85,105,0.05);
+  --radius: 24px;
+  --scan-opacity: 0;
+  --hud-opacity: 0.3;
+  --grid-alpha: 0.03;
+  --shadow: 0 14px 36px rgba(15, 23, 42, 0.1);
+  --glow: none;
+  --neon-soft: color-mix(in srgb, #0ea5e9 28%, transparent);
+}
+
+html[data-theme="17"] {
+  --theme-name: "石墨信号";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #18181b;
+  --paper-2: #27272a;
+  --panel: rgba(39,39,42,0.92);
+  --line: rgba(250,204,21,0.25);
+  --teal: #facc15;
+  --teal-deep: #ca8a04;
+  --neon: #fde047;
+  --signal: #f97316;
+  --ok: #4ade80;
+  --warn: #facc15;
+  --danger: #f87171;
+  --bg-top: #1c1c1f;
+  --glow-a: rgba(250,204,21,0.12);
+  --glow-b: rgba(249,115,22,0.08);
+  --glow-c: rgba(161,161,170,0.06);
+  --radius: 8px;
+  --scan-opacity: 0.025;
+  --hud-opacity: 0.6;
+  --grid-alpha: 0.04;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #fde047 28%, transparent);
+  --neon-soft: color-mix(in srgb, #fde047 35%, transparent);
+}
+
+html[data-theme="18"] {
+  --theme-name: "青玉金阙";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #052e26;
+  --paper-2: #064e3b;
+  --panel: rgba(6,50,40,0.9);
+  --line: rgba(212,175,55,0.28);
+  --teal: #d4af37;
+  --teal-deep: #b8860b;
+  --neon: #f0d78c;
+  --signal: #34d399;
+  --ok: #6ee7b7;
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --bg-top: #06352c;
+  --glow-a: rgba(212,175,55,0.14);
+  --glow-b: rgba(52,211,153,0.10);
+  --glow-c: rgba(184,134,11,0.08);
+  --radius: 14px;
+  --scan-opacity: 0.03;
+  --hud-opacity: 1;
+  --grid-alpha: 0.04;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #f0d78c 28%, transparent);
+  --neon-soft: color-mix(in srgb, #f0d78c 35%, transparent);
+}
+
+html[data-theme="19"] {
+  --theme-name: "落日线路";
+  --theme-mode: dark;
+  --ink: #fde047;
+  --ink-soft: #ffffff;
+  --muted: #ffffff;
+  --paper: #1c0a14;
+  --paper-2: #2a1020;
+  --panel: rgba(40,16,28,0.9);
+  --line: rgba(251,146,60,0.28);
+  --teal: #fb923c;
+  --teal-deep: #ea580c;
+  --neon: #fdba74;
+  --signal: #f43f5e;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #f43f5e;
+  --bg-top: #220c18;
+  --glow-a: rgba(251,146,60,0.16);
+  --glow-b: rgba(244,63,94,0.10);
+  --glow-c: rgba(234,88,12,0.08);
+  --radius: 18px;
+  --scan-opacity: 0.04;
+  --hud-opacity: 1;
+  --grid-alpha: 0.05;
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+  --glow: 0 0 24px color-mix(in srgb, #fdba74 28%, transparent);
+  --neon-soft: color-mix(in srgb, #fdba74 35%, transparent);
+}
+
+html[data-theme="20"] {
+  --theme-name: "摄影棚黑白";
+  --theme-mode: light;
+  --ink: #0a0a0a;
+  --ink-soft: #0a0a0a;
+  --muted: #666666;
+  --paper: #f0f0f0;
+  --paper-2: #e6e6e6;
+  --panel: rgba(255,255,255,0.95);
+  --line: rgba(0,0,0,0.14);
+  --teal: #111111;
+  --teal-deep: #000000;
+  --neon: #222222;
+  --signal: #000000;
+  --ok: #166534;
+  --warn: #854d0e;
+  --danger: #991b1b;
+  --bg-top: #fafafa;
+  --glow-a: rgba(0,0,0,0.04);
+  --glow-b: rgba(0,0,0,0.03);
+  --glow-c: rgba(0,0,0,0.02);
+  --radius: 2px;
+  --scan-opacity: 0;
+  --hud-opacity: 0.2;
+  --grid-alpha: 0.05;
+  --shadow: 0 14px 36px rgba(15, 23, 42, 0.1);
+  --glow: none;
+  --neon-soft: color-mix(in srgb, #222222 28%, transparent);
+}
+
+
+body::before {
+  background:
+    radial-gradient(900px 520px at 0% 0%, var(--glow-a), transparent 55%),
+    radial-gradient(800px 480px at 100% 100%, var(--glow-b), transparent 50%),
+    radial-gradient(600px 400px at 50% 50%, var(--glow-c), transparent 60%),
+    linear-gradient(180deg, var(--bg-top) 0%, var(--paper) 45%, var(--paper-2) 100%) !important;
+}
+body::after {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--neon) calc(var(--grid-alpha) * 100%), transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--neon) calc(var(--grid-alpha) * 100%), transparent) 1px, transparent 1px) !important;
+}
+.scanlines {
+  opacity: var(--scan-opacity) !important;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    color-mix(in srgb, var(--neon) 50%, transparent) 2px,
+    color-mix(in srgb, var(--neon) 50%, transparent) 3px
+  ) !important;
+}
+.hud-frame {
+  opacity: var(--hud-opacity);
+  border-color: color-mix(in srgb, var(--neon) 18%, transparent) !important;
+  box-shadow: inset 0 0 40px color-mix(in srgb, var(--neon) 8%, transparent) !important;
+}
+.hud-frame::before,
+.hud-frame::after,
+.hud-corner {
+  border-color: color-mix(in srgb, var(--neon) 55%, transparent) !important;
+}
+
+.theme-wrap { position: relative; }
+.theme-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+}
+.theme-panel {
+  display: none;
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + .45rem);
+  width: min(92vw, 28rem);
+  max-height: min(70vh, 26rem);
+  overflow: auto;
+  padding: .75rem;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--shadow);
+  z-index: 40;
+}
+.theme-wrap.open .theme-panel { display: block; }
+.theme-panel h4 {
+  font-family: var(--mono);
+  font-size: .75rem;
+  color: var(--muted);
+  margin-bottom: .55rem;
+  font-weight: 500;
+}
+.theme-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .45rem;
+}
+.theme-swatch {
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  padding: .45rem .4rem;
+  cursor: pointer;
+  text-align: left;
+  min-height: 3.4rem;
+  transition: transform .15s ease, outline-color .15s ease;
+}
+.theme-swatch:hover { transform: translateY(-1px); }
+.theme-swatch.active {
+  outline: 2px solid var(--neon);
+  outline-offset: 1px;
+}
+.theme-swatch .n {
+  display: block;
+  font-family: var(--mono);
+  font-size: .68rem;
+  opacity: .75;
+  margin-bottom: .15rem;
+}
+.theme-swatch .label {
+  display: block;
+  font-size: .72rem;
+  font-weight: 600;
+  line-height: 1.25;
+}

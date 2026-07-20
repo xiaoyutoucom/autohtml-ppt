@@ -1,0 +1,4 @@
+/* 单页样式：仅作用于 data-title="Progress" */
+.slide[data-title="Progress"] {
+  /* 例：--ink: #fde047; */
+}

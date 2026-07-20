@@ -1,0 +1,17 @@
+<section class="slide slide-cmd" data-title="现场跑全量">
+      <div class="kicker">Live · pytest_cli</div>
+      <h2>一条命令：执行 SPECCONFIG 全部用例</h2>
+      <p class="lead">浏览器<strong>不能</strong>直接打开本机终端（安全限制）。请在仓库根目录粘贴执行；下方可一键复制。</p>
+      <div class="cmd-hero">
+        <div class="cmd-label"># README · 常用命令 · tools/pytest_cli.py</div>
+        <button type="button" class="cmd-copy" id="copyLiveCmd" data-cmd="python -m tools.pytest_cli -p SPECCONFIG --headed">
+          <i data-lucide="copy" class="icon"></i><span>复制</span>
+        </button>
+        <pre id="liveCmdText">python -m tools.pytest_cli -p SPECCONFIG --headed</pre>
+      </div>
+      <ul class="cmd-notes">
+        <li>有界面：加 <code>--headed</code>；无头跑批可去掉该参数</li>
+        <li>只跑一条：加 <code>-c case_smoke_login</code>（或任意 <code>cases/SPECCONFIG/runnable/*.yaml</code> 的 case_id）</li>
+        <li>报告：结束后默认打开 <code>test-output/&lt;时间戳&gt;/report/report.html</code></li>
+      </ul>
+    </section>

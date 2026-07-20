@@ -1,0 +1,14 @@
+docs/*.pptx
+docs/Harness_Engineering_培训.pptx
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.*
+*.local
+.DS_Store
+Thumbs.db
+
+# Local exports / caches (demo mp4 / BGM mp3 are intentionally committed — copyright-cleared)
+*.log
+.playwright/

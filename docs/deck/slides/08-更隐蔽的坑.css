@@ -1,0 +1,4 @@
+/* 单页样式：仅作用于 data-title="更隐蔽的坑" */
+.slide[data-title="更隐蔽的坑"] {
+  /* 例：.pain-card { border-color: … } */
+}

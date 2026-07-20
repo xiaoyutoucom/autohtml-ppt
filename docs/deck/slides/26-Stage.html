@@ -1,0 +1,73 @@
+<section class="slide" data-title="Stage" data-row-pulse="1">
+      <div class="kicker">Progress 内的 Stage</div>
+      <h2>S0–S9 工序 · 本仓产物</h2>
+      <p class="lead" style="margin-bottom:.4rem;font-size:.88rem">Stage = Progress 阶段键 · 序在 STAGE_ORDER · 会开浏览器的主要是 S8（S3 验收可选）</p>
+      <table class="fw-table">
+        <thead><tr><th>阶段</th><th>工序作用</th><th>本仓产物</th><th>引用</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>S0</td>
+            <td>标记原始用例已入库，流水线起点记账</td>
+            <td>禅道原文路径（无独立产物文件）</td>
+            <td><span class="cite-path">paths.py · L8；runner.py · L1269</span></td>
+          </tr>
+          <tr>
+            <td>S1</td>
+            <td>把原始步骤洗成可自动化结构（标签/口令/断言建议）</td>
+            <td><code>cases/&lt;P&gt;/cleaned/*_cleaned.md</code></td>
+            <td><span class="cite-path">paths.py · L32；s1_clean.md · L1</span></td>
+          </tr>
+          <tr>
+            <td>S2</td>
+            <td>沉淀可复用 Fragment；无引用则可自动跳过</td>
+            <td><code>cases/&lt;P&gt;/fragments/</code>（registry + yaml）</td>
+            <td><span class="cite-path">runner.py · L59–62；跳过 · L1275–L1286</span></td>
+          </tr>
+          <tr>
+            <td>S3</td>
+            <td>编写 Playwright 动作代码；可选实机验收（会开浏览器）</td>
+            <td><code>projects/specconfig/actions/*.py</code></td>
+            <td><span class="cite-path">customer_product_config.py · L1；s3_action.md · L81</span></td>
+          </tr>
+          <tr>
+            <td>S4</td>
+            <td>登记口令→函数映射；把 TODO-ACTION 升为 AUTO</td>
+            <td><code>projects/specconfig/action_maps/*.yaml</code></td>
+            <td><span class="cite-path">customer_product_config.yaml · L1；GUIDE · L41–L47</span></td>
+          </tr>
+          <tr>
+            <td>S5</td>
+            <td>把清洗步骤组装成可执行场景脚本</td>
+            <td><code>cases/SPECCONFIG/runnable/*.yaml</code></td>
+            <td><span class="cite-path">case_spc_all_smoke.yaml · L1 / L7</span></td>
+          </tr>
+          <tr>
+            <td>S6</td>
+            <td>resolve-only 静态校验（展开 fragment、解析口令）</td>
+            <td>Progress 中 s6_validate 盖章（不启浏览器）</td>
+            <td><span class="cite-path">runner.py · L79–82；s6_validate.md · L5</span></td>
+          </tr>
+          <tr>
+            <td>S7</td>
+            <td>生成实机执行计划（展开+resolve，不启浏览器）</td>
+            <td><code>reports/runs/.../playwright_plan.json</code></td>
+            <td><span class="cite-path">s7_playwright_plan.md · L5；GUIDE · L6</span></td>
+          </tr>
+          <tr>
+            <td>S8</td>
+            <td><strong class="strong">按 plan 真浏览器实机跑用例</strong></td>
+            <td><code>step_checkpoint.json</code> 等</td>
+            <td><span class="cite-path">s8_playwright_exec.md · L15；GUIDE · L7–8</span></td>
+          </tr>
+          <tr>
+            <td>S9</td>
+            <td>汇总结果、出报告（读 checkpoint，不开浏览器）</td>
+            <td><code>report.html</code> / summary 等</td>
+            <td><span class="cite-path">s9_report.md · L7；lint_stage_report</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="formula" style="margin-top:.45rem;font-size:.88rem">
+        开浏览器：流水线主路径只有 <strong>S8</strong>；另 <strong>S3</strong> 写动作时可选 Playwright 会话验收（s3_action.md · L81）。S6/S7 明确不启浏览器。
+      </div>
+    </section>

@@ -1,0 +1,27 @@
+<section class="slide" data-title="Skill Rules Lint">
+      <div class="kicker">五件套 · Skill / Rules / Lint</div>
+      <h2>以 S1 为例：怎么写对 → 什么算错 → 判 pass/fail</h2>
+      <div class="layout-steps" style="--n:3">
+        <div class="step">
+          <div class="n">01 · Skill</div>
+          <h3>教写对</h3>
+          <p>首步必须 <code>登录@admin</code>；标签 AUTO / TODO-ACTION…</p>
+          <span class="cite-path">harness/skills/s1_clean.md · L1 标题 · L30 登录基线 · L42 标注表</span>
+        </div>
+        <div class="step">
+          <div class="n">02 · Rules</div>
+          <h3>定义错</h3>
+          <p>必填章节、合法标签、强制登录基线…</p>
+          <span class="cite-path">harness/rules/cleaned_rules.yaml · L1 required_sections · L5 valid_tags · L17 require_login_baseline</span>
+        </div>
+        <div class="step">
+          <div class="n">03 · Lint</div>
+          <h3>执行检查</h3>
+          <p>读 Rules，扫 cleaned，返回 pass/fail</p>
+          <span class="cite-path">lint_cleaned.py · L18 RULES_PATH · L283 lint() · L421 status=</span>
+        </div>
+      </div>
+      <div class="formula" style="margin-top:.75rem">
+        Runner 映射：STAGE_META「s1_cleaned」→ lint_module + skill_file · harness/runner.py · L54–57
+      </div>
+    </section>

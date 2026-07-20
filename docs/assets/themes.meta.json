@@ -1,0 +1,162 @@
+[
+  {
+    "id": 1,
+    "name": "深空青光",
+    "mode": "dark",
+    "swatch": "#22d3ee",
+    "paper": "#060a10",
+    "ink": "#fde047"
+  },
+  {
+    "id": 2,
+    "name": "墨玉翠绿",
+    "mode": "dark",
+    "swatch": "#6ee7b7",
+    "paper": "#06140f",
+    "ink": "#fde047"
+  },
+  {
+    "id": 3,
+    "name": "曜石琥珀",
+    "mode": "dark",
+    "swatch": "#fcd34d",
+    "paper": "#120c08",
+    "ink": "#fde047"
+  },
+  {
+    "id": 4,
+    "name": "工业板岩",
+    "mode": "dark",
+    "swatch": "#cbd5e1",
+    "paper": "#0f141a",
+    "ink": "#fde047"
+  },
+  {
+    "id": 5,
+    "name": "极地冰原",
+    "mode": "light",
+    "swatch": "#0284c7",
+    "paper": "#eef6fb",
+    "ink": "#0f2744"
+  },
+  {
+    "id": 6,
+    "name": "雨林夜色",
+    "mode": "dark",
+    "swatch": "#86efac",
+    "paper": "#0a1610",
+    "ink": "#fde047"
+  },
+  {
+    "id": 7,
+    "name": "珊瑚暗礁",
+    "mode": "dark",
+    "swatch": "#fda4af",
+    "paper": "#140a0e",
+    "ink": "#fde047"
+  },
+  {
+    "id": 8,
+    "name": "蓝图草稿",
+    "mode": "light",
+    "swatch": "#3b82f6",
+    "paper": "#e8f0fa",
+    "ink": "#0b1f3a"
+  },
+  {
+    "id": 9,
+    "name": "碳纤维红",
+    "mode": "dark",
+    "swatch": "#f87171",
+    "paper": "#0a0a0a",
+    "ink": "#fde047"
+  },
+  {
+    "id": 10,
+    "name": "暖砂工坊",
+    "mode": "light",
+    "swatch": "#c2410c",
+    "paper": "#f3ebe1",
+    "ink": "#2a2118"
+  },
+  {
+    "id": 11,
+    "name": "终端酸绿",
+    "mode": "dark",
+    "swatch": "#4ade80",
+    "paper": "#020805",
+    "ink": "#fde047"
+  },
+  {
+    "id": 12,
+    "name": "深海蓝渊",
+    "mode": "dark",
+    "swatch": "#7dd3fc",
+    "paper": "#020617",
+    "ink": "#fde047"
+  },
+  {
+    "id": 13,
+    "name": "铜作车间",
+    "mode": "dark",
+    "swatch": "#f59e0b",
+    "paper": "#1a120c",
+    "ink": "#fde047"
+  },
+  {
+    "id": 14,
+    "name": "瓷白墨线",
+    "mode": "light",
+    "swatch": "#334155",
+    "paper": "#f8fafc",
+    "ink": "#111827"
+  },
+  {
+    "id": 15,
+    "name": "岩浆余烬",
+    "mode": "dark",
+    "swatch": "#fb923c",
+    "paper": "#140808",
+    "ink": "#fde047"
+  },
+  {
+    "id": 16,
+    "name": "冰川雾霭",
+    "mode": "light",
+    "swatch": "#0ea5e9",
+    "paper": "#edf4f7",
+    "ink": "#1e3a4c"
+  },
+  {
+    "id": 17,
+    "name": "石墨信号",
+    "mode": "dark",
+    "swatch": "#fde047",
+    "paper": "#18181b",
+    "ink": "#fde047"
+  },
+  {
+    "id": 18,
+    "name": "青玉金阙",
+    "mode": "dark",
+    "swatch": "#f0d78c",
+    "paper": "#052e26",
+    "ink": "#fde047"
+  },
+  {
+    "id": 19,
+    "name": "落日线路",
+    "mode": "dark",
+    "swatch": "#fdba74",
+    "paper": "#1c0a14",
+    "ink": "#fde047"
+  },
+  {
+    "id": 20,
+    "name": "摄影棚黑白",
+    "mode": "light",
+    "swatch": "#222222",
+    "paper": "#f0f0f0",
+    "ink": "#0a0a0a"
+  }
+]

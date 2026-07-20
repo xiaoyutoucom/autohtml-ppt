@@ -97,7 +97,7 @@ Also included in the engine (see skill `layouts.md`): **BigNumber · Split · Co
 | <img src="docs/assets/screenshots/22-chrome-annotate.png" width="440" alt="Annotate" /><br />Pen / highlighter / eraser (`A`) | <img src="docs/assets/screenshots/23-present-mode.png" width="440" alt="Present" /><br />Present mode (`F`) + footer hot-zone |
 | <img src="docs/assets/screenshots/24-theme-picker.png" width="440" alt="Picker" /><br />Theme picker (`T`) — 20 styles remembered | |
 
-**Also in the product (see GIFs / shortcuts):** particles toggle (`P`), BGM (`M`), Export PPT, fullscreen, glossary hover tips, AI page chips, hover-grow cards/figures, provenance fingerprint, offline vendors, modular `docs/deck/` authoring, portable multi-agent skill, dual license.
+**Also in the product (see GIFs / shortcuts):** particles toggle (`P`), BGM (`M`), Export PPT, fullscreen, glossary hover tips, AI page chips, hover-grow cards/figures, provenance fingerprint, offline vendors, modular `docs/deck/` authoring, portable multi-agent skill.
 
 ### 5) Multi-theme gallery (dark + light)
 

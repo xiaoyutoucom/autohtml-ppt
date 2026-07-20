@@ -98,7 +98,7 @@
 | <img src="docs/assets/screenshots/22-chrome-annotate.png" width="440" alt="画笔" /><br />画笔/荧光笔/橡皮（`A`） | <img src="docs/assets/screenshots/23-present-mode.png" width="440" alt="演示" /><br />演示模式（`F`）+ 底栏热区 |
 | <img src="docs/assets/screenshots/24-theme-picker.png" width="440" alt="样式" /><br />样式面板（`T`）— 20 套可记忆 | |
 
-**产品内还有（见图/快捷键）：** 粒子开关（`P`）、背景乐（`M`）、导出 PPT、全屏、术语悬停、按页 AI 飘荡标签、卡片/图片悬浮放大、溯源指纹、离线 vendor、模块化 `docs/deck/`、多工具 Skill、双许可。
+**产品内还有（见图/快捷键）：** 粒子开关（`P`）、背景乐（`M`）、导出 PPT、全屏、术语悬停、按页 AI 飘荡标签、卡片/图片悬浮放大、溯源指纹、离线 vendor、模块化 `docs/deck/`、多工具 Skill。
 
 ### 5）多主题画廊（深色 + 浅色）
 

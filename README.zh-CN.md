@@ -212,13 +212,20 @@ python -m tools.export_training_ppt
 
 ## 赞助
 
-自愿支持即可，**不是使用前提**。微信扫码即可赞助（微信号 `xiaoyutoucom`）。
+自愿支持即可，**不是使用前提**。支持 **微信** 与 **USDT-TRC20**。
 
 <p align="center">
-  <img src="docs/assets/sponsors/wechat-qr.png" alt="微信收款码赞助" width="240" />
+  <img src="docs/assets/sponsors/wechat-qr.png" alt="微信收款码赞助" width="220" />
+  &nbsp;&nbsp;
+  <img src="docs/assets/sponsors/usdt-trc20-qr.png" alt="USDT TRC20 收款码" width="220" />
   <br />
-  <em>微信扫一扫赞助 · 也可加微信号 xiaoyutoucom</em>
+  <em>左：微信 · 右：USDT 仅 Tron (TRC20) · 地址见 <a href="./SPONSORS.md">SPONSORS.md</a></em>
 </p>
+
+```text
+USDT · TRC20 only
+TF2a7bf6KZfkBi9vbkNAoc41rF63QSxbVx
+```
 
 更多档位 → **[SPONSORS.md](./SPONSORS.md)**  
 定制主题 / 代做课件 / 白标 → **[SERVICES.md](./SERVICES.md)**

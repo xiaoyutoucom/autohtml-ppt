@@ -128,9 +128,47 @@
   white-space: nowrap;
 }
 
+.slide[data-title="开源与赞助"] .sponsor-crypto-box {
+  margin-top: 0.85rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius);
+  border: 1px dashed color-mix(in srgb, #26a17b 55%, transparent);
+  background: color-mix(in srgb, #26a17b 12%, var(--panel));
+}
+
+.slide[data-title="开源与赞助"] .sponsor-crypto-title {
+  font-family: var(--display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #4ade80;
+  margin-bottom: 0.35rem;
+}
+
+.slide[data-title="开源与赞助"] .sponsor-crypto-addr {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  word-break: break-all;
+  line-height: 1.4;
+}
+
+.slide[data-title="开源与赞助"] .sponsor-crypto-warn {
+  margin: 0.35rem 0 0;
+  font-size: 0.7rem;
+  color: color-mix(in srgb, var(--signal) 85%, #fff);
+}
+
 .slide[data-title="开源与赞助"] .sponsor-meta {
-  margin-top: auto;
-  padding-top: 1rem;
+  margin-top: 0.75rem;
+  padding-top: 0.35rem;
+}
+
+.slide[data-title="开源与赞助"] .sponsor-qr-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.65rem;
+  align-content: start;
 }
 
 .slide[data-title="开源与赞助"] .sponsor-qr-card {
@@ -138,61 +176,56 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  padding: 1.1rem 1rem 1.15rem;
-  border-radius: calc(var(--radius) + 4px);
+  justify-content: flex-start;
+  gap: 0.4rem;
+  padding: 0.75rem 0.55rem 0.8rem;
+  border-radius: calc(var(--radius) + 2px);
   border: 1px solid color-mix(in srgb, var(--teal) 40%, transparent);
   background:
     radial-gradient(ellipse at 50% 0%, color-mix(in srgb, var(--teal) 22%, transparent), transparent 55%),
     var(--panel);
-  box-shadow:
-    0 0 40px color-mix(in srgb, var(--teal) 16%, transparent),
-    inset 0 0 0 1px color-mix(in srgb, #fff 4%, transparent);
-  overflow: hidden;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, #fff 4%, transparent);
   text-align: center;
+  overflow: hidden;
 }
 
-.slide[data-title="开源与赞助"] .sponsor-qr-glow {
-  position: absolute;
-  inset: auto -20% -30% -20%;
-  height: 55%;
-  background: radial-gradient(ellipse at center, color-mix(in srgb, var(--neon) 25%, transparent), transparent 70%);
-  pointer-events: none;
+.slide[data-title="开源与赞助"] .sponsor-qr-card.crypto {
+  border-color: color-mix(in srgb, #26a17b 50%, transparent);
+  background:
+    radial-gradient(ellipse at 50% 0%, color-mix(in srgb, #26a17b 24%, transparent), transparent 55%),
+    var(--panel);
 }
 
 .slide[data-title="开源与赞助"] .sponsor-qr-label {
   position: relative;
   font-family: var(--display);
-  font-size: 1.05rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: var(--ink);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 .slide[data-title="开源与赞助"] .sponsor-qr-fig {
   position: relative;
   margin: 0;
-  padding: 0.55rem;
-  border-radius: 1rem;
+  padding: 0.4rem;
+  border-radius: 0.75rem;
   background: #fff;
-  box-shadow:
-    0 12px 32px color-mix(in srgb, #000 35%, transparent),
-    0 0 0 1px color-mix(in srgb, var(--teal) 35%, transparent);
+  box-shadow: 0 8px 20px color-mix(in srgb, #000 30%, transparent);
 }
 
 .slide[data-title="开源与赞助"] .sponsor-qr-fig img {
   display: block;
-  width: min(15.5rem, 34vw);
+  width: min(9.5rem, 18vw);
   height: auto;
-  border-radius: 0.55rem;
+  border-radius: 0.4rem;
 }
 
 .slide[data-title="开源与赞助"] .sponsor-qr-hint {
   position: relative;
   margin: 0;
-  font-size: 0.78rem;
-  line-height: 1.45;
+  font-size: 0.68rem;
+  line-height: 1.35;
   color: var(--ink-soft);
 }
 
@@ -208,7 +241,10 @@
   .slide[data-title="开源与赞助"] .sponsor-links {
     grid-template-columns: 1fr;
   }
+  .slide[data-title="开源与赞助"] .sponsor-qr-stack {
+    grid-template-columns: 1fr 1fr;
+  }
   .slide[data-title="开源与赞助"] .sponsor-qr-fig img {
-    width: min(14rem, 70vw);
+    width: min(10rem, 38vw);
   }
 }

@@ -233,13 +233,20 @@ autohtml-ppt/
 
 ## Sponsors
 
-Voluntary — **not required** to use the software. Scan WeChat Pay (ID `xiaoyutoucom`):
+Voluntary — **not required**. WeChat tip or **USDT on Tron (TRC20) only**:
 
 <p align="center">
-  <img src="docs/assets/sponsors/wechat-qr.png" alt="WeChat Pay QR for sponsors" width="240" />
+  <img src="docs/assets/sponsors/wechat-qr.png" alt="WeChat Pay QR for sponsors" width="220" />
+  &nbsp;&nbsp;
+  <img src="docs/assets/sponsors/usdt-trc20-qr.png" alt="USDT TRC20 deposit QR" width="220" />
   <br />
-  <em>WeChat tip QR · WeChat ID xiaoyutoucom</em>
+  <em>Left: WeChat · Right: USDT TRC20 only · details in <a href="./SPONSORS.md">SPONSORS.md</a></em>
 </p>
+
+```text
+USDT · TRC20 only
+TF2a7bf6KZfkBi9vbkNAoc41rF63QSxbVx
+```
 
 Tiers → **[SPONSORS.md](./SPONSORS.md)**  
 Paid customization / white-label → **[SERVICES.md](./SERVICES.md)**

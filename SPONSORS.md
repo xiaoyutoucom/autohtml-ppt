@@ -7,15 +7,28 @@
 
 | 渠道 | 说明 |
 |------|------|
-| **微信** | 扫下方收款码，或加微信号 **`xiaoyutoucom`** 说明赞助 |
+| **微信** | 扫下方收款码，或加微信号 **`xiaoyutoucom`** |
+| **USDT（币安充值）** | 仅 **Tron · TRC20**，见下方地址与二维码 |
 | **爱发电** | 可选，有主页后再补链接 |
-| **邮箱** | [xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com)（对公 / 定制可先邮件） |
+| **邮箱** | [xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com) |
 
-### 微信收款码（扫码即可赞助）
+### 微信收款码
 
 ![微信收款码 · xiaoyutoucom](docs/assets/sponsors/wechat-qr.png)
 
 微信号：**xiaoyutoucom**
+
+### USDT · 仅 Tron (TRC20)
+
+> ⚠️ **只接受 USDT-TRC20**。请勿使用 ERC20 / BEP20 / 其它网络，转错网络可能导致资产丢失。
+
+| | |
+|--|--|
+| 资产 | **USDT** |
+| 网络 | **Tron (TRC20)** |
+| 地址 | `TF2a7bf6KZfkBi9vbkNAoc41rF63QSxbVx` |
+
+![USDT TRC20 收款码](docs/assets/sponsors/usdt-trc20-qr.png)
 
 ## 建议档位与回报
 

@@ -37,7 +37,7 @@
 ### 3. 在 GitHub / 码云建空仓库
 
 - GitHub：`https://github.com/xiaoyutoucom/autohtml-ppt`（不要勾选自动加 README，避免冲突）  
-- Gitee：`https://gitee.com/xiaoyutoucom/autohtml-ppt`  
+- Gitee：`https://gitee.com/xiaoyutou_647/autohtml-ppt`  
 - 两边都选 **开源 / AGPL-3.0**（或自定义「见 LICENSE」）  
 - 仓库简介可写：`Dual license: AGPL-3.0 OR Commercial — see COMMERCIAL.md`
 
@@ -56,7 +56,7 @@ git commit -m "chore: initial public release of Tech Training Deck"
 
 git branch -M main
 git remote add origin https://github.com/xiaoyutoucom/autohtml-ppt.git
-git remote add gitee https://gitee.com/xiaoyutoucom/autohtml-ppt.git
+git remote add gitee https://gitee.com/xiaoyutou_647/autohtml-ppt.git
 
 git push -u origin main
 git push -u gitee main

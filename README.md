@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-AGPL--3.0%20OR%20Commercial-blue.svg)](#license)
 [![GitHub](https://img.shields.io/badge/GitHub-xiaoyutoucom-181717?logo=github)](https://github.com/xiaoyutoucom/autohtml-ppt)
-[![Gitee](https://img.shields.io/badge/Gitee-xiaoyutoucom-C71D23?logo=gitee)](https://gitee.com/xiaoyutoucom/autohtml-ppt)
+[![Gitee](https://img.shields.io/badge/Gitee-xiaoyutou__647-C71D23?logo=gitee)](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 [![Offline](https://img.shields.io/badge/offline-file%3A%2F%2F%20ready-success)](#quick-start)
 
 **English** | [简体中文](./README.zh-CN.md)
@@ -230,52 +230,16 @@ autohtml-ppt/
 
 ## License
 
-**Dual licensing** (recommended for “companies pay for closed use”):
+This project is **dual-licensed**:
 
 | Path | Terms |
 |------|--------|
-| **Open source** | [AGPL-3.0-or-later](https://www.gnu.org/licenses/agpl-3.0.html) — free to use, modify, and distribute if you keep derivative works open under AGPL (including network use obligations). |
-| **Commercial** | Closed-source / SaaS / internal redistribution **without** AGPL obligations — purchase a commercial license. See [COMMERCIAL.md](./COMMERCIAL.md). |
+| **Open source** | [AGPL-3.0-or-later](https://www.gnu.org/licenses/agpl-3.0.html) — free to use, modify, and distribute if you comply with the AGPL (including copyleft / network obligations). |
+| **Commercial** | Closed-source products, SaaS, OEM/white-label, or use without AGPL obligations — purchase a commercial license. See [COMMERCIAL.md](./COMMERCIAL.md). |
 
-> OSI-style permissive licenses (MIT/Apache) alone **cannot** force companies to pay. Dual-license (AGPL + paid commercial) is the standard approach.
+Attribution / provenance fingerprint: `TTD-2026-XIAOYUTOUCOM` (see `docs/deck/provenance.json`). Please keep the required attribution unless your commercial agreement says otherwise.
 
-Attribution / provenance fingerprint: `TTD-2026-XIAOYUTOUCOM` (see `docs/deck/provenance.json`). Removing required attribution may violate the license terms you choose to publish under.
-
----
-
-## Publish to GitHub & Gitee
-
-Step-by-step (Chinese): **[PUBLISH.zh-CN.md](./PUBLISH.zh-CN.md)**
-
-### Before you push (checklist)
-
-1. **Split content if needed** — keep sensitive/employer-only narrative private if required; demo media is cleared for public release.  
-2. **Media rights** — demo videos, BGM, and diagrams are author-cleared for redistribution (see `docs/assets/ASSET_LICENSE.md`).  
-3. **Secrets** — no tokens, intranet URLs, or customer names.  
-4. **Add `LICENSE`** — full AGPL-3.0 text (or your final choice) at repo root.  
-5. **CLA (for dual license)** — if you accept PRs and sell commercial licenses, use a Contributor License Agreement so you can relicense contributions.  
-6. **Third-party notices** — document `docs/assets/vendor/` licenses (MIT/ISC/etc.).  
-7. **Sync both forges** — GitHub (international) + Gitee (China mainland mirror).
-
-### Create remotes
-
-```powershell
-cd E:\wence\autohtml-ppt
-git init   # if needed
-git add .
-git commit -m "docs: open-source README, screenshots, dual-license notes"
-
-# GitHub
-git remote add origin https://github.com/xiaoyutoucom/autohtml-ppt.git
-git branch -M main
-git push -u origin main
-
-# Gitee (second remote)
-git remote add gitee https://gitee.com/xiaoyutoucom/autohtml-ppt.git
-git push -u gitee main
-```
-
-Create empty repos named `autohtml-ppt` on both sites first (do not initialize with a conflicting README if you push an existing history).
+**Mirrors:** [GitHub](https://github.com/xiaoyutoucom/autohtml-ppt) · [Gitee](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 
 ---
 

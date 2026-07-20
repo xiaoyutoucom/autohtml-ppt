@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-AGPL--3.0%20OR%20Commercial-blue.svg)](#协议)
 [![GitHub](https://img.shields.io/badge/GitHub-xiaoyutoucom-181717?logo=github)](https://github.com/xiaoyutoucom/autohtml-ppt)
-[![Gitee](https://img.shields.io/badge/Gitee-码云-xiaoyutoucom-C71D23?logo=gitee)](https://gitee.com/xiaoyutoucom/autohtml-ppt)
+[![Gitee](https://img.shields.io/badge/Gitee-码云-xiaoyutou__647-C71D23?logo=gitee)](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 [![Offline](https://img.shields.io/badge/离线-file%3A%2F%2F%20可用-success)](#快速开始)
 
 [English](./README.md) | **简体中文**
@@ -207,48 +207,18 @@ python -m tools.export_training_ppt
 
 ---
 
-## 协议（开源 + 商业收费）
+## 协议
 
-若目标是 **「商业公司闭源使用要付费」**，不要只挂 MIT/Apache（默认允许免费商用）。
-
-推荐 **双许可**：
+本项目采用 **双许可**：
 
 | 路径 | 说明 |
 |------|------|
-| **开源** | [AGPL-3.0-or-later](https://www.gnu.org/licenses/agpl-3.0.html)：可免费使用/修改/分发，衍生作品需继续开源（含网络提供场景义务） |
-| **商业** | 闭源集成、SaaS、内部分发且不愿履行 AGPL → 购买商业许可，见 [COMMERCIAL.md](./COMMERCIAL.md) |
+| **开源** | [AGPL-3.0-or-later](https://www.gnu.org/licenses/agpl-3.0.html)：可免费使用/修改/分发，须遵守 AGPL（含 copyleft / 网络提供义务） |
+| **商业** | 闭源产品、SaaS、白标，或不想履行 AGPL 义务 → 购买商业许可，见 [COMMERCIAL.md](./COMMERCIAL.md) |
 
-溯源指纹：`TTD-2026-XIAOYUTOUCOM`（`docs/deck/provenance.json`）。协议可要求保留归属标识。
+溯源指纹：`TTD-2026-XIAOYUTOUCOM`（`docs/deck/provenance.json`）。除非商业合同另有约定，请保留归属标识。
 
----
-
-## 发布到 GitHub 与码云（Gitee）前准备
-
-**完整逐步清单 → [PUBLISH.zh-CN.md](./PUBLISH.zh-CN.md)**（含 git 命令与商业落地）。
-
-1. **内容分层**：引擎/Skill/模板公开；若仍有内部路径/客户隐私叙事可另放私有仓  
-2. **素材**：演示视频、BGM、配图已确认无版权争议，可随仓库公开（见 `docs/assets/ASSET_LICENSE.md`）  
-3. **清密钥**：无 Token、内网地址、客户名  
-4. **根目录放 `LICENSE`**：完整 AGPL-3.0 文本（或你最终选定的协议）  
-5. **双许可几乎需要 CLA**：接受外部 PR 且要卖商用授权时，贡献者需签署 CLA  
-6. **第三方声明**：整理 `docs/assets/vendor/` 各库许可证  
-7. **双平台同步**：GitHub（国际）+ Gitee（国内镜像）
-
-```powershell
-cd E:\wence\autohtml-ppt
-git init
-git add .
-git commit -m "docs: open-source README and screenshots"
-
-git remote add origin https://github.com/xiaoyutoucom/autohtml-ppt.git
-git branch -M main
-git push -u origin main
-
-git remote add gitee https://gitee.com/xiaoyutoucom/autohtml-ppt.git
-git push -u gitee main
-```
-
-请先在 GitHub / 码云各建空仓库 `autohtml-ppt`（若用网页初始化 README，注意与本地历史冲突）。
+**镜像：** [GitHub](https://github.com/xiaoyutoucom/autohtml-ppt) · [码云 Gitee](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 
 ---
 

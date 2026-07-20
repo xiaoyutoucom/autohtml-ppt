@@ -11,7 +11,7 @@
 - Email: [xiaoyutoucom@gmail.com](mailto:xiaoyutoucom@gmail.com)
 - GitHub: https://github.com/xiaoyutoucom
 - Project: https://github.com/xiaoyutoucom/autohtml-ppt  
-- Gitee: https://gitee.com/xiaoyutoucom/autohtml-ppt
+- Gitee: https://gitee.com/xiaoyutou_647/autohtml-ppt
 
 ## Typical commercial needs
 

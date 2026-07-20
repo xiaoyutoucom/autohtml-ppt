@@ -235,7 +235,7 @@ autohtml-ppt/
 
 Voluntary support keeps the project moving — **not required to use the software**.
 
-See **[SPONSORS.md](./SPONSORS.md)** for GitHub Sponsors, 爱发电 (Afdian), and WeChat tip options.
+See **[SPONSORS.md](./SPONSORS.md)** for WeChat Pay QR (ID `xiaoyutoucom`) and [GitHub Sponsors](https://github.com/sponsors/xiaoyutoucom).
 
 Need custom work? **[SERVICES.md](./SERVICES.md)** — paid themes, full training decks, white-label (remove attribution fingerprint).
 

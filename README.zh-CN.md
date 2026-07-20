@@ -212,7 +212,7 @@ python -m tools.export_training_ppt
 
 ## 赞助
 
-自愿支持即可，**不是使用前提**。渠道与档位见 **[SPONSORS.md](./SPONSORS.md)**（GitHub Sponsors / 爱发电 / 微信）。
+自愿支持即可，**不是使用前提**。渠道与档位见 **[SPONSORS.md](./SPONSORS.md)**（微信收款码 / 微信号 `xiaoyutoucom` / GitHub Sponsors）。
 
 需要定制主题、代做整套培训课件、白标去掉指纹 → **[SERVICES.md](./SERVICES.md)**，邮件询价。
 

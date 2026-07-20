@@ -1,11 +1,4 @@
 # Sponsor assets
 
-Put your WeChat pay / tip QR image here as:
-
-```text
-wechat-qr.png
-```
-
-Then link it from [`SPONSORS.md`](../../../SPONSORS.md).
-
-Do not commit unrelated personal screenshots.
+- `wechat-qr.png` — WeChat Pay QR for sponsor tips (微信号 xiaoyutoucom)  
+- Linked from [`SPONSORS.md`](../../../SPONSORS.md)

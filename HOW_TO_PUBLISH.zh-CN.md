@@ -18,17 +18,14 @@ Offline HTML training slides · MIT · AI-agent friendly · Sponsors welcome
 
 ## 第 0 步：你要自己准备的材料（赞助相关）
 
-| # | 内容 | 怎么弄 | 填到哪里 |
-|---|------|--------|----------|
-| 1 | **GitHub Sponsors** | GitHub → Settings → Sponsors → 开通（可能要等审核） | `SPONSORS.md` 里的 sponsors 链接（默认已是 `xiaoyutoucom`） |
-| 2 | **爱发电主页链接** | 在 afdian.com 注册并创建创作者主页，复制网址 | `SPONSORS.md` 表格「爱发电」一行 |
-| 3 | **微信收款码 PNG** | 微信 → 收付款 → 二维码收款 → 保存图片 | 存为 `docs/assets/sponsors/wechat-qr.png` |
-| 4 | （可选）档位金额 | 按你心理价改 Coffee / Backpack 等 | `SPONSORS.md` 档位表 |
-| 5 | （可选）对公 / 发票说明 | 若公司要走对公，写一句「邮件沟通」即可 | 已写在 `SPONSORS.md` / `SERVICES.md` |
+| # | 内容 | 状态 |
+|---|------|------|
+| 1 | **微信收款码** + 微信号 `xiaoyutoucom` | ✅ 已写入 `docs/assets/sponsors/wechat-qr.png` / `SPONSORS.md` |
+| 2 | **GitHub Sponsors** | ⏳ 需你在网页开通（步骤见 `SPONSORS.md`） |
+| 3 | **爱发电**（可选） | 有主页再补链接 |
+| 4 | 邮箱 `xiaoyutoucom@gmail.com` | ✅ 已写好 |
 
-邮箱 `xiaoyutoucom@gmail.com` 已写进文档，一般不用再改。
-
-**没有 1～3 也能先 push 开源**；赞助区会显示「待填写」，你补上后再改一版 README 即可。
+微信已就绪；**GitHub Sponsors 必须你自己登录账号开通**，仓库链接已预填。
 
 ---
 

@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![GitHub](https://img.shields.io/badge/GitHub-xiaoyutoucom-181717?logo=github)](https://github.com/xiaoyutoucom/autohtml-ppt)
-[![Gitee](https://img.shields.io/badge/Gitee-码云-xiaoyutou__647-C71D23?logo=gitee)](https://gitee.com/xiaoyutou_647/autohtml-ppt)
+[![Gitee](https://img.shields.io/badge/Gitee-xiaoyutou__647-C71D23?logo=gitee)](https://gitee.com/xiaoyutou_647/autohtml-ppt)
 [![Offline](https://img.shields.io/badge/离线-file%3A%2F%2F%20可用-success)](#快速开始)
 [![Sponsors](https://img.shields.io/badge/赞助-欢迎-ea4aaa)](./SPONSORS.md)
 

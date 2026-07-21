@@ -12,3 +12,8 @@ Thumbs.db
 # Local exports / caches (demo mp4 / BGM mp3 are intentionally committed — copyright-cleared)
 *.log
 .playwright/
+
+# Author-only notes — do not publish
+HOW_TO_PUBLISH*.md
+PUBLISH*.md
+docs/promo/

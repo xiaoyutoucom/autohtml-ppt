@@ -47,17 +47,25 @@
   var prov = null;
   var base =
     (d.currentScript && d.currentScript.src) || w.location.href;
+  var isFile = false;
   try {
-    var url = new URL("../provenance.json", base).href;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, false);
-    xhr.overrideMimeType("application/json");
-    xhr.send(null);
-    var ok = xhr.status === 0 || (xhr.status >= 200 && xhr.status < 300);
-    if (ok && xhr.responseText && /^\s*\{/.test(xhr.responseText)) {
-      prov = parseJsonc(xhr.responseText);
-    }
-  } catch (e) {}
+    isFile = String(w.location.protocol) === "file:";
+  } catch (e0) {}
+
+  // file:// 下勿 XHR，避免 CORS 红字；用 FALLBACK（build_deck.py 自 provenance.json 同步）
+  if (!isFile) {
+    try {
+      var url = new URL("../provenance.json", base).href;
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, false);
+      xhr.overrideMimeType("application/json");
+      xhr.send(null);
+      var ok = xhr.status === 0 || (xhr.status >= 200 && xhr.status < 300);
+      if (ok && xhr.responseText && /^\s*\{/.test(xhr.responseText)) {
+        prov = parseJsonc(xhr.responseText);
+      }
+    } catch (e) {}
+  }
   if (!prov) prov = FALLBACK;
 
   var mark = {

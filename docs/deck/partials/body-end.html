@@ -28,8 +28,12 @@
       <div class="theme-wrap particle-wrap" id="particleWrap">
         <button id="particlesBtn" type="button" class="theme-btn" title="选择粒子效果 (P)" aria-haspopup="dialog" aria-expanded="false"><i data-lucide="sparkles" class="icon"></i><span id="particlesBtnLabel">粒子</span></button>
         <div class="theme-panel particle-panel" id="particlePanel" role="dialog" aria-label="选择粒子效果">
-          <h4>本页粒子 · 默认跟课件配置 · 可改可关</h4>
+          <h4>本页粒子 · 配置见 config.json → slideParticles</h4>
           <div class="particle-grid" id="particleGrid"></div>
+          <div class="particle-panel-actions">
+            <button type="button" id="particleCopyCfgBtn" title="复制 slideParticles JSON，粘贴进 config.json 后执行 build">复制配置</button>
+            <button type="button" id="particleResetCfgBtn" title="丢弃本机覆盖，恢复为 config.json">恢复配置文件</button>
+          </div>
         </div>
       </div>
       <button id="bgmBtn" type="button" title="背景音乐 (M)" aria-pressed="false"><i data-lucide="music" class="icon"></i><span>音乐</span></button>

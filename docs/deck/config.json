@@ -1,7 +1,47 @@
 {
-  // 默认是否按页启用粒子（true=用课件内置映射；false=各页默认关闭）。
-  // 底栏「粒子」或快捷键 P 可按页改效果 / 关闭；选择会记在浏览器 localStorage。
+  // 默认是否按页启用粒子（true=未单独配置的页用下方 slideParticles / 代码映射；false=未配置页默认关闭）
   "particles": true,
+
+  // 按页粒子固化（key = 幻灯片 data-title）
+  // 取值：效果名（见底栏粒子面板）或 "off" 关闭本页
+  // 未列出的页 → 仍用 deck.js 里 SLIDE_PARTICLE_MAP 默认
+  // 底栏改完可点「复制配置」粘贴回本字段，再 python tools/build_deck.py（file:// 靠 FALLBACK）
+  "slideParticles": {
+    "封面": "cover_mesh",
+    "目录": "toc_constellation",
+    "01 演示": "sec_demo_rise",
+    "自动化演示": "demo_web_rain",
+    "客户端演示": "demo_client_slash",
+    "现场跑全量": "cmd_pulse",
+    "02 认识": "sec_know_drift",
+    "三大痛点": "pain_chaos",
+    "更隐蔽的坑": "pit_scatter",
+    "Harness 是什么": "harness_web",
+    "为什么火了": "cases_bubbles",
+    "提示词工程": "prompt_stars",
+    "上下文工程": "context_mesh",
+    "Harness 工程": "harness_eng_grid",
+    "层层包含": "nest_layers",
+    "公式": "formula_lift",
+    "公式总览": "formula_ring",
+    "03 架构": "sec_arch_beam",
+    "模块一": "mod1_tri",
+    "模块二": "mod2_stars",
+    "模块三": "mod3_matrix",
+    "模块四": "mod4_foam",
+    "模块五": "mod5_spark",
+    "本质收束": "essence_soft",
+    "04 实践": "sec_practice_up",
+    "实践框架": "practice_lattice",
+    "Stage": "stage_codefall",
+    "Progress": "progress_orbit",
+    "Progress 实战": "progress_live",
+    "Runner": "runner_burst",
+    "Skill Rules Lint": "srl_glyphs",
+    "闭环": "loop_flow",
+    "思考与行动": "takeaway_snow",
+    "开源与赞助": "sponsor_glow"
+  },
 
   // 默认主题编号 1～20（底栏「样式」或快捷键 T 可改）
   "theme": 3,
@@ -20,6 +60,7 @@
   // 【如何让改动立刻生效、不必 python】
   // 1) 推荐：用本地 HTTP 打开 docs/（VS Code Live Server，或：npx serve docs）
   //    改本文件 → 普通刷新即可（由 deck/config.js 运行时读取）
-  // 2) 若双击 file:// 打开：多数浏览器读不到本文件，请改同目录 config.js 的 FALLBACK，或改用 HTTP
+  // 2) 若双击 file:// 打开：请改同目录 config.js 的 FALLBACK，或改用 HTTP
+  //    （file:// 读不了 json，属浏览器限制，不是项目坏了）
   // 改页内容/样式仍须：python tools/build_deck.py
 }

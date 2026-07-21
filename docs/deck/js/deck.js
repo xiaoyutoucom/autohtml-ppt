@@ -46,9 +46,25 @@
       let particlesEnabled = cfgBool("particles", true);
       const PARTICLES_KEY = "harness_training_particles";
       const PARTICLE_OVERRIDES_KEY = "harness_training_particle_overrides";
-      /** 按 data-title 覆盖：{ "封面": "cover_mesh" | "off" }，无键=默认映射 */
+      const SLIDE_PARTICLES_CFG_KEY = "harness_training_slide_particles_cfg";
+      /** 按 data-title：效果名 | "off"；来自 config.slideParticles，可被本机覆盖 */
       var particleOverrides = {};
       const BGM_KEY = "harness_training_bgm";
+
+      function cfgSlideParticles() {
+        var o = DECK_CFG.slideParticles || DECK_CFG.particleOverrides;
+        return o && typeof o === "object" && !Array.isArray(o) ? o : {};
+      }
+      function slideParticlesStamp() {
+        try {
+          return JSON.stringify({
+            on: cfgBool("particles", true) ? 1 : 0,
+            map: cfgSlideParticles()
+          });
+        } catch (e) {
+          return "";
+        }
+      }
       let bgmEnabled = cfgBool("bgm", false);
       let bgmAudio = null;
       let bgmUnlockBound = false;
@@ -203,11 +219,16 @@
           lsSet(THEME_KEY, t.id);
         }
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
-        // 主题色驱动粒子 / 封面 Vanta（粒子表未初始化前跳过，避免 initTheme 早于 PARTICLE_FLAVORS）
-        if (typeof PARTICLE_FLAVORS !== "undefined" && PARTICLE_FLAVORS && typeof refreshParticles === "function") {
-          refreshParticles(true);
+        // 主题色驱动粒子 / 封面 Vanta（须等 PARTICLE_FLAVORS / MAP 初始化后再调）
+        if (
+          typeof PARTICLE_FLAVORS !== "undefined" &&
+          PARTICLE_FLAVORS &&
+          typeof SLIDE_PARTICLE_MAP !== "undefined" &&
+          SLIDE_PARTICLE_MAP
+        ) {
+          if (typeof refreshParticles === "function") refreshParticles(true);
+          if (typeof refreshVanta === "function" && typeof VANTA !== "undefined") refreshVanta();
         }
-        if (typeof refreshVanta === "function" && typeof VANTA !== "undefined") refreshVanta();
       }
 
       function buildThemeGrid() {
@@ -341,7 +362,18 @@
         var cfg = cfgBool("particles", true) ? "1" : "0";
         var pick = resolvePref(cfg, PARTICLES_KEY, PARTICLES_CFG_KEY);
         particlesEnabled = pick === "1";
-        particleOverrides = loadParticleOverrides();
+        // config.slideParticles 变更时重置为本文件配置；否则保留本机覆盖
+        var stamp = slideParticlesStamp();
+        var prev = lsGet(SLIDE_PARTICLES_CFG_KEY);
+        if (prev !== stamp) {
+          lsSet(SLIDE_PARTICLES_CFG_KEY, stamp);
+          particleOverrides = Object.assign({}, cfgSlideParticles());
+          saveParticleOverrides();
+        } else {
+          var saved = loadParticleOverrides();
+          particleOverrides =
+            saved && Object.keys(saved).length ? saved : Object.assign({}, cfgSlideParticles());
+        }
       })();
 
       (function initBgmPref() {
@@ -974,9 +1006,19 @@
         }
       }
 
-      /** 课件内置默认（不含用户覆盖） */
+      function mapsReady() {
+        return (
+          typeof PARTICLE_FLAVORS !== "undefined" &&
+          !!PARTICLE_FLAVORS &&
+          typeof SLIDE_PARTICLE_MAP !== "undefined" &&
+          !!SLIDE_PARTICLE_MAP
+        );
+      }
+
+      /** 课件代码内置默认（config / 本机覆盖之外） */
       function defaultParticleFlavor(slide) {
         if (!slide) return "cover_mesh";
+        if (!mapsReady()) return "cover_mesh";
         var forced = (slide.dataset.particles || "").trim();
         if (forced && PARTICLE_FLAVORS[forced]) return forced;
         var title = slide.dataset.title || "";
@@ -994,13 +1036,16 @@
 
       /**
        * 解析本页最终粒子：
-       * - 覆盖 "off" → 关闭
-       * - 覆盖为某 flavor → 用该效果
-       * - 无覆盖：particlesEnabled? 内置映射 : 关闭
+       * 1) particleOverrides（来自 config.slideParticles + 本机改动）
+       * 2) particles 总开关为 false → 关
+       * 3) 代码 SLIDE_PARTICLE_MAP / data-particles
        */
       function resolveParticleProfile(slide) {
         var title = (slide && slide.dataset.title) || "page";
         var tier = (slide && slide.classList.contains("slide-cover")) ? "cover" : "page";
+        if (!mapsReady()) {
+          return { tier: tier, flavor: null, mode: "off", selection: "default", key: "boot:" + title };
+        }
         var ov = particleOverrides[title];
         if (ov === "off") {
           return { tier: tier, flavor: null, mode: "off", selection: "off", key: "off:" + title };
@@ -1011,7 +1056,7 @@
             flavor: ov,
             mode: "flavor",
             selection: ov,
-            key: tier + ":" + ov + ":" + title + ":ov"
+            key: tier + ":" + ov + ":" + title + ":cfg"
           };
         }
         if (!particlesEnabled) {
@@ -1037,18 +1082,59 @@
         var title = (slide && slide.dataset.title) || "";
         if (!title) return;
         if (value === "default" || value === "" || value == null) {
+          // 默认 = 去掉本页覆盖，回退到代码 MAP（并清除 config 里同名固化项的本机拷贝）
           delete particleOverrides[title];
         } else {
           particleOverrides[title] = value;
         }
         saveParticleOverrides();
-        // 手动选了具体效果时，确保全局默认开启，避免「默认关」挡住其它页
         if (value && value !== "off" && value !== "default" && !particlesEnabled) {
           particlesEnabled = true;
           try { localStorage.setItem(PARTICLES_KEY, "1"); } catch (e) {}
         }
         if (particleWrap) particleWrap.classList.remove("open");
         if (particlesBtn) particlesBtn.setAttribute("aria-expanded", "false");
+        syncParticlesUi();
+        refreshParticles(true);
+        if (typeof refreshVanta === "function") refreshVanta();
+      }
+
+      function copySlideParticlesConfig() {
+        var map = {};
+        Object.keys(particleOverrides).forEach(function (k) {
+          if (particleOverrides[k]) map[k] = particleOverrides[k];
+        });
+        // 把当前仍走代码默认的页也写上，便于整表固化
+        document.querySelectorAll(".slide[data-title]").forEach(function (slide) {
+          var t = slide.dataset.title;
+          if (!t || map[t]) return;
+          if (!particlesEnabled) return;
+          map[t] = defaultParticleFlavor(slide);
+        });
+        var text = JSON.stringify(map, null, 2);
+        var block =
+          '  "slideParticles": ' + text.replace(/\n/g, "\n  ") + ",";
+        function ok() {
+          console.info("[deck] 已复制 slideParticles。请粘贴进 docs/deck/config.json，然后执行：python tools/build_deck.py");
+          if (typeof alert === "function") {
+            alert("已复制 slideParticles 到剪贴板。\n请粘贴进 docs/deck/config.json，再运行：\npython tools/build_deck.py");
+          }
+        }
+        function fail() {
+          console.info("[deck] slideParticles 配置：\n" + block);
+          if (typeof prompt === "function") prompt("复制以下 slideParticles 到 config.json：", text);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(block).then(ok).catch(fail);
+        } else {
+          fail();
+        }
+      }
+
+      function resetSlideParticlesFromConfig() {
+        particleOverrides = Object.assign({}, cfgSlideParticles());
+        saveParticleOverrides();
+        lsSet(SLIDE_PARTICLES_CFG_KEY, slideParticlesStamp());
         syncParticlesUi();
         refreshParticles(true);
         if (typeof refreshVanta === "function") refreshVanta();
@@ -1135,6 +1221,24 @@
           e.preventDefault();
           e.stopPropagation();
           toggleParticlePanel();
+        });
+      }
+      var particleCopyCfgBtn = document.getElementById("particleCopyCfgBtn");
+      var particleResetCfgBtn = document.getElementById("particleResetCfgBtn");
+      if (particleCopyCfgBtn && !particleCopyCfgBtn._bound) {
+        particleCopyCfgBtn._bound = true;
+        particleCopyCfgBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          copySlideParticlesConfig();
+        });
+      }
+      if (particleResetCfgBtn && !particleResetCfgBtn._bound) {
+        particleResetCfgBtn._bound = true;
+        particleResetCfgBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          resetSlideParticlesFromConfig();
         });
       }
 
@@ -1284,7 +1388,8 @@
         var cover = document.querySelector(".slide-cover");
         var el = document.getElementById("vanta-cover");
         if (!cover || !el) return;
-        var coverProfile = resolveParticleProfile(document.querySelector(".slide-cover"));
+        if (!mapsReady()) return;
+        var coverProfile = resolveParticleProfile(cover);
         if (
           !coverProfile ||
           coverProfile.mode === "off" ||

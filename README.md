@@ -97,7 +97,7 @@ Also included in the engine (see skill `layouts.md`): **BigNumber · Split · Co
 | <img src="docs/assets/screenshots/22-chrome-annotate.png" width="440" alt="Annotate" /><br />Pen / highlighter / eraser (`A`) | <img src="docs/assets/screenshots/23-present-mode.png" width="440" alt="Present" /><br />Present mode (`F`) + footer hot-zone |
 | <img src="docs/assets/screenshots/24-theme-picker.png" width="440" alt="Picker" /><br />Theme picker (`T`) — 20 styles remembered | |
 
-**Also in the product (see GIFs / shortcuts):** particles toggle (`P`), BGM (`M`), Export PPT, fullscreen, glossary hover tips, AI page chips, hover-grow cards/figures, provenance fingerprint, offline vendors, modular `docs/deck/` authoring, portable multi-agent skill.
+**Also in the product (see GIFs / shortcuts):** particle picker (`P`), BGM (`M`), Export PPT, fullscreen, glossary hover tips, AI page chips, hover-grow cards/figures, provenance fingerprint, offline vendors, modular `docs/deck/` authoring, portable multi-agent skill.
 
 ### 5) Multi-theme gallery (dark + light)
 
@@ -129,7 +129,7 @@ python tools/capture_readme_gifs.py    # animated GIFs
 | **Present** | `F` larger type; footer hidden; bottom hot-zone peek; fullscreen separate |
 | **Chrome** | `S` rail · `G` grid · `A` pen/highlighter/eraser (per-slide memory) |
 | **Themes** | 20 dark/light styles · picker · config default · localStorage |
-| **Particles** | One flavor per slide · `P` toggle · cover Vanta.NET + cursor glow |
+| **Particles** | One flavor per slide · `P` per-page pick/off · cover Vanta.NET + cursor glow |
 | **AI ambient** | Page-aware floating chips / rails / nodes / token stream |
 | **Motion** | anime.js + Animate.css entrances · flow/table/code `.is-lit` sequences |
 | **Stage pulse** | Auto for Stage / practice tables · or `data-row-pulse="1"` |
@@ -163,7 +163,7 @@ Or serve `docs/` with Live Server / `npx serve docs` (recommended for hot-reload
 |-----|--------|
 | ← → / Space / PgUp PgDn | Navigate |
 | `T` | Theme picker |
-| `P` | Particles on/off |
+| `P` | Particle picker (per-page flavor / off) |
 | `M` | Background music |
 | `F` | Present mode |
 | `S` / `G` / `A` | Rail / grid / annotate |

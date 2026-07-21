@@ -98,7 +98,7 @@
 | <img src="docs/assets/screenshots/22-chrome-annotate.png" width="440" alt="画笔" /><br />画笔/荧光笔/橡皮（`A`） | <img src="docs/assets/screenshots/23-present-mode.png" width="440" alt="演示" /><br />演示模式（`F`）+ 底栏热区 |
 | <img src="docs/assets/screenshots/24-theme-picker.png" width="440" alt="样式" /><br />样式面板（`T`）— 20 套可记忆 | |
 
-**产品内还有（见图/快捷键）：** 粒子开关（`P`）、背景乐（`M`）、导出 PPT、全屏、术语悬停、按页 AI 飘荡标签、卡片/图片悬浮放大、溯源指纹、离线 vendor、模块化 `docs/deck/`、多工具 Skill。
+**产品内还有（见图/快捷键）：** 粒子选择（`P`）、背景乐（`M`）、导出 PPT、全屏、术语悬停、按页 AI 飘荡标签、卡片/图片悬浮放大、溯源指纹、离线 vendor、模块化 `docs/deck/`、多工具 Skill。
 
 ### 5）多主题画廊（深色 + 浅色）
 
@@ -130,7 +130,7 @@ python tools/capture_readme_gifs.py    # 动态 GIF
 | **演示** | `F` 放大字号；底栏隐藏；底部热区唤出；全屏独立 |
 | **工具条** | `S` 缩略图轨 · `G` 网格总览 · `A` 画笔（按页记忆） |
 | **主题** | 20 套深/浅 · 选择器 · config 默认 · localStorage |
-| **粒子** | 一页一风格 · `P` 开关 · 封面 Vanta + 光斑 |
+| **粒子** | 一页一风格 · `P` 按页选择/关闭 · 封面 Vanta + 光斑 |
 | **AI 氛围** | 按页飘荡标签 / 侧轨 / nodes / token stream |
 | **动效** | anime.js + Animate.css · 流程/表格/代码 `.is-lit` |
 | **逐行点亮** | Stage / 实践框架自动 · 或 `data-row-pulse="1"` |
@@ -174,7 +174,7 @@ start docs\harness_training.html
 |----|------|
 | ← → / 空格 | 翻页 |
 | `T` | 主题 |
-| `P` | 粒子 |
+| `P` | 粒子选择（按页换效果 / 关闭） |
 | `M` | 背景音乐 |
 | `F` | 演示模式 |
 | `S` / `G` / `A` | 目录轨 / 总览 / 画笔 |

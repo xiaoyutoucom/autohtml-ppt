@@ -2339,6 +2339,8 @@
     html.exporting-ppt #term-tip,
     html.exporting-ppt .theme-panel,
     html.exporting-ppt .theme-wrap,
+    html.exporting-ppt .particle-panel,
+    html.exporting-ppt .particle-wrap,
     html.exporting-ppt video,
     html.exporting-ppt .demo-player {
       display: none !important;

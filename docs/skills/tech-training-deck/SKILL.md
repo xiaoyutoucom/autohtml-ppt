@@ -89,7 +89,7 @@ E:\wence\autohtml-ppt\
 | 主题 | `T` / 底栏样式；`localStorage`；`html[data-theme="1..20"]` |
 | 演示模式 | `html.present-mode`；放大字号；`#presentHotzone` + `.footer.is-peek` |
 | 全屏 | 底栏按钮 / F11；与演示模式分离 |
-| 粒子 | **一页一风格**，`SLIDE_PARTICLE_MAP[data-title]` 唯一；`data-particles` 可覆盖；底栏「隐藏粒子」/`P` 开关（localStorage） |
+| 粒子 | **一页一风格**，`SLIDE_PARTICLE_MAP[data-title]` 唯一；`data-particles` 可覆盖；底栏「粒子」/`P` **按页选择效果或关闭**（覆盖记 localStorage，默认跟 MAP） |
 | 内容尺度 | `:root --deck-scale`（默认 `1.2`）+ 根字号，对齐约 120% 浏览器缩放观感；**禁止**用 `zoom`/`transform` 整页硬放大 |
 | 封面 | 密联网 `cover_mesh` + Vanta.NET（离封面销毁）+ 鼠标光斑 |
 | AI 氛围 | `#aiAmbient`：侧轨 / **按页相关** chips / nodes / token stream；`SLIDE_AI_CHIPS[data-title]` 或 `data-ai-chips`；reduced-motion 关 |

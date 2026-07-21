@@ -707,3 +707,58 @@ body::after {
   font-weight: 600;
   line-height: 1.25;
 }
+
+/* 粒子选择（复用 theme-wrap 定位，网格更密） */
+.particle-wrap .theme-panel {
+  width: min(94vw, 32rem);
+  max-height: min(72vh, 28rem);
+}
+.particle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .4rem;
+}
+.particle-opt {
+  appearance: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: .5rem .45rem;
+  cursor: pointer;
+  text-align: left;
+  min-height: 3.1rem;
+  background: color-mix(in srgb, var(--panel) 88%, var(--neon) 6%);
+  color: var(--ink-soft);
+  transition: transform .15s ease, border-color .15s ease, outline-color .15s ease;
+}
+.particle-opt:hover {
+  transform: translateY(-1px);
+  border-color: color-mix(in srgb, var(--neon) 45%, transparent);
+}
+.particle-opt.active {
+  outline: 2px solid var(--neon);
+  outline-offset: 1px;
+  border-color: color-mix(in srgb, var(--neon) 55%, transparent);
+}
+.particle-opt.is-off {
+  background: color-mix(in srgb, var(--panel) 90%, #f87171 8%);
+}
+.particle-opt.is-default {
+  background: color-mix(in srgb, var(--panel) 88%, var(--teal) 10%);
+}
+.particle-opt .n {
+  display: block;
+  font-family: var(--mono);
+  font-size: .65rem;
+  opacity: .7;
+  margin-bottom: .12rem;
+}
+.particle-opt .label {
+  display: block;
+  font-size: .74rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--ink);
+}
+@media (max-width: 640px) {
+  .particle-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

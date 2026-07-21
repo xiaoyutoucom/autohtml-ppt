@@ -24,6 +24,9 @@
       const presentToast = document.getElementById("presentToast");
       const presentBtn = document.getElementById("presentBtn");
       const particlesBtn = document.getElementById("particlesBtn");
+      const particlesBtnLabel = document.getElementById("particlesBtnLabel");
+      const particleWrap = document.getElementById("particleWrap");
+      const particleGrid = document.getElementById("particleGrid");
       const bgmBtn = document.getElementById("bgmBtn");
       const exportPptBtn = document.getElementById("exportPptBtn");
       const exportPptToast = document.getElementById("exportPptToast");
@@ -39,8 +42,12 @@
       const themeGrid = document.getElementById("themeGrid");
       let presentMode = false;
       let exportPptBusy = false;
+      /** 全局默认：true=各页用内置映射；false=各页默认关闭（可被本页覆盖） */
       let particlesEnabled = cfgBool("particles", true);
       const PARTICLES_KEY = "harness_training_particles";
+      const PARTICLE_OVERRIDES_KEY = "harness_training_particle_overrides";
+      /** 按 data-title 覆盖：{ "封面": "cover_mesh" | "off" }，无键=默认映射 */
+      var particleOverrides = {};
       const BGM_KEY = "harness_training_bgm";
       let bgmEnabled = cfgBool("bgm", false);
       let bgmAudio = null;
@@ -224,6 +231,10 @@
 
       function toggleThemePanel() {
         themeWrap.classList.toggle("open");
+        if (particleWrap) {
+          particleWrap.classList.remove("open");
+          if (particlesBtn) particlesBtn.setAttribute("aria-expanded", "false");
+        }
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       }
 
@@ -239,9 +250,13 @@
         toggleThemePanel();
       });
       document.addEventListener("click", function (e) {
-        if (!themeWrap.classList.contains("open")) return;
-        if (e.target.closest("#themeWrap")) return;
-        themeWrap.classList.remove("open");
+        if (themeWrap && themeWrap.classList.contains("open") && !e.target.closest("#themeWrap")) {
+          themeWrap.classList.remove("open");
+        }
+        if (particleWrap && particleWrap.classList.contains("open") && !e.target.closest("#particleWrap")) {
+          particleWrap.classList.remove("open");
+          if (particlesBtn) particlesBtn.setAttribute("aria-expanded", "false");
+        }
       });
 
       var footerPeekTimer = null;
@@ -285,46 +300,48 @@
         setPresentMode(!presentMode);
       }
 
-      function syncParticlesBtn() {
-        root.classList.toggle("particles-off", !particlesEnabled);
-        if (!particlesBtn) return;
-        particlesBtn.setAttribute("aria-pressed", particlesEnabled ? "true" : "false");
-        particlesBtn.classList.toggle("primary", particlesEnabled);
-        particlesBtn.title = particlesEnabled ? "隐藏粒子效果 (P)" : "显示粒子效果 (P)";
-        particlesBtn.innerHTML = particlesEnabled
-          ? '<i data-lucide="sparkles" class="icon"></i><span>隐藏粒子</span>'
-          : '<i data-lucide="eye-off" class="icon"></i><span>显示粒子</span>';
-        if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
+      function loadParticleOverrides() {
+        try {
+          var raw = localStorage.getItem(PARTICLE_OVERRIDES_KEY);
+          if (!raw) return {};
+          var obj = JSON.parse(raw);
+          return obj && typeof obj === "object" ? obj : {};
+        } catch (e) {
+          return {};
+        }
+      }
+      function saveParticleOverrides() {
+        try {
+          localStorage.setItem(PARTICLE_OVERRIDES_KEY, JSON.stringify(particleOverrides));
+        } catch (e) {}
       }
 
+      /** 兼容旧「显示/隐藏」：仅影响「默认」路径，不挡住本页手动选的效果 */
       function setParticlesEnabled(on, persist) {
         particlesEnabled = !!on;
-        syncParticlesBtn();
         if (persist !== false) {
           try { localStorage.setItem(PARTICLES_KEY, particlesEnabled ? "1" : "0"); } catch (e) {}
         }
-        if (!particlesEnabled) {
-          if (particlesInst) {
-            try { particlesInst.destroy(); } catch (e) {}
-            particlesInst = null;
-            lastParticleKey = "";
-          }
-          if (typeof destroyVanta === "function") destroyVanta();
-        } else {
-          if (typeof refreshParticles === "function") refreshParticles(true);
-          if (typeof refreshVanta === "function") refreshVanta();
-        }
+        if (typeof syncParticlesUi === "function") syncParticlesUi();
+        if (typeof refreshParticles === "function") refreshParticles(true);
+        if (typeof refreshVanta === "function") refreshVanta();
       }
 
-      function toggleParticles() {
-        setParticlesEnabled(!particlesEnabled, true);
+      function toggleParticlePanel() {
+        if (!particleWrap) return;
+        particleWrap.classList.toggle("open");
+        var open = particleWrap.classList.contains("open");
+        if (particlesBtn) particlesBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open && typeof buildParticleGrid === "function") buildParticleGrid();
+        if (themeWrap) themeWrap.classList.remove("open");
+        if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       }
 
       (function initParticlesPref() {
         var cfg = cfgBool("particles", true) ? "1" : "0";
         var pick = resolvePref(cfg, PARTICLES_KEY, PARTICLES_CFG_KEY);
         particlesEnabled = pick === "1";
-        syncParticlesBtn();
+        particleOverrides = loadParticleOverrides();
       })();
 
       (function initBgmPref() {
@@ -335,13 +352,6 @@
         if (bgmEnabled) tryPlayBgm();
       })();
 
-      if (particlesBtn) {
-        particlesBtn.addEventListener("click", function (e) {
-          e.preventDefault();
-          e.stopPropagation();
-          toggleParticles();
-        });
-      }
       if (bgmBtn) {
         bgmBtn.addEventListener("click", function (e) {
           e.preventDefault();
@@ -910,6 +920,49 @@
         "开源与赞助": "sponsor_glow"
       };
 
+      var PARTICLE_LABELS = {
+        cover_mesh: "封面网格",
+        toc_constellation: "星座连线",
+        sec_demo_rise: "上升微粒",
+        demo_web_rain: "代码雨",
+        demo_client_slash: "斜向三角",
+        cmd_pulse: "脉冲连线",
+        sec_know_drift: "缓漂",
+        pain_chaos: "混乱散射",
+        pit_scatter: "坑点碎屑",
+        harness_web: "马具织网",
+        cases_bubbles: "气泡",
+        prompt_stars: "提示星星",
+        context_mesh: "上下文网",
+        harness_eng_grid: "工程网格",
+        nest_layers: "层叠",
+        formula_lift: "公式上浮",
+        formula_ring: "公式环",
+        sec_arch_beam: "架构光束",
+        mod1_tri: "三角阵列",
+        mod2_stars: "星点",
+        mod3_matrix: "矩阵",
+        mod4_foam: "泡沫",
+        mod5_spark: "火花",
+        essence_soft: "柔光",
+        sec_practice_up: "实践上升",
+        practice_lattice: "实践晶格",
+        stage_codefall: "Stage 落下",
+        progress_orbit: "Progress 轨道",
+        progress_live: "Progress 流动",
+        runner_burst: "Runner 爆发",
+        srl_glyphs: "规则符文",
+        loop_flow: "闭环流动",
+        takeaway_snow: "收束雪点",
+        sponsor_glow: "赞助柔光"
+      };
+
+      function particleLabel(key) {
+        if (key === "off") return "关闭";
+        if (key === "default") return "默认";
+        return PARTICLE_LABELS[key] || String(key || "").replace(/_/g, " ");
+      }
+
       function resolveColorPalette(mode, colors) {
         var neon = colors[0], teal = colors[1], signal = colors[2];
         switch (mode) {
@@ -921,7 +974,8 @@
         }
       }
 
-      function pickParticleFlavor(slide) {
+      /** 课件内置默认（不含用户覆盖） */
+      function defaultParticleFlavor(slide) {
         if (!slide) return "cover_mesh";
         var forced = (slide.dataset.particles || "").trim();
         if (forced && PARTICLE_FLAVORS[forced]) return forced;
@@ -929,9 +983,8 @@
         if (SLIDE_PARTICLE_MAP[title] && PARTICLE_FLAVORS[SLIDE_PARTICLE_MAP[title]]) {
           return SLIDE_PARTICLE_MAP[title];
         }
-        // 未登记页：按 DOM 序号取尚未占用的风格，避免撞车
-        var slides = document.querySelectorAll(".slide");
-        var idx = Array.prototype.indexOf.call(slides, slide);
+        var allSlides = document.querySelectorAll(".slide");
+        var idx = Array.prototype.indexOf.call(allSlides, slide);
         var used = {};
         Object.keys(SLIDE_PARTICLE_MAP).forEach(function (k) { used[SLIDE_PARTICLE_MAP[k]] = true; });
         var pool = Object.keys(PARTICLE_FLAVORS).filter(function (k) { return !used[k]; });
@@ -939,11 +992,150 @@
         return pool[Math.abs(idx) % pool.length];
       }
 
+      /**
+       * 解析本页最终粒子：
+       * - 覆盖 "off" → 关闭
+       * - 覆盖为某 flavor → 用该效果
+       * - 无覆盖：particlesEnabled? 内置映射 : 关闭
+       */
       function resolveParticleProfile(slide) {
-        var flavor = pickParticleFlavor(slide);
         var title = (slide && slide.dataset.title) || "page";
         var tier = (slide && slide.classList.contains("slide-cover")) ? "cover" : "page";
-        return { tier: tier, flavor: flavor, key: tier + ":" + flavor + ":" + title };
+        var ov = particleOverrides[title];
+        if (ov === "off") {
+          return { tier: tier, flavor: null, mode: "off", selection: "off", key: "off:" + title };
+        }
+        if (ov && PARTICLE_FLAVORS[ov]) {
+          return {
+            tier: tier,
+            flavor: ov,
+            mode: "flavor",
+            selection: ov,
+            key: tier + ":" + ov + ":" + title + ":ov"
+          };
+        }
+        if (!particlesEnabled) {
+          return { tier: tier, flavor: null, mode: "off", selection: "default", key: "off-default:" + title };
+        }
+        var flavor = defaultParticleFlavor(slide);
+        return {
+          tier: tier,
+          flavor: flavor,
+          mode: "flavor",
+          selection: "default",
+          key: tier + ":" + flavor + ":" + title
+        };
+      }
+
+      function pickParticleFlavor(slide) {
+        var p = resolveParticleProfile(slide);
+        return p.flavor || "cover_mesh";
+      }
+
+      function setParticleOverrideForCurrent(value) {
+        var slide = typeof getActiveSlide === "function" ? getActiveSlide() : null;
+        var title = (slide && slide.dataset.title) || "";
+        if (!title) return;
+        if (value === "default" || value === "" || value == null) {
+          delete particleOverrides[title];
+        } else {
+          particleOverrides[title] = value;
+        }
+        saveParticleOverrides();
+        // 手动选了具体效果时，确保全局默认开启，避免「默认关」挡住其它页
+        if (value && value !== "off" && value !== "default" && !particlesEnabled) {
+          particlesEnabled = true;
+          try { localStorage.setItem(PARTICLES_KEY, "1"); } catch (e) {}
+        }
+        if (particleWrap) particleWrap.classList.remove("open");
+        if (particlesBtn) particlesBtn.setAttribute("aria-expanded", "false");
+        syncParticlesUi();
+        refreshParticles(true);
+        if (typeof refreshVanta === "function") refreshVanta();
+      }
+
+      function syncParticlesUi() {
+        var slide = typeof getActiveSlide === "function" ? getActiveSlide() : null;
+        var profile = resolveParticleProfile(slide);
+        var on = profile.mode !== "off";
+        root.classList.toggle("particles-off", !on);
+        if (!particlesBtn) return;
+        var label = "粒子";
+        if (profile.mode === "off") label = "粒子·关";
+        else if (profile.selection !== "default") label = "粒子·" + particleLabel(profile.flavor).slice(0, 4);
+        else label = "粒子";
+        if (particlesBtnLabel) particlesBtnLabel.textContent = label;
+        else {
+          particlesBtn.innerHTML =
+            '<i data-lucide="sparkles" class="icon"></i><span id="particlesBtnLabel">' + label + "</span>";
+        }
+        particlesBtn.title = "选择粒子效果 (P) · 当前：" +
+          (profile.mode === "off"
+            ? "关闭"
+            : (profile.selection === "default" ? "默认 · " : "自选 · ") + particleLabel(profile.flavor));
+        particlesBtn.classList.toggle("primary", on);
+        particlesBtn.setAttribute("aria-pressed", on ? "true" : "false");
+        if (particleGrid && particleWrap && particleWrap.classList.contains("open")) {
+          buildParticleGrid();
+        }
+        if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
+      }
+
+      function buildParticleGrid() {
+        if (!particleGrid) return;
+        var slide = typeof getActiveSlide === "function" ? getActiveSlide() : null;
+        var profile = resolveParticleProfile(slide);
+        var defFlavor = defaultParticleFlavor(slide);
+        var html = "";
+        var defLabel =
+          !particlesEnabled && profile.selection === "default"
+            ? "默认 · 关（全局）"
+            : "默认 · " + particleLabel(defFlavor);
+        html +=
+          '<button type="button" class="particle-opt is-default' +
+          (profile.selection === "default" ? " active" : "") +
+          '" data-particle="default">' +
+          '<span class="n">DEFAULT</span><span class="label">' +
+          defLabel +
+          "</span></button>";
+        html +=
+          '<button type="button" class="particle-opt is-off' +
+          (profile.selection === "off" ? " active" : "") +
+          '" data-particle="off">' +
+          '<span class="n">OFF</span><span class="label">本页关闭</span></button>';
+        Object.keys(PARTICLE_FLAVORS).forEach(function (key) {
+          html +=
+            '<button type="button" class="particle-opt' +
+            (profile.selection === key ? " active" : "") +
+            '" data-particle="' +
+            key +
+            '">' +
+            '<span class="n">' +
+            key +
+            '</span><span class="label">' +
+            particleLabel(key) +
+            "</span></button>";
+        });
+        particleGrid.innerHTML = html;
+      }
+
+      if (particleGrid && !particleGrid._bound) {
+        particleGrid._bound = true;
+        particleGrid.addEventListener("click", function (e) {
+          var btn = e.target.closest(".particle-opt");
+          if (!btn) return;
+          e.preventDefault();
+          e.stopPropagation();
+          setParticleOverrideForCurrent(btn.getAttribute("data-particle"));
+        });
+      }
+      if (particlesBtn && !particlesBtn._boundPicker) {
+        particlesBtn._boundPicker = true;
+        particlesBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleParticlePanel();
+        });
       }
 
       function buildParticlesOptions(profile) {
@@ -1048,17 +1240,24 @@
 
       var lastParticleKey = "";
       function refreshParticles(force) {
-        if (reducedMotion || !window.tsParticles) return;
-        if (!particlesEnabled) {
-          if (particlesInst) {
-            try { particlesInst.destroy(); } catch (e) {}
-            particlesInst = null;
-            lastParticleKey = "";
-          }
+        if (reducedMotion || !window.tsParticles) {
+          if (typeof syncParticlesUi === "function") syncParticlesUi();
           return;
         }
         var profile = resolveParticleProfile(getActiveSlide());
-        if (!force && profile.key === lastParticleKey && particlesInst) return;
+        if (profile.mode === "off" || !profile.flavor) {
+          if (particlesInst) {
+            try { particlesInst.destroy(); } catch (e) {}
+            particlesInst = null;
+          }
+          lastParticleKey = profile.key;
+          if (typeof syncParticlesUi === "function") syncParticlesUi();
+          return;
+        }
+        if (!force && profile.key === lastParticleKey && particlesInst) {
+          if (typeof syncParticlesUi === "function") syncParticlesUi();
+          return;
+        }
         lastParticleKey = profile.key;
         if (particlesInst) {
           try { particlesInst.destroy(); } catch (e) {}
@@ -1069,6 +1268,7 @@
         if (p && typeof p.then === "function") {
           p.then(function (inst) { particlesInst = inst || null; }).catch(function () {});
         }
+        if (typeof syncParticlesUi === "function") syncParticlesUi();
       }
 
       function destroyVanta() {
@@ -1084,7 +1284,15 @@
         var cover = document.querySelector(".slide-cover");
         var el = document.getElementById("vanta-cover");
         if (!cover || !el) return;
-        if (!particlesEnabled || reducedMotion || !window.VANTA || !window.VANTA.NET || !window.THREE) {
+        var coverProfile = resolveParticleProfile(document.querySelector(".slide-cover"));
+        if (
+          !coverProfile ||
+          coverProfile.mode === "off" ||
+          reducedMotion ||
+          !window.VANTA ||
+          !window.VANTA.NET ||
+          !window.THREE
+        ) {
           destroyVanta();
           return;
         }
@@ -2566,8 +2774,8 @@
         if (wasPresent) setPresentMode(false);
         setFooterPeek(false);
         if (themeWrap) themeWrap.classList.remove("open");
+        if (particleWrap) particleWrap.classList.remove("open");
         if (wasBgm) setBgmEnabled(false, false);
-        if (!particlesEnabled) setParticlesEnabled(true, false);
         root.classList.add("exporting-ppt");
         root.classList.remove("export-dom-mode");
 
@@ -2579,7 +2787,12 @@
               throw new Error("未授权标签页截屏，且 html2canvas 未加载，无法导出。");
             }
             root.classList.add("export-dom-mode");
-            if (wasParticles) setParticlesEnabled(false, false);
+            if (particlesInst) {
+              try { particlesInst.destroy(); } catch (e) {}
+              particlesInst = null;
+              lastParticleKey = "";
+            }
+            if (typeof destroyVanta === "function") destroyVanta();
             await sleep(200);
           }
 
@@ -2605,7 +2818,12 @@
               useTabCapture = false;
               tabSession = null;
               root.classList.add("export-dom-mode");
-              setParticlesEnabled(false, false);
+              if (particlesInst) {
+                try { particlesInst.destroy(); } catch (e2) {}
+                particlesInst = null;
+                lastParticleKey = "";
+              }
+              if (typeof destroyVanta === "function") destroyVanta();
             }
 
             var canvas = await captureViewportForPpt(title, useTabCapture ? tabSession : null);
@@ -2638,10 +2856,11 @@
           root.classList.remove("exporting-ppt", "export-dom-mode", "export-grabbing");
           exportPptBusy = false;
           try { document.title = "Harness Engineering 培训"; } catch (e) {}
-          if (wasParticles) setParticlesEnabled(true, false);
-          else setParticlesEnabled(false, false);
+          particlesEnabled = wasParticles;
           if (wasBgm) setBgmEnabled(true, false);
           goTo(savedIndex, true);
+          if (typeof refreshParticles === "function") refreshParticles(true);
+          if (typeof refreshVanta === "function") refreshVanta();
           if (wasPresent) setPresentMode(true);
           if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
         }
@@ -2688,7 +2907,7 @@
         if (e.key === "p" || e.key === "P") {
           if (e.target.closest("video, input, textarea")) return;
           e.preventDefault();
-          toggleParticles();
+          toggleParticlePanel();
           return;
         }
         if (e.key === "m" || e.key === "M") {
@@ -2716,6 +2935,17 @@
           return;
         }
         if (e.key === "Escape") {
+          if (particleWrap && particleWrap.classList.contains("open")) {
+            particleWrap.classList.remove("open");
+            if (particlesBtn) particlesBtn.setAttribute("aria-expanded", "false");
+            e.preventDefault();
+            return;
+          }
+          if (themeWrap && themeWrap.classList.contains("open")) {
+            themeWrap.classList.remove("open");
+            e.preventDefault();
+            return;
+          }
           if (railOpen) { setRailOpen(false); e.preventDefault(); return; }
           if (gridOpen) { setGridOpen(false); e.preventDefault(); return; }
           if (annotateOn) { setAnnotateOn(false); e.preventDefault(); return; }

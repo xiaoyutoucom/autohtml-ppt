@@ -25,7 +25,13 @@
       <button id="railBtn" type="button" title="缩略图轨 (S)"><i data-lucide="panel-left" class="icon"></i>目录</button>
       <button id="gridBtn" type="button" title="网格总览 (G)"><i data-lucide="layout-grid" class="icon"></i>总览</button>
       <button id="annotateBtn" type="button" title="画笔批注 (A)"><i data-lucide="pencil" class="icon"></i>画笔</button>
-      <button id="particlesBtn" type="button" title="隐藏粒子效果 (P)" aria-pressed="true"><i data-lucide="sparkles" class="icon"></i><span>隐藏粒子</span></button>
+      <div class="theme-wrap particle-wrap" id="particleWrap">
+        <button id="particlesBtn" type="button" class="theme-btn" title="选择粒子效果 (P)" aria-haspopup="dialog" aria-expanded="false"><i data-lucide="sparkles" class="icon"></i><span id="particlesBtnLabel">粒子</span></button>
+        <div class="theme-panel particle-panel" id="particlePanel" role="dialog" aria-label="选择粒子效果">
+          <h4>本页粒子 · 默认跟课件配置 · 可改可关</h4>
+          <div class="particle-grid" id="particleGrid"></div>
+        </div>
+      </div>
       <button id="bgmBtn" type="button" title="背景音乐 (M)" aria-pressed="false"><i data-lucide="music" class="icon"></i><span>音乐</span></button>
       <button id="exportPptBtn" type="button" title="导出全部页：优先当前标签页截屏（含粒子），失败再 DOM 截图"><i data-lucide="file-down" class="icon"></i>导出PPT</button>
       <button id="presentBtn" type="button" class="primary" title="演示模式 (F)"><i data-lucide="presentation" class="icon"></i>演示</button>

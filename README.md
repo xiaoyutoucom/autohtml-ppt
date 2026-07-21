@@ -54,6 +54,18 @@ This repository ships a **complete demo deck** (Harness Engineering training, 33
 
 ---
 
+## What's new in v0.2.0
+
+| Upgrade | Details |
+|---------|---------|
+| **ZH / EN language switch** | Footer language button + shortcut `L`. UI chrome, slide titles, and slide body (`data-en` on pages) switch together. Default via `config.json` → `"lang": "zh" \| "en"`; remembered in `localStorage`. |
+| **i18n module** | New `docs/deck/js/i18n.js` (wired by `build_deck.py`). Keep Chinese as source text; add `data-en="…"` on leaf copy when authoring bilingual slides. |
+| **Compact collapsible footer** | Secondary tools (rail / grid / pen / music / **Export PPT**) sit in an expandable strip — default **expanded**, collapse with `«`, reopen with `⋯`. Action buttons keep short labels so Export PPT stays obvious. |
+| **Particle picker previews** | `P` panel shows **SVG thumbnail cards** per flavor (shape / links / density / motion direction) instead of text-only chips — easier to pick by eye. |
+| **Release helper** | Optional `tools/create_github_release.ps1` to tag + publish a GitHub Release when `gh` auth/network is available. |
+
+---
+
 ## Screenshots & GIFs — full highlight tour
 
 ### Animated demos
@@ -97,7 +109,7 @@ Also included in the engine (see skill `layouts.md`): **BigNumber · Split · Co
 | <img src="docs/assets/screenshots/22-chrome-annotate.png" width="440" alt="Annotate" /><br />Pen / highlighter / eraser (`A`) | <img src="docs/assets/screenshots/23-present-mode.png" width="440" alt="Present" /><br />Present mode (`F`) + footer hot-zone |
 | <img src="docs/assets/screenshots/24-theme-picker.png" width="440" alt="Picker" /><br />Theme picker (`T`) — 20 styles remembered | |
 
-**Also in the product (see GIFs / shortcuts):** particle picker (`P`), BGM (`M`), Export PPT, fullscreen, glossary hover tips, AI page chips, hover-grow cards/figures, provenance fingerprint, offline vendors, modular `docs/deck/` authoring, portable multi-agent skill.
+**Also in the product (see GIFs / shortcuts):** particle picker with visual previews (`P`), BGM (`M`), language switch (`L`), collapsible footer tools, Export PPT, fullscreen, glossary hover tips, AI page chips, hover-grow cards/figures, provenance fingerprint, offline vendors, modular `docs/deck/` authoring, portable multi-agent skill.
 
 ### 5) Multi-theme gallery (dark + light)
 
@@ -127,9 +139,10 @@ python tools/capture_readme_gifs.py    # animated GIFs
 |------|------------|
 | **Navigation** | ←→ / Space / PgUp·PgDn, Home/End, page jump, `#sN`, click zones, first/last |
 | **Present** | `F` larger type; footer hidden; bottom hot-zone peek; fullscreen separate |
-| **Chrome** | `S` rail · `G` grid · `A` pen/highlighter/eraser (per-slide memory) |
+| **Chrome** | Compact footer · collapsible tool strip · labeled actions (Export PPT, etc.) · `S` rail · `G` grid · `A` pen |
+| **Language** | ZH ↔ EN · footer / `L` · `config.json` `lang` · slide `data-en` + `i18n.js` |
 | **Themes** | 20 dark/light styles · picker · config default · localStorage |
-| **Particles** | One flavor per slide · `P` per-page pick/off · cover Vanta.NET + cursor glow |
+| **Particles** | One flavor per slide · `P` visual preview picker / off · cover Vanta.NET + cursor glow |
 | **AI ambient** | Page-aware floating chips / rails / nodes / token stream |
 | **Motion** | anime.js + Animate.css entrances · flow/table/code `.is-lit` sequences |
 | **Stage pulse** | Auto for Stage / practice tables · or `data-row-pulse="1"` |
@@ -138,7 +151,7 @@ python tools/capture_readme_gifs.py    # animated GIFs
 | **Demo & cmd** | Video pages · copyable live commands |
 | **Glossary / cases** | Term hover tips · case-card expand details |
 | **Export** | Browser PPT (tab capture preferred) · Playwright CLI high-fidelity |
-| **Config** | `config.json` runtime load (HTTP) · speaker · BGM · particles · theme |
+| **Config** | `config.json` runtime load (HTTP) · speaker · BGM · particles · theme · **lang** |
 | **Provenance** | Public fingerprint badge · `TTD-2026-XIAOYUTOUCOM` |
 | **Offline** | Vendored libs under `docs/assets/vendor/` · `file://` OK |
 | **Authoring** | Modular `docs/deck/` · `build_deck.py` · portable skill for Cursor/CC/Codex/… |
@@ -163,7 +176,8 @@ Or serve `docs/` with Live Server / `npx serve docs` (recommended for hot-reload
 |-----|--------|
 | ← → / Space / PgUp PgDn | Navigate |
 | `T` | Theme picker |
-| `P` | Particle picker (per-page flavor / off) |
+| `P` | Particle picker (visual previews · per-page / off) |
+| `L` | Language ZH ↔ EN |
 | `M` | Background music |
 | `F` | Present mode |
 | `S` / `G` / `A` | Rail / grid / annotate |
@@ -199,11 +213,11 @@ autohtml-ppt/
 ├── docs/
 │   ├── harness_training.html  # Built demo (open this)
 │   ├── deck/                  # ★ Authoritative source
-│   │   ├── config.json        # theme / particles / speaker / bgm
+│   │   ├── config.json        # theme / particles / speaker / bgm / lang
 │   │   ├── provenance.json    # public fingerprint & attribution
 │   │   ├── styles/base.css
-│   │   ├── js/deck.js
-│   │   ├── slides/            # one html(+css) per page
+│   │   ├── js/deck.js · i18n.js
+│   │   ├── slides/            # one html(+css) per page (`data-en` for EN)
 │   │   └── manifest.json
 │   ├── assets/
 │   │   ├── screenshots/       # README images
@@ -212,6 +226,7 @@ autohtml-ppt/
 │   └── skills/tech-training-deck/
 └── tools/
     ├── build_deck.py
+    ├── create_github_release.ps1
     ├── capture_readme_shots.py
     └── export_training_ppt.py
 ```
@@ -259,14 +274,16 @@ Released under the **[MIT License](./LICENSE)**. Personal and company use (inclu
 
 Please keep copyright notices when you redistribute. The public provenance badge (`TTD-2026-XIAOYUTOUCOM` in `docs/deck/provenance.json`) helps attribution and discovery; removing it for a client deliverable can be arranged as a paid white-label service.
 
-**Mirrors:** [GitHub](https://github.com/xiaoyutoucom/autohtml-ppt) · [Gitee](https://gitee.com/xiaoyutou_647/autohtml-ppt)
+**Mirrors:** [GitHub](https://github.com/xiaoyutoucom/autohtml-ppt) · [Gitee](https://gitee.com/xiaoyutou_647/autohtml-ppt)  
+
+**Launch post (CSDN):** [HTML training deck open-source intro](https://blog.csdn.net/qq_30287489/article/details/163073308)
 
 ---
 
 ## Roadmap ideas
 
 - Blank “starter deck” template without Harness-specific narrative  
-- English sample course pack  
+- Deeper EN copy / glossary tips for every interactive string  
 - Theme packs / white-label packaging as a service  
 
 ---

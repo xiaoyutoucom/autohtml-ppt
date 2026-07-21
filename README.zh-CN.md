@@ -6,7 +6,7 @@
 [![Offline](https://img.shields.io/badge/离线-file%3A%2F%2F%20可用-success)](#快速开始)
 [![Sponsor](https://img.shields.io/badge/微信-赞助-07C160)](./SPONSORS.md)
 
-[English](./README.md) | **简体中文**
+[English](./README.en.md) | **简体中文**
 
 > 面向技术培训的**可翻页单文件 HTML 幻灯片**——比 PowerPoint 更适合「内训 / Agent·Harness 分享 / AI 持续改页」，离线可演示，一键导出 PPTX。  
 > **不只 Cursor**：Claude Code、Codex 等主流 AI 编码工具都能直接按同一套 Skill 改页。
@@ -128,8 +128,10 @@
 重截命令：
 
 ```powershell
-python tools/capture_readme_shots.py   # 静态 PNG（功能+主题）
-python tools/capture_readme_gifs.py    # 动态 GIF
+python tools/capture_readme_shots.py                 # 中文 PNG → docs/assets/screenshots/
+python tools/capture_readme_gifs.py                  # 中文 GIF
+python tools/capture_readme_shots.py --lang en       # 英文 PNG → docs/assets/screenshots-en/
+python tools/capture_readme_gifs.py --lang en        # 英文 GIF（README.en.md）
 ```
 
 ---

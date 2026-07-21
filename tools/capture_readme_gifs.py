@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Capture animated GIF previews for README (features + multi-theme)."""
+"""Capture animated GIF previews for README (features + multi-theme).
+
+Examples:
+  python tools/capture_readme_gifs.py
+  python tools/capture_readme_gifs.py --lang en --out docs/assets/screenshots-en
+"""
 from __future__ import annotations
 
+import argparse
 import asyncio
 import io
 from pathlib import Path
@@ -11,10 +17,11 @@ from playwright.async_api import async_playwright
 
 REPO = Path(__file__).resolve().parents[1]
 HTML = REPO / "docs" / "harness_training.html"
-OUT = REPO / "docs" / "assets" / "screenshots"
+DEFAULT_OUT = REPO / "docs" / "assets" / "screenshots"
 
 GIF_SIZE = (960, 540)
 MAX_COLORS = 56
+OUT = DEFAULT_OUT
 
 
 def png_bytes_to_p(png: bytes) -> Image.Image:
@@ -46,6 +53,31 @@ async def shot(page) -> Image.Image:
 async def go(page, index: int, settle_ms: int = 500) -> None:
     await page.evaluate(f"() => window.deckGoTo && window.deckGoTo({index})")
     await page.wait_for_timeout(settle_ms)
+
+
+async def ensure_lang(page, lang: str) -> None:
+    lang = "en" if str(lang).lower().startswith("en") else "zh"
+    await page.evaluate(
+        """(lang) => {
+          try {
+            localStorage.setItem('harness_training_lang', lang);
+            localStorage.setItem('harness_training_lang_cfg', lang);
+            localStorage.setItem('harness_training_more_expanded', '1');
+          } catch (e) {}
+          if (window.DECK_I18N && typeof window.DECK_I18N.setLang === 'function') {
+            window.DECK_I18N.setLang(lang, true);
+          }
+          const more = document.getElementById('moreWrap');
+          if (more) {
+            more.classList.add('is-expanded');
+            more.classList.remove('is-collapsed');
+          }
+          const tools = document.getElementById('moreTools');
+          if (tools) tools.removeAttribute('hidden');
+        }""",
+        lang,
+    )
+    await page.wait_for_timeout(200)
 
 
 async def set_theme(page, tid: int) -> None:
@@ -105,7 +137,6 @@ async def capture_themes(page) -> None:
     )
     await page.wait_for_timeout(300)
     frames = []
-    # mix dark + light
     for tid in (1, 3, 5, 7, 8, 11, 12, 14, 17, 20, 3):
         await page.evaluate(
             f"""() => {{
@@ -127,18 +158,17 @@ async def capture_themes(page) -> None:
 
 
 async def capture_layouts(page) -> None:
-    """Tour layout variety."""
     frames = []
     await set_theme(page, 3)
     for idx, settle in (
-        (7, 650),   # cards
-        (18, 650),  # contrast
-        (13, 650),  # steps
-        (15, 650),  # quote
-        (16, 700),  # overlay
-        (12, 650),  # media-top
-        (9, 700),   # story
-        (26, 750),  # table
+        (7, 650),
+        (18, 650),
+        (13, 650),
+        (15, 650),
+        (16, 700),
+        (12, 650),
+        (9, 700),
+        (26, 750),
     ):
         await go(page, idx, settle)
         frames.append(await shot(page))
@@ -146,43 +176,66 @@ async def capture_layouts(page) -> None:
 
 
 async def capture_chrome(page) -> None:
-    """Rail → grid → annotate → present."""
     frames = []
     await set_theme(page, 3)
     await go(page, 0, 500)
     frames.append(await shot(page))
 
-    await page.click("#railBtn")
+    await page.evaluate(
+        """() => {
+          const more = document.getElementById('moreWrap');
+          if (more) { more.classList.add('is-expanded'); more.classList.remove('is-collapsed'); }
+          const tools = document.getElementById('moreTools');
+          if (tools) tools.removeAttribute('hidden');
+        }"""
+    )
+    await page.click("#railBtn", force=True)
     await page.wait_for_timeout(600)
     frames.append(await shot(page))
-    await page.click("#railCloseBtn")
+    await page.click("#railCloseBtn", force=True)
     await page.wait_for_timeout(300)
 
-    await page.click("#gridBtn")
+    await page.click("#gridBtn", force=True)
     await page.wait_for_timeout(800)
     frames.append(await shot(page))
-    await page.click("#gridCloseBtn")
+    await page.click("#gridCloseBtn", force=True)
     await page.wait_for_timeout(300)
 
     await go(page, 9, 500)
-    await page.click("#annotateBtn")
+    await page.click("#annotateBtn", force=True)
     await page.wait_for_timeout(450)
     frames.append(await shot(page))
     await page.keyboard.press("Escape")
     await page.wait_for_timeout(250)
 
     await go(page, 0, 400)
-    await page.click("#presentBtn")
+    await page.click("#presentBtn", force=True)
     await page.wait_for_timeout(500)
     frames.append(await shot(page))
-    await page.click("#presentBtn")
+    await page.click("#presentBtn", force=True)
     await page.wait_for_timeout(300)
 
     save_gif(frames, OUT / "preview-chrome.gif", 900)
 
 
 async def main() -> None:
+    global OUT
+    ap = argparse.ArgumentParser(description="Capture README GIF previews")
+    ap.add_argument("--lang", default="zh", choices=["zh", "en"])
+    ap.add_argument("--out", type=Path, default=None)
+    args = ap.parse_args()
+    out = args.out
+    if out is None:
+        out = (
+            REPO / "docs" / "assets" / "screenshots-en"
+            if args.lang == "en"
+            else DEFAULT_OUT
+        )
+    if not out.is_absolute():
+        out = (REPO / out).resolve()
+    OUT = out
     OUT.mkdir(parents=True, exist_ok=True)
+
     uri = HTML.resolve().as_uri()
     async with async_playwright() as p:
         browser = await p.chromium.launch()
@@ -196,21 +249,29 @@ async def main() -> None:
             """() => {
               try {
                 ['harness_training_theme','harness_training_theme_cfg',
-                 'harness_training_particles','harness_training_bgm'].forEach(k => localStorage.removeItem(k));
+                 'harness_training_particles','harness_training_bgm',
+                 'harness_training_lang','harness_training_lang_cfg'].forEach(k => localStorage.removeItem(k));
               } catch (e) {}
               if (window.deckGoTo) window.deckGoTo(0);
             }"""
         )
+        await ensure_lang(page, args.lang)
         await page.wait_for_timeout(400)
 
         await capture_hero(page)
+        await ensure_lang(page, args.lang)
         await capture_flip(page)
+        await ensure_lang(page, args.lang)
         await capture_layouts(page)
+        await ensure_lang(page, args.lang)
         await capture_stage(page)
+        await ensure_lang(page, args.lang)
         await capture_themes(page)
+        await ensure_lang(page, args.lang)
         await capture_chrome(page)
 
         await browser.close()
+    print(f"done lang={args.lang} out={OUT}")
 
 
 if __name__ == "__main__":

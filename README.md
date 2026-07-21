@@ -6,7 +6,7 @@
 [![Offline](https://img.shields.io/badge/offline-file%3A%2F%2F%20ready-success)](#quick-start)
 [![Sponsor](https://img.shields.io/badge/WeChat-sponsor-07C160?logo=wechat&logoColor=white)](./SPONSORS.md)
 
-**English** | [简体中文](./README.zh-CN.md)
+[English](./README.en.md) | [简体中文](./README.zh-CN.md)
 
 > Beautiful, flipable **single-file HTML slide decks** for technical training — a modern PowerPoint alternative that runs offline, exports PPTX, and is authored as modular pages **any mainstream AI coding agent** can maintain — not Cursor-only.
 
@@ -127,8 +127,10 @@ All **20** themes live in `docs/assets/themes.css` (`T` to switch; remembered in
 Regenerate media after visual changes:
 
 ```powershell
-python tools/capture_readme_shots.py   # PNG stills (features + themes)
-python tools/capture_readme_gifs.py    # animated GIFs
+python tools/capture_readme_shots.py                 # ZH PNGs → docs/assets/screenshots/
+python tools/capture_readme_gifs.py                  # ZH GIFs
+python tools/capture_readme_shots.py --lang en       # EN PNGs → docs/assets/screenshots-en/
+python tools/capture_readme_gifs.py --lang en        # EN GIFs
 ```
 
 ---
@@ -207,7 +209,7 @@ python -m tools.export_training_ppt
 
 ```text
 autohtml-ppt/
-├── README.md / README.zh-CN.md
+├── README.md / README.en.md / README.zh-CN.md
 ├── SPONSORS.md / SERVICES.md  # Sponsorship & paid customization
 ├── requirements.txt
 ├── docs/
@@ -220,7 +222,8 @@ autohtml-ppt/
 │   │   ├── slides/            # one html(+css) per page (`data-en` for EN)
 │   │   └── manifest.json
 │   ├── assets/
-│   │   ├── screenshots/       # README images
+│   │   ├── screenshots/       # ZH README images
+│   │   ├── screenshots-en/    # EN README images
 │   │   ├── themes.css
 │   │   └── vendor/            # offline libs
 │   └── skills/tech-training-deck/

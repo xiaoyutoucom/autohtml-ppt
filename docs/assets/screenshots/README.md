@@ -1,9 +1,13 @@
-# README screenshots & GIFs
+# README screenshots & GIFs (Chinese UI)
 
 ```powershell
-python tools/capture_readme_shots.py   # PNG stills (features + multi-theme)
-python tools/capture_readme_gifs.py    # animated GIFs
+python tools/capture_readme_shots.py          # ZH PNGs → this folder
+python tools/capture_readme_gifs.py           # ZH GIFs
+python tools/capture_readme_shots.py --lang en
+python tools/capture_readme_gifs.py --lang en # → ../screenshots-en/
 ```
+
+English shots: [`../screenshots-en/`](../screenshots-en/) · used by [README.en.md](../../../README.en.md)
 
 ## GIFs
 

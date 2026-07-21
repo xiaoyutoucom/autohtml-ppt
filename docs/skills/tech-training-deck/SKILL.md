@@ -103,7 +103,9 @@ E:\wence\autohtml-ppt\
 | 缩略图轨 | `S` / 底栏「目录」；标题卡列表跳转 |
 | 网格总览 | `G` / 底栏「总览」 |
 | 画笔批注 | `A` / 底栏「画笔」；笔/荧光笔/橡皮；按页记忆；导出时隐藏 |
-| 默认配置 | `docs/deck/config.json` 由 `deck/config.js` 运行时加载（HTTP 下改 json 刷新即可，不必 rebuild）；底栏 `P`/`T`/`M`；localStorage 可覆盖 |
+| 默认配置 | `docs/deck/config.json` 由 `deck/config.js` 运行时加载（HTTP 下改 json 刷新即可，不必 rebuild）；底栏 `P`/`T`/`M`/`L`；localStorage 可覆盖 |
+| 语言 | 底栏语言钮 / `L`；`zh`↔`en`；UI + 幻灯 `data-en`；`config.json` → `lang`；标题映射见 `deck/js/i18n.js` |
+| 紧凑底栏 | 图标主按钮；目录/总览/画笔/音乐/导出收入「⋯」；演示与语言保留短文案 |
 | 通用版式 | BigNumber / Contrast / Steps / Split / Comparison / Hero / Media-top / Icon-row / Quote / Cards / Overlay（见 [layouts.md](layouts.md)） |
 | 滚动条 | 全站细霓虹条（WebKit + `scrollbar-color`） |
 

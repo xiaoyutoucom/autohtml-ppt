@@ -55,20 +55,20 @@
     <span class="hud-corner bl"></span>
     <span class="hud-corner br"></span>
   </div>
-  <div class="present-toast" id="presentToast">S 缩略图 · G 总览 · A 画笔 · F 演示 · T 样式 · P 粒子选择 · M 音乐 · ← → 翻页</div>
+  <div class="present-toast" id="presentToast" data-i18n="toast">S 缩略图 · G 总览 · A 画笔 · F 演示 · T 样式 · P 粒子 · L 语言 · M 音乐 · ← → 翻页</div>
   <div class="present-hotzone" id="presentHotzone" aria-hidden="true"></div>
-  <div class="export-ppt-toast" id="exportPptToast" aria-live="polite">正在导出 PPT…</div>
+  <div class="export-ppt-toast" id="exportPptToast" aria-live="polite" data-i18n="exportBusy">正在导出 PPT…</div>
   <aside class="slide-rail" id="slideRail" aria-label="缩略图轨">
     <div class="slide-rail-head">
-      <span>Slides · S</span>
-      <button type="button" id="railCloseBtn" title="关闭">关闭</button>
+      <span data-i18n="railHead">Slides · S</span>
+      <button type="button" id="railCloseBtn" data-i18n="close" data-i18n-title="close" title="关闭">关闭</button>
     </div>
     <div class="slide-rail-list" id="slideRailList"></div>
   </aside>
   <div class="slide-grid" id="slideGrid" aria-label="网格总览">
     <div class="slide-grid-head">
-      <span>All slides · G</span>
-      <button type="button" id="gridCloseBtn" title="关闭">关闭</button>
+      <span data-i18n="gridHead">All slides · G</span>
+      <button type="button" id="gridCloseBtn" data-i18n="close" data-i18n-title="close" title="关闭">关闭</button>
     </div>
     <div class="slide-grid-list" id="slideGridList"></div>
   </div>
@@ -76,16 +76,16 @@
     <canvas id="annotateCanvas"></canvas>
   </div>
   <div class="annotate-bar" id="annotateBar" aria-label="画笔工具">
-    <button type="button" data-tool="pen" class="on" title="钢笔">笔</button>
-    <button type="button" data-tool="highlighter" title="荧光笔">荧光笔</button>
-    <button type="button" data-tool="eraser" title="擦除笔迹">橡皮</button>
+    <button type="button" data-tool="pen" class="on" data-i18n="annPen" title="钢笔">笔</button>
+    <button type="button" data-tool="highlighter" data-i18n="annHigh" title="荧光笔">荧光笔</button>
+    <button type="button" data-tool="eraser" data-i18n="annEraser" title="擦除笔迹">橡皮</button>
     <button type="button" class="swatch on" data-color="#fde047" style="background:#fde047" title="亮黄"></button>
     <button type="button" class="swatch" data-color="#ffffff" style="background:#ffffff" title="白"></button>
     <button type="button" class="swatch" data-color="#22d3ee" style="background:#22d3ee" title="青"></button>
     <button type="button" class="swatch" data-color="#f87171" style="background:#f87171" title="红"></button>
-    <button type="button" id="annUndoBtn" title="撤销">撤销</button>
-    <button type="button" id="annClearBtn" title="清空本页">清空</button>
-    <button type="button" id="annCloseBtn" title="关闭画笔 (A)">完成</button>
+    <button type="button" id="annUndoBtn" data-i18n="annUndo" title="撤销">撤销</button>
+    <button type="button" id="annClearBtn" data-i18n="annClear" title="清空本页">清空</button>
+    <button type="button" id="annCloseBtn" data-i18n="annDone" title="关闭画笔 (A)">完成</button>
   </div>
   <div id="tsparticles" aria-hidden="true"></div>
   <div id="coverCursorGlow" aria-hidden="true"></div>
@@ -105,10 +105,10 @@
         <div class="cover-copy">
           <div class="kicker">Harness Engineering Training · 2026</div>
           <h1 class="brand-mark" id="coverBrand">Harness<br>Engineering</h1>
-          <p class="lead">演示开场 → 常见痛点 → 三次跃迁 → 五大模块 · 本仓落地</p>
+          <p class="lead" data-en="Demo opener → common pain points → three leaps → five modules · landed in this repo">演示开场 → 常见痛点 → 三次跃迁 → 五大模块 · 本仓落地</p>
           <div class="title-meta">
-            <span class="badge"><i data-lucide="cpu" class="icon"></i>Agent = 模型 + Harness</span>
-            <span class="badge"><i data-lucide="chevrons-left-right" class="icon"></i>← → 翻页</span>
+            <span class="badge"><i data-lucide="cpu" class="icon"></i><span data-en="Agent = Model + Harness">Agent = 模型 + Harness</span></span>
+            <span class="badge"><i data-lucide="chevrons-left-right" class="icon"></i><span data-en="← → navigate slides">← → 翻页</span></span>
           </div>
         </div>
         <div class="cover-viz" aria-hidden="true">
@@ -129,69 +129,69 @@
         <div class="cover-foot-card" data-num="01">
           <div class="cover-foot-top">
             <span class="cover-foot-icon"><i data-lucide="play-circle"></i></span>
-            <strong>演示</strong>
+            <strong data-en="Demo">演示</strong>
           </div>
-          <span class="cover-foot-desc">视频开场 · 一条命令跑全量</span>
+          <span class="cover-foot-desc" data-en="Video opener · one command runs the full suite">视频开场 · 一条命令跑全量</span>
         </div>
         <div class="cover-foot-card" data-num="02">
           <div class="cover-foot-top">
             <span class="cover-foot-icon"><i data-lucide="compass"></i></span>
-            <strong>认识 Harness</strong>
+            <strong data-en="Understanding Harness">认识 Harness</strong>
           </div>
-          <span class="cover-foot-desc">痛点 · 马具隐喻 · 三次跃迁</span>
+          <span class="cover-foot-desc" data-en="Pain points · horse harness metaphor · three leaps">痛点 · 马具隐喻 · 三次跃迁</span>
         </div>
         <div class="cover-foot-card" data-num="03">
           <div class="cover-foot-top">
             <span class="cover-foot-icon"><i data-lucide="layers"></i></span>
-            <strong>五大模块</strong>
+            <strong data-en="Five modules">五大模块</strong>
           </div>
-          <span class="cover-foot-desc">上下文 · 执行 · 编排 · 反馈 · 护栏</span>
+          <span class="cover-foot-desc" data-en="Context · execution · orchestration · feedback · guardrails">上下文 · 执行 · 编排 · 反馈 · 护栏</span>
         </div>
         <div class="cover-foot-card" data-num="04">
           <div class="cover-foot-top">
             <span class="cover-foot-icon"><i data-lucide="folder-git-2"></i></span>
-            <strong>本仓实践</strong>
+            <strong data-en="This repo in practice">本仓实践</strong>
           </div>
-          <span class="cover-foot-desc">五件套 · Progress · Runner · Lint</span>
+          <span class="cover-foot-desc" data-en="Five-piece kit · Progress · Runner · Lint">五件套 · Progress · Runner · Lint</span>
         </div>
       </div>
       <div class="cover-meta">
-        <div class="cover-speaker"><i data-lucide="mic-2" class="icon"></i>演讲人：<em id="coverSpeaker">y</em></div>
-        <div class="cover-talk-time"><i data-lucide="clock" class="icon"></i>演讲时间：<em id="coverTalkTime">—</em></div>
+        <div class="cover-speaker"><i data-lucide="mic-2" class="icon"></i><span data-en="Speaker:">演讲人：</span><em id="coverSpeaker">y</em></div>
+        <div class="cover-talk-time"><i data-lucide="clock" class="icon"></i><span data-en="Talk time:">演讲时间：</span><em id="coverTalkTime">—</em></div>
       </div>
     </section>
 
 <section class="slide" data-title="目录">
       <div class="kicker"><i data-lucide="list-tree" class="icon"></i>Contents</div>
-      <h2>今天怎么讲</h2>
-      <p class="lead" style="margin-bottom:.35rem;font-size:.95rem">四章主线 · 先看效果，再讲原理，最后落到本仓</p>
+      <h2 data-en="How we&apos;ll run today">今天怎么讲</h2>
+      <p class="lead" style="margin-bottom:.35rem;font-size:.95rem" data-en="Four-chapter arc · see results first, then principles, then this repo">四章主线 · 先看效果，再讲原理，最后落到本仓</p>
       <div class="toc-board">
         <article class="toc-card">
           <div class="toc-num">CHAPTER 01</div>
           <span class="toc-icon"><i data-lucide="play-circle"></i></span>
-          <h3>演示</h3>
-          <p>Web / 客户端视频开场，再用一条命令跑 SPECCONFIG 全量。</p>
+          <h3 data-en="Demo">演示</h3>
+          <p data-en="Web / client video opener, then one command to run the full SPECCONFIG suite.">Web / 客户端视频开场，再用一条命令跑 SPECCONFIG 全量。</p>
           <span class="toc-watermark">01</span>
         </article>
         <article class="toc-card">
           <div class="toc-num">CHAPTER 02</div>
           <span class="toc-icon"><i data-lucide="compass"></i></span>
-          <h3>认识 Harness</h3>
-          <p>行为坑与幻读 → 马具隐喻 → 从 Prompt 到 Harness 的三次跃迁。</p>
+          <h3 data-en="Understanding Harness">认识 Harness</h3>
+          <p data-en="Behavior traps &amp; phantom reads → harness metaphor → three leaps from Prompt to Harness.">行为坑与幻读 → 马具隐喻 → 从 Prompt 到 Harness 的三次跃迁。</p>
           <span class="toc-watermark">02</span>
         </article>
         <article class="toc-card">
           <div class="toc-num">CHAPTER 03</div>
           <span class="toc-icon"><i data-lucide="layers"></i></span>
-          <h3>五大模块</h3>
-          <p>上下文、执行、编排、反馈、护栏 —— Agent 可靠交付的骨架。</p>
+          <h3 data-en="Five modules">五大模块</h3>
+          <p data-en="Context, execution, orchestration, feedback, guardrails — the skeleton for reliable Agent delivery.">上下文、执行、编排、反馈、护栏 —— Agent 可靠交付的骨架。</p>
           <span class="toc-watermark">03</span>
         </article>
         <article class="toc-card">
           <div class="toc-num">CHAPTER 04</div>
           <span class="toc-icon"><i data-lucide="folder-git-2"></i></span>
-          <h3>本仓实践</h3>
-          <p>五件套落地：Progress · Runner · Skill · Rules · Lint。</p>
+          <h3 data-en="This repo in practice">本仓实践</h3>
+          <p data-en="Five-piece kit: Progress · Runner · Skill · Rules · Lint.">五件套落地：Progress · Runner · Skill · Rules · Lint。</p>
           <span class="toc-watermark">04</span>
         </article>
       </div>
@@ -199,164 +199,166 @@
 
 <section class="slide section-slide" data-title="01 演示">
       <div class="section-num">01</div>
-      <h1>演示开场</h1>
-      <p class="lead">先看 Web / 客户端实机视频，再用一条 Python 命令跑全量用例，再进入 Harness 原理。</p>
+      <h1 data-en="Demo opener">演示开场</h1>
+      <p class="lead" data-en="Watch Web / client demos first, run the full suite with one Python command, then Harness principles.">先看 Web / 客户端实机视频，再用一条 Python 命令跑全量用例，再进入 Harness 原理。</p>
     </section>
 
 <section class="slide slide-demo" data-title="自动化演示">
       <div class="kicker">Demo · Web</div>
-      <h2>Web 自动化演示</h2>
+      <h2 data-en="Web automation demo">Web 自动化演示</h2>
       <div class="demo-player">
         <video id="demoVideoWeb" controls playsinline preload="metadata"
           src="web自动化演示.mp4"
-          title="Web 自动化演示">
-          当前浏览器无法播放视频，请直接打开 <code>docs/web自动化演示.mp4</code>
+          title="Web 自动化演示"
+          data-en-title="Web automation demo">
+          <span data-en="Your browser cannot play this video; open">当前浏览器无法播放视频，请直接打开</span> <code>docs/web自动化演示.mp4</code>
         </video>
-        <p class="demo-hint">文件：docs/web自动化演示.mp4 · 空格播放/暂停 · 翻页会自动暂停</p>
+        <p class="demo-hint" data-en="File: docs/web自动化演示.mp4 · Space play/pause · auto-pause on slide change">文件：docs/web自动化演示.mp4 · 空格播放/暂停 · 翻页会自动暂停</p>
       </div>
     </section>
 
 <section class="slide slide-demo" data-title="客户端演示">
       <div class="kicker">Demo · Client</div>
-      <h2>客户端演示</h2>
+      <h2 data-en="Client demo">客户端演示</h2>
       <div class="demo-player">
         <video id="demoVideoClient" controls playsinline preload="metadata"
           src="客户端演示.mp4"
-          title="客户端演示">
-          当前浏览器无法播放视频，请直接打开 <code>docs/客户端演示.mp4</code>
+          title="客户端演示"
+          data-en-title="Client demo">
+          <span data-en="Your browser cannot play this video; open">当前浏览器无法播放视频，请直接打开</span> <code>docs/客户端演示.mp4</code>
         </video>
-        <p class="demo-hint">文件：docs/客户端演示.mp4 · 空格播放/暂停 · 翻页会自动暂停</p>
+        <p class="demo-hint" data-en="File: docs/客户端演示.mp4 · Space play/pause · auto-pause on slide change">文件：docs/客户端演示.mp4 · 空格播放/暂停 · 翻页会自动暂停</p>
       </div>
     </section>
 
 <section class="slide slide-cmd" data-title="现场跑全量">
       <div class="kicker">Live · pytest_cli</div>
-      <h2>一条命令：执行 SPECCONFIG 全部用例</h2>
-      <p class="lead">浏览器<strong>不能</strong>直接打开本机终端（安全限制）。请在仓库根目录粘贴执行；下方可一键复制。</p>
+      <h2 data-en="One command: run all SPECCONFIG cases">一条命令：执行 SPECCONFIG 全部用例</h2>
+      <p class="lead" data-en="The browser cannot open a local terminal (security). Paste at repo root; copy below with one click.">浏览器<strong data-en="cannot">不能</strong>直接打开本机终端（安全限制）。请在仓库根目录粘贴执行；下方可一键复制。</p>
       <div class="cmd-hero">
         <div class="cmd-label"># README · 常用命令 · tools/pytest_cli.py</div>
         <button type="button" class="cmd-copy" id="copyLiveCmd" data-cmd="python -m tools.pytest_cli -p SPECCONFIG --headed">
-          <i data-lucide="copy" class="icon"></i><span>复制</span>
+          <i data-lucide="copy" class="icon"></i><span data-en="Copy">复制</span>
         </button>
         <pre id="liveCmdText">python -m tools.pytest_cli -p SPECCONFIG --headed</pre>
       </div>
       <ul class="cmd-notes">
-        <li>有界面：加 <code>--headed</code>；无头跑批可去掉该参数</li>
-        <li>只跑一条：加 <code>-c case_smoke_login</code>（或任意 <code>cases/SPECCONFIG/runnable/*.yaml</code> 的 case_id）</li>
-        <li>报告：结束后默认打开 <code>test-output/&lt;时间戳&gt;/report/report.html</code></li>
+        <li data-en="Headed UI: add <code>--headed</code>; drop it for headless batch runs">有界面：加 <code>--headed</code>；无头跑批可去掉该参数</li>
+        <li data-en="Single case: add <code>-c case_smoke_login</code> (or any <code>cases/SPECCONFIG/runnable/*.yaml</code> case_id)">只跑一条：加 <code>-c case_smoke_login</code>（或任意 <code>cases/SPECCONFIG/runnable/*.yaml</code> 的 case_id）</li>
+        <li data-en="Report: opens <code>test-output/&lt;timestamp&gt;/report/report.html</code> by default when done">报告：结束后默认打开 <code>test-output/&lt;时间戳&gt;/report/report.html</code></li>
       </ul>
     </section>
 
 <section class="slide section-slide" data-title="02 认识">
       <div class="section-num">02</div>
-      <h1>认识 Harness</h1>
-      <p class="lead">先讲清是什么，再拆五大模块。</p>
+      <h1 data-en="Understanding Harness">认识 Harness</h1>
+      <p class="lead" data-en="Define what it is first, then unpack the five modules.">先讲清是什么，再拆五大模块。</p>
     </section>
 
 <section class="slide" data-title="三大痛点">
       <div class="kicker">Why Harness</div>
-      <h2>用 AI 编程，这些坑你踩过吗？</h2>
+      <h2 data-en="Coding with AI — hit these traps?">用 AI 编程，这些坑你踩过吗？</h2>
       <div class="layout-cards" style="--n:3">
         <div class="tile">
-          <div class="n">01 · 改偏</div>
-          <h3>只想改样式</h3>
-          <p>AI <strong class="strong">重写整个布局</strong> —— 行为跑偏。</p>
+          <div class="n" data-en="01 · Scope creep">01 · 改偏</div>
+          <h3 data-en="Only wanted styling">只想改样式</h3>
+          <p data-en="AI rewrote the entire layout — behavior drifted.">AI <strong class="strong" data-en="rewrote the entire layout">重写整个布局</strong> —— 行为跑偏。</p>
         </div>
         <div class="tile">
-          <div class="n">02 · 忘约</div>
-          <h3>约定 ≤200 行</h3>
-          <p>聊十几轮后写成 <strong class="strong">1000 行</strong> —— 约束蒸发。</p>
+          <div class="n" data-en="02 · Forgot constraints">02 · 忘约</div>
+          <h3 data-en="Agreed ≤200 lines">约定 ≤200 行</h3>
+          <p data-en="After many turns it became 1000 lines — constraints evaporated.">聊十几轮后写成 <strong class="strong" data-en="1000 lines">1000 行</strong> —— 约束蒸发。</p>
         </div>
         <div class="tile">
-          <div class="n">03 · 越修越乱</div>
-          <h3>修 1 个 Bug</h3>
-          <p>又来 <strong class="strong">3 个新 Bug</strong>，代码越改越乱。</p>
+          <div class="n" data-en="03 · Fix spiral">03 · 越修越乱</div>
+          <h3 data-en="Fix 1 bug">修 1 个 Bug</h3>
+          <p data-en="Three new bugs appeared — code got messier.">又来 <strong class="strong" data-en="3 new bugs">3 个新 Bug</strong>，代码越改越乱。</p>
         </div>
       </div>
-      <div class="story-take" style="margin-top:.75rem;max-width:68rem">行为层三坑：改偏、忘约、越修越乱。下一页还有更隐蔽的：<strong class="strong">幻读、记忆篡改</strong> —— 单靠提示词救不了。</div>
+      <div class="story-take" style="margin-top:.75rem;max-width:68rem" data-en="Three behavior traps: scope creep, forgotten constraints, fix spirals. Next slide — subtler ones: phantom reads, memory tampering — prompts alone won&apos;t save you.">行为层三坑：改偏、忘约、越修越乱。下一页还有更隐蔽的：<strong class="strong" data-en="phantom reads, memory tampering">幻读、记忆篡改</strong> —— 单靠提示词救不了。</div>
     </section>
 
 <section class="slide" data-title="更隐蔽的坑">
       <div class="kicker">Why Harness · 续</div>
-      <h2>Skill 写了也挡不住？更隐蔽的坑</h2>
+      <h2 data-en="Skill written but still failing? Subtler traps">Skill 写了也挡不住？更隐蔽的坑</h2>
       <div class="pain-grid">
         <div class="pain-card">
-          <span class="tag danger">幻读 / 幻觉</span>
-          <h3>Skill 写了，照样「幻读」</h3>
-          <p>规则 / Skill 明明写着路径与约束，AI 仍<strong class="strong">声称已读文件</strong>、编造 API、瞎编目录 —— 文档约束没有强制执行力。</p>
+          <span class="tag danger" data-en="Phantom read / hallucination">幻读 / 幻觉</span>
+          <h3 data-en="Skill exists, still &quot;phantom reads&quot;">Skill 写了，照样「幻读」</h3>
+          <p data-en="Rules / Skill spell paths and constraints; AI still claims it read files, invents APIs, fabricates dirs — docs have no enforcement.">规则 / Skill 明明写着路径与约束，AI 仍<strong class="strong" data-en="claims it read files">声称已读文件</strong>、编造 API、瞎编目录 —— 文档约束没有强制执行力。</p>
         </div>
         <div class="pain-card">
-          <span class="tag warn">记忆污染</span>
-          <h3>旧记忆篡改当前需求</h3>
-          <p>根据历史对话「以为你还要 X」，<strong class="strong">擅自改接口 / 改命名 / 改流程</strong>；跨会话记忆一串味，就把新任务带偏。</p>
+          <span class="tag warn" data-en="Memory pollution">记忆污染</span>
+          <h3 data-en="Old memory skews current requirements">旧记忆篡改当前需求</h3>
+          <p data-en="From history it assumes you still want X and changes APIs / naming / flow on its own; cross-session memory bleeds into new tasks.">根据历史对话「以为你还要 X」，<strong class="strong" data-en="changes APIs / naming / flow on its own">擅自改接口 / 改命名 / 改流程</strong>；跨会话记忆一串味，就把新任务带偏。</p>
         </div>
         <div class="pain-card">
-          <span class="tag warn">假装执行</span>
-          <h3>口头合规，实际没跑</h3>
-          <p>说「已按 Skill 做完 / 已自测通过」，但<strong class="strong">没真读、没真跑、没真验</strong> —— 没有门禁就无法证伪。</p>
+          <span class="tag warn" data-en="Fake execution">假装执行</span>
+          <h3 data-en="Says compliant, never ran">口头合规，实际没跑</h3>
+          <p data-en="Says &quot;done per Skill / tests passed&quot; but never truly read, ran, or verified — no gate to falsify.">说「已按 Skill 做完 / 已自测通过」，但<strong class="strong" data-en="never truly read, ran, or verified">没真读、没真跑、没真验</strong> —— 没有门禁就无法证伪。</p>
         </div>
         <div class="pain-card">
-          <span class="tag danger">约束失效</span>
-          <h3>只写在文档里 = 可被忽略</h3>
-          <p>AGENTS.md / Skill 是「建议」不是「铁律」。没有 Lint、测试、阶段门禁，约束会在长对话里<strong class="strong">逐渐蒸发</strong>。</p>
+          <span class="tag danger" data-en="Constraints fade">约束失效</span>
+          <h3 data-en="Docs only = ignorable">只写在文档里 = 可被忽略</h3>
+          <p data-en="AGENTS.md / Skill are suggestions, not law. Without Lint, tests, stage gates, constraints evaporate in long chats.">AGENTS.md / Skill 是「建议」不是「铁律」。没有 Lint、测试、阶段门禁，约束会在长对话里<strong class="strong" data-en="gradually evaporate">逐渐蒸发</strong>。</p>
         </div>
       </div>
-      <div class="formula" style="margin-top:1rem">解法不是再写一篇更长的 Skill —— 而是用 <strong>Harness</strong>：落盘状态 · 可验证门禁 · 按阶段注入上下文 · 阻断错误推进。</div>
+      <div class="formula" style="margin-top:1rem" data-en="The fix isn&apos;t another longer Skill — use Harness: persisted state · verifiable gates · staged Context · block bad progress.">解法不是再写一篇更长的 Skill —— 而是用 <strong>Harness</strong>：落盘状态 · 可验证门禁 · 按阶段注入上下文 · 阻断错误推进。</div>
     </section>
 
 <section class="slide slide-story" data-title="Harness 是什么">
       <div class="kicker">Definition</div>
-      <h2>Harness = 马具</h2>
+      <h2 data-en="Harness = horse tack">Harness = 马具</h2>
       <div class="story reverse">
         <div class="story-body">
-          <p class="lead">模型是马；Harness 是缰绳、路线、围栏 —— 让它跑得更快、更稳。</p>
+          <p class="lead" data-en="The model is the horse; Harness is reins, route, fence — faster and steadier.">模型是马；Harness 是缰绳、路线、围栏 —— 让它跑得更快、更稳。</p>
           <ul class="story-points">
-            <li>规则文件 · 工具配置 · 任务拆分顺序 · 测试检查流程</li>
-            <li><strong class="strong">统统算 Harness</strong>：围绕模型的工作环境 + 工作流程</li>
-            <li>①上下文 ②执行 ③编排 ④反馈 ⑤护栏 —— 五个核心模块</li>
+            <li data-en="Rule files · tool config · task order · test checks">规则文件 · 工具配置 · 任务拆分顺序 · 测试检查流程</li>
+            <li data-en="All count as Harness: environment + workflow around the model"><strong class="strong" data-en="All count as Harness">统统算 Harness</strong>：围绕模型的工作环境 + 工作流程</li>
+            <li data-en="① Context ② execution ③ orchestration ④ feedback ⑤ guardrails — five core modules">①上下文 ②执行 ③编排 ④反馈 ⑤护栏 —— 五个核心模块</li>
           </ul>
-          <div class="story-take">目标：让这匹马顺利完成任务，而不是在野地里乱跑。</div>
+          <div class="story-take" data-en="Goal: finish the job, not run wild in the open field.">目标：让这匹马顺利完成任务，而不是在野地里乱跑。</div>
         </div>
         <figure class="story-fig">
           <img src="assets/02-five-modules-horse.png" alt="马具隐喻与五大模块" />
-          <figcaption>马是模型 · 缰绳/路线/围栏是 Harness</figcaption>
+          <figcaption data-en="Horse = model · reins/route/fence = Harness">马是模型 · 缰绳/路线/围栏是 Harness</figcaption>
         </figure>
       </div>
     </section>
 
 <section class="slide" data-title="为什么火了">
-      <div class="kicker">为什么突然火了？</div>
-      <h2>瓶颈不在模型，在环境和流程</h2>
-      <p class="lead" style="margin-bottom:.55rem;font-size:.95rem">悬停卡片查看详情 · 同一结论：Harness 决定上限</p>
+      <div class="kicker" data-en="Why the sudden buzz?">为什么突然火了？</div>
+      <h2 data-en="The bottleneck isn&apos;t the model — it&apos;s environment and process">瓶颈不在模型，在环境和流程</h2>
+      <p class="lead" style="margin-bottom:.55rem;font-size:.95rem" data-en="Hover cards for details · same conclusion: Harness sets the ceiling">悬停卡片查看详情 · 同一结论：Harness 决定上限</p>
       <div class="case-grid">
         <div class="case-card" tabindex="0">
           <div class="era">Benchmark</div>
-          <h3>LangChain 实验</h3>
-          <p>同一模型，只优化 Harness → 编码榜从 30 名开外冲进<strong class="strong">前 5</strong></p>
-          <div class="hint-hover">悬停查看详情 →</div>
+          <h3 data-en="LangChain experiment">LangChain 实验</h3>
+          <p data-en="Same model, Harness-only tuning → coding benchmark from 30+ to top 5">同一模型，只优化 Harness → 编码榜从 30 名开外冲进<strong class="strong" data-en="top 5">前 5</strong></p>
+          <div class="hint-hover" data-en="Hover for details →">悬停查看详情 →</div>
           <div class="case-detail">
-            <h4>LangChain · 同模型换 Harness</h4>
+            <h4 data-en="LangChain · same model, new Harness">LangChain · 同模型换 Harness</h4>
             <ul>
-              <li>控制变量：模型不变，只改工具链 / 提示编排 / 反馈环</li>
-              <li>结果：编码基准排名大幅跃升（30+ → Top 5）</li>
-              <li>启示：名次差往往来自「怎么用」，不是「换更强模型」</li>
+              <li data-en="Controlled: model fixed; only toolchain / prompt orchestration / feedback loop changed">控制变量：模型不变，只改工具链 / 提示编排 / 反馈环</li>
+              <li data-en="Result: coding benchmark rank jumped (30+ → Top 5)">结果：编码基准排名大幅跃升（30+ → Top 5）</li>
+              <li data-en="Takeaway: gaps often from how you use it, not a bigger model">启示：名次差往往来自「怎么用」，不是「换更强模型」</li>
             </ul>
-            <div class="src">行业常引案例 · Harness 杠杆效应</div>
+            <div class="src" data-en="Industry-cited case · Harness leverage">行业常引案例 · Harness 杠杆效应</div>
           </div>
         </div>
 
         <div class="case-card" tabindex="0">
           <div class="era">OpenAI</div>
-          <h3>Codex 百万行工程</h3>
-          <p>3→7 人小团队，Harness 引导生成约<strong class="strong">100 万行</strong>代码并内部上线</p>
-          <div class="hint-hover">悬停查看详情 →</div>
+          <h3 data-en="Codex million-line codebase">Codex 百万行工程</h3>
+          <p data-en="3→7 person team; Harness-guided ~1M lines shipped internally">3→7 人小团队，Harness 引导生成约<strong class="strong" data-en="1M lines">100 万行</strong>代码并内部上线</p>
+          <div class="hint-hover" data-en="Hover for details →">悬停查看详情 →</div>
           <div class="case-detail">
             <h4>OpenAI · Harness Engineering</h4>
             <ul>
-              <li>~5 个月 · ~1500 PR · 人均约 3.5 PR/天</li>
-              <li>应用逻辑 / 测试 / CI / 文档 / 可观测，几乎全由 Codex 写</li>
-              <li>关键：隔离 worktree、日志指标可查、目标可验证（如启动 &lt;800ms）</li>
-              <li>官方估计：约手工 1/10 时间建成可上线产品</li>
+              <li data-en="~5 months · ~1500 PR · ~3.5 PR/day per person">~5 个月 · ~1500 PR · 人均约 3.5 PR/天</li>
+              <li data-en="App logic / tests / CI / docs / observability mostly Codex-written">应用逻辑 / 测试 / CI / 文档 / 可观测，几乎全由 Codex 写</li>
+              <li data-en="Keys: isolated worktrees, observable logs/metrics, verifiable goals (e.g. startup &lt;800ms)">关键：隔离 worktree、日志指标可查、目标可验证（如启动 &lt;800ms）</li>
+              <li data-en="Official estimate: ~1/10 time vs manual for shippable product">官方估计：约手工 1/10 时间建成可上线产品</li>
             </ul>
             <div class="src">openai.com/index/harness-engineering</div>
           </div>
@@ -364,16 +366,16 @@
 
         <div class="case-card" tabindex="0">
           <div class="era">Cursor</div>
-          <h3>Coinbase 产线加速</h3>
-          <p>想法→上线从 20 天压到约<strong class="strong">1.8 天</strong>（约 90%），Agent 主导 PR</p>
-          <div class="hint-hover">悬停查看详情 →</div>
+          <h3 data-en="Coinbase production speed">Coinbase 产线加速</h3>
+          <p data-en="Idea→ship: 20 days → ~1.8 days (~90%), Agent-led PRs">想法→上线从 20 天压到约<strong class="strong" data-en="1.8 days">1.8 天</strong>（约 90%），Agent 主导 PR</p>
+          <div class="hint-hover" data-en="Hover for details →">悬停查看详情 →</div>
           <div class="case-detail">
             <h4>Coinbase × Cursor · Agent-first</h4>
             <ul>
-              <li>2400+ 开发者日常使用；约 75% PR 由 Agent 创建</li>
-              <li>想法→首个 PR：约 8 天 → &lt;30 分钟</li>
-              <li>人均每周少约 7 小时手写；PR 合并量约 +55%</li>
-              <li>手段：Plan Mode + 工单直达 Agent + 速度跑（speedrun）冲 PR</li>
+              <li data-en="2400+ devs daily; ~75% PRs Agent-created">2400+ 开发者日常使用；约 75% PR 由 Agent 创建</li>
+              <li data-en="Idea→first PR: ~8 days → &lt;30 minutes">想法→首个 PR：约 8 天 → &lt;30 分钟</li>
+              <li data-en="~7 fewer hours/week handwriting; ~+55% merged PRs">人均每周少约 7 小时手写；PR 合并量约 +55%</li>
+              <li data-en="Plan Mode + tickets to Agent + speedrun PRs">手段：Plan Mode + 工单直达 Agent + 速度跑（speedrun）冲 PR</li>
             </ul>
             <div class="src">cursor.com/blog/coinbase</div>
           </div>
@@ -381,16 +383,16 @@
 
         <div class="case-card" tabindex="0">
           <div class="era">Anthropic</div>
-          <h3>长程 Agent 架构</h3>
-          <p>Initializer + Coding Agent；<strong class="strong">生成与评审分离</strong>，长任务才稳</p>
-          <div class="hint-hover">悬停查看详情 →</div>
+          <h3 data-en="Long-running Agent architecture">长程 Agent 架构</h3>
+          <p data-en="Initializer + Coding Agent; generation vs review separated for stable long tasks">Initializer + Coding Agent；<strong class="strong" data-en="generation and review separated">生成与评审分离</strong>，长任务才稳</p>
+          <div class="hint-hover" data-en="Hover for details →">悬停查看详情 →</div>
           <div class="case-detail">
             <h4>Anthropic · Long-running Harness</h4>
             <ul>
-              <li>痛点：Agent 自评「Done」，UI/API 却一塌糊涂</li>
-              <li>做法：拆任务的 Initializer + 逐步实现的 Coding Agent</li>
-              <li>再加 Generator–Evaluator：别让「写代码的人」给自己打分</li>
-              <li>启示：长任务可靠性来自角色分工与验收环，不是更长 prompt</li>
+              <li data-en="Pain: Agent says Done; UI/API still broken">痛点：Agent 自评「Done」，UI/API 却一塌糊涂</li>
+              <li data-en="Split: Initializer plans + Coding Agent implements stepwise">做法：拆任务的 Initializer + 逐步实现的 Coding Agent</li>
+              <li data-en="Plus Generator–Evaluator: coder shouldn&apos;t grade own work">再加 Generator–Evaluator：别让「写代码的人」给自己打分</li>
+              <li data-en="Long-task reliability = roles + acceptance loop, not longer Prompt">启示：长任务可靠性来自角色分工与验收环，不是更长 prompt</li>
             </ul>
             <div class="src">Harness Design for Long-Running Apps</div>
           </div>
@@ -398,116 +400,116 @@
 
         <div class="case-card" tabindex="0">
           <div class="era">Eval</div>
-          <h3>同模型分差 40+ 分</h3>
-          <p>Sonnet 在 GAIA 上因 Harness 不同，可从约 31% 拉到<strong class="strong">74%</strong></p>
-          <div class="hint-hover">悬停查看详情 →</div>
+          <h3 data-en="Same model, 40+ point spread">同模型分差 40+ 分</h3>
+          <p data-en="Sonnet on GAIA: ~31% → 74% with different Harness">Sonnet 在 GAIA 上因 Harness 不同，可从约 31% 拉到<strong class="strong" data-en="74%">74%</strong></p>
+          <div class="hint-hover" data-en="Hover for details →">悬停查看详情 →</div>
           <div class="case-detail">
-            <h4>同模型 · 不同 Harness 分差</h4>
+            <h4 data-en="Same model · different Harness scores">同模型 · 不同 Harness 分差</h4>
             <ul>
-              <li>公开讨论：Sonnet 4.5 在 GAIA 约 30.91% → 74.55%</li>
-              <li>分差约 43 分，几乎全部归因于工具边界 / 编排 / 反馈</li>
-              <li>结论：评测榜上的「模型战」很多其实是「Harness 战」</li>
+              <li data-en="Public discussion: Sonnet 4.5 on GAIA ~30.91% → 74.55%">公开讨论：Sonnet 4.5 在 GAIA 约 30.91% → 74.55%</li>
+              <li data-en="~43 points mostly from tool boundaries / orchestration / feedback">分差约 43 分，几乎全部归因于工具边界 / 编排 / 反馈</li>
+              <li data-en="Benchmark &quot;model wars&quot; are often Harness wars">结论：评测榜上的「模型战」很多其实是「Harness 战」</li>
             </ul>
-            <div class="src">Agentic Harness Engineering 综述讨论</div>
+            <div class="src" data-en="Agentic Harness Engineering survey">Agentic Harness Engineering 综述讨论</div>
           </div>
         </div>
 
         <div class="case-card" tabindex="0">
           <div class="era">Community</div>
-          <h3>Ralph 过夜闭环</h3>
-          <p>写清 PRD，把 Agent <strong class="strong">循环跑到做完</strong> —— 社区证明「能过夜」</p>
-          <div class="hint-hover">悬停查看详情 →</div>
+          <h3 data-en="Ralph overnight loop">Ralph 过夜闭环</h3>
+          <p data-en="Clear PRD; loop Agent until done — community proof it can run overnight">写清 PRD，把 Agent <strong class="strong" data-en="loop until finished">循环跑到做完</strong> —— 社区证明「能过夜」</p>
+          <div class="hint-hover" data-en="Hover for details →">悬停查看详情 →</div>
           <div class="case-detail">
-            <h4>Ralph Pattern · 自主过夜</h4>
+            <h4 data-en="Ralph Pattern · autonomous overnight">Ralph Pattern · 自主过夜</h4>
             <ul>
-              <li>核心：PRD 条目化 + 循环调用 Claude Code / Amp 等直到清零</li>
-              <li>Harness 提供：目标清单、失败重试、产物落盘、停止条件</li>
-              <li>价值：演示「无人值守」不是玄学，是可复制的运行时模式</li>
-              <li>边界：仍需验收与护栏，否则会「假完成」</li>
+              <li data-en="Core: PRD checklist + loop Claude Code / Amp until clear">核心：PRD 条目化 + 循环调用 Claude Code / Amp 等直到清零</li>
+              <li data-en="Harness: goals, retries, artifacts on disk, stop conditions">Harness 提供：目标清单、失败重试、产物落盘、停止条件</li>
+              <li data-en="Shows unattended mode is a repeatable runtime pattern">价值：演示「无人值守」不是玄学，是可复制的运行时模式</li>
+              <li data-en="Still needs acceptance and guardrails or &quot;fake done&quot;">边界：仍需验收与护栏，否则会「假完成」</li>
             </ul>
             <div class="src">Geoffrey Huntley · Ralph Pattern</div>
           </div>
         </div>
       </div>
-      <div class="formula" style="margin-top:.85rem">行业共识：AI 编程的瓶颈不在模型有多聪明，而在你围绕模型搭的环境和流程够不够好。</div>
+      <div class="formula" style="margin-top:.85rem" data-en="Industry consensus: AI coding bottlenecks aren&apos;t model smarts — it&apos;s how good your environment and process around the model are.">行业共识：AI 编程的瓶颈不在模型有多聪明，而在你围绕模型搭的环境和流程够不够好。</div>
     </section>
 
 <section class="slide" data-title="提示词工程">
       <div class="kicker">Evolution · 1</div>
-      <h2>提示词工程（2022～2024）</h2>
-      <p class="lead">核心：通过对话让 AI <strong class="strong">听懂你的需求</strong>。</p>
+      <h2 data-en="Prompt engineering (2022–2024)">提示词工程（2022～2024）</h2>
+      <p class="lead" data-en="Core idea: through dialogue, make AI understand your requirements.">核心：通过对话让 AI <strong class="strong" data-en="understand your requirements">听懂你的需求</strong>。</p>
       <div class="layout-icon-row" style="--n:4">
         <div class="icon-card">
           <div class="ico">01 · ROLE</div>
-          <h3>角色设定</h3>
-          <p>如资深后端工程师，框定回答风格与边界。</p>
+          <h3 data-en="Role setting">角色设定</h3>
+          <p data-en="e.g. senior backend engineer — style and boundaries.">如资深后端工程师，框定回答风格与边界。</p>
         </div>
         <div class="icon-card">
           <div class="ico">02 · COT</div>
-          <h3>思维链</h3>
-          <p>一步步思考，降低跳步与胡编。</p>
+          <h3 data-en="Chain of thought">思维链</h3>
+          <p data-en="Step by step — fewer leaps and fabrications.">一步步思考，降低跳步与胡编。</p>
         </div>
         <div class="icon-card">
           <div class="ico">03 · FEW-SHOT</div>
-          <h3>给示例</h3>
-          <p>Few-shot：让它模仿你要的写法。</p>
+          <h3 data-en="Examples">给示例</h3>
+          <p data-en="Few-shot: mimic the style you want.">Few-shot：让它模仿你要的写法。</p>
         </div>
         <div class="icon-card">
           <div class="ico">04 · FORMAT</div>
-          <h3>格式约束</h3>
-          <p>约束输出（如 JSON），方便下游消费。</p>
+          <h3 data-en="Format constraints">格式约束</h3>
+          <p data-en="Constrain output (e.g. JSON) for downstream use.">约束输出（如 JSON），方便下游消费。</p>
         </div>
       </div>
-      <div class="story-take" style="margin-top:.75rem;max-width:68rem">技巧简单，但能明显提升单次输出质量 —— 这是最<strong class="strong">内层</strong>。</div>
+      <div class="story-take" style="margin-top:.75rem;max-width:68rem" data-en="Simple techniques, big lift on single-shot quality — the innermost layer.">技巧简单，但能明显提升单次输出质量 —— 这是最<strong class="strong" data-en="innermost">内层</strong>。</div>
     </section>
 
 <section class="slide" data-title="上下文工程">
       <div class="kicker">Evolution · 2</div>
-      <h2>上下文工程（2025）</h2>
-      <p class="lead">核心：在<strong class="strong">对的时候</strong>，把<strong class="strong">对的信息</strong>喂给 AI。</p>
+      <h2 data-en="Context engineering (2025)">上下文工程（2025）</h2>
+      <p class="lead" data-en="Core: at the right time, feed the right information to AI.">核心：在<strong class="strong" data-en="the right time">对的时候</strong>，把<strong class="strong" data-en="the right information">对的信息</strong>喂给 AI。</p>
       <div class="layout-media-top">
         <figure class="media-fig">
           <img src="assets/04-context-engineering.png" alt="上下文工程" />
-          <figcaption>规则 · RAG · 压缩 · 记忆 —— 四条「管道」</figcaption>
+          <figcaption data-en="Rules · RAG · compression · memory — four pipelines">规则 · RAG · 压缩 · 记忆 —— 四条「管道」</figcaption>
         </figure>
         <div class="under-grid">
-          <div class="tile"><b>AGENTS.md</b>项目背景与规范</div>
-          <div class="tile"><b>RAG</b>检索相关资料</div>
-          <div class="tile"><b>压缩摘要</b>精简过长上下文</div>
-          <div class="tile"><b>跨对话记忆</b>不再聊着断片</div>
+          <div class="tile" data-en="AGENTS.md — project background &amp; standards"><b>AGENTS.md</b>项目背景与规范</div>
+          <div class="tile" data-en="RAG — retrieve relevant docs"><b>RAG</b>检索相关资料</div>
+          <div class="tile" data-en="Compression summary — trim long Context"><b>压缩摘要</b>精简过长上下文</div>
+          <div class="tile" data-en="Cross-chat memory — no mid-chat amnesia"><b>跨对话记忆</b>不再聊着断片</div>
         </div>
       </div>
-      <div class="story-take" style="margin-top:.55rem;max-width:68rem">包裹着提示词：关注「怎么给 AI 提供信息」。</div>
+      <div class="story-take" style="margin-top:.55rem;max-width:68rem" data-en="Wraps Prompt: focus on how you supply information to AI.">包裹着提示词：关注「怎么给 AI 提供信息」。</div>
     </section>
 
 <section class="slide" data-title="Harness 工程">
       <div class="kicker">Evolution · 3</div>
       <h2>Harness Engineering（2026）</h2>
-      <p class="lead">不只喂信息，还要让 AI <strong class="strong">持续靠谱地完成整个任务</strong>。</p>
+      <p class="lead" data-en="Not just feeding info — keep AI reliably finishing whole tasks.">不只喂信息，还要让 AI <strong class="strong" data-en="reliably finish the whole task">持续靠谱地完成整个任务</strong>。</p>
       <div class="layout-steps" style="--n:5">
-        <div class="step"><div class="n">01</div><h3>装工具</h3><p>终端 / 浏览器 / MCP</p></div>
-        <div class="step"><div class="n">02</div><h3>拆任务</h3><p>大任务增量开发</p></div>
-        <div class="step"><div class="n">03</div><h3>写代码</h3><p>按阶段推进产物</p></div>
-        <div class="step"><div class="n">04</div><h3>自检</h3><p>出问题自己修</p></div>
-        <div class="step"><div class="n">05</div><h3>护栏</h3><p>防质量越迭代越差</p></div>
+        <div class="step"><div class="n">01</div><h3 data-en="Equip tools">装工具</h3><p data-en="Terminal / browser / MCP">终端 / 浏览器 / MCP</p></div>
+        <div class="step"><div class="n">02</div><h3 data-en="Split tasks">拆任务</h3><p data-en="Incremental work on big jobs">大任务增量开发</p></div>
+        <div class="step"><div class="n">03</div><h3 data-en="Write code">写代码</h3><p data-en="Stage-by-stage artifacts">按阶段推进产物</p></div>
+        <div class="step"><div class="n">04</div><h3 data-en="Self-check">自检</h3><p data-en="Fix issues itself">出问题自己修</p></div>
+        <div class="step"><div class="n">05</div><h3 data-en="Guardrails">护栏</h3><p data-en="Stop quality decay across iterations">防质量越迭代越差</p></div>
       </div>
       <figure class="media-fig" style="margin:.7rem 0 0;padding:.35rem;border-radius:calc(var(--radius) + 2px);background:var(--panel);border:1px solid color-mix(in srgb, var(--neon) 28%, transparent);max-width:68rem">
         <img src="assets/05-harness-loop.png" alt="Harness 闭环" style="width:100%;max-height:min(28vh,240px);object-fit:contain;display:block;border-radius:10px" />
       </figure>
-      <div class="story-take" style="margin-top:.55rem;max-width:68rem">最外层：包住提示词 + 上下文。</div>
+      <div class="story-take" style="margin-top:.55rem;max-width:68rem" data-en="Outermost layer: wraps Prompt + Context.">最外层：包住提示词 + 上下文。</div>
     </section>
 
 <section class="slide slide-story" data-title="层层包含">
-      <div class="kicker">三者关系</div>
-      <h2>层层包含，不是互相取代</h2>
+      <div class="kicker" data-en="How the three relate">三者关系</div>
+      <h2 data-en="Nested layers — not replacements">层层包含，不是互相取代</h2>
       <div class="story reverse">
         <div class="story-body">
           <ul class="story-points">
-            <li><strong class="strong">提示词</strong>（最内层）：怎么给 AI 下指令</li>
-            <li><strong class="strong">上下文</strong>（中间层）：怎么给 AI 提供信息</li>
-            <li><strong class="strong">Harness</strong>（最外层）：怎么让 AI 持续靠谱干完一整件事</li>
+            <li data-en="Prompt (innermost): how you instruct AI"><strong class="strong">提示词</strong>（最内层）：怎么给 AI 下指令</li>
+            <li data-en="Context (middle): how you supply information"><strong class="strong">上下文</strong>（中间层）：怎么给 AI 提供信息</li>
+            <li data-en="Harness (outermost): how AI reliably finishes one whole job"><strong class="strong">Harness</strong>（最外层）：怎么让 AI 持续靠谱干完一整件事</li>
           </ul>
-          <div class="story-take">很多人以为 Harness 是 2026 才蹦出来的 —— 其实从 ChatGPT 起大家就在做，只是现在有了名字。</div>
+          <div class="story-take" data-en="Many think Harness appeared in 2026 — we&apos;ve been doing it since ChatGPT; it just got a name.">很多人以为 Harness 是 2026 才蹦出来的 —— 其实从 ChatGPT 起大家就在做，只是现在有了名字。</div>
         </div>
         <figure class="story-fig">
           <img src="assets/06-nested-layers.png" alt="三层嵌套" />
@@ -519,160 +521,160 @@
 <section class="slide slide-center" data-title="公式">
       <div class="kicker">Formula</div>
       <div class="layout-quote">
-        <div class="quote-line">Agent = <span class="m-model">模型</span> <span class="m-plus">+</span> <span class="m-harness">Harness</span></div>
-        <p class="lead">围绕模型搭建的工具、规则、流程、检查机制，<strong class="strong">全都属于 Harness</strong>。</p>
+        <div class="quote-line">Agent = <span class="m-model" data-en="Model">模型</span> <span class="m-plus">+</span> <span class="m-harness">Harness</span></div>
+        <p class="lead" data-en="Tools, rules, process, checks around the model — all are Harness.">围绕模型搭建的工具、规则、流程、检查机制，<strong class="strong" data-en="all belong to Harness">全都属于 Harness</strong>。</p>
         <div class="def-row">
-          <div class="def"><b>Agent</b><p>能持续干活的 AI</p></div>
-          <div class="def"><b>模型</b><p>思考能力 · 生成文本</p></div>
-          <div class="def"><b>Harness</b><p>模型之外的一切 —— 工作环境 + 工作流程</p></div>
+          <div class="def"><b>Agent</b><p data-en="AI that keeps working">能持续干活的 AI</p></div>
+          <div class="def"><b data-en="Model">模型</b><p data-en="Reasoning · text generation">思考能力 · 生成文本</p></div>
+          <div class="def"><b>Harness</b><p data-en="Everything beyond the model — environment + workflow">模型之外的一切 —— 工作环境 + 工作流程</p></div>
         </div>
       </div>
     </section>
 
 <section class="slide" data-title="公式总览">
       <div class="kicker">Big Picture</div>
-      <h2>人类驾驭 → 五模块 → 持续交付</h2>
+      <h2 data-en="Human steering → five modules → steady delivery">人类驾驭 → 五模块 → 持续交付</h2>
       <div class="layout-overlay">
         <img src="assets/13-agent-harness-overview.png" alt="Agent 总览" />
-        <div class="cap"><strong>人类驾驭</strong> · AI 模型居中 · Harness 五模块 · 测试通过 · <strong>持续靠谱地交付</strong></div>
+        <div class="cap" data-en="Human steering · AI model at center · Harness five modules · tests pass · steady reliable delivery"><strong data-en="Human steering">人类驾驭</strong> · AI 模型居中 · Harness 五模块 · 测试通过 · <strong data-en="steady reliable delivery">持续靠谱地交付</strong></div>
       </div>
     </section>
 
 <section class="slide section-slide" data-title="03 架构">
       <div class="section-num">03</div>
-      <h1>五大核心模块</h1>
-      <p class="lead">并不抽象 —— 就是 AI 干活时会遇到的几个核心问题；有项目经验的人会觉得很熟。</p>
+      <h1 data-en="Five core modules">五大核心模块</h1>
+      <p class="lead" data-en="Not abstract — core problems while AI works; familiar if you&apos;ve shipped projects.">并不抽象 —— 就是 AI 干活时会遇到的几个核心问题；有项目经验的人会觉得很熟。</p>
     </section>
 
 <section class="slide" data-title="模块一">
-      <div class="kicker">模块 ①</div>
-      <h2>上下文架构：了解背景和规矩</h2>
-      <p class="lead">像新人入职：先喂需求、背景、开发规范。</p>
+      <div class="kicker" data-en="Module ①">模块 ①</div>
+      <h2 data-en="Context architecture: background and rules">上下文架构：了解背景和规矩</h2>
+      <p class="lead" data-en="Like onboarding: requirements, background, dev standards first.">像新人入职：先喂需求、背景、开发规范。</p>
       <div class="layout-contrast">
         <div class="panel">
-          <div class="lbl">Before · 坑</div>
-          <h3>几千行塞一个文件</h3>
+          <div class="lbl">Before · <span data-en="pitfalls">坑</span></div>
+          <h3 data-en="Thousands of lines in one file">几千行塞一个文件</h3>
           <ul>
-            <li>规则全堆进一个 AGENTS.md</li>
-            <li>AI 更容易漏关键信息</li>
-            <li>长对话里约束逐渐蒸发</li>
+            <li data-en="All rules in one AGENTS.md">规则全堆进一个 AGENTS.md</li>
+            <li data-en="AI more likely misses key info">AI 更容易漏关键信息</li>
+            <li data-en="Constraints fade in long chats">长对话里约束逐渐蒸发</li>
           </ul>
         </div>
         <div class="panel lit">
-          <div class="lbl">After · 改法</div>
-          <h3>AGENTS.md 当目录</h3>
+          <div class="lbl">After · <span data-en="fix">改法</span></div>
+          <h3 data-en="AGENTS.md as index">AGENTS.md 当目录</h3>
           <ul>
-            <li>写清技术栈、规范、禁止事项</li>
-            <li>细节放 <code>docs/</code>，按需加载</li>
-            <li>分层文档 · 上下文压缩</li>
+            <li data-en="Stack, standards, forbidden items spelled out">写清技术栈、规范、禁止事项</li>
+            <li data-en="Details in docs/, load on demand">细节放 <code>docs/</code>，按需加载</li>
+            <li data-en="Layered docs · Context compression">分层文档 · 上下文压缩</li>
           </ul>
         </div>
       </div>
-      <div class="story-take" style="margin-top:.7rem;max-width:68rem">关键词：AGENTS.md · 分层文档 · 上下文压缩 · 渐进式加载</div>
+      <div class="story-take" style="margin-top:.7rem;max-width:68rem" data-en="Keywords: AGENTS.md · layered docs · Context compression · progressive loading">关键词：AGENTS.md · 分层文档 · 上下文压缩 · 渐进式加载</div>
     </section>
 
 <section class="slide" data-title="模块二">
-      <div class="kicker">模块 ②</div>
-      <h2>执行能力：装上手脚和工具</h2>
-      <p class="lead">模型本身只会输出文本 —— 要开发项目，得能操作电脑。</p>
+      <div class="kicker" data-en="Module ②">模块 ②</div>
+      <h2 data-en="Execution: hands and tools">执行能力：装上手脚和工具</h2>
+      <p class="lead" data-en="Models only emit text — building software needs operating the machine.">模型本身只会输出文本 —— 要开发项目，得能操作电脑。</p>
       <div class="layout-icon-row" style="--n:5">
-        <div class="icon-card"><div class="ico">CLI</div><h3>终端</h3><p>跑命令、装依赖、看日志。</p></div>
-        <div class="icon-card"><div class="ico">FS</div><h3>文件</h3><p>读写代码与配置。</p></div>
-        <div class="icon-card"><div class="ico">WEB</div><h3>浏览器</h3><p>实机打开、点选、验收。</p></div>
-        <div class="icon-card"><div class="ico">MCP</div><h3>MCP</h3><p>联网、读库、抓最新内容。</p></div>
-        <div class="icon-card"><div class="ico">SKILL</div><h3>Skills</h3><p>复杂工作流封成技能包。</p></div>
+        <div class="icon-card"><div class="ico">CLI</div><h3 data-en="Terminal">终端</h3><p data-en="Run commands, install deps, read logs.">跑命令、装依赖、看日志。</p></div>
+        <div class="icon-card"><div class="ico">FS</div><h3 data-en="Files">文件</h3><p data-en="Read/write code and config.">读写代码与配置。</p></div>
+        <div class="icon-card"><div class="ico">WEB</div><h3 data-en="Browser">浏览器</h3><p data-en="Open UI, click, accept in real runs.">实机打开、点选、验收。</p></div>
+        <div class="icon-card"><div class="ico">MCP</div><h3>MCP</h3><p data-en="Network, DB, fresh content.">联网、读库、抓最新内容。</p></div>
+        <div class="icon-card"><div class="ico">SKILL</div><h3>Skills</h3><p data-en="Complex workflows as Skill packs.">复杂工作流封成技能包。</p></div>
       </div>
-      <div class="story-take" style="margin-top:.75rem;max-width:68rem"><strong class="strong">工具越多，能干的活越多</strong> —— 同时要有权限边界。</div>
+      <div class="story-take" style="margin-top:.75rem;max-width:68rem" data-en="More tools → more work — with permission boundaries."><strong class="strong" data-en="More tools, more capability">工具越多，能干的活越多</strong> —— 同时要有权限边界。</div>
     </section>
 
 <section class="slide" data-title="模块三">
-      <div class="kicker">模块 ③</div>
-      <h2>任务编排：安排好工作计划</h2>
-      <p class="lead">一把梭大需求 → 上下文装不下、约束被冲淡 → 渣渣代码。</p>
+      <div class="kicker" data-en="Module ③">模块 ③</div>
+      <h2 data-en="Task orchestration: plan the work">任务编排：安排好工作计划</h2>
+      <p class="lead" data-en="One-shot huge asks → Context overflow, diluted constraints → brittle code.">一把梭大需求 → 上下文装不下、约束被冲淡 → 渣渣代码。</p>
       <div class="layout-steps" style="--n:4">
-        <div class="step"><div class="n">01</div><h3>拆小任务</h3><p>每次只做一个功能点</p></div>
-        <div class="step"><div class="n">02</div><h3>Plan Mode</h3><p>出方案，人工确认再写码</p></div>
-        <div class="step"><div class="n">03</div><h3>沉淀 + Git</h3><p>每功能存档，可回滚</p></div>
-        <div class="step"><div class="n">04</div><h3>SubAgents</h3><p>互不依赖时并行</p></div>
+        <div class="step"><div class="n">01</div><h3 data-en="Small slices">拆小任务</h3><p data-en="One feature at a time">每次只做一个功能点</p></div>
+        <div class="step"><div class="n">02</div><h3>Plan Mode</h3><p data-en="Plan first, human OK, then code">出方案，人工确认再写码</p></div>
+        <div class="step"><div class="n">03</div><h3 data-en="Docs + Git">沉淀 + Git</h3><p data-en="Checkpoint each feature, rollback ready">每功能存档，可回滚</p></div>
+        <div class="step"><div class="n">04</div><h3>SubAgents</h3><p data-en="Parallel when independent">互不依赖时并行</p></div>
       </div>
-      <div class="story-take" style="margin-top:.75rem;max-width:68rem">一个一个来，稳步推进 —— 新对话靠文档找回记忆。</div>
+      <div class="story-take" style="margin-top:.75rem;max-width:68rem" data-en="Step by step — new chats recover memory from docs.">一个一个来，稳步推进 —— 新对话靠文档找回记忆。</div>
     </section>
 
 <section class="slide" data-title="模块四">
-      <div class="kicker">模块 ④</div>
-      <h2>反馈机制：自己检查自己的工作</h2>
-      <p class="lead">AI 说「完成了」≠ 一点运行就全是 Bug。</p>
+      <div class="kicker" data-en="Module ④">模块 ④</div>
+      <h2 data-en="Feedback: check your own work">反馈机制：自己检查自己的工作</h2>
+      <p class="lead" data-en="AI says &quot;done&quot; ≠ runs clean with zero bugs.">AI 说「完成了」≠ 一点运行就全是 Bug。</p>
       <div class="layout-comparison">
         <table>
           <thead>
-            <tr><th>环节</th><th class="hl">做什么</th><th>谁介入</th></tr>
+            <tr><th data-en="Stage">环节</th><th class="hl" data-en="What">做什么</th><th data-en="Who">谁介入</th></tr>
           </thead>
           <tbody>
-            <tr><td>自动检查</td><td class="hl">Linter / 测试 / 浏览器</td><td>Harness</td></tr>
-            <tr><td>自主修复</td><td class="hl">读报错 → 改代码</td><td>Agent</td></tr>
-            <tr><td>搞不定</td><td class="hl">描述 Bug 求助</td><td>人</td></tr>
-            <tr><td>互审</td><td class="hl">多 Agent ≈ Code Review</td><td>Agent × N</td></tr>
+            <tr><td data-en="Auto check">自动检查</td><td class="hl">Linter / 测试 / 浏览器</td><td>Harness</td></tr>
+            <tr><td data-en="Self-fix">自主修复</td><td class="hl" data-en="Read errors → change code">读报错 → 改代码</td><td>Agent</td></tr>
+            <tr><td data-en="Stuck">搞不定</td><td class="hl" data-en="Describe bug, ask human">描述 Bug 求助</td><td data-en="Human">人</td></tr>
+            <tr><td data-en="Peer review">互审</td><td class="hl" data-en="Multi-Agent ≈ Code Review">多 Agent ≈ Code Review</td><td>Agent × N</td></tr>
           </tbody>
         </table>
       </div>
-      <div class="story-take" style="margin-top:.7rem;max-width:68rem">Harness 不是放手不管 —— 把人的精力用在最关键的地方。</div>
+      <div class="story-take" style="margin-top:.7rem;max-width:68rem" data-en="Harness isn&apos;t hands-off — humans focus on the critical bits.">Harness 不是放手不管 —— 把人的精力用在最关键的地方。</div>
     </section>
 
 <section class="slide" data-title="模块五">
-      <div class="kicker">模块 ⑤</div>
-      <h2>架构护栏：防止越改越乱</h2>
-      <p class="lead">AI 会模仿仓库里已有代码 —— <strong class="strong">包括烂代码</strong>；技术债越滚越大。</p>
+      <div class="kicker" data-en="Module ⑤">模块 ⑤</div>
+      <h2 data-en="Architecture guardrails: stop the rot">架构护栏：防止越改越乱</h2>
+      <p class="lead" data-en="AI mimics existing repo code — including bad code; tech debt snowballs.">AI 会模仿仓库里已有代码 —— <strong class="strong" data-en="including bad code">包括烂代码</strong>；技术债越滚越大。</p>
       <div class="layout-cards" style="--n:4">
         <div class="tile">
           <div class="n">01</div>
-          <h3>架构 Linter</h3>
-          <p>限制依赖方向（≠ 风格 Linter）</p>
+          <h3 data-en="Architecture Linter">架构 Linter</h3>
+          <p data-en="Dependency direction limits (≠ style Linter)">限制依赖方向（≠ 风格 Linter）</p>
         </div>
         <div class="tile">
           <div class="n">02</div>
           <h3>Pre-commit</h3>
-          <p>提交前自动拦截违规</p>
+          <p data-en="Block violations before commit">提交前自动拦截违规</p>
         </div>
         <div class="tile">
           <div class="n">03</div>
-          <h3>垃圾回收</h3>
-          <p>定期扫描并提修复 PR</p>
+          <h3 data-en="Garbage collection">垃圾回收</h3>
+          <p data-en="Periodic scan and fix PRs">定期扫描并提修复 PR</p>
         </div>
         <div class="tile">
           <div class="n">04</div>
-          <h3>Git 检查点</h3>
-          <p>每功能提交，随时可回滚</p>
+          <h3 data-en="Git checkpoints">Git 检查点</h3>
+          <p data-en="Commit per feature, rollback anytime">每功能提交，随时可回滚</p>
         </div>
       </div>
     </section>
 
 <section class="slide" data-title="本质收束">
       <div class="kicker">Summary</div>
-      <h2>Harness = 工程经验，系统化用到 AI 上</h2>
+      <h2 data-en="Harness = engineering know-how, systematized for AI">Harness = 工程经验，系统化用到 AI 上</h2>
       <div class="grid2">
         <div class="card featured">
-          <h3>不是新技术</h3>
-          <p>写规则、配工具、拆任务、跑测试、定架构 —— 程序员做项目的老方法；换到 AI 场景，就叫 Harness。</p>
+          <h3 data-en="Not a new technology">不是新技术</h3>
+          <p data-en="Rules, tools, task split, tests, architecture — old dev practice; on AI teams it&apos;s called Harness.">写规则、配工具、拆任务、跑测试、定架构 —— 程序员做项目的老方法；换到 AI 场景，就叫 Harness。</p>
         </div>
         <div class="card">
-          <h3>越懂工程，越能驾驭 AI</h3>
-          <p>多做完整项目、多积累工程经验 —— 需求分析、方案设计、任务拆解、质量把关，就是最好的 Harness。</p>
+          <h3 data-en="More engineering skill → better AI steering">越懂工程，越能驾驭 AI</h3>
+          <p data-en="Ship full projects, accumulate practice — analysis, design, decomposition, quality gates are the best Harness.">多做完整项目、多积累工程经验 —— 需求分析、方案设计、任务拆解、质量把关，就是最好的 Harness。</p>
         </div>
       </div>
       <div class="tips-list" style="margin-top:1rem">
-        <div class="tip-item">开工前写好 <code>AGENTS.md</code></div>
-        <div class="tip-item">先 Plan Mode，人工确认再写码</div>
-        <div class="tip-item">MCP / Skills 配好工具</div>
-        <div class="tip-item">做完功能自己跑测试 / Linter / 浏览器</div>
-        <div class="tip-item">每功能：沉淀文档 + Git 存档点</div>
+        <div class="tip-item" data-en="Write AGENTS.md before starting">开工前写好 <code>AGENTS.md</code></div>
+        <div class="tip-item" data-en="Plan Mode first; human OK then code">先 Plan Mode，人工确认再写码</div>
+        <div class="tip-item" data-en="Wire MCP / Skills tools">MCP / Skills 配好工具</div>
+        <div class="tip-item" data-en="After each feature: tests / Linter / browser">做完功能自己跑测试 / Linter / 浏览器</div>
+        <div class="tip-item" data-en="Per feature: docs + Git checkpoint">每功能：沉淀文档 + Git 存档点</div>
       </div>
-      <p class="lead" style="margin-top:.8rem;font-size:1rem">下一章：本仓阶段流水线落地</p>
+      <p class="lead" style="margin-top:.8rem;font-size:1rem" data-en="Next chapter: stage pipeline in this repo">下一章：本仓阶段流水线落地</p>
     </section>
 
 <section class="slide section-slide" data-title="04 实践">
       <div class="section-num">04</div>
-      <h1>Harness 实践</h1>
-      <p class="lead">把通识落进本仓：五件套框架 · 阶段流水线 · 门禁与闭环</p>
+      <h1 data-en="Harness in practice">Harness 实践</h1>
+      <p class="lead" data-en="General ideas in this repo: five-piece kit · stage pipeline · gates &amp; flywheel">把通识落进本仓：五件套框架 · 阶段流水线 · 门禁与闭环</p>
     </section>
 
 <section class="slide" data-title="实践框架">
@@ -681,152 +683,152 @@
         <div class="split-body">
           <div class="layout-bignumber is-compact">
             <div class="figure">5</div>
-            <div class="caption">本仓 Harness 五件套</div>
+            <div class="caption" data-en="This repo&apos;s Harness five-piece kit">本仓 Harness 五件套</div>
             <div class="foot">Progress · Runner · Skill · Rules · Lint</div>
           </div>
         </div>
         <div class="split-media" style="min-height:0;padding:.85rem 1rem">
-          <p class="lead" style="margin:0;font-size:.92rem">Agent 生产 → Harness 校验 → 人审异常 · 虚线英文可悬停看解释</p>
+          <p class="lead" style="margin:0;font-size:.92rem" data-en="Agent produces → Harness validates → human reviews exceptions · hover dashed English for gloss">Agent 生产 → Harness 校验 → 人审异常 · 虚线英文可悬停看解释</p>
         </div>
       </div>
       <table class="fw-table">
         <thead>
-          <tr><th>组件</th><th>解释</th><th>定位</th></tr>
+          <tr><th data-en="Component">组件</th><th data-en="Explanation">解释</th><th data-en="Role">定位</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>Progress<br/>进度看板</td>
-            <td>记录流水线走到哪、状态如何、哪里被 Gate 卡住；内含 <strong class="strong">S0–S9</strong> 阶段字段
+            <td>Progress<br/><span data-en="Progress board">进度看板</span></td>
+            <td data-en="Tracks pipeline position, status, Gate blocks; includes S0–S9 stage fields">记录流水线走到哪、状态如何、哪里被 Gate 卡住；内含 <strong class="strong">S0–S9</strong> 阶段字段
               <span class="cite-path">cases/SPECCONFIG/progress.yaml · L1；阶段序 harness/core/paths.py · L8（STAGE_ORDER）</span>
             </td>
-            <td>Runner 读写</td>
+            <td data-en="Runner read/write">Runner 读写</td>
           </tr>
           <tr>
-            <td>Runner<br/>总控引擎</td>
-            <td>推动 Status/Next；决定要不要 Lint；<code>--advance</code> 时 <strong class="strong">online 委派 Agent</strong>（offline 可跳过）
+            <td>Runner<br/><span data-en="Orchestrator">总控引擎</span></td>
+            <td data-en="Drives Status/Next; Lint decisions; with --advance, online delegates to Agent (offline can skip)">推动 Status/Next；决定要不要 Lint；<code>--advance</code> 时 <strong class="strong" data-en="online delegates Agent">online 委派 Agent</strong>（offline 可跳过）
               <span class="cite-path">harness/runner.py · L1；CLI · L1814；委派例 harness/cursor/s1_delegate.py · L1</span>
             </td>
-            <td>人 · CI · Agent</td>
+            <td data-en="Human · CI · Agent">人 · CI · Agent</td>
           </tr>
           <tr>
-            <td>Skill<br/>技能包</td>
-            <td><strong class="strong">教「怎么写对」</strong>（给人和 Agent）· 不直接被 Python 执行
+            <td>Skill<br/><span data-en="Skill pack">技能包</span></td>
+            <td data-en="Teaches how to write correctly (human + Agent) · not executed by Python directly"><strong class="strong" data-en="Teaches how to write correctly">教「怎么写对」</strong>（给人和 Agent）· 不直接被 Python 执行
               <span class="cite-path">harness/skills/s1_clean.md · L1；目录 harness/skills/s1–s9</span>
             </td>
-            <td>人 · Agent</td>
+            <td data-en="Human · Agent">人 · Agent</td>
           </tr>
           <tr>
-            <td>Rules<br/>约束条件</td>
-            <td><strong class="strong">定义「什么算错」</strong>（给 Lint 读的机读 YAML）
+            <td>Rules<br/><span data-en="Constraints">约束条件</span></td>
+            <td data-en="Defines what counts as wrong (machine YAML for Lint)"><strong class="strong" data-en="Defines what counts as wrong">定义「什么算错」</strong>（给 Lint 读的机读 YAML）
               <span class="cite-path">harness/rules/cleaned_rules.yaml · L1（required_sections / valid_tags）</span>
             </td>
-            <td>Lint 脚本</td>
+            <td data-en="Lint scripts">Lint 脚本</td>
           </tr>
           <tr>
-            <td>Lint<br/>质检</td>
-            <td><strong class="strong">执行检查，输出 pass/fail</strong> → 写回 Gate
+            <td>Lint<br/><span data-en="Quality check">质检</span></td>
+            <td data-en="Runs checks, outputs pass/fail → writes Gate"><strong class="strong" data-en="Runs checks, pass/fail → Gate">执行检查，输出 pass/fail</strong> → 写回 Gate
               <span class="cite-path">harness/lints/lint_cleaned.py · L1；读 Rules · L18</span>
             </td>
-            <td>Runner 调用</td>
+            <td data-en="Runner invokes">Runner 调用</td>
           </tr>
         </tbody>
       </table>
-      <div class="formula" style="margin-top:.7rem">
+      <div class="formula" style="margin-top:.7rem" data-en="Progress records state (incl. Stage) → Runner advances (can Delegate) → Skill teaches · Rules define wrong · Lint pass/fail">
         Progress 记状态（含 Stage）→ Runner 往前推（可 Delegate）→ Skill 教写对 · Rules 定义错 · Lint 判 pass/fail
       </div>
     </section>
 
 <section class="slide" data-title="Stage" data-row-pulse="1">
-      <div class="kicker">Progress 内的 Stage</div>
-      <h2>S0–S9 工序 · 本仓产物</h2>
-      <p class="lead" style="margin-bottom:.4rem;font-size:.88rem">Stage = Progress 阶段键 · 序在 STAGE_ORDER · 会开浏览器的主要是 S8（S3 验收可选）</p>
+      <div class="kicker" data-en="Stage inside Progress">Progress 内的 Stage</div>
+      <h2 data-en="S0–S9 stages · repo artifacts">S0–S9 工序 · 本仓产物</h2>
+      <p class="lead" style="margin-bottom:.4rem;font-size:.88rem" data-en="Stage = Progress stage key · order in STAGE_ORDER · browser mainly S8 (S3 optional acceptance)">Stage = Progress 阶段键 · 序在 STAGE_ORDER · 会开浏览器的主要是 S8（S3 验收可选）</p>
       <table class="fw-table">
-        <thead><tr><th>阶段</th><th>工序作用</th><th>本仓产物</th><th>引用</th></tr></thead>
+        <thead><tr><th data-en="Stage">阶段</th><th data-en="Purpose">工序作用</th><th data-en="Artifacts">本仓产物</th><th data-en="Refs">引用</th></tr></thead>
         <tbody>
           <tr>
             <td>S0</td>
-            <td>标记原始用例已入库，流水线起点记账</td>
-            <td>禅道原文路径（无独立产物文件）</td>
+            <td data-en="Mark raw case ingested; pipeline start bookkeeping">标记原始用例已入库，流水线起点记账</td>
+            <td data-en="ZenTao source path (no standalone artifact)">禅道原文路径（无独立产物文件）</td>
             <td><span class="cite-path">paths.py · L8；runner.py · L1269</span></td>
           </tr>
           <tr>
             <td>S1</td>
-            <td>把原始步骤洗成可自动化结构（标签/口令/断言建议）</td>
+            <td data-en="Wash raw steps to automatable structure (tags / commands / assertions)">把原始步骤洗成可自动化结构（标签/口令/断言建议）</td>
             <td><code>cases/&lt;P&gt;/cleaned/*_cleaned.md</code></td>
             <td><span class="cite-path">paths.py · L32；s1_clean.md · L1</span></td>
           </tr>
           <tr>
             <td>S2</td>
-            <td>沉淀可复用 Fragment；无引用则可自动跳过</td>
+            <td data-en="Reusable Fragments; auto-skip if none referenced">沉淀可复用 Fragment；无引用则可自动跳过</td>
             <td><code>cases/&lt;P&gt;/fragments/</code>（registry + yaml）</td>
             <td><span class="cite-path">runner.py · L59–62；跳过 · L1275–L1286</span></td>
           </tr>
           <tr>
             <td>S3</td>
-            <td>编写 Playwright 动作代码；可选实机验收（会开浏览器）</td>
+            <td data-en="Write Playwright actions; optional live browser acceptance">编写 Playwright 动作代码；可选实机验收（会开浏览器）</td>
             <td><code>projects/specconfig/actions/*.py</code></td>
             <td><span class="cite-path">customer_product_config.py · L1；s3_action.md · L81</span></td>
           </tr>
           <tr>
             <td>S4</td>
-            <td>登记口令→函数映射；把 TODO-ACTION 升为 AUTO</td>
+            <td data-en="Register command→function maps; promote TODO-ACTION to AUTO">登记口令→函数映射；把 TODO-ACTION 升为 AUTO</td>
             <td><code>projects/specconfig/action_maps/*.yaml</code></td>
             <td><span class="cite-path">customer_product_config.yaml · L1；GUIDE · L41–L47</span></td>
           </tr>
           <tr>
             <td>S5</td>
-            <td>把清洗步骤组装成可执行场景脚本</td>
+            <td data-en="Assemble cleaned steps into runnable scenarios">把清洗步骤组装成可执行场景脚本</td>
             <td><code>cases/SPECCONFIG/runnable/*.yaml</code></td>
             <td><span class="cite-path">case_spc_all_smoke.yaml · L1 / L7</span></td>
           </tr>
           <tr>
             <td>S6</td>
-            <td>resolve-only 静态校验（展开 fragment、解析口令）</td>
-            <td>Progress 中 s6_validate 盖章（不启浏览器）</td>
+            <td data-en="resolve-only static validation (expand fragment, resolve commands)">resolve-only 静态校验（展开 fragment、解析口令）</td>
+            <td data-en="s6_validate stamp in Progress (no browser)">Progress 中 s6_validate 盖章（不启浏览器）</td>
             <td><span class="cite-path">runner.py · L79–82；s6_validate.md · L5</span></td>
           </tr>
           <tr>
             <td>S7</td>
-            <td>生成实机执行计划（展开+resolve，不启浏览器）</td>
+            <td data-en="Generate live execution plan (expand+resolve, no browser)">生成实机执行计划（展开+resolve，不启浏览器）</td>
             <td><code>reports/runs/.../playwright_plan.json</code></td>
             <td><span class="cite-path">s7_playwright_plan.md · L5；GUIDE · L6</span></td>
           </tr>
           <tr>
             <td>S8</td>
-            <td><strong class="strong">按 plan 真浏览器实机跑用例</strong></td>
+            <td data-en="Run cases in real browser per plan"><strong class="strong" data-en="Real browser run per plan">按 plan 真浏览器实机跑用例</strong></td>
             <td><code>step_checkpoint.json</code> 等</td>
             <td><span class="cite-path">s8_playwright_exec.md · L15；GUIDE · L7–8</span></td>
           </tr>
           <tr>
             <td>S9</td>
-            <td>汇总结果、出报告（读 checkpoint，不开浏览器）</td>
+            <td data-en="Summarize results, reports (read checkpoint, no browser)">汇总结果、出报告（读 checkpoint，不开浏览器）</td>
             <td><code>report.html</code> / summary 等</td>
             <td><span class="cite-path">s9_report.md · L7；lint_stage_report</span></td>
           </tr>
         </tbody>
       </table>
-      <div class="formula" style="margin-top:.45rem;font-size:.88rem">
+      <div class="formula" style="margin-top:.45rem;font-size:.88rem" data-en="Browser on main path: S8 only; S3 optional Playwright session (s3_action.md · L81). S6/S7 explicitly no browser.">
         开浏览器：流水线主路径只有 <strong>S8</strong>；另 <strong>S3</strong> 写动作时可选 Playwright 会话验收（s3_action.md · L81）。S6/S7 明确不启浏览器。
       </div>
     </section>
 
 <section class="slide" data-title="Progress">
-      <div class="kicker">五件套 · Progress</div>
-      <h2>进度看板 = 唯一事实来源</h2>
-      <p class="lead" style="margin-bottom:.55rem;font-size:.92rem">内含 S0–S9 · Runner 读写 · Gate 嵌在阶段块里</p>
+      <div class="kicker" data-en="Five-piece · Progress">五件套 · Progress</div>
+      <h2 data-en="Progress board = single source of truth">进度看板 = 唯一事实来源</h2>
+      <p class="lead" style="margin-bottom:.55rem;font-size:.92rem" data-en="Includes S0–S9 · Runner read/write · Gate nested in stage blocks">内含 S0–S9 · Runner 读写 · Gate 嵌在阶段块里</p>
       <div class="layout-split">
         <div class="split-body">
-          <h3 style="color:var(--ink);margin-bottom:.45rem">本仓记什么</h3>
+          <h3 style="color:var(--ink);margin-bottom:.45rem" data-en="What this repo records">本仓记什么</h3>
           <ul>
-            <li>阶段 <code>status</code>：done / pending</li>
-            <li>产物 <code>file</code>：指向 runnable / cleaned 等</li>
-            <li><code>gate</code>：Lint 后由 Runner 写入 pass/fail</li>
-            <li><code>notes</code>：fix / feedback / blocker</li>
+            <li data-en="Stage status: done / pending">阶段 <code>status</code>：done / pending</li>
+            <li data-en="Artifact file: points to runnable / cleaned etc.">产物 <code>file</code>：指向 runnable / cleaned 等</li>
+            <li data-en="gate: pass/fail after Lint, written by Runner"><code>gate</code>：Lint 后由 Runner 写入 pass/fail</li>
+            <li data-en="notes: fix / feedback / blocker"><code>notes</code>：fix / feedback / blocker</li>
           </ul>
           <span class="cite-path">路径约定 harness/core/paths.py · L28 progress_path · L118 load · L140 save</span>
         </div>
         <div class="split-media">
-          <div class="kicker" style="margin-bottom:.35rem">SPECCONFIG 实例</div>
+          <div class="kicker" style="margin-bottom:.35rem" data-en="SPECCONFIG example">SPECCONFIG 实例</div>
           <pre style="font-size:.78rem"># cases/SPECCONFIG/progress.yaml · L7–
 - case_id: case_customer_product_config_dialogs
   stages:
@@ -839,16 +841,16 @@
           <span class="cite-path">cases/SPECCONFIG/progress.yaml · L7–L25</span>
         </div>
       </div>
-      <div class="formula" style="margin-top:.7rem">Gate 写入：harness/runner.py · L519 — <code>block["gate"] = {"status": "pass" if ok else "fail"}</code></div>
+      <div class="formula" style="margin-top:.7rem" data-en="Gate write: harness/runner.py · L519 —">Gate 写入：harness/runner.py · L519 — <code>block["gate"] = {"status": "pass" if ok else "fail"}</code></div>
     </section>
 
 <section class="slide" data-title="Progress 实战">
-      <div class="kicker">五件套 · Progress</div>
-      <h2>看卡点 · 写 Notes · 再推进</h2>
+      <div class="kicker" data-en="Five-piece · Progress">五件套 · Progress</div>
+      <h2 data-en="See blockers · write Notes · advance">看卡点 · 写 Notes · 再推进</h2>
       <div class="grid2">
         <div class="card">
           <h3>S3 trace（按 ordinal）</h3>
-          <p>Progress 里 <code>s3_actions.executed_trace</code> 记录每步 AUTO / TODO-ACTION 是否 passed；未清完不能 mark done。</p>
+          <p data-en="Progress s3_actions.executed_trace logs each step AUTO / TODO-ACTION passed; must clear before mark done.">Progress 里 <code>s3_actions.executed_trace</code> 记录每步 AUTO / TODO-ACTION 是否 passed；未清完不能 mark done。</p>
           <span class="cite-path">字段约定见 docs/HARNESS_GUIDE.md · L21（S3 --advance 一次一格）</span>
           <pre style="margin-top:.55rem;box-shadow:none;font-size:.74rem">python -m harness.runner --next \
   --case case_customer_product_config_dialogs \
@@ -856,10 +858,10 @@
 # CLI 入口 harness/runner.py · L1812–1815</pre>
         </div>
         <div class="card featured">
-          <h3>Notes 三种类型</h3>
-          <p><span class="tag ok">fix</span> 结案已修复</p>
-          <p><span class="tag warn">feedback</span> 反馈 → 改 Rules</p>
-          <p><span class="tag danger">blocker</span> 阻断同 action lint</p>
+          <h3 data-en="Three Note types">Notes 三种类型</h3>
+          <p><span class="tag ok">fix</span> <span data-en="closed, fixed">结案已修复</span></p>
+          <p><span class="tag warn">feedback</span> <span data-en="feedback → update Rules">反馈 → 改 Rules</span></p>
+          <p><span class="tag danger">blocker</span> <span data-en="blocks same-action Lint">阻断同 action lint</span></p>
           <pre style="margin-top:.55rem;box-shadow:none;font-size:.74rem">python -m harness.runner --note \
   --case … --stage s3_actions \
   --type fix --msg "已验证…"
@@ -867,38 +869,38 @@
         </div>
       </div>
       <ul style="margin-top:.85rem">
-        <li>gate 过期 → 先 <code>--lint</code> 前置阶段，再 <code>--advance</code></li>
-        <li>设计原则：每产品线一份 progress · <span class="cite-path">docs/HARNESS_GUIDE.md · L5</span></li>
+        <li data-en="Stale gate → --lint prior stage, then --advance">gate 过期 → 先 <code>--lint</code> 前置阶段，再 <code>--advance</code></li>
+        <li data-en="One progress per product line · docs/HARNESS_GUIDE.md · L5">设计原则：每产品线一份 progress · <span class="cite-path">docs/HARNESS_GUIDE.md · L5</span></li>
       </ul>
     </section>
 
 <section class="slide" data-title="Runner">
-      <div class="kicker">五件套 · Runner</div>
-      <h2>总控：四步 Advance</h2>
-      <p class="lead" style="margin-bottom:.55rem;font-size:.92rem"><code>--advance</code> 时 online 委派 Agent · Lint 盖章写回 Progress</p>
+      <div class="kicker" data-en="Five-piece · Runner">五件套 · Runner</div>
+      <h2 data-en="Orchestrator: four-step Advance">总控：四步 Advance</h2>
+      <p class="lead" style="margin-bottom:.55rem;font-size:.92rem" data-en="With --advance, online delegates Agent · Lint stamps Progress"><code>--advance</code> 时 online 委派 Agent · Lint 盖章写回 Progress</p>
       <div class="layout-steps" style="--n:4">
         <div class="step">
           <div class="n">01</div>
-          <h3>前置门禁链</h3>
-          <p>更早 Stage 须 done 且 gate.pass</p>
+          <h3 data-en="Prior gate chain">前置门禁链</h3>
+          <p data-en="Earlier Stages done + gate.pass">更早 Stage 须 done 且 gate.pass</p>
           <span class="cite-path">harness/core/gate_chain.py · L81（assert_prior_chain_gates）</span>
         </div>
         <div class="step">
           <div class="n">02</div>
-          <h3>当前干活</h3>
-          <p>Delegate 写产物，或确定性执行</p>
+          <h3 data-en="Do current work">当前干活</h3>
+          <p data-en="Delegate writes artifacts, or deterministic run">Delegate 写产物，或确定性执行</p>
           <span class="cite-path">S1 委派 runner.py · L1305–1307 → s1_delegate.py · L1</span>
         </div>
         <div class="step">
           <div class="n">03</div>
-          <h3>门禁输入</h3>
-          <p>产物路径须存在</p>
+          <h3 data-en="Gate inputs">门禁输入</h3>
+          <p data-en="Artifact paths must exist">产物路径须存在</p>
           <span class="cite-path">cleaned_path · paths.py · L32；runnable_path 等同文件</span>
         </div>
         <div class="step">
           <div class="n">04</div>
-          <h3>Lint + 盖章</h3>
-          <p>写 gate 回 Progress，决定能否前进</p>
+          <h3 data-en="Lint + stamp">Lint + 盖章</h3>
+          <p data-en="Write gate to Progress; unlock advance">写 gate 回 Progress，决定能否前进</p>
           <span class="cite-path">STAGE_META·L53；_write_gate·L519；cmd_advance·L1626</span>
         </div>
       </div>
@@ -908,64 +910,64 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
     </section>
 
 <section class="slide" data-title="Skill Rules Lint">
-      <div class="kicker">五件套 · Skill / Rules / Lint</div>
-      <h2>以 S1 为例：怎么写对 → 什么算错 → 判 pass/fail</h2>
+      <div class="kicker" data-en="Five-piece · Skill / Rules / Lint">五件套 · Skill / Rules / Lint</div>
+      <h2 data-en="S1 example: write right → define wrong → pass/fail">以 S1 为例：怎么写对 → 什么算错 → 判 pass/fail</h2>
       <div class="layout-steps" style="--n:3">
         <div class="step">
           <div class="n">01 · Skill</div>
-          <h3>教写对</h3>
-          <p>首步必须 <code>登录@admin</code>；标签 AUTO / TODO-ACTION…</p>
+          <h3 data-en="Teach correctness">教写对</h3>
+          <p data-en="First step must 登录@admin; tags AUTO / TODO-ACTION…">首步必须 <code>登录@admin</code>；标签 AUTO / TODO-ACTION…</p>
           <span class="cite-path">harness/skills/s1_clean.md · L1 标题 · L30 登录基线 · L42 标注表</span>
         </div>
         <div class="step">
           <div class="n">02 · Rules</div>
-          <h3>定义错</h3>
-          <p>必填章节、合法标签、强制登录基线…</p>
+          <h3 data-en="Define errors">定义错</h3>
+          <p data-en="Required sections, valid tags, login baseline…">必填章节、合法标签、强制登录基线…</p>
           <span class="cite-path">harness/rules/cleaned_rules.yaml · L1 required_sections · L5 valid_tags · L17 require_login_baseline</span>
         </div>
         <div class="step">
           <div class="n">03 · Lint</div>
-          <h3>执行检查</h3>
-          <p>读 Rules，扫 cleaned，返回 pass/fail</p>
+          <h3 data-en="Run checks">执行检查</h3>
+          <p data-en="Read Rules, scan cleaned, return pass/fail">读 Rules，扫 cleaned，返回 pass/fail</p>
           <span class="cite-path">lint_cleaned.py · L18 RULES_PATH · L283 lint() · L421 status=</span>
         </div>
       </div>
-      <div class="formula" style="margin-top:.75rem">
+      <div class="formula" style="margin-top:.75rem" data-en="Runner map: STAGE_META s1_cleaned → lint_module + skill_file · harness/runner.py · L54–57">
         Runner 映射：STAGE_META「s1_cleaned」→ lint_module + skill_file · harness/runner.py · L54–57
       </div>
     </section>
 
 <section class="slide" data-title="闭环">
       <div class="kicker">Flywheel</div>
-      <h2>收集 → 处理 → 生成 → 复盘</h2>
+      <h2 data-en="Collect → process → generate → retrospect">收集 → 处理 → 生成 → 复盘</h2>
       <div class="layout-steps" style="--n:5;margin-bottom:.75rem">
-        <div class="step"><div class="n">01</div><h3>收集</h3><p>现场反馈 / blocker / 失败用例</p></div>
-        <div class="step"><div class="n">02</div><h3>处理</h3><p>归类：fix · feedback · 规则外</p></div>
-        <div class="step"><div class="n">03</div><h3>生成</h3><p>补 Skill / Rules / Fragment</p></div>
-        <div class="step"><div class="n">04</div><h3>复盘</h3><p>门禁是否拦住同类错</p></div>
-        <div class="step"><div class="n">05</div><h3>沉淀</h3><p>Rules / Skill 写回仓</p></div>
+        <div class="step"><div class="n">01</div><h3 data-en="Collect">收集</h3><p data-en="Field feedback / blocker / failed cases">现场反馈 / blocker / 失败用例</p></div>
+        <div class="step"><div class="n">02</div><h3 data-en="Triage">处理</h3><p data-en="Classify: fix · feedback · out-of-rules">归类：fix · feedback · 规则外</p></div>
+        <div class="step"><div class="n">03</div><h3 data-en="Generate">生成</h3><p data-en="Add Skill / Rules / Fragment">补 Skill / Rules / Fragment</p></div>
+        <div class="step"><div class="n">04</div><h3 data-en="Retrospect">复盘</h3><p data-en="Did gates catch the same class of error?">门禁是否拦住同类错</p></div>
+        <div class="step"><div class="n">05</div><h3 data-en="Persist">沉淀</h3><p data-en="Write Rules / Skill back to repo">Rules / Skill 写回仓</p></div>
       </div>
       <div class="layout-contrast">
         <div class="panel">
           <div class="lbl">Before</div>
-          <h3>只写 Skill / 提示词</h3>
+          <h3 data-en="Skill / Prompt only">只写 Skill / 提示词</h3>
           <ul>
-            <li>靠自觉，难复跑</li>
-            <li>错了不知哪里门禁</li>
-            <li>人要每步都看</li>
+            <li data-en="Honor system, hard to replay">靠自觉，难复跑</li>
+            <li data-en="Failures with no gate visibility">错了不知哪里门禁</li>
+            <li data-en="Human watches every step">人要每步都看</li>
           </ul>
         </div>
         <div class="panel lit">
           <div class="lbl">With Harness</div>
-          <h3>五件套闭环</h3>
+          <h3 data-en="Five-piece flywheel">五件套闭环</h3>
           <ul>
-            <li>Skill 教写对 · Rules 定义错 · Lint 自动判</li>
-            <li>Gate 写回 Progress</li>
-            <li>人只看 blocker / 规则外异常</li>
+            <li data-en="Skill teaches · Rules define · Lint judges">Skill 教写对 · Rules 定义错 · Lint 自动判</li>
+            <li data-en="Gate written to Progress">Gate 写回 Progress</li>
+            <li data-en="Human only on blocker / out-of-rules">人只看 blocker / 规则外异常</li>
           </ul>
         </div>
       </div>
-      <p class="lead" style="margin-top:.65rem;font-size:.85rem">
+      <p class="lead" style="margin-top:.65rem;font-size:.85rem" data-en="Persist: Skill · Rules · Preset / Fragment / action_map ·">
         沉淀对象：Skill · Rules · Preset / Fragment / action_map ·
         <span class="cite-path">README.md · L3；action_maps/customer_product_config.yaml · L1</span>
       </p>
@@ -973,15 +975,15 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
 
 <section class="slide slide-takeaway" data-title="思考与行动">
       <div class="kicker">Takeaway</div>
-      <h2 style="max-width:none;margin-bottom:.2rem">思考与行动 · 参考资料</h2>
+      <h2 style="max-width:none;margin-bottom:.2rem" data-en="Think &amp; act · references">思考与行动 · 参考资料</h2>
       <div class="takeaway-grid">
         <div>
-          <div class="quote">大模型决定「能多牛」<br/>Harness 决定「能稳定用多久」</div>
+          <div class="quote" data-en="The model sets how capable you can be · Harness sets how long you can rely on it">大模型决定「能多牛」<br/>Harness 决定「能稳定用多久」</div>
           <ul class="takeaway-actions">
-            <li>本仓五件套：Progress · Runner · Skill · Rules · Lint</li>
-            <li>Skill 教写对；Rules 定义错；Lint 判 pass/fail 写 Gate</li>
-            <li>能进 Rules / Lint 的，别只写在 Skill / AGENTS.md 里</li>
-            <li>动手：对 SPECCONFIG 跑 <code>--next</code> / <code>--lint</code> / <code>--advance</code></li>
+            <li data-en="This repo five-piece: Progress · Runner · Skill · Rules · Lint">本仓五件套：Progress · Runner · Skill · Rules · Lint</li>
+            <li data-en="Skill teaches; Rules define wrong; Lint pass/fail → Gate">Skill 教写对；Rules 定义错；Lint 判 pass/fail 写 Gate</li>
+            <li data-en="If it can be Rules / Lint, don&apos;t leave it only in Skill / AGENTS.md">能进 Rules / Lint 的，别只写在 Skill / AGENTS.md 里</li>
+            <li data-en="Try on SPECCONFIG: --next / --lint / --advance">动手：对 SPECCONFIG 跑 <code>--next</code> / <code>--lint</code> / <code>--advance</code></li>
           </ul>
           <div class="title-meta" style="margin-top:.85rem">
             <span class="badge">docs/HARNESS_GUIDE.md</span>
@@ -990,8 +992,8 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
           </div>
         </div>
         <aside class="ref-panel" aria-label="参考资料">
-          <h3>参考资料（精选）</h3>
-          <p class="ref-note">培训案例出处 · 点开外链深入阅读</p>
+          <h3 data-en="References (selected)">参考资料（精选）</h3>
+          <p class="ref-note" data-en="Training case sources · open links for deep reads">培训案例出处 · 点开外链深入阅读</p>
           <ul class="ref-list">
             <li>
               <a href="https://openai.com/index/harness-engineering/" target="_blank" rel="noopener noreferrer">
@@ -1055,14 +1057,14 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
     </section>
 
 <section class="slide slide-sponsor" data-title="开源与赞助">
-      <div class="kicker"><i data-lucide="heart-handshake" class="icon"></i>Open Source · 赞助</div>
-      <h2>开源仓库 · 欢迎 Star 与赞助</h2>
-      <p class="lead sponsor-lead">MIT 免费使用（含商用）· 微信或 USDT-TRC20 · 非强制</p>
+      <div class="kicker"><i data-lucide="heart-handshake" class="icon"></i>Open Source · <span data-en="Sponsor">赞助</span></div>
+      <h2 data-en="Open repo · Stars &amp; sponsorship welcome">开源仓库 · 欢迎 Star 与赞助</h2>
+      <p class="lead sponsor-lead" data-en="MIT free (commercial OK) · WeChat or USDT-TRC20 · optional">MIT 免费使用（含商用）· 微信或 USDT-TRC20 · 非强制</p>
 
       <div class="sponsor-board">
         <div class="sponsor-main">
           <div class="sponsor-quote">Tech Training Deck · autohtml-ppt</div>
-          <p class="sponsor-blurb">单文件 HTML 培训幻灯片 · 离线可演示 · AI Agent 可改页 · 导出 PPTX</p>
+          <p class="sponsor-blurb" data-en="Single-file HTML training slides · offline demo · Agent-editable pages · PPTX export">单文件 HTML 培训幻灯片 · 离线可演示 · AI Agent 可改页 · 导出 PPTX</p>
 
           <div class="sponsor-links" aria-label="项目地址">
             <a class="sponsor-link" href="https://github.com/xiaoyutoucom/autohtml-ppt" target="_blank" rel="noopener noreferrer">
@@ -1075,34 +1077,34 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
             <a class="sponsor-link" href="https://gitee.com/xiaoyutou_647/autohtml-ppt" target="_blank" rel="noopener noreferrer">
               <span class="sponsor-link-icon gitee"><i data-lucide="git-branch"></i></span>
               <span class="sponsor-link-body">
-                <strong>码云 Gitee</strong>
+                <strong data-en="Gitee">码云 Gitee</strong>
                 <em>gitee.com/xiaoyutou_647/autohtml-ppt</em>
               </span>
             </a>
             <a class="sponsor-link" href="mailto:xiaoyutoucom@gmail.com">
               <span class="sponsor-link-icon mail"><i data-lucide="mail"></i></span>
               <span class="sponsor-link-body">
-                <strong>定制 / 白标询价</strong>
+                <strong data-en="Custom / white-label inquiry">定制 / 白标询价</strong>
                 <em>xiaoyutoucom@gmail.com</em>
               </span>
             </a>
             <a class="sponsor-link" href="https://github.com/xiaoyutoucom/autohtml-ppt/blob/main/SPONSORS.md" target="_blank" rel="noopener noreferrer">
               <span class="sponsor-link-icon sponsors"><i data-lucide="heart"></i></span>
               <span class="sponsor-link-body">
-                <strong>赞助说明</strong>
+                <strong data-en="Sponsorship info">赞助说明</strong>
                 <em>微信 · USDT-TRC20 · SPONSORS.md</em>
               </span>
             </a>
           </div>
 
           <div class="sponsor-crypto-box" aria-label="USDT 地址">
-            <div class="sponsor-crypto-title">USDT · 仅 Tron (TRC20)</div>
+            <div class="sponsor-crypto-title">USDT · <span data-en="Tron (TRC20) only">仅 Tron (TRC20)</span></div>
             <code class="sponsor-crypto-addr">TEGYcyUFuGshMySR3Y89AFpCDeihozNT7E</code>
-            <p class="sponsor-crypto-warn">勿用 ERC20 / BEP20 / 其它网络</p>
+            <p class="sponsor-crypto-warn" data-en="Do not use ERC20 / BEP20 / other networks">勿用 ERC20 / BEP20 / 其它网络</p>
           </div>
 
           <div class="title-meta sponsor-meta">
-            <span class="badge">微信号 xiaoyutoucom</span>
+            <span class="badge" data-en="WeChat xiaoyutoucom">微信号 xiaoyutoucom</span>
             <span class="badge">Fingerprint TTD-2026-XIAOYUTOUCOM</span>
             <span class="badge">© 2026 xiaoyutoucom</span>
           </div>
@@ -1110,18 +1112,18 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
 
         <aside class="sponsor-qr-stack" aria-label="赞助收款码">
           <div class="sponsor-qr-card">
-            <div class="sponsor-qr-label">微信</div>
+            <div class="sponsor-qr-label" data-en="WeChat">微信</div>
             <figure class="sponsor-qr-fig">
               <img src="assets/sponsors/wechat-qr.png" alt="微信收款码 · xiaoyutoucom" width="200" height="200" />
             </figure>
-            <p class="sponsor-qr-hint">微信号 <strong>xiaoyutoucom</strong></p>
+            <p class="sponsor-qr-hint"><span data-en="WeChat ID">微信号</span> <strong>xiaoyutoucom</strong></p>
           </div>
           <div class="sponsor-qr-card crypto">
             <div class="sponsor-qr-label">USDT · TRC20</div>
             <figure class="sponsor-qr-fig">
               <img src="assets/sponsors/usdt-trc20-qr.png" alt="USDT TRC20 收款码" width="200" height="200" />
             </figure>
-            <p class="sponsor-qr-hint">仅 TRON 网络 · 其它网络勿转</p>
+            <p class="sponsor-qr-hint" data-en="TRON network only · do not use others">仅 TRON 网络 · 其它网络勿转</p>
           </div>
         </aside>
       </div>
@@ -1134,41 +1136,56 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
   <div class="footer">
     <div class="hint" id="titleHint">封面</div>
     <div class="nav">
-      <button id="homeBtn" type="button" title="首页 (Home)"><i data-lucide="chevrons-left" class="icon"></i>首页</button>
-      <button id="prev" type="button"><i data-lucide="chevron-left" class="icon"></i>上一页</button>
-      <label class="page-jump" title="输入页码后回车跳转">
+      <button id="homeBtn" type="button" class="icon-btn icon-only" data-i18n-title="homeTitle" title="首页 (Home)"><i data-lucide="chevrons-left" class="icon"></i><span class="btn-label" data-i18n="home">首页</span></button>
+      <button id="prev" type="button" class="icon-btn icon-only" data-i18n-title="prev" title="上一页"><i data-lucide="chevron-left" class="icon"></i><span class="btn-label" data-i18n="prev">上一页</span></button>
+      <label class="page-jump" data-i18n-title="pageJump" title="输入页码后回车跳转">
         <input id="pageInput" type="number" min="1" step="1" inputmode="numeric" aria-label="页码" />
         <span>/</span>
         <span class="page-total" id="pageTotal">1</span>
       </label>
       <span class="hint" id="counter" hidden>1 / 1</span>
-      <button id="next" type="button">下一页<i data-lucide="chevron-right" class="icon"></i></button>
-      <button id="endBtn" type="button" title="尾页 (End)">尾页<i data-lucide="chevrons-right" class="icon"></i></button>
+      <button id="next" type="button" class="icon-btn icon-only" data-i18n-title="next" title="下一页"><span class="btn-label" data-i18n="next">下一页</span><i data-lucide="chevron-right" class="icon"></i></button>
+      <button id="endBtn" type="button" class="icon-btn icon-only" data-i18n-title="endTitle" title="尾页 (End)"><span class="btn-label" data-i18n="end">尾页</span><i data-lucide="chevrons-right" class="icon"></i></button>
+
+      <span class="nav-sep" aria-hidden="true"></span>
+
       <div class="theme-wrap" id="themeWrap">
-        <button id="themeBtn" type="button" class="theme-btn" title="切换样式 (T)"><i data-lucide="palette" class="icon"></i><span id="themeBtnLabel">样式1</span></button>
+        <button id="themeBtn" type="button" class="theme-btn icon-btn" data-i18n-title="themeTitle" title="切换样式 (T)"><i data-lucide="palette" class="icon"></i><span class="btn-label" id="themeBtnLabel" data-i18n="theme">样式</span></button>
         <div class="theme-panel" id="themePanel" role="dialog" aria-label="选择样式">
           <h4>20 套样式 · 当前会记住选择</h4>
           <div class="theme-grid" id="themeGrid"></div>
         </div>
       </div>
-      <button id="railBtn" type="button" title="缩略图轨 (S)"><i data-lucide="panel-left" class="icon"></i>目录</button>
-      <button id="gridBtn" type="button" title="网格总览 (G)"><i data-lucide="layout-grid" class="icon"></i>总览</button>
-      <button id="annotateBtn" type="button" title="画笔批注 (A)"><i data-lucide="pencil" class="icon"></i>画笔</button>
       <div class="theme-wrap particle-wrap" id="particleWrap">
-        <button id="particlesBtn" type="button" class="theme-btn" title="选择粒子效果 (P)" aria-haspopup="dialog" aria-expanded="false"><i data-lucide="sparkles" class="icon"></i><span id="particlesBtnLabel">粒子</span></button>
+        <button id="particlesBtn" type="button" class="theme-btn icon-btn" data-i18n-title="particlesPick" title="选择粒子效果 (P)" aria-haspopup="dialog" aria-expanded="false"><i data-lucide="sparkles" class="icon"></i><span class="btn-label" id="particlesBtnLabel" data-i18n="particles">粒子</span></button>
         <div class="theme-panel particle-panel" id="particlePanel" role="dialog" aria-label="选择粒子效果">
-          <h4>本页粒子 · 配置见 config.json → slideParticles</h4>
+          <div class="particle-panel-head">
+            <h4 data-i18n="particlePanel">本页粒子</h4>
+            <span class="particle-panel-hint" data-i18n="particleHint">config.json → slideParticles</span>
+          </div>
+          <div class="particle-quick" id="particleQuick"></div>
           <div class="particle-grid" id="particleGrid"></div>
           <div class="particle-panel-actions">
-            <button type="button" id="particleCopyCfgBtn" title="复制 slideParticles JSON，粘贴进 config.json 后执行 build">复制配置</button>
-            <button type="button" id="particleResetCfgBtn" title="丢弃本机覆盖，恢复为 config.json">恢复配置文件</button>
+            <button type="button" id="particleCopyCfgBtn" data-i18n="particleCopy" data-i18n-title="particleCopy" title="复制 slideParticles JSON，粘贴进 config.json 后执行 build">复制配置</button>
+            <button type="button" id="particleResetCfgBtn" data-i18n="particleReset" data-i18n-title="particleReset" title="丢弃本机覆盖，恢复为 config.json">恢复配置文件</button>
           </div>
         </div>
       </div>
-      <button id="bgmBtn" type="button" title="背景音乐 (M)" aria-pressed="false"><i data-lucide="music" class="icon"></i><span>音乐</span></button>
-      <button id="exportPptBtn" type="button" title="导出全部页：优先当前标签页截屏（含粒子），失败再 DOM 截图"><i data-lucide="file-down" class="icon"></i>导出PPT</button>
-      <button id="presentBtn" type="button" class="primary" title="演示模式 (F)"><i data-lucide="presentation" class="icon"></i>演示</button>
-      <button id="fsBtn" type="button" title="浏览器全屏"><i data-lucide="maximize-2" class="icon"></i></button>
+
+      <div class="more-wrap is-expanded" id="moreWrap" data-more="1">
+        <button id="moreBtn" type="button" class="icon-btn icon-only more-toggle" data-i18n-title="moreCollapse" title="折叠工具" aria-expanded="true" aria-controls="moreTools"><i data-lucide="chevrons-left" class="icon"></i><span class="btn-label" data-i18n="moreCollapse">折叠</span></button>
+        <div class="more-tools" id="moreTools">
+          <button id="railBtn" type="button" class="icon-btn" data-i18n-title="railTitle" title="缩略图轨 (S)"><i data-lucide="panel-left" class="icon"></i><span class="btn-label" data-i18n="rail">目录</span></button>
+          <button id="gridBtn" type="button" class="icon-btn" data-i18n-title="gridTitle" title="网格总览 (G)"><i data-lucide="layout-grid" class="icon"></i><span class="btn-label" data-i18n="grid">总览</span></button>
+          <button id="annotateBtn" type="button" class="icon-btn" data-i18n-title="annotateTitle" title="画笔批注 (A)"><i data-lucide="pencil" class="icon"></i><span class="btn-label" data-i18n="annotate">画笔</span></button>
+          <button id="bgmBtn" type="button" class="icon-btn" title="背景音乐 (M)" aria-pressed="false"><i data-lucide="music" class="icon"></i><span class="btn-label" data-i18n="bgm">音乐</span></button>
+          <button id="exportPptBtn" type="button" class="icon-btn btn-emphasis" data-i18n-title="exportTitle" title="导出全部页：优先当前标签页截屏（含粒子），失败再 DOM 截图"><i data-lucide="file-down" class="icon"></i><span class="btn-label" data-i18n="exportPpt">导出PPT</span></button>
+        </div>
+      </div>
+
+      <button id="langBtn" type="button" class="lang-btn" data-i18n-title="langTitle" title="切换语言 / Language" aria-pressed="false"><i data-lucide="languages" class="icon"></i><span data-lang-label>中</span></button>
+      <button id="presentBtn" type="button" class="primary icon-btn" data-i18n-title="presentTitle" title="演示模式 (F)"><i data-lucide="presentation" class="icon"></i><span class="btn-label" data-i18n="present">演示</span></button>
+      <button id="fsBtn" type="button" class="icon-btn icon-only" data-i18n-title="fs" title="浏览器全屏"><i data-lucide="maximize-2" class="icon"></i></button>
     </div>
   </div>
 
@@ -1183,6 +1200,7 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
 
 <script src="deck/js/provenance.js"></script>
 <script src="deck/config.js"></script>
+<script src="deck/js/i18n.js"></script>
 
 <script>
 (function () {
@@ -1221,12 +1239,22 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       const railBtn = document.getElementById("railBtn");
       const gridBtn = document.getElementById("gridBtn");
       const annotateBtn = document.getElementById("annotateBtn");
+      const langBtn = document.getElementById("langBtn");
+      const moreWrap = document.getElementById("moreWrap");
+      const moreBtn = document.getElementById("moreBtn");
       const footerEl = document.querySelector(".footer");
       const presentHotzone = document.getElementById("presentHotzone");
       const themeWrap = document.getElementById("themeWrap");
       const themeBtn = document.getElementById("themeBtn");
       const themeBtnLabel = document.getElementById("themeBtnLabel");
       const themeGrid = document.getElementById("themeGrid");
+      const I18N = (typeof window !== "undefined" && window.DECK_I18N) || null;
+      function t(key, vars) {
+        return I18N && typeof I18N.t === "function" ? I18N.t(key, vars) : key;
+      }
+      function translateTitle(zh) {
+        return I18N && typeof I18N.translateTitle === "function" ? I18N.translateTitle(zh) : (zh || "");
+      }
       let presentMode = false;
       let exportPptBusy = false;
       /** 全局默认：true=各页用内置映射；false=各页默认关闭（可被本页覆盖） */
@@ -1291,11 +1319,11 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         bgmBtn.setAttribute("aria-pressed", bgmEnabled ? "true" : "false");
         bgmBtn.classList.toggle("primary", bgmEnabled);
         bgmBtn.title = !hasSrc
-          ? "未配置 bgmSrc"
-          : (bgmEnabled ? "关闭背景音乐 (M)" : "打开背景音乐 (M)");
+          ? t("bgmMissing")
+          : (bgmEnabled ? t("bgmClose") : t("bgmOpen"));
         bgmBtn.innerHTML = bgmEnabled
-          ? '<i data-lucide="volume-2" class="icon"></i><span>音乐开</span>'
-          : '<i data-lucide="volume-x" class="icon"></i><span>音乐关</span>';
+          ? '<i data-lucide="volume-2" class="icon"></i><span class="btn-label">' + t("bgmOn") + "</span>"
+          : '<i data-lucide="volume-x" class="icon"></i><span class="btn-label">' + t("bgmOff") + "</span>";
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       }
 
@@ -1395,15 +1423,17 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       }
 
       function setTheme(id, persist) {
-        var t = themeById(id);
-        root.setAttribute("data-theme", String(t.id));
-        root.setAttribute("data-theme-mode", t.mode === "light" ? "light" : "dark");
-        if (themeBtnLabel) themeBtnLabel.textContent = "样式" + t.id;
-        themeGrid.querySelectorAll(".theme-swatch").forEach(function (btn) {
-          btn.classList.toggle("active", btn.getAttribute("data-theme") === String(t.id));
-        });
+        var meta = themeById(id);
+        root.setAttribute("data-theme", String(meta.id));
+        root.setAttribute("data-theme-mode", meta.mode === "light" ? "light" : "dark");
+        if (themeBtnLabel) themeBtnLabel.textContent = t("themeN", { n: meta.id });
+        if (themeGrid) {
+          themeGrid.querySelectorAll(".theme-swatch").forEach(function (btn) {
+            btn.classList.toggle("active", btn.getAttribute("data-theme") === String(meta.id));
+          });
+        }
         if (persist !== false) {
-          lsSet(THEME_KEY, t.id);
+          lsSet(THEME_KEY, meta.id);
         }
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
         // 主题色驱动粒子 / 封面 Vanta（须等 PARTICLE_FLAVORS / MAP 初始化后再调）
@@ -1418,23 +1448,78 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         }
       }
 
+      function themeModeLabel(mode) {
+        return mode === "light" ? t("light") : t("dark");
+      }
+
       function buildThemeGrid() {
-        themeGrid.innerHTML = THEME_META.map(function (t) {
+        if (!themeGrid) return;
+        themeGrid.innerHTML = THEME_META.map(function (meta) {
           return (
-            '<button type="button" class="theme-swatch" data-theme="' + t.id + '"' +
-            ' style="background:' + t.paper + ';color:' + t.ink + ';border-color:' + t.swatch + '">' +
-            '<span class="n">#' + t.id + (t.mode === "light" ? " · 浅" : " · 深") + "</span>" +
-            '<span class="label">' + t.name + "</span></button>"
+            '<button type="button" class="theme-swatch" data-theme="' + meta.id + '"' +
+            ' style="background:' + meta.paper + ';color:' + meta.ink + ';border-color:' + meta.swatch + '">' +
+            '<span class="n">#' + meta.id + " · " + themeModeLabel(meta.mode) + "</span>" +
+            '<span class="label">' + meta.name + "</span></button>"
           );
         }).join("");
-        themeGrid.addEventListener("click", function (e) {
-          var btn = e.target.closest(".theme-swatch");
-          if (!btn) return;
-          e.preventDefault();
-          e.stopPropagation();
-          setTheme(btn.getAttribute("data-theme"), true);
-          themeWrap.classList.remove("open");
-        });
+        if (!themeGrid._bound) {
+          themeGrid._bound = true;
+          themeGrid.addEventListener("click", function (e) {
+            var btn = e.target.closest(".theme-swatch");
+            if (!btn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            setTheme(btn.getAttribute("data-theme"), true);
+            themeWrap.classList.remove("open");
+          });
+        }
+      }
+
+      const MORE_EXPANDED_KEY = "harness_training_more_expanded";
+      const moreToolsEl = document.getElementById("moreTools");
+
+      function isMoreExpanded() {
+        return !!(moreWrap && moreWrap.classList.contains("is-expanded"));
+      }
+
+      function syncMoreToggleUi(expanded) {
+        if (!moreBtn) return;
+        moreBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+        moreBtn.title = expanded ? t("moreCollapse") : t("moreExpand");
+        moreBtn.setAttribute("data-i18n-title", expanded ? "moreCollapse" : "moreExpand");
+        // « 折叠（在工具左侧） / ⋯ 展开 — 避免与尾页 » 混淆
+        moreBtn.innerHTML = expanded
+          ? '<i data-lucide="chevrons-left" class="icon"></i><span class="btn-label">' + t("moreCollapse") + "</span>"
+          : '<i data-lucide="ellipsis" class="icon"></i><span class="btn-label">' + t("moreExpand") + "</span>";
+        if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
+      }
+
+      function setMoreExpanded(on, persist) {
+        if (!moreWrap) return;
+        var expanded = !!on;
+        moreWrap.classList.toggle("is-expanded", expanded);
+        moreWrap.classList.toggle("is-collapsed", !expanded);
+        moreWrap.classList.remove("open");
+        moreWrap.setAttribute("data-expanded", expanded ? "1" : "0");
+        if (moreToolsEl) {
+          if (expanded) moreToolsEl.removeAttribute("hidden");
+          else moreToolsEl.setAttribute("hidden", "");
+        }
+        syncMoreToggleUi(expanded);
+        if (persist !== false) {
+          try { localStorage.setItem(MORE_EXPANDED_KEY, expanded ? "1" : "0"); } catch (e) {}
+        }
+        if (typeof syncFooterPeekHeight === "function") {
+          requestAnimationFrame(syncFooterPeekHeight);
+        }
+      }
+
+      function toggleMorePanel() {
+        setMoreExpanded(!isMoreExpanded(), true);
+      }
+
+      function closeMorePanel() {
+        /* 兼容旧调用：折叠不再用弹出层，这里为 no-op */
       }
 
       function toggleThemePanel() {
@@ -1451,6 +1536,12 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         // config 变更后优先生效；未变更时仍尊重用户上次用 T 选的样式
         setTheme(resolvePref(cfgThemeDefault(), THEME_KEY, THEME_CFG_KEY), false);
       })();
+      (function initMoreExpanded() {
+        var saved = null;
+        try { saved = localStorage.getItem(MORE_EXPANDED_KEY); } catch (e0) {}
+        // 默认展开；仅当用户明确折叠过才收起
+        setMoreExpanded(saved !== "0", false);
+      })();
 
       themeBtn.addEventListener("click", function (e) {
         e.preventDefault();
@@ -1466,6 +1557,20 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
           if (particlesBtn) particlesBtn.setAttribute("aria-expanded", "false");
         }
       });
+      if (moreBtn) {
+        moreBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMorePanel();
+        });
+      }
+      if (langBtn) {
+        langBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (I18N && typeof I18N.toggleLang === "function") I18N.toggleLang();
+        });
+      }
 
       var footerPeekTimer = null;
       function syncFooterPeekHeight() {
@@ -1498,8 +1603,9 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         root.classList.toggle("present-mode", on);
         presentBtn.classList.toggle("primary", on);
         presentBtn.innerHTML = on
-          ? '<i data-lucide="presentation" class="icon"></i>演示中'
-          : '<i data-lucide="presentation" class="icon"></i>演示';
+          ? '<i data-lucide="presentation" class="icon"></i><span class="btn-label">' + t("presenting") + "</span>"
+          : '<i data-lucide="presentation" class="icon"></i><span class="btn-label">' + t("present") + "</span>";
+        presentBtn.title = t("presentTitle");
         if (!on) setFooterPeek(false);
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       }
@@ -1629,6 +1735,7 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         fsBtn.innerHTML = document.fullscreenElement
           ? '<i data-lucide="minimize-2" class="icon"></i>'
           : '<i data-lucide="maximize-2" class="icon"></i>';
+        fsBtn.title = document.fullscreenElement ? t("fsExit") : t("fs");
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       });
 
@@ -1754,6 +1861,14 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         var fromAttr = parseAiChipsAttr(slide.getAttribute("data-ai-chips") || slide.dataset.aiChips || "");
         if (fromAttr) return fromAttr;
         var title = slide.dataset.title || "";
+        var lang = I18N && typeof I18N.getLang === "function" ? I18N.getLang() : "zh";
+        if (lang === "en") {
+          var extractedEn = extractAiChipsFromSlide(slide);
+          if (extractedEn.length >= 4) return extractedEn.concat(fallback).slice(0, AI_CHIP_COUNT);
+          if (SLIDE_AI_CHIPS[title] && I18N && typeof I18N.aiChipsFor === "function") {
+            return I18N.aiChipsFor(title, SLIDE_AI_CHIPS[title]).slice(0, AI_CHIP_COUNT);
+          }
+        }
         if (SLIDE_AI_CHIPS[title]) return SLIDE_AI_CHIPS[title].slice(0, AI_CHIP_COUNT);
         var extracted = extractAiChipsFromSlide(slide);
         if (extracted.length >= 6) return extracted;
@@ -2177,8 +2292,8 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       };
 
       function particleLabel(key) {
-        if (key === "off") return "关闭";
-        if (key === "default") return "默认";
+        if (key === "off") return t("off");
+        if (key === "default") return t("particleDefault").replace(/\s*·\s*$/, "") || "Default";
         return PARTICLE_LABELS[key] || String(key || "").replace(/_/g, " ");
       }
 
@@ -2333,19 +2448,18 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         var on = profile.mode !== "off";
         root.classList.toggle("particles-off", !on);
         if (!particlesBtn) return;
-        var label = "粒子";
-        if (profile.mode === "off") label = "粒子·关";
-        else if (profile.selection !== "default") label = "粒子·" + particleLabel(profile.flavor).slice(0, 4);
-        else label = "粒子";
+        // 底栏只显示图标；完整状态放 title，避免挤占折叠区
+        var label = t("particles");
+        if (profile.mode === "off") label = t("particlesOff");
         if (particlesBtnLabel) particlesBtnLabel.textContent = label;
         else {
           particlesBtn.innerHTML =
-            '<i data-lucide="sparkles" class="icon"></i><span id="particlesBtnLabel">' + label + "</span>";
+            '<i data-lucide="sparkles" class="icon"></i><span class="btn-label" id="particlesBtnLabel">' + label + "</span>";
         }
-        particlesBtn.title = "选择粒子效果 (P) · 当前：" +
+        particlesBtn.title = t("particlesPick") + " · " +
           (profile.mode === "off"
-            ? "关闭"
-            : (profile.selection === "default" ? "默认 · " : "自选 · ") + particleLabel(profile.flavor));
+            ? t("particleCurOff")
+            : (profile.selection === "default" ? t("particleCurDefault") : t("particleCurCustom")) + particleLabel(profile.flavor));
         particlesBtn.classList.toggle("primary", on);
         particlesBtn.setAttribute("aria-pressed", on ? "true" : "false");
         if (particleGrid && particleWrap && particleWrap.classList.contains("open")) {
@@ -2354,53 +2468,227 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       }
 
+      function hashSeed(str) {
+        var h = 2166136261;
+        str = String(str || "");
+        for (var i = 0; i < str.length; i++) {
+          h ^= str.charCodeAt(i);
+          h = Math.imul(h, 16777619);
+        }
+        return h >>> 0;
+      }
+      function seededRand(seedObj) {
+        seedObj.s = (Math.imul(1664525, seedObj.s) + 1013904223) >>> 0;
+        return seedObj.s / 4294967296;
+      }
+      function particlePreviewPalette(colorMode) {
+        var c = themeParticleColors();
+        var neon = c[0], teal = c[1], signal = c[2];
+        switch (colorMode) {
+          case "neon": return [neon, neon];
+          case "teal": return [teal, neon];
+          case "signal": return [signal, neon];
+          case "duo": return [neon, teal];
+          default: return [neon, teal, signal];
+        }
+      }
+      function particleShapeSvg(shape, x, y, r, fill, op) {
+        var o = (op == null ? 0.85 : op).toFixed(2);
+        if (shape === "triangle") {
+          var h = r * 1.7;
+          var pts =
+            x.toFixed(1) + "," + (y - h * 0.65).toFixed(1) + " " +
+            (x - r).toFixed(1) + "," + (y + h * 0.45).toFixed(1) + " " +
+            (x + r).toFixed(1) + "," + (y + h * 0.45).toFixed(1);
+          return '<polygon points="' + pts + '" fill="' + fill + '" opacity="' + o + '"/>';
+        }
+        if (shape === "star") {
+          var pts2 = "";
+          for (var i = 0; i < 5; i++) {
+            var a = (-Math.PI / 2) + i * (Math.PI * 2 / 5);
+            var a2 = a + Math.PI / 5;
+            pts2 +=
+              (x + Math.cos(a) * r).toFixed(1) + "," + (y + Math.sin(a) * r).toFixed(1) + " " +
+              (x + Math.cos(a2) * r * 0.42).toFixed(1) + "," + (y + Math.sin(a2) * r * 0.42).toFixed(1) + " ";
+          }
+          return '<polygon points="' + pts2.trim() + '" fill="' + fill + '" opacity="' + o + '"/>';
+        }
+        return '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) +
+          '" fill="' + fill + '" opacity="' + o + '"/>';
+      }
+      /** 按风格参数画一眼能分辨的缩略预览 */
+      function buildParticlePreviewSvg(key, cfg) {
+        cfg = cfg || {};
+        var w = 112, h = 56;
+        var seed = { s: hashSeed(key || "x") };
+        var palette = particlePreviewPalette(cfg.colorMode || "all");
+        var shape = cfg.shape || "circle";
+        var n = Math.max(8, Math.min(22, Math.round((cfg.count || 48) / 6)));
+        var links = !!cfg.links;
+        var dir = cfg.dir || "none";
+        var parts = [];
+        var pts = [];
+        var i, x, y, r, col, op, dx, dy;
+
+        parts.push(
+          '<rect width="' + w + '" height="' + h + '" rx="8" fill="rgba(6,10,16,.92)"/>'
+        );
+
+        // 方向暗示：细轨迹线
+        if (dir === "bottom" || dir === "top") {
+          for (i = 0; i < 5; i++) {
+            x = 10 + seededRand(seed) * (w - 20);
+            parts.push(
+              '<line x1="' + x.toFixed(1) + '" y1="6" x2="' + x.toFixed(1) + '" y2="' + (h - 6) +
+              '" stroke="' + palette[0] + '" stroke-opacity=".12" stroke-width="' +
+              (dir === "bottom" ? "1.2" : "0.8") + '"/>'
+            );
+          }
+        } else if (dir === "left" || dir === "right") {
+          for (i = 0; i < 4; i++) {
+            y = 8 + seededRand(seed) * (h - 16);
+            parts.push(
+              '<line x1="8" y1="' + y.toFixed(1) + '" x2="' + (w - 8) + '" y2="' + y.toFixed(1) +
+              '" stroke="' + palette[0] + '" stroke-opacity=".12" stroke-width="1"/>'
+            );
+          }
+        }
+
+        for (i = 0; i < n; i++) {
+          if (dir === "bottom" || cfg.straight) {
+            x = 8 + ((i + 0.3) / n) * (w - 16) + (seededRand(seed) - 0.5) * 6;
+            y = 8 + seededRand(seed) * (h - 16);
+          } else if (dir === "right") {
+            x = 8 + seededRand(seed) * (w - 16);
+            y = 8 + ((i + 0.2) / n) * (h - 16);
+          } else {
+            x = 10 + seededRand(seed) * (w - 20);
+            y = 8 + seededRand(seed) * (h - 16);
+          }
+          r = 1.1 + seededRand(seed) * (shape === "triangle" || shape === "star" ? 3.2 : 2.4);
+          if ((cfg.szMax || 0) >= 12) r = 3.5 + seededRand(seed) * 5.5;
+          col = palette[i % palette.length];
+          op = 0.35 + seededRand(seed) * 0.55;
+          pts.push({ x: x, y: y, r: r, col: col });
+          parts.push(particleShapeSvg(shape, x, y, r, col, op));
+        }
+
+        if (links && pts.length > 2) {
+          var linkN = Math.min(pts.length - 1, Math.round(n * 0.55));
+          for (i = 0; i < linkN; i++) {
+            var a = pts[i];
+            var b = pts[Math.min(pts.length - 1, i + 1 + Math.floor(seededRand(seed) * 2))];
+            var dist = Math.hypot(a.x - b.x, a.y - b.y);
+            if (dist > 42) continue;
+            parts.push(
+              '<line x1="' + a.x.toFixed(1) + '" y1="' + a.y.toFixed(1) +
+              '" x2="' + b.x.toFixed(1) + '" y2="' + b.y.toFixed(1) +
+              '" stroke="' + palette[0] + '" stroke-opacity=".35" stroke-width="0.9"/>'
+            );
+          }
+        }
+
+        // 运动方向小箭头
+        if (dir && dir !== "none") {
+          dx = dir === "right" ? 1 : dir === "left" ? -1 : 0;
+          dy = dir === "bottom" ? 1 : dir === "top" ? -1 : 0;
+          var ax = w - 12, ay = h - 10;
+          parts.push(
+            '<path d="M' + (ax - dx * 5 - dy * 3).toFixed(1) + "," + (ay - dy * 5 - dx * 3).toFixed(1) +
+            " L" + ax.toFixed(1) + "," + ay.toFixed(1) +
+            " L" + (ax - dx * 5 + dy * 3).toFixed(1) + "," + (ay - dy * 5 + dx * 3).toFixed(1) +
+            '" fill="none" stroke="' + palette[0] + '" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>'
+          );
+        }
+
+        return (
+          '<svg class="particle-preview-svg" viewBox="0 0 ' + w + " " + h +
+          '" width="100%" height="100%" aria-hidden="true">' + parts.join("") + "</svg>"
+        );
+      }
+
+      function particleCardHtml(key, opts) {
+        opts = opts || {};
+        var cfg = key === "off" ? null : (PARTICLE_FLAVORS[key] || PARTICLE_FLAVORS[opts.flavor] || null);
+        var preview;
+        if (key === "off") {
+          preview =
+            '<svg class="particle-preview-svg" viewBox="0 0 112 56" width="100%" height="100%" aria-hidden="true">' +
+            '<rect width="112" height="56" rx="8" fill="rgba(20,8,10,.95)"/>' +
+            '<line x1="34" y1="18" x2="78" y2="38" stroke="#f87171" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round"/>' +
+            '<line x1="78" y1="18" x2="34" y2="38" stroke="#f87171" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round"/>' +
+            "</svg>";
+        } else {
+          preview = buildParticlePreviewSvg(opts.flavor || key, cfg || {});
+        }
+        var label = opts.label || particleLabel(key === "default" ? (opts.flavor || "default") : key);
+        var tip = (opts.title || key || "").replace(/"/g, "&quot;");
+        var cls = "particle-card" +
+          (opts.active ? " active" : "") +
+          (opts.extraClass ? " " + opts.extraClass : "");
+        return (
+          '<button type="button" class="' + cls + '" data-particle="' + key + '" title="' + tip + '">' +
+          '<span class="particle-preview">' + preview + "</span>" +
+          '<span class="particle-card-meta">' +
+          (opts.kicker ? '<span class="k">' + opts.kicker + "</span>" : "") +
+          '<span class="label">' + label + "</span>" +
+          "</span></button>"
+        );
+      }
+
       function buildParticleGrid() {
         if (!particleGrid) return;
+        var particleQuick = document.getElementById("particleQuick");
         var slide = typeof getActiveSlide === "function" ? getActiveSlide() : null;
         var profile = resolveParticleProfile(slide);
         var defFlavor = defaultParticleFlavor(slide);
-        var html = "";
-        var defLabel =
+        var defTip =
           !particlesEnabled && profile.selection === "default"
-            ? "默认 · 关（全局）"
-            : "默认 · " + particleLabel(defFlavor);
-        html +=
-          '<button type="button" class="particle-opt is-default' +
-          (profile.selection === "default" ? " active" : "") +
-          '" data-particle="default">' +
-          '<span class="n">DEFAULT</span><span class="label">' +
-          defLabel +
-          "</span></button>";
-        html +=
-          '<button type="button" class="particle-opt is-off' +
-          (profile.selection === "off" ? " active" : "") +
-          '" data-particle="off">' +
-          '<span class="n">OFF</span><span class="label">本页关闭</span></button>';
+            ? t("particleDefaultOff")
+            : t("particleDefault") + particleLabel(defFlavor);
+        if (particleQuick) {
+          particleQuick.innerHTML =
+            particleCardHtml("default", {
+              flavor: defFlavor,
+              active: profile.selection === "default",
+              extraClass: "is-default",
+              kicker: "DEFAULT",
+              label: particleLabel(defFlavor),
+              title: defTip
+            }) +
+            particleCardHtml("off", {
+              active: profile.selection === "off",
+              extraClass: "is-off",
+              kicker: "OFF",
+              label: t("off"),
+              title: t("particlePageOff")
+            });
+        }
+        var html = "";
         Object.keys(PARTICLE_FLAVORS).forEach(function (key) {
-          html +=
-            '<button type="button" class="particle-opt' +
-            (profile.selection === key ? " active" : "") +
-            '" data-particle="' +
-            key +
-            '">' +
-            '<span class="n">' +
-            key +
-            '</span><span class="label">' +
-            particleLabel(key) +
-            "</span></button>";
+          html += particleCardHtml(key, {
+            active: profile.selection === key,
+            title: key + " · " + particleLabel(key)
+          });
         });
         particleGrid.innerHTML = html;
       }
 
+      function onParticleChipClick(e) {
+        var btn = e.target.closest(".particle-card, .particle-chip, .particle-opt");
+        if (!btn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        setParticleOverrideForCurrent(btn.getAttribute("data-particle"));
+      }
       if (particleGrid && !particleGrid._bound) {
         particleGrid._bound = true;
-        particleGrid.addEventListener("click", function (e) {
-          var btn = e.target.closest(".particle-opt");
-          if (!btn) return;
-          e.preventDefault();
-          e.stopPropagation();
-          setParticleOverrideForCurrent(btn.getAttribute("data-particle"));
-        });
+        particleGrid.addEventListener("click", onParticleChipClick);
+      }
+      var particleQuickEl = document.getElementById("particleQuick");
+      if (particleQuickEl && !particleQuickEl._bound) {
+        particleQuickEl._bound = true;
+        particleQuickEl.addEventListener("click", onParticleChipClick);
       }
       if (particlesBtn && !particlesBtn._boundPicker) {
         particlesBtn._boundPicker = true;
@@ -3228,7 +3516,7 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
           pageInput.value = String(index + 1);
           pageInput.max = String(slides.length);
         }
-        titleHint.textContent = slides[index].dataset.title || "";
+        titleHint.textContent = translateTitle(slides[index].dataset.title || "");
         prevBtn.disabled = index === 0;
         nextBtn.disabled = index === slides.length - 1;
         if (homeBtn) homeBtn.disabled = index === 0;
@@ -3299,7 +3587,7 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         btn.type = "button";
         btn.className = "slide-thumb" + (i === index ? " active" : "");
         btn.dataset.index = String(i);
-        var title = slides[i].dataset.title || ("第" + (i + 1) + "页");
+        var title = translateTitle(slides[i].dataset.title) || t("pageFallback", { n: i + 1 });
         btn.innerHTML =
           '<div class="slide-thumb-head"><span class="no"></span><span class="ttl"></span></div>' +
           '<div class="slide-thumb-frame" data-thumb-frame="1"></div>';
@@ -3324,7 +3612,7 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         clone.querySelectorAll("video").forEach(function (v) {
           var ph = document.createElement("div");
           ph.className = "slide-thumb-video-ph";
-          ph.textContent = "视频";
+          ph.textContent = t("video");
           if (v.parentNode) v.parentNode.replaceChild(ph, v);
         });
         clone.querySelectorAll("canvas, script, iframe, #vanta-cover, [id='vanta-cover']").forEach(function (el) {
@@ -4226,6 +4514,12 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
           toggleAnnotate();
           return;
         }
+        if (e.key === "l" || e.key === "L") {
+          if (e.target.closest("video, input, textarea")) return;
+          e.preventDefault();
+          if (I18N && typeof I18N.toggleLang === "function") I18N.toggleLang();
+          return;
+        }
         if (e.key === "Escape") {
           if (particleWrap && particleWrap.classList.contains("open")) {
             particleWrap.classList.remove("open");
@@ -4268,7 +4562,7 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       });
       document.getElementById("deck").addEventListener("click", function (e) {
         if (annotateOn || railOpen || gridOpen) return;
-        if (e.target.closest("button, a, pre, code, .case-card, .term, video, .demo-player, .cmd-hero, .theme-wrap, .page-jump, .slide-rail, .slide-grid, .annotate-bar, .layout-contrast, .layout-steps")) return;
+        if (e.target.closest("button, a, pre, code, .case-card, .term, video, .demo-player, .cmd-hero, .theme-wrap, .more-wrap, .page-jump, .slide-rail, .slide-grid, .annotate-bar, .layout-contrast, .layout-steps")) return;
         const x = e.clientX / window.innerWidth;
         if (x > 0.55) go(1); else if (x < 0.45) go(-1);
       });
@@ -4290,11 +4584,11 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         function flashOk() {
           var label = btn.querySelector("span");
           btn.classList.add("ok");
-          if (label) label.textContent = "已复制";
+          if (label) label.textContent = t("copied");
           paintIcons();
           setTimeout(function () {
             btn.classList.remove("ok");
-            if (label) label.textContent = "复制";
+            if (label) label.textContent = t("copy");
             paintIcons();
           }, 1600);
         }
@@ -4323,6 +4617,37 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       setInterval(function () {
         if (isCoverActive()) refreshCoverTalkTime();
       }, 30000);
+
+      window.__deckOnLangChange = function () {
+        buildThemeGrid();
+        var curTheme = root.getAttribute("data-theme") || cfgThemeDefault();
+        setTheme(curTheme, false);
+        syncBgmBtn();
+        syncParticlesUi();
+        setPresentMode(presentMode);
+        if (moreWrap) syncMoreToggleUi(isMoreExpanded());
+        fsBtn.title = document.fullscreenElement ? t("fsExit") : t("fs");
+        if (typeof refreshAiAmbient === "function") refreshAiAmbient();
+        if (typeof syncChromeActive === "function") syncChromeActive();
+        if (slideRailList) {
+          slideRailList.innerHTML = "";
+          for (var ri = 0; ri < slides.length; ri++) {
+            slideRailList.appendChild(makeThumbButton(ri));
+          }
+        }
+        if (slideGridList) {
+          slideGridList.innerHTML = "";
+          for (var gi = 0; gi < slides.length; gi++) {
+            slideGridList.appendChild(makeThumbButton(gi));
+          }
+        }
+        render();
+        if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
+      };
+
+      if (I18N && typeof I18N.setLang === "function") {
+        I18N.setLang(I18N.resolveLang ? I18N.resolveLang() : "zh", false);
+      }
 
       const m = location.hash.match(/^#s(\d+)$/);
       if (m) {

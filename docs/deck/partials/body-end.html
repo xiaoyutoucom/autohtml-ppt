@@ -5,40 +5,55 @@
   <div class="footer">
     <div class="hint" id="titleHint">封面</div>
     <div class="nav">
-      <button id="homeBtn" type="button" title="首页 (Home)"><i data-lucide="chevrons-left" class="icon"></i>首页</button>
-      <button id="prev" type="button"><i data-lucide="chevron-left" class="icon"></i>上一页</button>
-      <label class="page-jump" title="输入页码后回车跳转">
+      <button id="homeBtn" type="button" class="icon-btn icon-only" data-i18n-title="homeTitle" title="首页 (Home)"><i data-lucide="chevrons-left" class="icon"></i><span class="btn-label" data-i18n="home">首页</span></button>
+      <button id="prev" type="button" class="icon-btn icon-only" data-i18n-title="prev" title="上一页"><i data-lucide="chevron-left" class="icon"></i><span class="btn-label" data-i18n="prev">上一页</span></button>
+      <label class="page-jump" data-i18n-title="pageJump" title="输入页码后回车跳转">
         <input id="pageInput" type="number" min="1" step="1" inputmode="numeric" aria-label="页码" />
         <span>/</span>
         <span class="page-total" id="pageTotal">1</span>
       </label>
       <span class="hint" id="counter" hidden>1 / 1</span>
-      <button id="next" type="button">下一页<i data-lucide="chevron-right" class="icon"></i></button>
-      <button id="endBtn" type="button" title="尾页 (End)">尾页<i data-lucide="chevrons-right" class="icon"></i></button>
+      <button id="next" type="button" class="icon-btn icon-only" data-i18n-title="next" title="下一页"><span class="btn-label" data-i18n="next">下一页</span><i data-lucide="chevron-right" class="icon"></i></button>
+      <button id="endBtn" type="button" class="icon-btn icon-only" data-i18n-title="endTitle" title="尾页 (End)"><span class="btn-label" data-i18n="end">尾页</span><i data-lucide="chevrons-right" class="icon"></i></button>
+
+      <span class="nav-sep" aria-hidden="true"></span>
+
       <div class="theme-wrap" id="themeWrap">
-        <button id="themeBtn" type="button" class="theme-btn" title="切换样式 (T)"><i data-lucide="palette" class="icon"></i><span id="themeBtnLabel">样式1</span></button>
+        <button id="themeBtn" type="button" class="theme-btn icon-btn" data-i18n-title="themeTitle" title="切换样式 (T)"><i data-lucide="palette" class="icon"></i><span class="btn-label" id="themeBtnLabel" data-i18n="theme">样式</span></button>
         <div class="theme-panel" id="themePanel" role="dialog" aria-label="选择样式">
           <h4>20 套样式 · 当前会记住选择</h4>
           <div class="theme-grid" id="themeGrid"></div>
         </div>
       </div>
-      <button id="railBtn" type="button" title="缩略图轨 (S)"><i data-lucide="panel-left" class="icon"></i>目录</button>
-      <button id="gridBtn" type="button" title="网格总览 (G)"><i data-lucide="layout-grid" class="icon"></i>总览</button>
-      <button id="annotateBtn" type="button" title="画笔批注 (A)"><i data-lucide="pencil" class="icon"></i>画笔</button>
       <div class="theme-wrap particle-wrap" id="particleWrap">
-        <button id="particlesBtn" type="button" class="theme-btn" title="选择粒子效果 (P)" aria-haspopup="dialog" aria-expanded="false"><i data-lucide="sparkles" class="icon"></i><span id="particlesBtnLabel">粒子</span></button>
+        <button id="particlesBtn" type="button" class="theme-btn icon-btn" data-i18n-title="particlesPick" title="选择粒子效果 (P)" aria-haspopup="dialog" aria-expanded="false"><i data-lucide="sparkles" class="icon"></i><span class="btn-label" id="particlesBtnLabel" data-i18n="particles">粒子</span></button>
         <div class="theme-panel particle-panel" id="particlePanel" role="dialog" aria-label="选择粒子效果">
-          <h4>本页粒子 · 配置见 config.json → slideParticles</h4>
+          <div class="particle-panel-head">
+            <h4 data-i18n="particlePanel">本页粒子</h4>
+            <span class="particle-panel-hint" data-i18n="particleHint">config.json → slideParticles</span>
+          </div>
+          <div class="particle-quick" id="particleQuick"></div>
           <div class="particle-grid" id="particleGrid"></div>
           <div class="particle-panel-actions">
-            <button type="button" id="particleCopyCfgBtn" title="复制 slideParticles JSON，粘贴进 config.json 后执行 build">复制配置</button>
-            <button type="button" id="particleResetCfgBtn" title="丢弃本机覆盖，恢复为 config.json">恢复配置文件</button>
+            <button type="button" id="particleCopyCfgBtn" data-i18n="particleCopy" data-i18n-title="particleCopy" title="复制 slideParticles JSON，粘贴进 config.json 后执行 build">复制配置</button>
+            <button type="button" id="particleResetCfgBtn" data-i18n="particleReset" data-i18n-title="particleReset" title="丢弃本机覆盖，恢复为 config.json">恢复配置文件</button>
           </div>
         </div>
       </div>
-      <button id="bgmBtn" type="button" title="背景音乐 (M)" aria-pressed="false"><i data-lucide="music" class="icon"></i><span>音乐</span></button>
-      <button id="exportPptBtn" type="button" title="导出全部页：优先当前标签页截屏（含粒子），失败再 DOM 截图"><i data-lucide="file-down" class="icon"></i>导出PPT</button>
-      <button id="presentBtn" type="button" class="primary" title="演示模式 (F)"><i data-lucide="presentation" class="icon"></i>演示</button>
-      <button id="fsBtn" type="button" title="浏览器全屏"><i data-lucide="maximize-2" class="icon"></i></button>
+
+      <div class="more-wrap is-expanded" id="moreWrap" data-more="1">
+        <button id="moreBtn" type="button" class="icon-btn icon-only more-toggle" data-i18n-title="moreCollapse" title="折叠工具" aria-expanded="true" aria-controls="moreTools"><i data-lucide="chevrons-left" class="icon"></i><span class="btn-label" data-i18n="moreCollapse">折叠</span></button>
+        <div class="more-tools" id="moreTools">
+          <button id="railBtn" type="button" class="icon-btn" data-i18n-title="railTitle" title="缩略图轨 (S)"><i data-lucide="panel-left" class="icon"></i><span class="btn-label" data-i18n="rail">目录</span></button>
+          <button id="gridBtn" type="button" class="icon-btn" data-i18n-title="gridTitle" title="网格总览 (G)"><i data-lucide="layout-grid" class="icon"></i><span class="btn-label" data-i18n="grid">总览</span></button>
+          <button id="annotateBtn" type="button" class="icon-btn" data-i18n-title="annotateTitle" title="画笔批注 (A)"><i data-lucide="pencil" class="icon"></i><span class="btn-label" data-i18n="annotate">画笔</span></button>
+          <button id="bgmBtn" type="button" class="icon-btn" title="背景音乐 (M)" aria-pressed="false"><i data-lucide="music" class="icon"></i><span class="btn-label" data-i18n="bgm">音乐</span></button>
+          <button id="exportPptBtn" type="button" class="icon-btn btn-emphasis" data-i18n-title="exportTitle" title="导出全部页：优先当前标签页截屏（含粒子），失败再 DOM 截图"><i data-lucide="file-down" class="icon"></i><span class="btn-label" data-i18n="exportPpt">导出PPT</span></button>
+        </div>
+      </div>
+
+      <button id="langBtn" type="button" class="lang-btn" data-i18n-title="langTitle" title="切换语言 / Language" aria-pressed="false"><i data-lucide="languages" class="icon"></i><span data-lang-label>中</span></button>
+      <button id="presentBtn" type="button" class="primary icon-btn" data-i18n-title="presentTitle" title="演示模式 (F)"><i data-lucide="presentation" class="icon"></i><span class="btn-label" data-i18n="present">演示</span></button>
+      <button id="fsBtn" type="button" class="icon-btn icon-only" data-i18n-title="fs" title="浏览器全屏"><i data-lucide="maximize-2" class="icon"></i></button>
     </div>
   </div>

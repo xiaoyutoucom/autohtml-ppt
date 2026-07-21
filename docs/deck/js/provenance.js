@@ -36,7 +36,7 @@
     "projectId": "tech-training-deck",
     "fingerprint": "TTD-2026-XIAOYUTOUCOM",
     "productName": "Tech Training Deck",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "copyright": "© 2026 xiaoyutoucom",
     "license": "MIT",
     "homepage": "https://github.com/xiaoyutoucom/autohtml-ppt",

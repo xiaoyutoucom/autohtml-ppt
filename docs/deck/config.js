@@ -73,6 +73,7 @@
     "开源与赞助": "sponsor_glow"
   },
   "theme": 3,
+  "lang": "zh",
   "speaker": "y",
   "bgm": false,
   "bgmSrc": "dylanf - 卡农 (经典钢琴版).mp3"

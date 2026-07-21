@@ -3,20 +3,20 @@
     <span class="hud-corner bl"></span>
     <span class="hud-corner br"></span>
   </div>
-  <div class="present-toast" id="presentToast">S 缩略图 · G 总览 · A 画笔 · F 演示 · T 样式 · P 粒子选择 · M 音乐 · ← → 翻页</div>
+  <div class="present-toast" id="presentToast" data-i18n="toast">S 缩略图 · G 总览 · A 画笔 · F 演示 · T 样式 · P 粒子 · L 语言 · M 音乐 · ← → 翻页</div>
   <div class="present-hotzone" id="presentHotzone" aria-hidden="true"></div>
-  <div class="export-ppt-toast" id="exportPptToast" aria-live="polite">正在导出 PPT…</div>
+  <div class="export-ppt-toast" id="exportPptToast" aria-live="polite" data-i18n="exportBusy">正在导出 PPT…</div>
   <aside class="slide-rail" id="slideRail" aria-label="缩略图轨">
     <div class="slide-rail-head">
-      <span>Slides · S</span>
-      <button type="button" id="railCloseBtn" title="关闭">关闭</button>
+      <span data-i18n="railHead">Slides · S</span>
+      <button type="button" id="railCloseBtn" data-i18n="close" data-i18n-title="close" title="关闭">关闭</button>
     </div>
     <div class="slide-rail-list" id="slideRailList"></div>
   </aside>
   <div class="slide-grid" id="slideGrid" aria-label="网格总览">
     <div class="slide-grid-head">
-      <span>All slides · G</span>
-      <button type="button" id="gridCloseBtn" title="关闭">关闭</button>
+      <span data-i18n="gridHead">All slides · G</span>
+      <button type="button" id="gridCloseBtn" data-i18n="close" data-i18n-title="close" title="关闭">关闭</button>
     </div>
     <div class="slide-grid-list" id="slideGridList"></div>
   </div>
@@ -24,16 +24,16 @@
     <canvas id="annotateCanvas"></canvas>
   </div>
   <div class="annotate-bar" id="annotateBar" aria-label="画笔工具">
-    <button type="button" data-tool="pen" class="on" title="钢笔">笔</button>
-    <button type="button" data-tool="highlighter" title="荧光笔">荧光笔</button>
-    <button type="button" data-tool="eraser" title="擦除笔迹">橡皮</button>
+    <button type="button" data-tool="pen" class="on" data-i18n="annPen" title="钢笔">笔</button>
+    <button type="button" data-tool="highlighter" data-i18n="annHigh" title="荧光笔">荧光笔</button>
+    <button type="button" data-tool="eraser" data-i18n="annEraser" title="擦除笔迹">橡皮</button>
     <button type="button" class="swatch on" data-color="#fde047" style="background:#fde047" title="亮黄"></button>
     <button type="button" class="swatch" data-color="#ffffff" style="background:#ffffff" title="白"></button>
     <button type="button" class="swatch" data-color="#22d3ee" style="background:#22d3ee" title="青"></button>
     <button type="button" class="swatch" data-color="#f87171" style="background:#f87171" title="红"></button>
-    <button type="button" id="annUndoBtn" title="撤销">撤销</button>
-    <button type="button" id="annClearBtn" title="清空本页">清空</button>
-    <button type="button" id="annCloseBtn" title="关闭画笔 (A)">完成</button>
+    <button type="button" id="annUndoBtn" data-i18n="annUndo" title="撤销">撤销</button>
+    <button type="button" id="annClearBtn" data-i18n="annClear" title="清空本页">清空</button>
+    <button type="button" id="annCloseBtn" data-i18n="annDone" title="关闭画笔 (A)">完成</button>
   </div>
   <div id="tsparticles" aria-hidden="true"></div>
   <div id="coverCursorGlow" aria-hidden="true"></div>

@@ -217,13 +217,14 @@ def build(out: Path) -> Path:
             "bgm": False,
             "bgmSrc": "dylanf - 卡农 (经典钢琴版).mp3",
         }
-    # 运行时加载：provenance → config → deck.js
+    # 运行时加载：provenance → config → i18n → deck.js
     write_config_js(cfg_obj)
     write_provenance_js()
     boot_scripts = "\n".join(
         [
             '<script src="deck/js/provenance.js"></script>',
             '<script src="deck/config.js"></script>',
+            '<script src="deck/js/i18n.js"></script>',
         ]
     )
 

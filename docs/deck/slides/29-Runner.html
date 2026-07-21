@@ -1,30 +1,30 @@
 <section class="slide" data-title="Runner">
-      <div class="kicker">五件套 · Runner</div>
-      <h2>总控：四步 Advance</h2>
-      <p class="lead" style="margin-bottom:.55rem;font-size:.92rem"><code>--advance</code> 时 online 委派 Agent · Lint 盖章写回 Progress</p>
+      <div class="kicker" data-en="Five-piece · Runner">五件套 · Runner</div>
+      <h2 data-en="Orchestrator: four-step Advance">总控：四步 Advance</h2>
+      <p class="lead" style="margin-bottom:.55rem;font-size:.92rem" data-en="With --advance, online delegates Agent · Lint stamps Progress"><code>--advance</code> 时 online 委派 Agent · Lint 盖章写回 Progress</p>
       <div class="layout-steps" style="--n:4">
         <div class="step">
           <div class="n">01</div>
-          <h3>前置门禁链</h3>
-          <p>更早 Stage 须 done 且 gate.pass</p>
+          <h3 data-en="Prior gate chain">前置门禁链</h3>
+          <p data-en="Earlier Stages done + gate.pass">更早 Stage 须 done 且 gate.pass</p>
           <span class="cite-path">harness/core/gate_chain.py · L81（assert_prior_chain_gates）</span>
         </div>
         <div class="step">
           <div class="n">02</div>
-          <h3>当前干活</h3>
-          <p>Delegate 写产物，或确定性执行</p>
+          <h3 data-en="Do current work">当前干活</h3>
+          <p data-en="Delegate writes artifacts, or deterministic run">Delegate 写产物，或确定性执行</p>
           <span class="cite-path">S1 委派 runner.py · L1305–1307 → s1_delegate.py · L1</span>
         </div>
         <div class="step">
           <div class="n">03</div>
-          <h3>门禁输入</h3>
-          <p>产物路径须存在</p>
+          <h3 data-en="Gate inputs">门禁输入</h3>
+          <p data-en="Artifact paths must exist">产物路径须存在</p>
           <span class="cite-path">cleaned_path · paths.py · L32；runnable_path 等同文件</span>
         </div>
         <div class="step">
           <div class="n">04</div>
-          <h3>Lint + 盖章</h3>
-          <p>写 gate 回 Progress，决定能否前进</p>
+          <h3 data-en="Lint + stamp">Lint + 盖章</h3>
+          <p data-en="Write gate to Progress; unlock advance">写 gate 回 Progress，决定能否前进</p>
           <span class="cite-path">STAGE_META·L53；_write_gate·L519；cmd_advance·L1626</span>
         </div>
       </div>

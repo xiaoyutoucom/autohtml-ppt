@@ -20,7 +20,7 @@
       --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
       --glow: 0 0 24px rgba(34, 211, 238, 0.22);
       --radius: 18px;
-      --footer-h: 3.25rem;
+      --footer-h: 2.45rem;
       --progress-h: 4px;
       --safe-bottom: 1.5rem;
       /* 内容放大基准：约等于浏览器 120% 缩放（不用 zoom / transform） */
@@ -399,10 +399,10 @@
     .cover-foot-icon svg { width: 1.05rem; height: 1.05rem; }
 
     .footer button .icon {
-      width: .95em;
-      height: .95em;
-      vertical-align: -.14em;
-      margin: 0 .15rem;
+      width: .92em;
+      height: .92em;
+      vertical-align: middle;
+      margin: 0;
       color: inherit;
     }
 
@@ -2095,7 +2095,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 1.25rem;
+      gap: .5rem;
+      padding: 0 .65rem 0 .85rem;
       color: var(--ink-soft);
       background: color-mix(in srgb, var(--paper) 72%, var(--panel));
       backdrop-filter: blur(12px);
@@ -2103,6 +2104,15 @@
       box-shadow: 0 -8px 28px color-mix(in srgb, var(--paper) 35%, transparent);
       z-index: 20;
       transition: opacity .25s ease, transform .25s ease, background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .footer > .hint {
+      flex: 0 1 auto;
+      min-width: 0;
+      max-width: min(28vw, 12rem);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: .72rem;
     }
     /* 溯源标识：固定右上角，避免与底栏标题抢位 */
     .deck-attribution {
@@ -2162,33 +2172,47 @@
       background: color-mix(in srgb, var(--panel) 92%, var(--paper));
       box-shadow: 0 -6px 24px rgba(15, 23, 42, 0.08);
     }
-    .nav { display: flex; gap: .45rem; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+    .nav {
+      display: flex;
+      gap: .28rem;
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
+      min-width: 0;
+    }
+    .nav-sep {
+      width: 1px;
+      height: 1.1rem;
+      margin: 0 .15rem;
+      background: color-mix(in srgb, var(--line) 85%, transparent);
+      flex-shrink: 0;
+    }
     .page-jump {
       display: inline-flex;
       align-items: center;
-      gap: .35rem;
+      gap: .22rem;
       font-family: var(--mono);
-      font-size: .84rem;
+      font-size: .72rem;
       color: var(--ink-soft);
     }
     .page-jump input {
-      width: 2.6rem;
-      height: 1.85rem;
+      width: 2.1rem;
+      height: 1.55rem;
       border: 1px solid color-mix(in srgb, var(--neon) 28%, transparent);
       background: var(--panel);
       color: var(--ink);
-      border-radius: 8px;
+      border-radius: 6px;
       text-align: center;
       font-family: var(--mono);
-      font-size: .84rem;
+      font-size: .72rem;
       outline: none;
-      padding: 0 .2rem;
+      padding: 0 .15rem;
     }
     .page-jump input:focus {
       border-color: var(--neon);
       box-shadow: 0 0 0 2px color-mix(in srgb, var(--neon) 22%, transparent);
     }
-    .page-jump .page-total { min-width: 2.2rem; color: var(--muted); }
+    .page-jump .page-total { min-width: 1.4rem; color: var(--muted); }
     button {
       border: 1px solid color-mix(in srgb, var(--neon) 28%, transparent);
       background: var(--panel);
@@ -2199,6 +2223,98 @@
       font-family: var(--sans);
       font-size: .88rem;
       transition: .15s ease;
+    }
+    /* 底栏：功能钮带短文案；翻页/全屏/折叠仍图标化 */
+    .footer button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .28rem;
+      height: 1.75rem;
+      min-width: 1.75rem;
+      padding: 0 .55rem;
+      border-radius: 8px;
+      font-size: .72rem;
+      line-height: 1;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+    .footer button .btn-label {
+      display: inline;
+      font-weight: 600;
+      letter-spacing: .01em;
+    }
+    .footer button.icon-only {
+      padding: 0 .42rem;
+    }
+    .footer button.icon-only .btn-label {
+      display: none;
+    }
+    .footer button.lang-btn,
+    .footer button.primary,
+    .footer button.btn-emphasis {
+      padding: 0 .62rem;
+    }
+    .footer button.lang-btn [data-lang-label] {
+      display: inline;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .footer button.btn-emphasis {
+      border-color: color-mix(in srgb, var(--teal) 45%, transparent);
+      background: color-mix(in srgb, var(--teal) 12%, var(--panel));
+      color: var(--ink);
+    }
+    .footer button.btn-emphasis:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .footer button .icon {
+      width: .92em;
+      height: .92em;
+      margin: 0;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+    @media (max-width: 1100px) {
+      /* 窄屏：次要文案收起，导出/演示仍保留文字 */
+      .footer #railBtn .btn-label,
+      .footer #gridBtn .btn-label,
+      .footer #annotateBtn .btn-label,
+      .footer #bgmBtn .btn-label,
+      .footer #themeBtn .btn-label,
+      .footer #particlesBtn .btn-label {
+        display: none;
+      }
+      .footer #railBtn,
+      .footer #gridBtn,
+      .footer #annotateBtn,
+      .footer #bgmBtn,
+      .footer #themeBtn,
+      .footer #particlesBtn {
+        padding: 0 .42rem;
+      }
+    }
+
+    /* 次要工具折叠：CSS + [hidden] 双保险 */
+    .footer .more-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: .28rem;
+    }
+    .footer .more-tools {
+      display: none !important;
+      align-items: center;
+      gap: .28rem;
+    }
+    .footer .more-wrap.is-expanded .more-tools:not([hidden]) {
+      display: inline-flex !important;
+    }
+    .footer .more-tools[hidden] {
+      display: none !important;
+    }
+    .footer .more-toggle {
+      flex-shrink: 0;
     }
     button:hover {
       border-color: var(--neon);
@@ -2249,7 +2365,7 @@
     html.present-mode {
       /* 仅影响幻灯留白；底栏自身高度用 --footer-bar-h，避免展开高度为 0 */
       --footer-h: 0px;
-      --footer-bar-h: 3.25rem;
+      --footer-bar-h: 2.45rem;
       --progress-h: 3px;
       --safe-bottom: 2.25rem;
     }
@@ -2339,6 +2455,7 @@
     html.exporting-ppt #term-tip,
     html.exporting-ppt .theme-panel,
     html.exporting-ppt .theme-wrap,
+    html.exporting-ppt .more-wrap,
     html.exporting-ppt .particle-panel,
     html.exporting-ppt .particle-wrap,
     html.exporting-ppt video,

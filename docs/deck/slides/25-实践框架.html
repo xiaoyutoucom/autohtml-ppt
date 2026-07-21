@@ -4,57 +4,57 @@
         <div class="split-body">
           <div class="layout-bignumber is-compact">
             <div class="figure">5</div>
-            <div class="caption">本仓 Harness 五件套</div>
+            <div class="caption" data-en="This repo&apos;s Harness five-piece kit">本仓 Harness 五件套</div>
             <div class="foot">Progress · Runner · Skill · Rules · Lint</div>
           </div>
         </div>
         <div class="split-media" style="min-height:0;padding:.85rem 1rem">
-          <p class="lead" style="margin:0;font-size:.92rem">Agent 生产 → Harness 校验 → 人审异常 · 虚线英文可悬停看解释</p>
+          <p class="lead" style="margin:0;font-size:.92rem" data-en="Agent produces → Harness validates → human reviews exceptions · hover dashed English for gloss">Agent 生产 → Harness 校验 → 人审异常 · 虚线英文可悬停看解释</p>
         </div>
       </div>
       <table class="fw-table">
         <thead>
-          <tr><th>组件</th><th>解释</th><th>定位</th></tr>
+          <tr><th data-en="Component">组件</th><th data-en="Explanation">解释</th><th data-en="Role">定位</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>Progress<br/>进度看板</td>
-            <td>记录流水线走到哪、状态如何、哪里被 Gate 卡住；内含 <strong class="strong">S0–S9</strong> 阶段字段
+            <td>Progress<br/><span data-en="Progress board">进度看板</span></td>
+            <td data-en="Tracks pipeline position, status, Gate blocks; includes S0–S9 stage fields">记录流水线走到哪、状态如何、哪里被 Gate 卡住；内含 <strong class="strong">S0–S9</strong> 阶段字段
               <span class="cite-path">cases/SPECCONFIG/progress.yaml · L1；阶段序 harness/core/paths.py · L8（STAGE_ORDER）</span>
             </td>
-            <td>Runner 读写</td>
+            <td data-en="Runner read/write">Runner 读写</td>
           </tr>
           <tr>
-            <td>Runner<br/>总控引擎</td>
-            <td>推动 Status/Next；决定要不要 Lint；<code>--advance</code> 时 <strong class="strong">online 委派 Agent</strong>（offline 可跳过）
+            <td>Runner<br/><span data-en="Orchestrator">总控引擎</span></td>
+            <td data-en="Drives Status/Next; Lint decisions; with --advance, online delegates to Agent (offline can skip)">推动 Status/Next；决定要不要 Lint；<code>--advance</code> 时 <strong class="strong" data-en="online delegates Agent">online 委派 Agent</strong>（offline 可跳过）
               <span class="cite-path">harness/runner.py · L1；CLI · L1814；委派例 harness/cursor/s1_delegate.py · L1</span>
             </td>
-            <td>人 · CI · Agent</td>
+            <td data-en="Human · CI · Agent">人 · CI · Agent</td>
           </tr>
           <tr>
-            <td>Skill<br/>技能包</td>
-            <td><strong class="strong">教「怎么写对」</strong>（给人和 Agent）· 不直接被 Python 执行
+            <td>Skill<br/><span data-en="Skill pack">技能包</span></td>
+            <td data-en="Teaches how to write correctly (human + Agent) · not executed by Python directly"><strong class="strong" data-en="Teaches how to write correctly">教「怎么写对」</strong>（给人和 Agent）· 不直接被 Python 执行
               <span class="cite-path">harness/skills/s1_clean.md · L1；目录 harness/skills/s1–s9</span>
             </td>
-            <td>人 · Agent</td>
+            <td data-en="Human · Agent">人 · Agent</td>
           </tr>
           <tr>
-            <td>Rules<br/>约束条件</td>
-            <td><strong class="strong">定义「什么算错」</strong>（给 Lint 读的机读 YAML）
+            <td>Rules<br/><span data-en="Constraints">约束条件</span></td>
+            <td data-en="Defines what counts as wrong (machine YAML for Lint)"><strong class="strong" data-en="Defines what counts as wrong">定义「什么算错」</strong>（给 Lint 读的机读 YAML）
               <span class="cite-path">harness/rules/cleaned_rules.yaml · L1（required_sections / valid_tags）</span>
             </td>
-            <td>Lint 脚本</td>
+            <td data-en="Lint scripts">Lint 脚本</td>
           </tr>
           <tr>
-            <td>Lint<br/>质检</td>
-            <td><strong class="strong">执行检查，输出 pass/fail</strong> → 写回 Gate
+            <td>Lint<br/><span data-en="Quality check">质检</span></td>
+            <td data-en="Runs checks, outputs pass/fail → writes Gate"><strong class="strong" data-en="Runs checks, pass/fail → Gate">执行检查，输出 pass/fail</strong> → 写回 Gate
               <span class="cite-path">harness/lints/lint_cleaned.py · L1；读 Rules · L18</span>
             </td>
-            <td>Runner 调用</td>
+            <td data-en="Runner invokes">Runner 调用</td>
           </tr>
         </tbody>
       </table>
-      <div class="formula" style="margin-top:.7rem">
+      <div class="formula" style="margin-top:.7rem" data-en="Progress records state (incl. Stage) → Runner advances (can Delegate) → Skill teaches · Rules define wrong · Lint pass/fail">
         Progress 记状态（含 Stage）→ Runner 往前推（可 Delegate）→ Skill 教写对 · Rules 定义错 · Lint 判 pass/fail
       </div>
     </section>

@@ -34,12 +34,22 @@
       const railBtn = document.getElementById("railBtn");
       const gridBtn = document.getElementById("gridBtn");
       const annotateBtn = document.getElementById("annotateBtn");
+      const langBtn = document.getElementById("langBtn");
+      const moreWrap = document.getElementById("moreWrap");
+      const moreBtn = document.getElementById("moreBtn");
       const footerEl = document.querySelector(".footer");
       const presentHotzone = document.getElementById("presentHotzone");
       const themeWrap = document.getElementById("themeWrap");
       const themeBtn = document.getElementById("themeBtn");
       const themeBtnLabel = document.getElementById("themeBtnLabel");
       const themeGrid = document.getElementById("themeGrid");
+      const I18N = (typeof window !== "undefined" && window.DECK_I18N) || null;
+      function t(key, vars) {
+        return I18N && typeof I18N.t === "function" ? I18N.t(key, vars) : key;
+      }
+      function translateTitle(zh) {
+        return I18N && typeof I18N.translateTitle === "function" ? I18N.translateTitle(zh) : (zh || "");
+      }
       let presentMode = false;
       let exportPptBusy = false;
       /** 全局默认：true=各页用内置映射；false=各页默认关闭（可被本页覆盖） */
@@ -104,11 +114,11 @@
         bgmBtn.setAttribute("aria-pressed", bgmEnabled ? "true" : "false");
         bgmBtn.classList.toggle("primary", bgmEnabled);
         bgmBtn.title = !hasSrc
-          ? "未配置 bgmSrc"
-          : (bgmEnabled ? "关闭背景音乐 (M)" : "打开背景音乐 (M)");
+          ? t("bgmMissing")
+          : (bgmEnabled ? t("bgmClose") : t("bgmOpen"));
         bgmBtn.innerHTML = bgmEnabled
-          ? '<i data-lucide="volume-2" class="icon"></i><span>音乐开</span>'
-          : '<i data-lucide="volume-x" class="icon"></i><span>音乐关</span>';
+          ? '<i data-lucide="volume-2" class="icon"></i><span class="btn-label">' + t("bgmOn") + "</span>"
+          : '<i data-lucide="volume-x" class="icon"></i><span class="btn-label">' + t("bgmOff") + "</span>";
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       }
 
@@ -208,15 +218,17 @@
       }
 
       function setTheme(id, persist) {
-        var t = themeById(id);
-        root.setAttribute("data-theme", String(t.id));
-        root.setAttribute("data-theme-mode", t.mode === "light" ? "light" : "dark");
-        if (themeBtnLabel) themeBtnLabel.textContent = "样式" + t.id;
-        themeGrid.querySelectorAll(".theme-swatch").forEach(function (btn) {
-          btn.classList.toggle("active", btn.getAttribute("data-theme") === String(t.id));
-        });
+        var meta = themeById(id);
+        root.setAttribute("data-theme", String(meta.id));
+        root.setAttribute("data-theme-mode", meta.mode === "light" ? "light" : "dark");
+        if (themeBtnLabel) themeBtnLabel.textContent = t("themeN", { n: meta.id });
+        if (themeGrid) {
+          themeGrid.querySelectorAll(".theme-swatch").forEach(function (btn) {
+            btn.classList.toggle("active", btn.getAttribute("data-theme") === String(meta.id));
+          });
+        }
         if (persist !== false) {
-          lsSet(THEME_KEY, t.id);
+          lsSet(THEME_KEY, meta.id);
         }
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
         // 主题色驱动粒子 / 封面 Vanta（须等 PARTICLE_FLAVORS / MAP 初始化后再调）
@@ -231,23 +243,78 @@
         }
       }
 
+      function themeModeLabel(mode) {
+        return mode === "light" ? t("light") : t("dark");
+      }
+
       function buildThemeGrid() {
-        themeGrid.innerHTML = THEME_META.map(function (t) {
+        if (!themeGrid) return;
+        themeGrid.innerHTML = THEME_META.map(function (meta) {
           return (
-            '<button type="button" class="theme-swatch" data-theme="' + t.id + '"' +
-            ' style="background:' + t.paper + ';color:' + t.ink + ';border-color:' + t.swatch + '">' +
-            '<span class="n">#' + t.id + (t.mode === "light" ? " · 浅" : " · 深") + "</span>" +
-            '<span class="label">' + t.name + "</span></button>"
+            '<button type="button" class="theme-swatch" data-theme="' + meta.id + '"' +
+            ' style="background:' + meta.paper + ';color:' + meta.ink + ';border-color:' + meta.swatch + '">' +
+            '<span class="n">#' + meta.id + " · " + themeModeLabel(meta.mode) + "</span>" +
+            '<span class="label">' + meta.name + "</span></button>"
           );
         }).join("");
-        themeGrid.addEventListener("click", function (e) {
-          var btn = e.target.closest(".theme-swatch");
-          if (!btn) return;
-          e.preventDefault();
-          e.stopPropagation();
-          setTheme(btn.getAttribute("data-theme"), true);
-          themeWrap.classList.remove("open");
-        });
+        if (!themeGrid._bound) {
+          themeGrid._bound = true;
+          themeGrid.addEventListener("click", function (e) {
+            var btn = e.target.closest(".theme-swatch");
+            if (!btn) return;
+            e.preventDefault();
+            e.stopPropagation();
+            setTheme(btn.getAttribute("data-theme"), true);
+            themeWrap.classList.remove("open");
+          });
+        }
+      }
+
+      const MORE_EXPANDED_KEY = "harness_training_more_expanded";
+      const moreToolsEl = document.getElementById("moreTools");
+
+      function isMoreExpanded() {
+        return !!(moreWrap && moreWrap.classList.contains("is-expanded"));
+      }
+
+      function syncMoreToggleUi(expanded) {
+        if (!moreBtn) return;
+        moreBtn.setAttribute("aria-expanded", expanded ? "true" : "false");
+        moreBtn.title = expanded ? t("moreCollapse") : t("moreExpand");
+        moreBtn.setAttribute("data-i18n-title", expanded ? "moreCollapse" : "moreExpand");
+        // « 折叠（在工具左侧） / ⋯ 展开 — 避免与尾页 » 混淆
+        moreBtn.innerHTML = expanded
+          ? '<i data-lucide="chevrons-left" class="icon"></i><span class="btn-label">' + t("moreCollapse") + "</span>"
+          : '<i data-lucide="ellipsis" class="icon"></i><span class="btn-label">' + t("moreExpand") + "</span>";
+        if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
+      }
+
+      function setMoreExpanded(on, persist) {
+        if (!moreWrap) return;
+        var expanded = !!on;
+        moreWrap.classList.toggle("is-expanded", expanded);
+        moreWrap.classList.toggle("is-collapsed", !expanded);
+        moreWrap.classList.remove("open");
+        moreWrap.setAttribute("data-expanded", expanded ? "1" : "0");
+        if (moreToolsEl) {
+          if (expanded) moreToolsEl.removeAttribute("hidden");
+          else moreToolsEl.setAttribute("hidden", "");
+        }
+        syncMoreToggleUi(expanded);
+        if (persist !== false) {
+          try { localStorage.setItem(MORE_EXPANDED_KEY, expanded ? "1" : "0"); } catch (e) {}
+        }
+        if (typeof syncFooterPeekHeight === "function") {
+          requestAnimationFrame(syncFooterPeekHeight);
+        }
+      }
+
+      function toggleMorePanel() {
+        setMoreExpanded(!isMoreExpanded(), true);
+      }
+
+      function closeMorePanel() {
+        /* 兼容旧调用：折叠不再用弹出层，这里为 no-op */
       }
 
       function toggleThemePanel() {
@@ -264,6 +331,12 @@
         // config 变更后优先生效；未变更时仍尊重用户上次用 T 选的样式
         setTheme(resolvePref(cfgThemeDefault(), THEME_KEY, THEME_CFG_KEY), false);
       })();
+      (function initMoreExpanded() {
+        var saved = null;
+        try { saved = localStorage.getItem(MORE_EXPANDED_KEY); } catch (e0) {}
+        // 默认展开；仅当用户明确折叠过才收起
+        setMoreExpanded(saved !== "0", false);
+      })();
 
       themeBtn.addEventListener("click", function (e) {
         e.preventDefault();
@@ -279,6 +352,20 @@
           if (particlesBtn) particlesBtn.setAttribute("aria-expanded", "false");
         }
       });
+      if (moreBtn) {
+        moreBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleMorePanel();
+        });
+      }
+      if (langBtn) {
+        langBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (I18N && typeof I18N.toggleLang === "function") I18N.toggleLang();
+        });
+      }
 
       var footerPeekTimer = null;
       function syncFooterPeekHeight() {
@@ -311,8 +398,9 @@
         root.classList.toggle("present-mode", on);
         presentBtn.classList.toggle("primary", on);
         presentBtn.innerHTML = on
-          ? '<i data-lucide="presentation" class="icon"></i>演示中'
-          : '<i data-lucide="presentation" class="icon"></i>演示';
+          ? '<i data-lucide="presentation" class="icon"></i><span class="btn-label">' + t("presenting") + "</span>"
+          : '<i data-lucide="presentation" class="icon"></i><span class="btn-label">' + t("present") + "</span>";
+        presentBtn.title = t("presentTitle");
         if (!on) setFooterPeek(false);
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       }
@@ -442,6 +530,7 @@
         fsBtn.innerHTML = document.fullscreenElement
           ? '<i data-lucide="minimize-2" class="icon"></i>'
           : '<i data-lucide="maximize-2" class="icon"></i>';
+        fsBtn.title = document.fullscreenElement ? t("fsExit") : t("fs");
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       });
 
@@ -567,6 +656,14 @@
         var fromAttr = parseAiChipsAttr(slide.getAttribute("data-ai-chips") || slide.dataset.aiChips || "");
         if (fromAttr) return fromAttr;
         var title = slide.dataset.title || "";
+        var lang = I18N && typeof I18N.getLang === "function" ? I18N.getLang() : "zh";
+        if (lang === "en") {
+          var extractedEn = extractAiChipsFromSlide(slide);
+          if (extractedEn.length >= 4) return extractedEn.concat(fallback).slice(0, AI_CHIP_COUNT);
+          if (SLIDE_AI_CHIPS[title] && I18N && typeof I18N.aiChipsFor === "function") {
+            return I18N.aiChipsFor(title, SLIDE_AI_CHIPS[title]).slice(0, AI_CHIP_COUNT);
+          }
+        }
         if (SLIDE_AI_CHIPS[title]) return SLIDE_AI_CHIPS[title].slice(0, AI_CHIP_COUNT);
         var extracted = extractAiChipsFromSlide(slide);
         if (extracted.length >= 6) return extracted;
@@ -990,8 +1087,8 @@
       };
 
       function particleLabel(key) {
-        if (key === "off") return "关闭";
-        if (key === "default") return "默认";
+        if (key === "off") return t("off");
+        if (key === "default") return t("particleDefault").replace(/\s*·\s*$/, "") || "Default";
         return PARTICLE_LABELS[key] || String(key || "").replace(/_/g, " ");
       }
 
@@ -1146,19 +1243,18 @@
         var on = profile.mode !== "off";
         root.classList.toggle("particles-off", !on);
         if (!particlesBtn) return;
-        var label = "粒子";
-        if (profile.mode === "off") label = "粒子·关";
-        else if (profile.selection !== "default") label = "粒子·" + particleLabel(profile.flavor).slice(0, 4);
-        else label = "粒子";
+        // 底栏只显示图标；完整状态放 title，避免挤占折叠区
+        var label = t("particles");
+        if (profile.mode === "off") label = t("particlesOff");
         if (particlesBtnLabel) particlesBtnLabel.textContent = label;
         else {
           particlesBtn.innerHTML =
-            '<i data-lucide="sparkles" class="icon"></i><span id="particlesBtnLabel">' + label + "</span>";
+            '<i data-lucide="sparkles" class="icon"></i><span class="btn-label" id="particlesBtnLabel">' + label + "</span>";
         }
-        particlesBtn.title = "选择粒子效果 (P) · 当前：" +
+        particlesBtn.title = t("particlesPick") + " · " +
           (profile.mode === "off"
-            ? "关闭"
-            : (profile.selection === "default" ? "默认 · " : "自选 · ") + particleLabel(profile.flavor));
+            ? t("particleCurOff")
+            : (profile.selection === "default" ? t("particleCurDefault") : t("particleCurCustom")) + particleLabel(profile.flavor));
         particlesBtn.classList.toggle("primary", on);
         particlesBtn.setAttribute("aria-pressed", on ? "true" : "false");
         if (particleGrid && particleWrap && particleWrap.classList.contains("open")) {
@@ -1167,53 +1263,227 @@
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       }
 
+      function hashSeed(str) {
+        var h = 2166136261;
+        str = String(str || "");
+        for (var i = 0; i < str.length; i++) {
+          h ^= str.charCodeAt(i);
+          h = Math.imul(h, 16777619);
+        }
+        return h >>> 0;
+      }
+      function seededRand(seedObj) {
+        seedObj.s = (Math.imul(1664525, seedObj.s) + 1013904223) >>> 0;
+        return seedObj.s / 4294967296;
+      }
+      function particlePreviewPalette(colorMode) {
+        var c = themeParticleColors();
+        var neon = c[0], teal = c[1], signal = c[2];
+        switch (colorMode) {
+          case "neon": return [neon, neon];
+          case "teal": return [teal, neon];
+          case "signal": return [signal, neon];
+          case "duo": return [neon, teal];
+          default: return [neon, teal, signal];
+        }
+      }
+      function particleShapeSvg(shape, x, y, r, fill, op) {
+        var o = (op == null ? 0.85 : op).toFixed(2);
+        if (shape === "triangle") {
+          var h = r * 1.7;
+          var pts =
+            x.toFixed(1) + "," + (y - h * 0.65).toFixed(1) + " " +
+            (x - r).toFixed(1) + "," + (y + h * 0.45).toFixed(1) + " " +
+            (x + r).toFixed(1) + "," + (y + h * 0.45).toFixed(1);
+          return '<polygon points="' + pts + '" fill="' + fill + '" opacity="' + o + '"/>';
+        }
+        if (shape === "star") {
+          var pts2 = "";
+          for (var i = 0; i < 5; i++) {
+            var a = (-Math.PI / 2) + i * (Math.PI * 2 / 5);
+            var a2 = a + Math.PI / 5;
+            pts2 +=
+              (x + Math.cos(a) * r).toFixed(1) + "," + (y + Math.sin(a) * r).toFixed(1) + " " +
+              (x + Math.cos(a2) * r * 0.42).toFixed(1) + "," + (y + Math.sin(a2) * r * 0.42).toFixed(1) + " ";
+          }
+          return '<polygon points="' + pts2.trim() + '" fill="' + fill + '" opacity="' + o + '"/>';
+        }
+        return '<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r.toFixed(1) +
+          '" fill="' + fill + '" opacity="' + o + '"/>';
+      }
+      /** 按风格参数画一眼能分辨的缩略预览 */
+      function buildParticlePreviewSvg(key, cfg) {
+        cfg = cfg || {};
+        var w = 112, h = 56;
+        var seed = { s: hashSeed(key || "x") };
+        var palette = particlePreviewPalette(cfg.colorMode || "all");
+        var shape = cfg.shape || "circle";
+        var n = Math.max(8, Math.min(22, Math.round((cfg.count || 48) / 6)));
+        var links = !!cfg.links;
+        var dir = cfg.dir || "none";
+        var parts = [];
+        var pts = [];
+        var i, x, y, r, col, op, dx, dy;
+
+        parts.push(
+          '<rect width="' + w + '" height="' + h + '" rx="8" fill="rgba(6,10,16,.92)"/>'
+        );
+
+        // 方向暗示：细轨迹线
+        if (dir === "bottom" || dir === "top") {
+          for (i = 0; i < 5; i++) {
+            x = 10 + seededRand(seed) * (w - 20);
+            parts.push(
+              '<line x1="' + x.toFixed(1) + '" y1="6" x2="' + x.toFixed(1) + '" y2="' + (h - 6) +
+              '" stroke="' + palette[0] + '" stroke-opacity=".12" stroke-width="' +
+              (dir === "bottom" ? "1.2" : "0.8") + '"/>'
+            );
+          }
+        } else if (dir === "left" || dir === "right") {
+          for (i = 0; i < 4; i++) {
+            y = 8 + seededRand(seed) * (h - 16);
+            parts.push(
+              '<line x1="8" y1="' + y.toFixed(1) + '" x2="' + (w - 8) + '" y2="' + y.toFixed(1) +
+              '" stroke="' + palette[0] + '" stroke-opacity=".12" stroke-width="1"/>'
+            );
+          }
+        }
+
+        for (i = 0; i < n; i++) {
+          if (dir === "bottom" || cfg.straight) {
+            x = 8 + ((i + 0.3) / n) * (w - 16) + (seededRand(seed) - 0.5) * 6;
+            y = 8 + seededRand(seed) * (h - 16);
+          } else if (dir === "right") {
+            x = 8 + seededRand(seed) * (w - 16);
+            y = 8 + ((i + 0.2) / n) * (h - 16);
+          } else {
+            x = 10 + seededRand(seed) * (w - 20);
+            y = 8 + seededRand(seed) * (h - 16);
+          }
+          r = 1.1 + seededRand(seed) * (shape === "triangle" || shape === "star" ? 3.2 : 2.4);
+          if ((cfg.szMax || 0) >= 12) r = 3.5 + seededRand(seed) * 5.5;
+          col = palette[i % palette.length];
+          op = 0.35 + seededRand(seed) * 0.55;
+          pts.push({ x: x, y: y, r: r, col: col });
+          parts.push(particleShapeSvg(shape, x, y, r, col, op));
+        }
+
+        if (links && pts.length > 2) {
+          var linkN = Math.min(pts.length - 1, Math.round(n * 0.55));
+          for (i = 0; i < linkN; i++) {
+            var a = pts[i];
+            var b = pts[Math.min(pts.length - 1, i + 1 + Math.floor(seededRand(seed) * 2))];
+            var dist = Math.hypot(a.x - b.x, a.y - b.y);
+            if (dist > 42) continue;
+            parts.push(
+              '<line x1="' + a.x.toFixed(1) + '" y1="' + a.y.toFixed(1) +
+              '" x2="' + b.x.toFixed(1) + '" y2="' + b.y.toFixed(1) +
+              '" stroke="' + palette[0] + '" stroke-opacity=".35" stroke-width="0.9"/>'
+            );
+          }
+        }
+
+        // 运动方向小箭头
+        if (dir && dir !== "none") {
+          dx = dir === "right" ? 1 : dir === "left" ? -1 : 0;
+          dy = dir === "bottom" ? 1 : dir === "top" ? -1 : 0;
+          var ax = w - 12, ay = h - 10;
+          parts.push(
+            '<path d="M' + (ax - dx * 5 - dy * 3).toFixed(1) + "," + (ay - dy * 5 - dx * 3).toFixed(1) +
+            " L" + ax.toFixed(1) + "," + ay.toFixed(1) +
+            " L" + (ax - dx * 5 + dy * 3).toFixed(1) + "," + (ay - dy * 5 + dx * 3).toFixed(1) +
+            '" fill="none" stroke="' + palette[0] + '" stroke-opacity=".55" stroke-width="1.2" stroke-linecap="round"/>'
+          );
+        }
+
+        return (
+          '<svg class="particle-preview-svg" viewBox="0 0 ' + w + " " + h +
+          '" width="100%" height="100%" aria-hidden="true">' + parts.join("") + "</svg>"
+        );
+      }
+
+      function particleCardHtml(key, opts) {
+        opts = opts || {};
+        var cfg = key === "off" ? null : (PARTICLE_FLAVORS[key] || PARTICLE_FLAVORS[opts.flavor] || null);
+        var preview;
+        if (key === "off") {
+          preview =
+            '<svg class="particle-preview-svg" viewBox="0 0 112 56" width="100%" height="100%" aria-hidden="true">' +
+            '<rect width="112" height="56" rx="8" fill="rgba(20,8,10,.95)"/>' +
+            '<line x1="34" y1="18" x2="78" y2="38" stroke="#f87171" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round"/>' +
+            '<line x1="78" y1="18" x2="34" y2="38" stroke="#f87171" stroke-opacity=".75" stroke-width="2.2" stroke-linecap="round"/>' +
+            "</svg>";
+        } else {
+          preview = buildParticlePreviewSvg(opts.flavor || key, cfg || {});
+        }
+        var label = opts.label || particleLabel(key === "default" ? (opts.flavor || "default") : key);
+        var tip = (opts.title || key || "").replace(/"/g, "&quot;");
+        var cls = "particle-card" +
+          (opts.active ? " active" : "") +
+          (opts.extraClass ? " " + opts.extraClass : "");
+        return (
+          '<button type="button" class="' + cls + '" data-particle="' + key + '" title="' + tip + '">' +
+          '<span class="particle-preview">' + preview + "</span>" +
+          '<span class="particle-card-meta">' +
+          (opts.kicker ? '<span class="k">' + opts.kicker + "</span>" : "") +
+          '<span class="label">' + label + "</span>" +
+          "</span></button>"
+        );
+      }
+
       function buildParticleGrid() {
         if (!particleGrid) return;
+        var particleQuick = document.getElementById("particleQuick");
         var slide = typeof getActiveSlide === "function" ? getActiveSlide() : null;
         var profile = resolveParticleProfile(slide);
         var defFlavor = defaultParticleFlavor(slide);
-        var html = "";
-        var defLabel =
+        var defTip =
           !particlesEnabled && profile.selection === "default"
-            ? "默认 · 关（全局）"
-            : "默认 · " + particleLabel(defFlavor);
-        html +=
-          '<button type="button" class="particle-opt is-default' +
-          (profile.selection === "default" ? " active" : "") +
-          '" data-particle="default">' +
-          '<span class="n">DEFAULT</span><span class="label">' +
-          defLabel +
-          "</span></button>";
-        html +=
-          '<button type="button" class="particle-opt is-off' +
-          (profile.selection === "off" ? " active" : "") +
-          '" data-particle="off">' +
-          '<span class="n">OFF</span><span class="label">本页关闭</span></button>';
+            ? t("particleDefaultOff")
+            : t("particleDefault") + particleLabel(defFlavor);
+        if (particleQuick) {
+          particleQuick.innerHTML =
+            particleCardHtml("default", {
+              flavor: defFlavor,
+              active: profile.selection === "default",
+              extraClass: "is-default",
+              kicker: "DEFAULT",
+              label: particleLabel(defFlavor),
+              title: defTip
+            }) +
+            particleCardHtml("off", {
+              active: profile.selection === "off",
+              extraClass: "is-off",
+              kicker: "OFF",
+              label: t("off"),
+              title: t("particlePageOff")
+            });
+        }
+        var html = "";
         Object.keys(PARTICLE_FLAVORS).forEach(function (key) {
-          html +=
-            '<button type="button" class="particle-opt' +
-            (profile.selection === key ? " active" : "") +
-            '" data-particle="' +
-            key +
-            '">' +
-            '<span class="n">' +
-            key +
-            '</span><span class="label">' +
-            particleLabel(key) +
-            "</span></button>";
+          html += particleCardHtml(key, {
+            active: profile.selection === key,
+            title: key + " · " + particleLabel(key)
+          });
         });
         particleGrid.innerHTML = html;
       }
 
+      function onParticleChipClick(e) {
+        var btn = e.target.closest(".particle-card, .particle-chip, .particle-opt");
+        if (!btn) return;
+        e.preventDefault();
+        e.stopPropagation();
+        setParticleOverrideForCurrent(btn.getAttribute("data-particle"));
+      }
       if (particleGrid && !particleGrid._bound) {
         particleGrid._bound = true;
-        particleGrid.addEventListener("click", function (e) {
-          var btn = e.target.closest(".particle-opt");
-          if (!btn) return;
-          e.preventDefault();
-          e.stopPropagation();
-          setParticleOverrideForCurrent(btn.getAttribute("data-particle"));
-        });
+        particleGrid.addEventListener("click", onParticleChipClick);
+      }
+      var particleQuickEl = document.getElementById("particleQuick");
+      if (particleQuickEl && !particleQuickEl._bound) {
+        particleQuickEl._bound = true;
+        particleQuickEl.addEventListener("click", onParticleChipClick);
       }
       if (particlesBtn && !particlesBtn._boundPicker) {
         particlesBtn._boundPicker = true;
@@ -2041,7 +2311,7 @@
           pageInput.value = String(index + 1);
           pageInput.max = String(slides.length);
         }
-        titleHint.textContent = slides[index].dataset.title || "";
+        titleHint.textContent = translateTitle(slides[index].dataset.title || "");
         prevBtn.disabled = index === 0;
         nextBtn.disabled = index === slides.length - 1;
         if (homeBtn) homeBtn.disabled = index === 0;
@@ -2112,7 +2382,7 @@
         btn.type = "button";
         btn.className = "slide-thumb" + (i === index ? " active" : "");
         btn.dataset.index = String(i);
-        var title = slides[i].dataset.title || ("第" + (i + 1) + "页");
+        var title = translateTitle(slides[i].dataset.title) || t("pageFallback", { n: i + 1 });
         btn.innerHTML =
           '<div class="slide-thumb-head"><span class="no"></span><span class="ttl"></span></div>' +
           '<div class="slide-thumb-frame" data-thumb-frame="1"></div>';
@@ -2137,7 +2407,7 @@
         clone.querySelectorAll("video").forEach(function (v) {
           var ph = document.createElement("div");
           ph.className = "slide-thumb-video-ph";
-          ph.textContent = "视频";
+          ph.textContent = t("video");
           if (v.parentNode) v.parentNode.replaceChild(ph, v);
         });
         clone.querySelectorAll("canvas, script, iframe, #vanta-cover, [id='vanta-cover']").forEach(function (el) {
@@ -3039,6 +3309,12 @@
           toggleAnnotate();
           return;
         }
+        if (e.key === "l" || e.key === "L") {
+          if (e.target.closest("video, input, textarea")) return;
+          e.preventDefault();
+          if (I18N && typeof I18N.toggleLang === "function") I18N.toggleLang();
+          return;
+        }
         if (e.key === "Escape") {
           if (particleWrap && particleWrap.classList.contains("open")) {
             particleWrap.classList.remove("open");
@@ -3081,7 +3357,7 @@
       });
       document.getElementById("deck").addEventListener("click", function (e) {
         if (annotateOn || railOpen || gridOpen) return;
-        if (e.target.closest("button, a, pre, code, .case-card, .term, video, .demo-player, .cmd-hero, .theme-wrap, .page-jump, .slide-rail, .slide-grid, .annotate-bar, .layout-contrast, .layout-steps")) return;
+        if (e.target.closest("button, a, pre, code, .case-card, .term, video, .demo-player, .cmd-hero, .theme-wrap, .more-wrap, .page-jump, .slide-rail, .slide-grid, .annotate-bar, .layout-contrast, .layout-steps")) return;
         const x = e.clientX / window.innerWidth;
         if (x > 0.55) go(1); else if (x < 0.45) go(-1);
       });
@@ -3103,11 +3379,11 @@
         function flashOk() {
           var label = btn.querySelector("span");
           btn.classList.add("ok");
-          if (label) label.textContent = "已复制";
+          if (label) label.textContent = t("copied");
           paintIcons();
           setTimeout(function () {
             btn.classList.remove("ok");
-            if (label) label.textContent = "复制";
+            if (label) label.textContent = t("copy");
             paintIcons();
           }, 1600);
         }
@@ -3136,6 +3412,37 @@
       setInterval(function () {
         if (isCoverActive()) refreshCoverTalkTime();
       }, 30000);
+
+      window.__deckOnLangChange = function () {
+        buildThemeGrid();
+        var curTheme = root.getAttribute("data-theme") || cfgThemeDefault();
+        setTheme(curTheme, false);
+        syncBgmBtn();
+        syncParticlesUi();
+        setPresentMode(presentMode);
+        if (moreWrap) syncMoreToggleUi(isMoreExpanded());
+        fsBtn.title = document.fullscreenElement ? t("fsExit") : t("fs");
+        if (typeof refreshAiAmbient === "function") refreshAiAmbient();
+        if (typeof syncChromeActive === "function") syncChromeActive();
+        if (slideRailList) {
+          slideRailList.innerHTML = "";
+          for (var ri = 0; ri < slides.length; ri++) {
+            slideRailList.appendChild(makeThumbButton(ri));
+          }
+        }
+        if (slideGridList) {
+          slideGridList.innerHTML = "";
+          for (var gi = 0; gi < slides.length; gi++) {
+            slideGridList.appendChild(makeThumbButton(gi));
+          }
+        }
+        render();
+        if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
+      };
+
+      if (I18N && typeof I18N.setLang === "function") {
+        I18N.setLang(I18N.resolveLang ? I18N.resolveLang() : "zh", false);
+      }
 
       const m = location.hash.match(/^#s(\d+)$/);
       if (m) {

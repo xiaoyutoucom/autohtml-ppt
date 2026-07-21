@@ -55,6 +55,18 @@
 
 ---
 
+## v0.2.0 升级要点
+
+| 升级 | 说明 |
+|------|------|
+| **中 / 英切换** | 底栏语言按钮 + 快捷键 `L`。界面文案、页标题、幻灯正文（页内 `data-en`）一起切换。默认见 `config.json` → `"lang": "zh" \| "en"`，并写入 `localStorage`。 |
+| **i18n 模块** | 新增 `docs/deck/js/i18n.js`（由 `build_deck.py` 引入）。正文以中文为源；双语页在文本节点上加 `data-en="…"` 即可。 |
+| **可折叠紧凑底栏** | 目录 / 总览 / 画笔 / 音乐 / **导出PPT** 默认展开，`«` 折叠、`⋯` 再展开。功能钮保留短文字，导出 PPT 一眼可辨。 |
+| **粒子可视化选择** | `P` 面板改为 **SVG 缩略预览卡**（形状 / 连线 / 疏密 / 方向），按观感挑选效果。 |
+| **发版脚本** | 可选 `tools/create_github_release.ps1`，在 `gh` 已登录且网络可达时一键打 tag 并创建 GitHub Release。 |
+
+---
+
 ## 截图与 GIF — 亮点全览
 
 ### 动态演示
@@ -98,7 +110,7 @@
 | <img src="docs/assets/screenshots/22-chrome-annotate.png" width="440" alt="画笔" /><br />画笔/荧光笔/橡皮（`A`） | <img src="docs/assets/screenshots/23-present-mode.png" width="440" alt="演示" /><br />演示模式（`F`）+ 底栏热区 |
 | <img src="docs/assets/screenshots/24-theme-picker.png" width="440" alt="样式" /><br />样式面板（`T`）— 20 套可记忆 | |
 
-**产品内还有（见图/快捷键）：** 粒子选择（`P`）、背景乐（`M`）、导出 PPT、全屏、术语悬停、按页 AI 飘荡标签、卡片/图片悬浮放大、溯源指纹、离线 vendor、模块化 `docs/deck/`、多工具 Skill。
+**产品内还有（见图/快捷键）：** 粒子可视化选择（`P`）、背景乐（`M`）、语言切换（`L`）、可折叠底栏、导出 PPT、全屏、术语悬停、按页 AI 飘荡标签、卡片/图片悬浮放大、溯源指纹、离线 vendor、模块化 `docs/deck/`、多工具 Skill。
 
 ### 5）多主题画廊（深色 + 浅色）
 
@@ -128,9 +140,10 @@ python tools/capture_readme_gifs.py    # 动态 GIF
 |------|------|
 | **导航** | ←→ / 空格 / PgUp·PgDn、Home/End、页码跳转、`#sN`、点击左右区、首页/尾页 |
 | **演示** | `F` 放大字号；底栏隐藏；底部热区唤出；全屏独立 |
-| **工具条** | `S` 缩略图轨 · `G` 网格总览 · `A` 画笔（按页记忆） |
+| **工具条** | 紧凑底栏 · 可折叠工具组 · 功能钮带短文案（含导出PPT）· `S`/`G`/`A` |
+| **语言** | 中 ↔ 英 · 底栏 / `L` · `config.json` `lang` · 幻灯 `data-en` + `i18n.js` |
 | **主题** | 20 套深/浅 · 选择器 · config 默认 · localStorage |
-| **粒子** | 一页一风格 · `P` 按页选择/关闭 · 封面 Vanta + 光斑 |
+| **粒子** | 一页一风格 · `P` 可视化预览选择/关闭 · 封面 Vanta + 光斑 |
 | **AI 氛围** | 按页飘荡标签 / 侧轨 / nodes / token stream |
 | **动效** | anime.js + Animate.css · 流程/表格/代码 `.is-lit` |
 | **逐行点亮** | Stage / 实践框架自动 · 或 `data-row-pulse="1"` |
@@ -139,7 +152,7 @@ python tools/capture_readme_gifs.py    # 动态 GIF
 | **Demo / 命令** | 视频页 · 可复制现场命令 |
 | **术语 / 案例** | 悬停解释 · 案例卡展开详情 |
 | **导出** | 浏览器 PPT（优先标签页截屏）· Playwright CLI |
-| **配置** | `config.json` 运行时加载 · 演讲人/BGM/粒子/主题 |
+| **配置** | `config.json` 运行时加载 · 演讲人/BGM/粒子/主题/**语言** |
 | **溯源** | 公开指纹徽章 · `TTD-2026-XIAOYUTOUCOM` |
 | **离线** | `docs/assets/vendor/` · 支持 `file://` |
 | **写作** | 模块化 `docs/deck/` · `build_deck.py` · Cursor/CC/Codex 等可移植 Skill |
@@ -174,7 +187,8 @@ start docs\harness_training.html
 |----|------|
 | ← → / 空格 | 翻页 |
 | `T` | 主题 |
-| `P` | 粒子选择（按页换效果 / 关闭） |
+| `P` | 粒子选择（可视化预览 · 按页 / 关闭） |
+| `L` | 语言 中 ↔ 英 |
 | `M` | 背景音乐 |
 | `F` | 演示模式 |
 | `S` / `G` / `A` | 目录轨 / 总览 / 画笔 |
@@ -238,7 +252,9 @@ TEGYcyUFuGshMySR3Y89AFpCDeihozNT7E
 
 再分发时请保留版权声明。公开溯源徽章（`TTD-2026-XIAOYUTOUCOM`，见 `docs/deck/provenance.json`）便于归属与发现；若交付客户需要去掉，可走付费白标服务。
 
-**镜像：** [GitHub](https://github.com/xiaoyutoucom/autohtml-ppt) · [码云 Gitee](https://gitee.com/xiaoyutou_647/autohtml-ppt)
+**镜像：** [GitHub](https://github.com/xiaoyutoucom/autohtml-ppt) · [码云 Gitee](https://gitee.com/xiaoyutou_647/autohtml-ppt)  
+
+**介绍文章（CSDN）：** [用 HTML 做技术培训 PPT（开源）](https://blog.csdn.net/qq_30287489/article/details/163073308)
 
 ---
 

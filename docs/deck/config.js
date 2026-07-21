@@ -82,27 +82,35 @@
   var base =
     (document.currentScript && document.currentScript.src) ||
     w.location.href;
+  var isFile = false;
   try {
-    var url = new URL("config.json", base).href;
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", url, false);
-    xhr.overrideMimeType("application/json");
-    xhr.send(null);
-    var ok = xhr.status === 0 || (xhr.status >= 200 && xhr.status < 300);
-    if (ok && xhr.responseText && /^\s*\{/.test(xhr.responseText)) {
-      cfg = parseJsonc(xhr.responseText);
-    }
-  } catch (e) {}
+    isFile = String(w.location.protocol) === "file:";
+  } catch (e0) {}
+
+  // file:// 下 XHR 读本地 json 会被 CORS 拦截，直接用 FALLBACK
+  if (!isFile) {
+    try {
+      var url = new URL("config.json", base).href;
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", url, false);
+      xhr.overrideMimeType("application/json");
+      xhr.send(null);
+      var ok = xhr.status === 0 || (xhr.status >= 200 && xhr.status < 300);
+      if (ok && xhr.responseText && /^\s*\{/.test(xhr.responseText)) {
+        cfg = parseJsonc(xhr.responseText);
+      }
+    } catch (e) {}
+  }
 
   if (!cfg) {
     cfg = FALLBACK;
-    try {
-      if (String(w.location.protocol) === "file:") {
+    if (isFile) {
+      try {
         console.info(
-          "[deck] file:// 下无法热读 config.json。请用本地 HTTP 打开 docs/，或改 deck/config.js 里的 FALLBACK 后刷新。"
+          "[deck] file:// 使用 config.js FALLBACK（无法热读 config.json）。改配置请编辑 config.json 后执行 python tools/build_deck.py，或用本地 HTTP 打开 docs/。"
         );
-      }
-    } catch (e2) {}
+      } catch (e2) {}
+    }
   }
 
   w.DECK_CONFIG = cfg;

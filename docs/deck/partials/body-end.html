@@ -20,8 +20,11 @@
 
       <div class="theme-wrap" id="themeWrap">
         <button id="themeBtn" type="button" class="theme-btn icon-btn" data-i18n-title="themeTitle" title="切换样式 (T)"><i data-lucide="palette" class="icon"></i><span class="btn-label" id="themeBtnLabel" data-i18n="theme">样式</span></button>
-        <div class="theme-panel" id="themePanel" role="dialog" aria-label="选择样式">
-          <h4>20 套样式 · 当前会记住选择</h4>
+        <div class="theme-panel theme-picker-panel" id="themePanel" role="dialog" aria-label="选择样式">
+          <div class="theme-panel-head">
+            <h4 data-i18n="themePanel">样式</h4>
+            <span class="theme-panel-hint" data-i18n="themeHint">选择会记住</span>
+          </div>
           <div class="theme-grid" id="themeGrid"></div>
         </div>
       </div>

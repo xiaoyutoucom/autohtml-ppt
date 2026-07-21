@@ -162,26 +162,26 @@
       }
 
       const THEME_META = [
-        { id: 1, name: "深空青光", mode: "dark", swatch: "#22d3ee", paper: "#060a10", ink: "#fde047" },
-        { id: 2, name: "墨玉翠绿", mode: "dark", swatch: "#6ee7b7", paper: "#06140f", ink: "#e6fff4" },
-        { id: 3, name: "曜石琥珀", mode: "dark", swatch: "#fcd34d", paper: "#120c08", ink: "#fff7ed" },
-        { id: 4, name: "工业板岩", mode: "dark", swatch: "#cbd5e1", paper: "#0f141a", ink: "#e8eef5" },
-        { id: 5, name: "极地冰原", mode: "light", swatch: "#0284c7", paper: "#eef6fb", ink: "#0f2744" },
-        { id: 6, name: "雨林夜色", mode: "dark", swatch: "#86efac", paper: "#0a1610", ink: "#ecfdf5" },
-        { id: 7, name: "珊瑚暗礁", mode: "dark", swatch: "#fda4af", paper: "#140a0e", ink: "#fff1f2" },
-        { id: 8, name: "蓝图草稿", mode: "light", swatch: "#3b82f6", paper: "#e8f0fa", ink: "#0b1f3a" },
-        { id: 9, name: "碳纤维红", mode: "dark", swatch: "#f87171", paper: "#0a0a0a", ink: "#f5f5f5" },
-        { id: 10, name: "暖砂工坊", mode: "light", swatch: "#c2410c", paper: "#f3ebe1", ink: "#2a2118" },
-        { id: 11, name: "终端酸绿", mode: "dark", swatch: "#4ade80", paper: "#020805", ink: "#d1fae5" },
-        { id: 12, name: "深海蓝渊", mode: "dark", swatch: "#7dd3fc", paper: "#020617", ink: "#e0f2fe" },
-        { id: 13, name: "铜作车间", mode: "dark", swatch: "#f59e0b", paper: "#1a120c", ink: "#f5e6d3" },
-        { id: 14, name: "瓷白墨线", mode: "light", swatch: "#334155", paper: "#f8fafc", ink: "#111827" },
-        { id: 15, name: "岩浆余烬", mode: "dark", swatch: "#fb923c", paper: "#140808", ink: "#fff1f0" },
-        { id: 16, name: "冰川雾霭", mode: "light", swatch: "#0ea5e9", paper: "#edf4f7", ink: "#1e3a4c" },
-        { id: 17, name: "石墨信号", mode: "dark", swatch: "#fde047", paper: "#18181b", ink: "#f4f4f5" },
-        { id: 18, name: "青玉金阙", mode: "dark", swatch: "#f0d78c", paper: "#052e26", ink: "#ecfdf5" },
-        { id: 19, name: "落日线路", mode: "dark", swatch: "#fdba74", paper: "#1c0a14", ink: "#fff7ed" },
-        { id: 20, name: "摄影棚黑白", mode: "light", swatch: "#222222", paper: "#f0f0f0", ink: "#0a0a0a" }
+        { id: 1, name: "深空青光", nameEn: "Deep Space", mode: "dark", swatch: "#22d3ee", paper: "#060a10", ink: "#fde047" },
+        { id: 2, name: "墨玉翠绿", nameEn: "Jade Emerald", mode: "dark", swatch: "#6ee7b7", paper: "#06140f", ink: "#e6fff4" },
+        { id: 3, name: "曜石琥珀", nameEn: "Obsidian Amber", mode: "dark", swatch: "#fcd34d", paper: "#120c08", ink: "#fff7ed" },
+        { id: 4, name: "工业板岩", nameEn: "Industrial Slate", mode: "dark", swatch: "#cbd5e1", paper: "#0f141a", ink: "#e8eef5" },
+        { id: 5, name: "极地冰原", nameEn: "Polar Ice", mode: "light", swatch: "#0284c7", paper: "#eef6fb", ink: "#0f2744" },
+        { id: 6, name: "雨林夜色", nameEn: "Rainforest", mode: "dark", swatch: "#86efac", paper: "#0a1610", ink: "#ecfdf5" },
+        { id: 7, name: "珊瑚暗礁", nameEn: "Coral Reef", mode: "dark", swatch: "#fda4af", paper: "#140a0e", ink: "#fff1f2" },
+        { id: 8, name: "蓝图草稿", nameEn: "Blueprint", mode: "light", swatch: "#3b82f6", paper: "#e8f0fa", ink: "#0b1f3a" },
+        { id: 9, name: "碳纤维红", nameEn: "Carbon Red", mode: "dark", swatch: "#f87171", paper: "#0a0a0a", ink: "#f5f5f5" },
+        { id: 10, name: "暖砂工坊", nameEn: "Warm Sand", mode: "light", swatch: "#c2410c", paper: "#f3ebe1", ink: "#2a2118" },
+        { id: 11, name: "终端酸绿", nameEn: "Terminal Green", mode: "dark", swatch: "#4ade80", paper: "#020805", ink: "#d1fae5" },
+        { id: 12, name: "深海蓝渊", nameEn: "Deep Ocean", mode: "dark", swatch: "#7dd3fc", paper: "#020617", ink: "#e0f2fe" },
+        { id: 13, name: "铜作车间", nameEn: "Copper Shop", mode: "dark", swatch: "#f59e0b", paper: "#1a120c", ink: "#f5e6d3" },
+        { id: 14, name: "瓷白墨线", nameEn: "Porcelain", mode: "light", swatch: "#334155", paper: "#f8fafc", ink: "#111827" },
+        { id: 15, name: "岩浆余烬", nameEn: "Magma Embers", mode: "dark", swatch: "#fb923c", paper: "#140808", ink: "#fff1f0" },
+        { id: 16, name: "冰川雾霭", nameEn: "Glacier Mist", mode: "light", swatch: "#0ea5e9", paper: "#edf4f7", ink: "#1e3a4c" },
+        { id: 17, name: "石墨信号", nameEn: "Graphite", mode: "dark", swatch: "#fde047", paper: "#18181b", ink: "#f4f4f5" },
+        { id: 18, name: "青玉金阙", nameEn: "Jade Palace", mode: "dark", swatch: "#f0d78c", paper: "#052e26", ink: "#ecfdf5" },
+        { id: 19, name: "落日线路", nameEn: "Sunset Line", mode: "dark", swatch: "#fdba74", paper: "#1c0a14", ink: "#fff7ed" },
+        { id: 20, name: "摄影棚黑白", nameEn: "Studio B&W", mode: "light", swatch: "#222222", paper: "#f0f0f0", ink: "#0a0a0a" }
       ];
       const THEME_KEY = "harness_training_theme";
       // 记录上次应用的 config 值；config.json 变更（重建后）时覆盖 localStorage
@@ -217,45 +217,115 @@
         return THEME_META.find(function (t) { return String(t.id) === String(id); }) || THEME_META[0];
       }
 
-      function setTheme(id, persist) {
+      var themeCommittedId = null;
+      var themePreviewId = null;
+
+      function paintTheme(id, opts) {
+        opts = opts || {};
         var meta = themeById(id);
         root.setAttribute("data-theme", String(meta.id));
         root.setAttribute("data-theme-mode", meta.mode === "light" ? "light" : "dark");
-        if (themeBtnLabel) themeBtnLabel.textContent = t("themeN", { n: meta.id });
-        if (themeGrid) {
+        if (opts.syncUi !== false) {
+          if (themeBtnLabel) themeBtnLabel.textContent = t("themeN", { n: meta.id });
+          if (themeGrid) {
+            themeGrid.querySelectorAll(".theme-swatch").forEach(function (btn) {
+              var tid = btn.getAttribute("data-theme");
+              btn.classList.toggle("active", tid === String(meta.id));
+              btn.classList.toggle("is-preview", !!opts.preview && tid === String(meta.id));
+            });
+          }
+        } else if (themeGrid && opts.preview) {
           themeGrid.querySelectorAll(".theme-swatch").forEach(function (btn) {
-            btn.classList.toggle("active", btn.getAttribute("data-theme") === String(meta.id));
+            btn.classList.toggle("is-preview", btn.getAttribute("data-theme") === String(meta.id));
           });
         }
+        if (opts.refreshFx) {
+          if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
+          // 主题色驱动粒子 / 封面 Vanta（须等 PARTICLE_FLAVORS / MAP 初始化后再调）
+          if (
+            typeof PARTICLE_FLAVORS !== "undefined" &&
+            PARTICLE_FLAVORS &&
+            typeof SLIDE_PARTICLE_MAP !== "undefined" &&
+            SLIDE_PARTICLE_MAP
+          ) {
+            if (typeof refreshParticles === "function") refreshParticles(true);
+            if (typeof refreshVanta === "function" && typeof VANTA !== "undefined") refreshVanta();
+          }
+        }
+        return meta;
+      }
+
+      function setTheme(id, persist) {
+        var meta = paintTheme(id, { syncUi: true, refreshFx: true, preview: false });
+        themeCommittedId = String(meta.id);
+        themePreviewId = null;
         if (persist !== false) {
           lsSet(THEME_KEY, meta.id);
         }
-        if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
-        // 主题色驱动粒子 / 封面 Vanta（须等 PARTICLE_FLAVORS / MAP 初始化后再调）
-        if (
-          typeof PARTICLE_FLAVORS !== "undefined" &&
-          PARTICLE_FLAVORS &&
-          typeof SLIDE_PARTICLE_MAP !== "undefined" &&
-          SLIDE_PARTICLE_MAP
-        ) {
-          if (typeof refreshParticles === "function") refreshParticles(true);
-          if (typeof refreshVanta === "function" && typeof VANTA !== "undefined") refreshVanta();
-        }
+      }
+
+      function previewTheme(id) {
+        var next = String(themeById(id).id);
+        if (themePreviewId === next) return;
+        themePreviewId = next;
+        // 悬停只改 CSS 主题变量，立刻在真实背景上看出效果；不刷粒子以免卡顿
+        paintTheme(next, { syncUi: false, refreshFx: false, preview: true });
+      }
+
+      function endThemePreview() {
+        if (themePreviewId == null) return;
+        themePreviewId = null;
+        var back = themeCommittedId || root.getAttribute("data-theme") || "1";
+        paintTheme(back, { syncUi: true, refreshFx: false, preview: false });
+      }
+
+      function closeThemePanel(restorePreview) {
+        if (!themeWrap) return;
+        if (restorePreview !== false) endThemePreview();
+        themeWrap.classList.remove("open");
       }
 
       function themeModeLabel(mode) {
         return mode === "light" ? t("light") : t("dark");
       }
 
+      function themeDisplayName(meta) {
+        var lang = I18N && typeof I18N.getLang === "function" ? I18N.getLang() : "zh";
+        return lang === "en" && meta.nameEn ? meta.nameEn : meta.name;
+      }
+
+      function themeCardHtml(meta, active) {
+        var name = themeDisplayName(meta);
+        var mode = themeModeLabel(meta.mode);
+        var tip = "#" + meta.id + " · " + name + " · " + mode;
+        return (
+          '<button type="button" class="theme-swatch' + (active ? " active" : "") +
+          '" data-theme="' + meta.id + '" title="' + tip.replace(/"/g, "&quot;") + '">' +
+          '<span class="theme-preview" style="--tp-paper:' + meta.paper + ";--tp-ink:" + meta.ink +
+          ";--tp-accent:" + meta.swatch + '">' +
+          '<span class="theme-preview-wash" aria-hidden="true"></span>' +
+          '<span class="theme-preview-accent" aria-hidden="true"></span>' +
+          '<span class="theme-preview-body" aria-hidden="true">' +
+          '<i class="theme-preview-title"></i>' +
+          '<i class="theme-preview-line"></i>' +
+          '<i class="theme-preview-line short"></i>' +
+          '<span class="theme-preview-dots"><b></b><b></b><b></b></span>' +
+          "</span>" +
+          '<span class="theme-preview-chip" style="background:' + meta.swatch + '" aria-hidden="true"></span>' +
+          "</span>" +
+          '<span class="theme-card-meta">' +
+          '<span class="n">' + meta.id + "</span>" +
+          '<span class="mode">' + mode + "</span>" +
+          '<span class="label">' + name + "</span>" +
+          "</span></button>"
+        );
+      }
+
       function buildThemeGrid() {
         if (!themeGrid) return;
+        var cur = themeCommittedId || root.getAttribute("data-theme") || "";
         themeGrid.innerHTML = THEME_META.map(function (meta) {
-          return (
-            '<button type="button" class="theme-swatch" data-theme="' + meta.id + '"' +
-            ' style="background:' + meta.paper + ';color:' + meta.ink + ';border-color:' + meta.swatch + '">' +
-            '<span class="n">#' + meta.id + " · " + themeModeLabel(meta.mode) + "</span>" +
-            '<span class="label">' + meta.name + "</span></button>"
-          );
+          return themeCardHtml(meta, String(meta.id) === String(cur));
         }).join("");
         if (!themeGrid._bound) {
           themeGrid._bound = true;
@@ -264,8 +334,17 @@
             if (!btn) return;
             e.preventDefault();
             e.stopPropagation();
+            themePreviewId = null;
             setTheme(btn.getAttribute("data-theme"), true);
-            themeWrap.classList.remove("open");
+            closeThemePanel(false);
+          });
+          themeGrid.addEventListener("pointerover", function (e) {
+            var btn = e.target.closest(".theme-swatch");
+            if (!btn || !themeGrid.contains(btn)) return;
+            previewTheme(btn.getAttribute("data-theme"));
+          });
+          themeGrid.addEventListener("pointerleave", function () {
+            endThemePreview();
           });
         }
       }
@@ -318,7 +397,14 @@
       }
 
       function toggleThemePanel() {
-        themeWrap.classList.toggle("open");
+        if (!themeWrap) return;
+        var willOpen = !themeWrap.classList.contains("open");
+        if (!willOpen) {
+          closeThemePanel(true);
+        } else {
+          endThemePreview();
+          themeWrap.classList.add("open");
+        }
         if (particleWrap) {
           particleWrap.classList.remove("open");
           if (particlesBtn) particlesBtn.setAttribute("aria-expanded", "false");
@@ -345,7 +431,7 @@
       });
       document.addEventListener("click", function (e) {
         if (themeWrap && themeWrap.classList.contains("open") && !e.target.closest("#themeWrap")) {
-          themeWrap.classList.remove("open");
+          closeThemePanel(true);
         }
         if (particleWrap && particleWrap.classList.contains("open") && !e.target.closest("#particleWrap")) {
           particleWrap.classList.remove("open");
@@ -442,7 +528,7 @@
         var open = particleWrap.classList.contains("open");
         if (particlesBtn) particlesBtn.setAttribute("aria-expanded", open ? "true" : "false");
         if (open && typeof buildParticleGrid === "function") buildParticleGrid();
-        if (themeWrap) themeWrap.classList.remove("open");
+        closeThemePanel(true);
         if (window.lucide) lucide.createIcons({ attrs: { "stroke-width": 2.1 } });
       }
 
@@ -3148,7 +3234,7 @@
 
         if (wasPresent) setPresentMode(false);
         setFooterPeek(false);
-        if (themeWrap) themeWrap.classList.remove("open");
+        closeThemePanel(true);
         if (particleWrap) particleWrap.classList.remove("open");
         if (wasBgm) setBgmEnabled(false, false);
         root.classList.add("exporting-ppt");
@@ -3323,7 +3409,7 @@
             return;
           }
           if (themeWrap && themeWrap.classList.contains("open")) {
-            themeWrap.classList.remove("open");
+            closeThemePanel(true);
             e.preventDefault();
             return;
           }

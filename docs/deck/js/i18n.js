@@ -53,7 +53,8 @@
       end: "尾页",
       theme: "样式",
       themeN: "样式{n}",
-      themePanel: "20 套样式 · 当前会记住选择",
+      themePanel: "样式",
+      themeHint: "悬停预览 · 点击应用",
       rail: "目录",
       grid: "总览",
       annotate: "画笔",
@@ -124,7 +125,8 @@
       end: "End",
       theme: "Theme",
       themeN: "Theme {n}",
-      themePanel: "20 themes · choice is remembered",
+      themePanel: "Themes",
+      themeHint: "Hover preview · click apply",
       rail: "Slides",
       grid: "Grid",
       annotate: "Draw",
@@ -275,8 +277,10 @@
     });
     var pageInput = document.getElementById("pageInput");
     if (pageInput) pageInput.setAttribute("aria-label", t("pageAria"));
-    var themePanel = document.querySelector("#themePanel > h4");
+    var themePanel = document.querySelector("#themePanel .theme-panel-head h4, #themePanel > h4");
     if (themePanel) themePanel.textContent = t("themePanel");
+    var themeHint = document.querySelector("#themePanel .theme-panel-hint");
+    if (themeHint) themeHint.textContent = t("themeHint");
     var particlePanel = document.querySelector("#particlePanel .particle-panel-head h4, #particlePanel > h4");
     if (particlePanel) particlePanel.textContent = t("particlePanel");
     var particleHint = document.querySelector("#particlePanel .particle-panel-hint");

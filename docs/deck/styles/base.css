@@ -227,6 +227,14 @@
       pointer-events: none;
       overflow: hidden;
     }
+    /* 效果库密页：关掉飘荡标签/节点，避免与卡片叠字 */
+    html.ai-ambient-quiet #aiAmbient .ai-chips,
+    html.ai-ambient-quiet #aiAmbient .ai-nodes {
+      display: none !important;
+    }
+    html.ai-ambient-quiet .deck {
+      z-index: 2;
+    }
     .ai-rail {
       position: absolute;
       top: 18%;
@@ -442,12 +450,68 @@
       flex-direction: column;
       justify-content: center;
       padding: clamp(1.6rem, 4.8vh, 3rem) clamp(1.8rem, 6vw, 4.5rem) calc(var(--footer-h) + var(--progress-h) + 1.2rem);
-      opacity: 0;
+      /* 可见性只靠 display；勿用 opacity:0 作隐藏（动画被禁/失败时会整页空白，导出却正常） */
+      opacity: 1;
     }
 
     .slide.active {
       display: flex;
+      opacity: 1;
       animation: slideInUp .48s cubic-bezier(.2, .8, .2, 1) both;
+      perspective: 1200px;
+    }
+    /* Anime.js showcase：拆字入场 */
+    .has-fx-chars .fx-char,
+    .has-fx-chars .char {
+      display: inline-block;
+      will-change: transform, opacity, filter;
+    }
+    .has-fx-chars .fx-space,
+    .has-fx-chars .char-space {
+      white-space: pre;
+    }
+    .card, .case-card, .pain-card, .toc-card, .cover-foot-card {
+      transform-style: preserve-3d;
+    }
+    .kicker .fx-scramble {
+      display: inline;
+    }
+    /* SVG 描线（createDrawable） */
+    .anime-fx-svg {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0;
+      color: var(--neon);
+      transition: opacity .25s ease;
+    }
+    .anime-fx-svg.is-on {
+      opacity: .55;
+    }
+    .anime-fx-svg .fx-draw {
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      opacity: .85;
+      filter: drop-shadow(0 0 6px color-mix(in srgb, var(--neon) 45%, transparent));
+    }
+    .anime-fx-svg .fx-draw-mid {
+      stroke: var(--teal);
+      stroke-width: 1.6;
+      opacity: .65;
+    }
+    html.particles-off .anime-fx-svg,
+    html.exporting-ppt .anime-fx-svg,
+    html.present-mode .anime-fx-svg {
+      opacity: 0 !important;
+    }
+    html.present-mode .anime-fx-svg.is-on {
+      opacity: .28 !important;
     }
     .slide.active.enter-next {
       animation-name: slideInNext;
@@ -2114,17 +2178,130 @@
       white-space: nowrap;
       font-size: .72rem;
     }
-    /* 溯源标识：固定右上角，避免与底栏标题抢位 */
-    .deck-attribution {
+    /* Anime.js docs LCD（Digital-7）· https://animejs.com/documentation/timer */
+    @font-face {
+      font-family: Digital-7;
+      src: url("../../assets/vendor/fonts/Digital-7MonoItalic.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    /* 右上角：演示计时 + 溯源标识 */
+    .deck-top-rail {
       position: fixed;
-      top: max(.55rem, env(safe-area-inset-top, 0px));
-      right: max(.75rem, env(safe-area-inset-right, 0px));
+      top: max(.45rem, env(safe-area-inset-top, 0px));
+      right: max(.55rem, env(safe-area-inset-right, 0px));
       z-index: 25;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: .4rem;
+      max-width: min(92vw, 22rem);
+      pointer-events: none;
+    }
+    /* 右上角：仅秒级 elapsed（MM:SS） */
+    .talk-timer {
+      pointer-events: none;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      gap: .45rem;
+      padding: .45rem .55rem .35rem;
+      border-radius: .55rem;
+      border: 1px solid color-mix(in srgb, var(--teal) 34%, transparent);
+      background:
+        linear-gradient(
+          180deg,
+          color-mix(in srgb, var(--paper) 88%, #000) 0%,
+          color-mix(in srgb, var(--panel) 92%, #000) 100%
+        );
+      box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--ink) 6%, transparent),
+        0 10px 28px color-mix(in srgb, var(--paper) 55%, transparent),
+        inset 0 1px 0 color-mix(in srgb, #fff 8%, transparent);
+      backdrop-filter: blur(12px);
+      color: var(--ink-soft);
+    }
+    .talk-timer-log {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+      min-width: 4.4rem;
+      padding: .15rem .4rem 0;
+      border-radius: .28rem;
+      background:
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          color-mix(in srgb, var(--teal) 5%, transparent) 2px,
+          color-mix(in srgb, var(--teal) 5%, transparent) 3px
+        ),
+        color-mix(in srgb, #000 22%, transparent);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--teal) 18%, transparent);
+    }
+    .talk-timer-label {
+      position: absolute;
+      top: -.05rem;
+      left: .35rem;
+      opacity: .62;
+      font-family: var(--mono);
+      font-size: .58rem;
+      letter-spacing: -.01em;
+      line-height: 1.2;
+      white-space: nowrap;
+      text-transform: lowercase;
+      color: var(--muted);
+    }
+    .talk-timer-value,
+    .talk-timer-value.lcd {
+      font-family: Digital-7, var(--mono), monospace;
+      font-size: 1.55rem;
+      line-height: 1.05;
+      letter-spacing: 0;
+      font-variant-numeric: tabular-nums;
+      font-weight: 400;
+      color: var(--teal);
+      text-align: right;
+      text-shadow:
+        0 0 10px color-mix(in srgb, var(--teal) 55%, transparent),
+        0 0 1px color-mix(in srgb, var(--teal) 80%, transparent);
+      min-width: 3.2em;
+      padding: .75rem .1rem .15rem;
+      white-space: nowrap;
+    }
+    .talk-timer-clock {
+      min-width: 3.2em;
+      font-size: 1.65rem;
+    }
+    html.present-mode .talk-timer {
+      opacity: .88;
+    }
+    html.exporting-ppt .talk-timer,
+    html.exporting-ppt .deck-top-rail {
+      display: none !important;
+    }
+    @media (max-width: 720px) {
+      .talk-timer {
+        gap: .3rem;
+        padding: .4rem .45rem .35rem;
+      }
+      .talk-timer-value.lcd {
+        font-size: 1.2rem;
+      }
+      .talk-timer-log {
+        min-width: 4.4rem;
+      }
+    }
+    .deck-attribution {
+      pointer-events: auto;
       font-family: var(--mono);
       font-size: .66rem;
       letter-spacing: .03em;
       color: var(--muted);
-      max-width: min(42vw, 16.5rem);
+      max-width: 100%;
       padding: .28rem .55rem;
       border-radius: 999px;
       border: 1px solid color-mix(in srgb, var(--neon) 22%, transparent);
@@ -2134,7 +2311,6 @@
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      pointer-events: auto;
     }
     .deck-attribution .deck-attr-link {
       color: inherit;
@@ -2161,7 +2337,9 @@
     html.present-mode .deck-attribution {
       opacity: .55;
     }
-    html.exporting-ppt .deck-attribution {
+    html.exporting-ppt .deck-attribution,
+    html[data-present="1"] .deck-attribution,
+    html.exporting-ppt .anime-fx-svg {
       display: none !important;
     }
     html[data-theme-mode="dark"] .footer {
@@ -2530,7 +2708,10 @@
     html.exporting-ppt .slide.active pre,
     html.exporting-ppt .slide.active code,
     html.exporting-ppt .slide.active .flow,
-    html.exporting-ppt .slide.active .node {
+    html.exporting-ppt .slide.active .node,
+    html.exporting-ppt .slide.active .demo-player,
+    html.exporting-ppt .slide.active .demo-player video,
+    html.exporting-ppt .slide.active img {
       opacity: 1 !important;
       visibility: visible !important;
       transform: none !important;
@@ -3264,11 +3445,47 @@
       .layout-media-top .under-grid { grid-template-columns: 1fr 1fr; }
     }
 
+    /* 系统减少动态效果时：默认关动画；html[data-force-motion] 为培训演示强制开启 */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      html:not([data-force-motion="1"]) *,
+      html:not([data-force-motion="1"]) *::before,
+      html:not([data-force-motion="1"]) *::after {
         animation: none !important;
         transition: none !important;
       }
-      #tsparticles { display: none; }
-      #aiAmbient { display: none; }
+      /* 未强制开启动画时：保证正文可见（勿卡在透明） */
+      html:not([data-force-motion="1"]) .slide.active {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      html:not([data-force-motion="1"]) .slide.active .char,
+      html:not([data-force-motion="1"]) .slide.active .word,
+      html:not([data-force-motion="1"]) .slide.active .cover-hero,
+      html:not([data-force-motion="1"]) .slide.active .cover-copy,
+      html:not([data-force-motion="1"]) .slide.active .cover-foot,
+      html:not([data-force-motion="1"]) .slide.active .cover-foot-card,
+      html:not([data-force-motion="1"]) .slide.active .cover-viz,
+      html:not([data-force-motion="1"]) .slide.active .kicker,
+      html:not([data-force-motion="1"]) .slide.active .lead,
+      html:not([data-force-motion="1"]) .slide.active .title-meta,
+      html:not([data-force-motion="1"]) .slide.active h1,
+      html:not([data-force-motion="1"]) .slide.active h2,
+      html:not([data-force-motion="1"]) .slide.active h3,
+      html:not([data-force-motion="1"]) .slide.active p,
+      html:not([data-force-motion="1"]) .slide.active li,
+      html:not([data-force-motion="1"]) .slide.active .card,
+      html:not([data-force-motion="1"]) .slide.active .demo-player,
+      html:not([data-force-motion="1"]) .slide.active .cmd-hero,
+      html:not([data-force-motion="1"]) .slide.active .formula,
+      html:not([data-force-motion="1"]) .slide.active .toc-card,
+      html:not([data-force-motion="1"]) .slide.active .story,
+      html:not([data-force-motion="1"]) .slide.active .section-num {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+      html:not([data-force-motion="1"]) #tsparticles,
+      html:not([data-force-motion="1"]) #aiAmbient {
+        display: none !important;
+      }
     }

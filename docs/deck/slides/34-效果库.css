@@ -1,0 +1,6 @@
+/* 章节页 · 效果库 */
+.slide[data-title="效果库"] .lead a {
+  color: var(--teal);
+  border-bottom: 1px solid color-mix(in srgb, var(--teal) 40%, transparent);
+  text-decoration: none;
+}

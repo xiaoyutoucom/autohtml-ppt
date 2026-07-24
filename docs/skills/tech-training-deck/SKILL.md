@@ -93,7 +93,7 @@ E:\wence\autohtml-ppt\
 | 内容尺度 | `:root --deck-scale`（默认 `1.2`）+ 根字号，对齐约 120% 浏览器缩放观感；**禁止**用 `zoom`/`transform` 整页硬放大 |
 | 封面 | 密联网 `cover_mesh` + Vanta.NET（离封面销毁）+ 鼠标光斑 |
 | AI 氛围 | `#aiAmbient`：侧轨 / **按页相关** chips / nodes / token stream；`SLIDE_AI_CHIPS[data-title]` 或 `data-ai-chips`；reduced-motion 关 |
-| 入场 | anime.js 按页编排 + Animate.css；流程节点 / 表格行 / 代码行 `.is-lit` 依次点亮 |
+| 入场 | [Anime.js v4](https://animejs.com/)（离线 `assets/vendor/anime.min.js`）按页编排 + Animate.css 兜底；流程节点 / 表格行 / 代码行 `.is-lit` 依次点亮 |
 | 表格逐行点亮 | Stage / 实践框架等自动扫 `table.fw-table`；或 `data-row-pulse="1"` 显式开启（见 [reference.md](reference.md)） |
 | 悬浮放大 | 文本框（`.card` / `.panel` / `.formula`…）与图片框（`.story-fig` / `.media-fig` / `.hero-fig`）`:hover` 放大；导出 PPT 时强制 `transform:none` |
 | 术语 / 案例 | `#term-tip`；`.case-card` 悬停详情（投影场次勿只靠 hover） |

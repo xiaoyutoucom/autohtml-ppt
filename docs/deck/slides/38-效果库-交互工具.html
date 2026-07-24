@@ -1,0 +1,63 @@
+<section class="slide slide-fx-gallery" data-title="效果库·交互工具" data-fx-gallery="1" data-ai-chips="off">
+      <div class="kicker">Draggable · Utils · Easings · Engine</div>
+      <h2 data-en="Interaction · utilities · easings">效果库 · 交互 / 工具 / 缓动</h2>
+      <p class="fx-lead" data-en="Draggable, Animatable, Layout flip, easings, random, engine clock — plus WAAPI / Scope / onScroll / Three.js listed in catalog.">
+        Docs:
+        <a href="https://animejs.com/documentation/draggable" target="_blank" rel="noopener noreferrer">Draggable</a> ·
+        <a href="https://animejs.com/documentation/utilities" target="_blank" rel="noopener noreferrer">Utilities</a> ·
+        <a href="https://animejs.com/documentation/easings" target="_blank" rel="noopener noreferrer">Easings</a> ·
+        <a href="https://animejs.com/documentation/engine" target="_blank" rel="noopener noreferrer">Engine</a>
+        · 点 ↻ 重播
+      </p>
+      <div class="fx-gallery">
+        <article class="fx-card" data-fx="draggable">
+          <header class="fx-card-head"><span class="fx-api">createDraggable</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Drag the chip">拖拽芯片</p>
+          <div class="fx-stage fx-stage-drag" aria-hidden="true"><span class="fx-drag-chip">drag</span></div>
+        </article>
+        <article class="fx-card" data-fx="animatable">
+          <header class="fx-card-head"><span class="fx-api">createAnimatable</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Reactive property drive">可动画属性驱动</p>
+          <div class="fx-stage" aria-hidden="true"><span class="fx-animatable-box"></span></div>
+        </article>
+        <article class="fx-card" data-fx="layout">
+          <header class="fx-card-head"><span class="fx-api">createLayout</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Order shuffle transition">顺序打乱过渡</p>
+          <div class="fx-stage" aria-hidden="true"><div class="fx-layout-row"><span>A</span><span>B</span><span>C</span><span>D</span></div></div>
+        </article>
+        <article class="fx-card" data-fx="easings">
+          <header class="fx-card-head"><span class="fx-api">easings</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="inOut / steps / spring">多缓动对比</p>
+          <div class="fx-stage fx-stage-ease" aria-hidden="true">
+            <span class="fx-ease-dot" data-ease="inOut(3)"></span>
+            <span class="fx-ease-dot" data-ease="steps(5)"></span>
+            <span class="fx-ease-dot" data-ease="spring"></span>
+            <span class="fx-ease-label">3×</span>
+          </div>
+        </article>
+        <article class="fx-card" data-fx="random">
+          <header class="fx-card-head"><span class="fx-api">utils.random</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Random targets each loop">每圈随机目标</p>
+          <div class="fx-stage fx-stage-rate" aria-hidden="true"><span class="fx-ease-box"></span><span class="fx-rand-label">rnd</span></div>
+        </article>
+        <article class="fx-card" data-fx="engine">
+          <header class="fx-card-head"><span class="fx-api">engine</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Global clock readout">引擎时钟读数</p>
+          <div class="fx-stage fx-stage-lcd" aria-hidden="true">
+            <span class="fx-lcd-label">engine</span>
+            <span class="fx-engine-label lcd fx-lcd-value">fps · speed</span>
+          </div>
+        </article>
+        <article class="fx-card" data-fx="waapi">
+          <header class="fx-card-head"><span class="fx-api">WAAPI</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Hardware-accelerated bridge">硬件加速桥接示意</p>
+          <div class="fx-stage" aria-hidden="true"><span class="fx-key-box fx-waapi-box"></span></div>
+        </article>
+        <article class="fx-card" data-fx="scope">
+          <header class="fx-card-head"><span class="fx-api">createScope</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Scoped root animate">作用域内动画</p>
+          <div class="fx-stage" aria-hidden="true"><span class="fx-alt-box fx-scope-box"></span></div>
+        </article>
+      </div>
+      <p class="fx-foot cite-path">createDraggable · createAnimatable · createLayout · createScope · easings · random · engine · WAAPI ·（onScroll / Three.js 见总览）</p>
+    </section>

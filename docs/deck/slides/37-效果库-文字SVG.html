@@ -1,0 +1,57 @@
+<section class="slide slide-fx-gallery" data-title="效果库·文字SVG" data-fx-gallery="1" data-ai-chips="off">
+      <div class="kicker">Text · SVG</div>
+      <h2 data-en="Text · SVG effects">效果库 · 文字 / SVG</h2>
+      <p class="fx-lead" data-en="splitText · scrambleText · createDrawable · morphTo · createMotionPath">
+        Docs:
+        <a href="https://animejs.com/documentation/text" target="_blank" rel="noopener noreferrer">Text</a> ·
+        <a href="https://animejs.com/documentation/svg" target="_blank" rel="noopener noreferrer">SVG</a>
+        · 点 ↻ 重播
+      </p>
+      <div class="fx-gallery cols-3">
+        <article class="fx-card" data-fx="split">
+          <header class="fx-card-head"><span class="fx-api">splitText · chars</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Char-by-char reveal">逐字拆开入场</p>
+          <div class="fx-stage fx-stage-text" aria-hidden="true"><span class="fx-split-target">Harness</span></div>
+        </article>
+        <article class="fx-card" data-fx="words">
+          <header class="fx-card-head"><span class="fx-api">splitText · words</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Word stagger">按词错落</p>
+          <div class="fx-stage fx-stage-text" aria-hidden="true"><span class="fx-words-target">Agent Loop Gate</span></div>
+        </article>
+        <article class="fx-card" data-fx="scramble">
+          <header class="fx-card-head"><span class="fx-api">scrambleText</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Scramble decode">乱码解码揭示</p>
+          <div class="fx-stage fx-stage-text" aria-hidden="true"><span class="fx-scramble-target">Agent Loop</span></div>
+        </article>
+        <article class="fx-card" data-fx="drawable">
+          <header class="fx-card-head"><span class="fx-api">createDrawable</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="SVG path draw">SVG 描边绘制</p>
+          <div class="fx-stage" aria-hidden="true">
+            <svg class="fx-svg" viewBox="0 0 120 48" fill="none">
+              <path class="fx-draw-path" d="M8 36 C28 8 48 8 60 24 S92 40 112 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </article>
+        <article class="fx-card" data-fx="morph">
+          <header class="fx-card-head"><span class="fx-api">morphTo</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="SVG shape morph">路径形变</p>
+          <div class="fx-stage" aria-hidden="true">
+            <svg class="fx-svg" viewBox="0 0 64 48" fill="currentColor">
+              <path class="fx-morph-path" d="M8 40 L32 8 L56 40 Z"/>
+              <path class="fx-morph-target" d="M8 24 C8 10 56 10 56 24 C56 38 8 38 8 24 Z" opacity="0"/>
+            </svg>
+          </div>
+        </article>
+        <article class="fx-card" data-fx="motion">
+          <header class="fx-card-head"><span class="fx-api">createMotionPath</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Follow SVG path">沿路径运动</p>
+          <div class="fx-stage fx-stage-motion" aria-hidden="true">
+            <svg class="fx-svg fx-motion-svg" viewBox="0 0 120 48" fill="none" preserveAspectRatio="none">
+              <path class="fx-motion-path" d="M10 38 Q40 6 60 24 T110 14" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" opacity=".45"/>
+            </svg>
+            <span class="fx-motion-dot"></span>
+          </div>
+        </article>
+      </div>
+      <p class="fx-foot cite-path">splitText · scrambleText · createDrawable · morphTo · createMotionPath</p>
+    </section>

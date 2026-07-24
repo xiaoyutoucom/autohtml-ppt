@@ -70,10 +70,18 @@
     "Skill Rules Lint": "srl_glyphs",
     "闭环": "loop_flow",
     "思考与行动": "takeaway_snow",
-    "开源与赞助": "sponsor_glow"
+    "开源与赞助": "sponsor_glow",
+    "效果库": "fx_sec_beam",
+    "效果库总览": "fx_catalog_grid",
+    "效果库·动画时间轴": "fx_anim_orbit",
+    "效果库·文字SVG": "fx_text_svg",
+    "效果库·交互工具": "fx_util_spark"
   },
   "theme": 3,
   "lang": "zh",
+  "present": false,
+  "forceMotion": false,
+  "enterFx": "showcase",
   "speaker": "y",
   "bgm": false,
   "bgmSrc": "dylanf - 卡农 (经典钢琴版).mp3"

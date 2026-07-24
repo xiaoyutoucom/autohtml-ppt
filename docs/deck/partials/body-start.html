@@ -36,6 +36,12 @@
     <button type="button" id="annCloseBtn" data-i18n="annDone" title="关闭画笔 (A)">完成</button>
   </div>
   <div id="tsparticles" aria-hidden="true"></div>
+  <!-- Anime.js createDrawable 描线层（翻页入场） -->
+  <svg id="animeFxSvg" class="anime-fx-svg" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
+    <path class="fx-draw" d="M80 120 C420 40, 780 200, 1180 90 S1520 160, 1540 220" fill="none" pathLength="1" />
+    <path class="fx-draw" d="M120 780 C480 860, 900 700, 1280 820 S1500 740, 1520 700" fill="none" pathLength="1" />
+    <path class="fx-draw fx-draw-mid" d="M200 450 Q800 280, 1400 470" fill="none" pathLength="1" />
+  </svg>
   <div id="coverCursorGlow" aria-hidden="true"></div>
   <div id="aiAmbient" aria-hidden="true">
     <div class="ai-rail left"></div>

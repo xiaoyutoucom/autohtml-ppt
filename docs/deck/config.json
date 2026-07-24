@@ -40,7 +40,12 @@
     "Skill Rules Lint": "srl_glyphs",
     "闭环": "loop_flow",
     "思考与行动": "takeaway_snow",
-    "开源与赞助": "sponsor_glow"
+    "开源与赞助": "sponsor_glow",
+    "效果库": "fx_sec_beam",
+    "效果库总览": "fx_catalog_grid",
+    "效果库·动画时间轴": "fx_anim_orbit",
+    "效果库·文字SVG": "fx_text_svg",
+    "效果库·交互工具": "fx_util_spark"
   },
 
   // 默认主题编号 1～20（底栏「样式」或快捷键 T 可改）
@@ -48,6 +53,23 @@
 
   // 界面与幻灯文案语言：zh | en（底栏语言按钮或快捷键 L；localStorage 可覆盖）
   "lang": "zh",
+
+  // 现场演示包：true = 隐藏右上角溯源标识 + 默认去掉「开源与赞助」页 + 强制开启动画
+  // 也可用 URL ?present=1，或 python tools/build_deck.py --present
+  "present": false,
+
+  // 强制开启动画/粒子（忽略 Windows「减少动态效果」；Edge/Chrome 都认这个系统开关）
+  // present=true 时默认已强制；也可单独设 true，或 URL ?motion=1
+  "forceMotion": false,
+
+  // 翻页入场风格：showcase = Anime.js v4 官网向（弹簧/拆字/错落）；classic = 旧版轻量淡入
+  "enterFx": "showcase",
+
+  // 可选：额外隐藏的页标题（data-title）；present=true 时会自动含「开源与赞助」
+  // "excludeSlides": ["开源与赞助"],
+
+  // 仅隐藏右上角归属标识（不删页）；present=true 时不必再写
+  // "hideAttribution": true,
 
   // 封面「演讲人」文案（#coverSpeaker）
   "speaker": "y",

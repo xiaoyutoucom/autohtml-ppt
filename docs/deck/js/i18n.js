@@ -42,7 +42,12 @@
     "Skill Rules Lint": "Skill Rules Lint",
     "闭环": "Closed loop",
     "思考与行动": "Takeaways",
-    "开源与赞助": "Open source & sponsors"
+    "开源与赞助": "Open source & sponsors",
+    "效果库": "Effects gallery",
+    "效果库总览": "Effects · catalog",
+    "效果库·动画时间轴": "Effects · animation",
+    "效果库·文字SVG": "Effects · text & SVG",
+    "效果库·交互工具": "Effects · interaction"
   };
 
   var UI = {
@@ -110,6 +115,9 @@
       copy: "复制",
       speaker: "演讲人：",
       talkTime: "演讲时间：",
+      talkTimer: "elapsed",
+      talkTimerCurrent: "current time",
+      fxReplay: "重播",
       light: "浅",
       dark: "深",
       off: "关闭",
@@ -182,6 +190,9 @@
       copy: "Copy",
       speaker: "Speaker: ",
       talkTime: "Talk time: ",
+      talkTimer: "elapsed",
+      talkTimerCurrent: "current time",
+      fxReplay: "Replay",
       light: "Light",
       dark: "Dark",
       off: "Off",
@@ -198,7 +209,12 @@
     "01 演示": ["Web Demo", "Client", "SPECCONFIG", "pytest_cli", "Opener", "Live video", "One command", "Full suite", "See it first", "Then theory"],
     "自动化演示": ["Web automation", "Playwright", "Live video", "Demo", "Video open", "Space to play", "headed", "Browser", "mp4", "Demo · Web"],
     "客户端演示": ["Client", "Live video", "Demo", "Local mp4", "Demo · Client", "Space to play", "Pause on nav", "Live demo", "Playwright", "headed"],
-    "三大痛点": ["Drift", "Forgotten contracts", "Worse fixes", "Rewrite layout", "Behavior layer", "1000 lines", "New bugs", "Single-file", "Style traps", "Why Harness"]
+    "三大痛点": ["Drift", "Forgotten contracts", "Worse fixes", "Rewrite layout", "Behavior layer", "1000 lines", "New bugs", "Single-file", "Style traps", "Why Harness"],
+    "效果库": ["Anime.js", "v4 Docs", "Effects", "Gallery", "Timer", "Timeline", "Text", "SVG", "Draggable", "Easings"],
+    "效果库总览": ["Getting started", "Timer", "Animation", "Timeline", "Draggable", "Layout", "Text", "SVG", "Utilities", "Engine"],
+    "效果库·动画时间轴": ["animate", "createSpring", "stagger", "createTimeline", "keyframes", "transforms", "alternate", "playbackRate", "createTimer", "loop"],
+    "效果库·文字SVG": ["splitText", "chars", "words", "scrambleText", "createDrawable", "morphTo", "createMotionPath", "SVG", "Text", "draw"],
+    "效果库·交互工具": ["createDraggable", "createAnimatable", "createLayout", "createScope", "easings", "random", "engine", "WAAPI", "Utilities", "onScroll"]
   };
 
   function normalizeLang(lang) {

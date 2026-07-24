@@ -48,6 +48,11 @@
   <link rel="stylesheet" href="deck/slides/31-闭环.css" data-slide="闭环" />
   <link rel="stylesheet" href="deck/slides/32-思考与行动.css" data-slide="思考与行动" />
   <link rel="stylesheet" href="deck/slides/33-开源与赞助.css" data-slide="开源与赞助" />
+  <link rel="stylesheet" href="deck/slides/34-效果库.css" data-slide="效果库" />
+  <link rel="stylesheet" href="deck/slides/35-效果库总览.css" data-slide="效果库总览" />
+  <link rel="stylesheet" href="deck/slides/36-效果库-动画时间轴.css" data-slide="效果库·动画时间轴" />
+  <link rel="stylesheet" href="deck/slides/37-效果库-文字SVG.css" data-slide="效果库·文字SVG" />
+  <link rel="stylesheet" href="deck/slides/38-效果库-交互工具.css" data-slide="效果库·交互工具" />
 </head>
 <body>
 <div class="scanlines" aria-hidden="true"></div>
@@ -88,6 +93,12 @@
     <button type="button" id="annCloseBtn" data-i18n="annDone" title="关闭画笔 (A)">完成</button>
   </div>
   <div id="tsparticles" aria-hidden="true"></div>
+  <!-- Anime.js createDrawable 描线层（翻页入场） -->
+  <svg id="animeFxSvg" class="anime-fx-svg" viewBox="0 0 1600 900" preserveAspectRatio="none" aria-hidden="true">
+    <path class="fx-draw" d="M80 120 C420 40, 780 200, 1180 90 S1520 160, 1540 220" fill="none" pathLength="1" />
+    <path class="fx-draw" d="M120 780 C480 860, 900 700, 1280 820 S1500 740, 1520 700" fill="none" pathLength="1" />
+    <path class="fx-draw fx-draw-mid" d="M200 450 Q800 280, 1400 470" fill="none" pathLength="1" />
+  </svg>
   <div id="coverCursorGlow" aria-hidden="true"></div>
   <div id="aiAmbient" aria-hidden="true">
     <div class="ai-rail left"></div>
@@ -1129,9 +1140,298 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       </div>
     </section>
 
+<section class="slide section-slide" data-title="效果库">
+      <div class="section-num">05</div>
+      <h1 data-en="Effects gallery">效果库</h1>
+      <p class="lead" data-en="Anime.js v4 capability tour — catalog, animation/timeline, text/SVG, interaction &amp; utilities.">
+        对照 <a href="https://animejs.com/documentation/" target="_blank" rel="noopener noreferrer" style="color:inherit">Anime.js Documentation</a>：
+        总览列举 → 动画/时间轴 → 文字/SVG → 交互与工具，现场可点 ↻ 重播。
+      </p>
+    </section>
+
+<section class="slide slide-fx-catalog" data-title="效果库总览" data-ai-chips="off">
+      <div class="kicker">Anime.js v4 · Catalog</div>
+      <h2 data-en="Docs map · what the library covers">效果库总览 · 文档能力地图</h2>
+      <p class="fx-lead" data-en="Full module list from animejs.com/documentation — next slides show live demos.">
+        完整对照 <a href="https://animejs.com/documentation/" target="_blank" rel="noopener noreferrer">animejs.com/documentation</a> 模块；
+        后续页为可运行示例（本仓离线 UMD 已含下列 API）。
+      </p>
+      <div class="fx-catalog">
+        <article class="fx-cat">
+          <h3>Getting started</h3>
+          <p data-en="Install · imports · vanilla · React">安装 / 模块导入 / 原生 JS / React</p>
+          <ul><li>Installation</li><li>Module imports</li><li>vanilla JS</li><li>React</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Timer</h3>
+          <p data-en="Synced callbacks vs setTimeout">同步计时回调（替代 setTimeout）</p>
+          <ul><li>createTimer</li><li>delay / duration</li><li>loop / alternate</li><li>frameRate</li><li>playbackRate</li><li>onUpdate</li><li>seek / pause</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Animation</h3>
+          <p data-en="Targets · tweens · keyframes · playback">目标 / 补间 / 关键帧 / 播放控制</p>
+          <ul><li>animate</li><li>CSS / transforms</li><li>JS objects</li><li>keyframes</li><li>from / to</li><li>composition</li><li>createSpring</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Timeline</h3>
+          <p data-en="Sequence animations &amp; timers">编排动画 / 计时器 / 同步</p>
+          <ul><li>createTimeline</li><li>add / set / call</li><li>sync</li><li>label</li><li>time position</li><li>defaults</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Animatable</h3>
+          <p data-en="Reactive getters / setters">可动画对象 · 读写驱动</p>
+          <ul><li>createAnimatable</li><li>unit / duration</li><li>ease</li><li>Getters / Setters</li><li>revert</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Draggable</h3>
+          <p data-en="Pointer drag with physics release">拖拽 · 吸附 · 释放弹簧</p>
+          <ul><li>createDraggable</li><li>x / y / snap</li><li>container</li><li>releaseEase</li><li>onGrab / onDrag</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Layout</h3>
+          <p data-en="FLIP-style layout transitions">布局变化过渡（进/出/换父）</p>
+          <ul><li>createLayout</li><li>record / animate</li><li>enterFrom</li><li>leaveTo</li><li>staggered layout</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Scope</h3>
+          <p data-en="Scoped roots · media queries">作用域根节点 / 媒体查询</p>
+          <ul><li>createScope</li><li>root / defaults</li><li>add / addOnce</li><li>keepTime</li><li>refresh</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Events</h3>
+          <p data-en="Scroll-linked playback">滚动联动播放</p>
+          <ul><li>onScroll</li><li>thresholds</li><li>sync modes</li><li>onEnter / onLeave</li><li>smooth scroll</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>SVG</h3>
+          <p data-en="Draw · morph · motion path">描边 / 形变 / 运动路径</p>
+          <ul><li>createDrawable</li><li>morphTo</li><li>createMotionPath</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Text</h3>
+          <p data-en="Split &amp; scramble reveal">拆字 / 乱码揭示</p>
+          <ul><li>splitText</li><li>chars / words / lines</li><li>scrambleText</li><li>addEffect</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Utilities</h3>
+          <p data-en="stagger · math · DOM helpers">错落 / 数学 / DOM 工具</p>
+          <ul><li>stagger</li><li>$ / get / set</li><li>random / shuffle</li><li>lerp / damp</li><li>clamp / snap</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Easings</h3>
+          <p data-en="Built-in · cubic · spring · steps">内置 / 贝塞尔 / 弹簧 / 阶梯</p>
+          <ul><li>built-in</li><li>Cubic Bézier</li><li>Linear / Steps</li><li>Irregular</li><li>createSpring</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>WAAPI</h3>
+          <p data-en="Web Animations API bridge">硬件加速 WAAPI 桥接</p>
+          <ul><li>when to use</li><li>convertEase</li><li>persist</li><li>iterations</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Engine</h3>
+          <p data-en="Global clock · fps · pause">全局时钟 / 帧率 / 切页暂停</p>
+          <ul><li>timeUnit</li><li>speed / fps</li><li>precision</li><li>pauseOnDocumentHidden</li></ul>
+        </article>
+        <article class="fx-cat">
+          <h3>Adapters</h3>
+          <p data-en="Three.js materials &amp; transforms">Three.js 材质 / 变换适配</p>
+          <ul><li>Three.js</li><li>materials</li><li>instanced meshes</li></ul>
+        </article>
+      </div>
+      <p class="fx-foot cite-path">Next → Animation / Timeline · Text / SVG · Draggable / Utils / Easings</p>
+    </section>
+
+<section class="slide slide-fx-gallery" data-title="效果库·动画时间轴" data-fx-gallery="1" data-ai-chips="off">
+      <div class="kicker">Animation · Timeline · Timer</div>
+      <h2 data-en="Animation · Timeline · Timer">效果库 · 动画 / 时间轴 / 计时</h2>
+      <p class="fx-lead" data-en="Live demos: spring, stagger, timeline, keyframes, transforms, alternate, playbackRate, createTimer.">
+        Docs: <a href="https://animejs.com/documentation/animation" target="_blank" rel="noopener noreferrer">Animation</a> ·
+        <a href="https://animejs.com/documentation/timeline" target="_blank" rel="noopener noreferrer">Timeline</a> ·
+        <a href="https://animejs.com/documentation/timer" target="_blank" rel="noopener noreferrer">Timer</a>
+        · 点 ↻ 重播
+      </p>
+      <div class="fx-gallery">
+        <article class="fx-card" data-fx="spring">
+          <header class="fx-card-head"><span class="fx-api">createSpring</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Spring physics ease">弹簧物理缓动</p>
+          <div class="fx-stage" aria-hidden="true"><span class="fx-ball"></span></div>
+        </article>
+        <article class="fx-card" data-fx="stagger">
+          <header class="fx-card-head"><span class="fx-api">stagger</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Grid stagger + jitter">网格错落 + jitter</p>
+          <div class="fx-stage fx-stage-grid" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+        <article class="fx-card" data-fx="timeline">
+          <header class="fx-card-head"><span class="fx-api">createTimeline</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Sequenced timeline">时间轴编排</p>
+          <div class="fx-stage fx-stage-bars" aria-hidden="true"><b class="fx-bar"></b><b class="fx-bar"></b><b class="fx-bar"></b></div>
+        </article>
+        <article class="fx-card" data-fx="keyframes">
+          <header class="fx-card-head"><span class="fx-api">keyframes</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Color + rotate loop">颜色 / 旋转关键帧</p>
+          <div class="fx-stage" aria-hidden="true"><span class="fx-key-box"></span></div>
+        </article>
+        <article class="fx-card" data-fx="transforms">
+          <header class="fx-card-head"><span class="fx-api">CSS transforms</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="x · y · rotate · scale">位移 / 旋转 / 缩放</p>
+          <div class="fx-stage" aria-hidden="true"><span class="fx-xform-box"></span></div>
+        </article>
+        <article class="fx-card" data-fx="alternate">
+          <header class="fx-card-head"><span class="fx-api">alternate</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Ping-pong loop">往返循环</p>
+          <div class="fx-stage" aria-hidden="true"><span class="fx-alt-box"></span></div>
+        </article>
+        <article class="fx-card" data-fx="playback">
+          <header class="fx-card-head"><span class="fx-api">playbackRate</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Speed ×0.5 / ×2">变速播放</p>
+          <div class="fx-stage fx-stage-rate" aria-hidden="true"><span class="fx-rate-dot"></span><span class="fx-rate-label">×1</span></div>
+        </article>
+        <article class="fx-card" data-fx="timer">
+          <header class="fx-card-head"><span class="fx-api">createTimer</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Synced timer callbacks">同步计时回调</p>
+          <div class="fx-stage fx-stage-lcd" aria-hidden="true">
+            <span class="fx-lcd-label">current time</span>
+            <span class="fx-lcd-value lcd">0.00</span>
+          </div>
+        </article>
+      </div>
+      <p class="fx-foot cite-path">animate · createTimeline · createTimer · createSpring · stagger · keyframes · playbackRate</p>
+    </section>
+
+<section class="slide slide-fx-gallery" data-title="效果库·文字SVG" data-fx-gallery="1" data-ai-chips="off">
+      <div class="kicker">Text · SVG</div>
+      <h2 data-en="Text · SVG effects">效果库 · 文字 / SVG</h2>
+      <p class="fx-lead" data-en="splitText · scrambleText · createDrawable · morphTo · createMotionPath">
+        Docs:
+        <a href="https://animejs.com/documentation/text" target="_blank" rel="noopener noreferrer">Text</a> ·
+        <a href="https://animejs.com/documentation/svg" target="_blank" rel="noopener noreferrer">SVG</a>
+        · 点 ↻ 重播
+      </p>
+      <div class="fx-gallery cols-3">
+        <article class="fx-card" data-fx="split">
+          <header class="fx-card-head"><span class="fx-api">splitText · chars</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Char-by-char reveal">逐字拆开入场</p>
+          <div class="fx-stage fx-stage-text" aria-hidden="true"><span class="fx-split-target">Harness</span></div>
+        </article>
+        <article class="fx-card" data-fx="words">
+          <header class="fx-card-head"><span class="fx-api">splitText · words</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Word stagger">按词错落</p>
+          <div class="fx-stage fx-stage-text" aria-hidden="true"><span class="fx-words-target">Agent Loop Gate</span></div>
+        </article>
+        <article class="fx-card" data-fx="scramble">
+          <header class="fx-card-head"><span class="fx-api">scrambleText</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Scramble decode">乱码解码揭示</p>
+          <div class="fx-stage fx-stage-text" aria-hidden="true"><span class="fx-scramble-target">Agent Loop</span></div>
+        </article>
+        <article class="fx-card" data-fx="drawable">
+          <header class="fx-card-head"><span class="fx-api">createDrawable</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="SVG path draw">SVG 描边绘制</p>
+          <div class="fx-stage" aria-hidden="true">
+            <svg class="fx-svg" viewBox="0 0 120 48" fill="none">
+              <path class="fx-draw-path" d="M8 36 C28 8 48 8 60 24 S92 40 112 12" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </article>
+        <article class="fx-card" data-fx="morph">
+          <header class="fx-card-head"><span class="fx-api">morphTo</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="SVG shape morph">路径形变</p>
+          <div class="fx-stage" aria-hidden="true">
+            <svg class="fx-svg" viewBox="0 0 64 48" fill="currentColor">
+              <path class="fx-morph-path" d="M8 40 L32 8 L56 40 Z"/>
+              <path class="fx-morph-target" d="M8 24 C8 10 56 10 56 24 C56 38 8 38 8 24 Z" opacity="0"/>
+            </svg>
+          </div>
+        </article>
+        <article class="fx-card" data-fx="motion">
+          <header class="fx-card-head"><span class="fx-api">createMotionPath</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Follow SVG path">沿路径运动</p>
+          <div class="fx-stage fx-stage-motion" aria-hidden="true">
+            <svg class="fx-svg fx-motion-svg" viewBox="0 0 120 48" fill="none" preserveAspectRatio="none">
+              <path class="fx-motion-path" d="M10 38 Q40 6 60 24 T110 14" stroke="currentColor" stroke-width="1.5" stroke-dasharray="3 3" opacity=".45"/>
+            </svg>
+            <span class="fx-motion-dot"></span>
+          </div>
+        </article>
+      </div>
+      <p class="fx-foot cite-path">splitText · scrambleText · createDrawable · morphTo · createMotionPath</p>
+    </section>
+
+<section class="slide slide-fx-gallery" data-title="效果库·交互工具" data-fx-gallery="1" data-ai-chips="off">
+      <div class="kicker">Draggable · Utils · Easings · Engine</div>
+      <h2 data-en="Interaction · utilities · easings">效果库 · 交互 / 工具 / 缓动</h2>
+      <p class="fx-lead" data-en="Draggable, Animatable, Layout flip, easings, random, engine clock — plus WAAPI / Scope / onScroll / Three.js listed in catalog.">
+        Docs:
+        <a href="https://animejs.com/documentation/draggable" target="_blank" rel="noopener noreferrer">Draggable</a> ·
+        <a href="https://animejs.com/documentation/utilities" target="_blank" rel="noopener noreferrer">Utilities</a> ·
+        <a href="https://animejs.com/documentation/easings" target="_blank" rel="noopener noreferrer">Easings</a> ·
+        <a href="https://animejs.com/documentation/engine" target="_blank" rel="noopener noreferrer">Engine</a>
+        · 点 ↻ 重播
+      </p>
+      <div class="fx-gallery">
+        <article class="fx-card" data-fx="draggable">
+          <header class="fx-card-head"><span class="fx-api">createDraggable</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Drag the chip">拖拽芯片</p>
+          <div class="fx-stage fx-stage-drag" aria-hidden="true"><span class="fx-drag-chip">drag</span></div>
+        </article>
+        <article class="fx-card" data-fx="animatable">
+          <header class="fx-card-head"><span class="fx-api">createAnimatable</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Reactive property drive">可动画属性驱动</p>
+          <div class="fx-stage" aria-hidden="true"><span class="fx-animatable-box"></span></div>
+        </article>
+        <article class="fx-card" data-fx="layout">
+          <header class="fx-card-head"><span class="fx-api">createLayout</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Order shuffle transition">顺序打乱过渡</p>
+          <div class="fx-stage" aria-hidden="true"><div class="fx-layout-row"><span>A</span><span>B</span><span>C</span><span>D</span></div></div>
+        </article>
+        <article class="fx-card" data-fx="easings">
+          <header class="fx-card-head"><span class="fx-api">easings</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="inOut / steps / spring">多缓动对比</p>
+          <div class="fx-stage fx-stage-ease" aria-hidden="true">
+            <span class="fx-ease-dot" data-ease="inOut(3)"></span>
+            <span class="fx-ease-dot" data-ease="steps(5)"></span>
+            <span class="fx-ease-dot" data-ease="spring"></span>
+            <span class="fx-ease-label">3×</span>
+          </div>
+        </article>
+        <article class="fx-card" data-fx="random">
+          <header class="fx-card-head"><span class="fx-api">utils.random</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Random targets each loop">每圈随机目标</p>
+          <div class="fx-stage fx-stage-rate" aria-hidden="true"><span class="fx-ease-box"></span><span class="fx-rand-label">rnd</span></div>
+        </article>
+        <article class="fx-card" data-fx="engine">
+          <header class="fx-card-head"><span class="fx-api">engine</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Global clock readout">引擎时钟读数</p>
+          <div class="fx-stage fx-stage-lcd" aria-hidden="true">
+            <span class="fx-lcd-label">engine</span>
+            <span class="fx-engine-label lcd fx-lcd-value">fps · speed</span>
+          </div>
+        </article>
+        <article class="fx-card" data-fx="waapi">
+          <header class="fx-card-head"><span class="fx-api">WAAPI</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Hardware-accelerated bridge">硬件加速桥接示意</p>
+          <div class="fx-stage" aria-hidden="true"><span class="fx-key-box fx-waapi-box"></span></div>
+        </article>
+        <article class="fx-card" data-fx="scope">
+          <header class="fx-card-head"><span class="fx-api">createScope</span><button type="button" class="fx-replay" title="重播">↻</button></header>
+          <p class="fx-desc" data-en="Scoped root animate">作用域内动画</p>
+          <div class="fx-stage" aria-hidden="true"><span class="fx-alt-box fx-scope-box"></span></div>
+        </article>
+      </div>
+      <p class="fx-foot cite-path">createDraggable · createAnimatable · createLayout · createScope · easings · random · engine · WAAPI ·（onScroll / Three.js 见总览）</p>
+    </section>
+
 </div><!-- /#deck -->
 
-  <div id="deckAttribution" class="deck-attribution" hidden aria-label="项目归属"></div>
+  <!-- Anime.js Timer look: https://animejs.com/documentation/timer -->
+  <div class="deck-top-rail" id="deckTopRail">
+    <div id="talkTimer" class="talk-timer" aria-live="off" aria-label="演示时长">
+      <div class="talk-timer-log">
+        <span class="talk-timer-label" data-i18n="talkTimer">elapsed</span>
+        <span class="talk-timer-value lcd talk-timer-clock" id="talkTimerValue">00:00</span>
+      </div>
+    </div>
+    <div id="deckAttribution" class="deck-attribution" hidden aria-label="项目归属"></div>
+  </div>
   <div class="progress"><i id="bar"></i></div>
   <div class="footer">
     <div class="hint" id="titleHint">封面</div>
@@ -1194,6 +1494,7 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
 
 <script src="assets/vendor/lucide.min.js"></script>
 <script src="assets/vendor/tsparticles.slim.bundle.min.js"></script>
+<!-- Anime.js v4 UMD（https://animejs.com/）· 全局 anime = { animate, createTimeline, stagger, … } -->
 <script src="assets/vendor/anime.min.js"></script>
 <script src="assets/vendor/three.min.js"></script>
 <script src="assets/vendor/vanta.net.min.js"></script>
@@ -1207,7 +1508,6 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
 
 <script>
 (function () {
-      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const root = document.documentElement;
       /** window.DECK_CONFIG：由 deck/config.js 运行时加载（优先 config.json） */
       const DECK_CFG = (typeof window !== "undefined" && window.DECK_CONFIG) || {};
@@ -1215,6 +1515,26 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         if (DECK_CFG[key] === undefined || DECK_CFG[key] === null) return fallback;
         return !!DECK_CFG[key];
       }
+      /**
+       * Windows「减少动态效果」时，Edge/Chrome 都会 match prefers-reduced-motion。
+       * 培训演示常需强制开启动画/粒子：config.forceMotion / present / ?motion=1
+       */
+      function wantForceMotion() {
+        if (cfgBool("forceMotion", false)) return true;
+        if (cfgBool("present", false)) return true;
+        try {
+          return /(?:^|[?&])motion=1(?:&|$)/.test(String(location.search || ""));
+        } catch (e0) {
+          return false;
+        }
+      }
+      var osReducedMotion = false;
+      try {
+        osReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      } catch (e1) {}
+      var forceMotion = wantForceMotion();
+      if (forceMotion) root.setAttribute("data-force-motion", "1");
+      const reducedMotion = osReducedMotion && !forceMotion;
       function cfgThemeDefault() {
         var t = DECK_CFG.theme;
         if (t === undefined || t === null || t === "") return "1";
@@ -1228,6 +1548,41 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         if (name) el.textContent = name;
       }
       applySpeakerFromConfig();
+
+      /** 现场演示：藏溯源角标、按需移除赞助等页（须在收集 slides 之前执行） */
+      function isPresentDeploy() {
+        if (cfgBool("present", false)) return true;
+        try {
+          return /(?:^|[?&])present=1(?:&|$)/.test(String(location.search || ""));
+        } catch (e0) {
+          return false;
+        }
+      }
+      function presentExcludeTitles() {
+        var list = Array.isArray(DECK_CFG.excludeSlides) ? DECK_CFG.excludeSlides.slice() : [];
+        if (isPresentDeploy() && list.indexOf("开源与赞助") < 0) list.push("开源与赞助");
+        return list;
+      }
+      function applyPresentDeploy() {
+        var hideAttr = isPresentDeploy() || cfgBool("hideAttribution", false);
+        if (hideAttr) {
+          root.setAttribute("data-present", "1");
+          var slot = document.getElementById("deckAttribution");
+          if (slot) {
+            slot.hidden = true;
+            slot.innerHTML = "";
+            slot.setAttribute("aria-hidden", "true");
+          }
+        }
+        presentExcludeTitles().forEach(function (title) {
+          var safe = String(title || "");
+          if (!safe) return;
+          document.querySelectorAll('.slide[data-title="' + safe.replace(/\\/g, "\\\\").replace(/"/g, '\\"') + '"]').forEach(function (el) {
+            if (el.parentNode) el.parentNode.removeChild(el);
+          });
+        });
+      }
+      applyPresentDeploy();
 
       const presentToast = document.getElementById("presentToast");
       const presentBtn = document.getElementById("presentBtn");
@@ -1262,12 +1617,14 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       let exportPptBusy = false;
       /** 全局默认：true=各页用内置映射；false=各页默认关闭（可被本页覆盖） */
       let particlesEnabled = cfgBool("particles", true);
-      const PARTICLES_KEY = "harness_training_particles";
-      const PARTICLE_OVERRIDES_KEY = "harness_training_particle_overrides";
-      const SLIDE_PARTICLES_CFG_KEY = "harness_training_slide_particles_cfg";
+      // 演示包用独立命名空间，避免同域旧站点 localStorage 把粒子关掉
+      const LS_NS = isPresentDeploy() ? "harness_present_" : "harness_training_";
+      const PARTICLES_KEY = LS_NS + "particles";
+      const PARTICLE_OVERRIDES_KEY = LS_NS + "particle_overrides";
+      const SLIDE_PARTICLES_CFG_KEY = LS_NS + "slide_particles_cfg";
       /** 按 data-title：效果名 | "off"；来自 config.slideParticles，可被本机覆盖 */
       var particleOverrides = {};
-      const BGM_KEY = "harness_training_bgm";
+      const BGM_KEY = LS_NS + "bgm";
 
       function cfgSlideParticles() {
         var o = DECK_CFG.slideParticles || DECK_CFG.particleOverrides;
@@ -1391,11 +1748,11 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         { id: 19, name: "落日线路", nameEn: "Sunset Line", mode: "dark", swatch: "#fdba74", paper: "#1c0a14", ink: "#fff7ed" },
         { id: 20, name: "摄影棚黑白", nameEn: "Studio B&W", mode: "light", swatch: "#222222", paper: "#f0f0f0", ink: "#0a0a0a" }
       ];
-      const THEME_KEY = "harness_training_theme";
+      const THEME_KEY = LS_NS + "theme";
       // 记录上次应用的 config 值；config.json 变更（重建后）时覆盖 localStorage
-      const THEME_CFG_KEY = "harness_training_theme_cfg";
-      const PARTICLES_CFG_KEY = "harness_training_particles_cfg";
-      const BGM_CFG_KEY = "harness_training_bgm_cfg";
+      const THEME_CFG_KEY = LS_NS + "theme_cfg";
+      const PARTICLES_CFG_KEY = LS_NS + "particles_cfg";
+      const BGM_CFG_KEY = LS_NS + "bgm_cfg";
 
       function lsGet(key) {
         try { return localStorage.getItem(key); } catch (e) { return null; }
@@ -1742,6 +2099,16 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
 
       (function initParticlesPref() {
         var cfg = cfgBool("particles", true) ? "1" : "0";
+        if (isPresentDeploy()) {
+          // 现场包：始终跟 config，不吃同域旧演示页的「粒子关」记忆
+          particlesEnabled = cfg === "1";
+          particleOverrides = Object.assign({}, cfgSlideParticles());
+          lsSet(PARTICLES_CFG_KEY, cfg);
+          lsSet(PARTICLES_KEY, cfg);
+          lsSet(SLIDE_PARTICLES_CFG_KEY, slideParticlesStamp());
+          saveParticleOverrides();
+          return;
+        }
         var pick = resolvePref(cfg, PARTICLES_KEY, PARTICLES_CFG_KEY);
         particlesEnabled = pick === "1";
         // config.slideParticles 变更时重置为本文件配置；否则保留本机覆盖
@@ -1911,7 +2278,12 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         "Skill Rules Lint": ["教写对", "定义错", "pass/fail", "cleaned_rules", "lint_cleaned", "登录@admin", "valid_tags", "STAGE_META", "S1", "Gate"],
         "闭环": ["收集", "处理", "生成", "复盘", "Rules/Skill", "飞轮", "blocker", "Fragment", "越跑越稳", "人审异常"],
         "思考与行动": ["五件套", "--advance", "Gate", "稳定用多久", "动手", "--next", "--lint", "Progress", "Rules", "参考资料"],
-        "开源与赞助": ["MIT", "Star", "微信赞助", "GitHub", "Gitee", "扫码", "xiaoyutoucom", "白标", "定制", "邮箱"]
+        "开源与赞助": ["MIT", "Star", "微信赞助", "GitHub", "Gitee", "扫码", "xiaoyutoucom", "白标", "定制", "邮箱"],
+        "效果库": ["Anime.js", "v4 Docs", "Effects", "Gallery", "Timer", "Timeline", "Text", "SVG", "Draggable", "Easings"],
+        "效果库总览": ["Getting started", "Timer", "Animation", "Timeline", "Draggable", "Layout", "Text", "SVG", "Utilities", "Engine"],
+        "效果库·动画时间轴": ["animate", "createSpring", "stagger", "createTimeline", "keyframes", "transforms", "alternate", "playbackRate", "createTimer", "loop"],
+        "效果库·文字SVG": ["splitText", "chars", "words", "scrambleText", "createDrawable", "morphTo", "createMotionPath", "SVG", "Text", "draw"],
+        "效果库·交互工具": ["createDraggable", "createAnimatable", "createLayout", "createScope", "easings", "random", "engine", "WAAPI", "Utilities", "onScroll"]
       };
 
       function parseAiChipsAttr(raw) {
@@ -1947,7 +2319,19 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       function aiChipSetForSlide(slide) {
         var fallback = ["Harness", "Agent", "Context", "Gate", "Lint", "Progress", "Runner", "Skill", "Rules", "Eval"];
         if (!slide) return fallback.slice();
-        var fromAttr = parseAiChipsAttr(slide.getAttribute("data-ai-chips") || slide.dataset.aiChips || "");
+        // 密内容页（效果库总览/演示卡）关闭飘荡标签，避免与卡片叠字
+        var attrRaw = String(slide.getAttribute("data-ai-chips") || slide.dataset.aiChips || "").trim();
+        if (
+          attrRaw === "off" ||
+          attrRaw === "0" ||
+          attrRaw === "false" ||
+          slide.classList.contains("slide-fx-catalog") ||
+          slide.classList.contains("slide-fx-gallery") ||
+          slide.getAttribute("data-fx-gallery") === "1"
+        ) {
+          return [];
+        }
+        var fromAttr = parseAiChipsAttr(attrRaw);
         if (fromAttr) return fromAttr;
         var title = slide.dataset.title || "";
         var lang = I18N && typeof I18N.getLang === "function" ? I18N.getLang() : "zh";
@@ -1973,6 +2357,20 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
 
         var labels = aiChipSetForSlide(slide);
         var title = (slide && slide.dataset.title) || "";
+        var denseFx =
+          !!slide &&
+          (slide.classList.contains("slide-fx-catalog") ||
+            slide.classList.contains("slide-fx-gallery") ||
+            slide.getAttribute("data-fx-gallery") === "1" ||
+            labels.length === 0);
+        root.classList.toggle("ai-ambient-quiet", denseFx);
+
+        if (denseFx) {
+          chipsEl.innerHTML = "";
+          nodesEl.innerHTML = "";
+          return;
+        }
+
         var seed = 0;
         for (var i = 0; i < title.length; i++) seed = (seed + title.charCodeAt(i) * (i + 1)) % 997;
 
@@ -2302,6 +2700,54 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
           links: true, linkDist: 170, linkOp: 0.28, linkW: 1,
           hover: ["grab", "bubble"], grabDist: 260, bubbleSize: 9,
           twinkle: true, fps: 42
+        },
+        fx_gallery_pulse: {
+          count: 56, area: 880, shape: "star", colorMode: "duo",
+          opMin: 0.18, opMax: 0.72, szMin: 1.2, szMax: 3.6,
+          speed: 0.85, dir: "none", straight: false, random: true,
+          links: true, linkDist: 140, linkOp: 0.32, linkW: 1.05,
+          hover: ["attract", "bubble"], grabDist: 240, bubbleSize: 8,
+          twinkle: true, fps: 50
+        },
+        fx_sec_beam: {
+          count: 40, area: 1000, shape: "circle", colorMode: "neon",
+          opMin: 0.2, opMax: 0.7, szMin: 1.4, szMax: 3.2,
+          speed: 0.7, dir: "top", straight: false, random: true,
+          links: false, linkDist: 0, linkOp: 0, linkW: 0,
+          hover: ["bubble"], grabDist: 220, bubbleSize: 7,
+          twinkle: true, fps: 45
+        },
+        fx_catalog_grid: {
+          count: 52, area: 900, shape: "triangle", colorMode: "teal",
+          opMin: 0.16, opMax: 0.6, szMin: 1.1, szMax: 2.8,
+          speed: 0.5, dir: "none", straight: false, random: true,
+          links: true, linkDist: 120, linkOp: 0.25, linkW: 0.9,
+          hover: ["grab"], grabDist: 200, bubbleSize: 6,
+          twinkle: false, fps: 45
+        },
+        fx_anim_orbit: {
+          count: 60, area: 860, shape: "circle", colorMode: "duo",
+          opMin: 0.2, opMax: 0.75, szMin: 1.2, szMax: 3.4,
+          speed: 1.1, dir: "none", straight: false, random: true,
+          links: true, linkDist: 130, linkOp: 0.3, linkW: 1,
+          hover: ["attract"], grabDist: 230, bubbleSize: 8,
+          twinkle: true, fps: 50
+        },
+        fx_text_svg: {
+          count: 44, area: 940, shape: "star", colorMode: "neon",
+          opMin: 0.18, opMax: 0.68, szMin: 1.3, szMax: 3.8,
+          speed: 0.65, dir: "left", straight: false, random: true,
+          links: false, linkDist: 0, linkOp: 0, linkW: 0,
+          hover: ["bubble"], grabDist: 210, bubbleSize: 7,
+          twinkle: true, fps: 48
+        },
+        fx_util_spark: {
+          count: 70, area: 820, shape: "circle", colorMode: "signal",
+          opMin: 0.22, opMax: 0.8, szMin: 0.9, szMax: 2.6,
+          speed: 1.4, dir: "none", straight: false, random: true,
+          links: false, linkDist: 0, linkOp: 0, linkW: 0,
+          hover: ["repulse"], grabDist: 180, bubbleSize: 5,
+          twinkle: false, fps: 55
         }
       };
 
@@ -2340,7 +2786,12 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         "Skill Rules Lint": "srl_glyphs",
         "闭环": "loop_flow",
         "思考与行动": "takeaway_snow",
-        "开源与赞助": "sponsor_glow"
+        "开源与赞助": "sponsor_glow",
+        "效果库": "fx_sec_beam",
+        "效果库总览": "fx_catalog_grid",
+        "效果库·动画时间轴": "fx_anim_orbit",
+        "效果库·文字SVG": "fx_text_svg",
+        "效果库·交互工具": "fx_util_spark"
       };
 
       var PARTICLE_LABELS = {
@@ -2377,7 +2828,13 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         srl_glyphs: "规则符文",
         loop_flow: "闭环流动",
         takeaway_snow: "收束雪点",
-        sponsor_glow: "赞助柔光"
+        sponsor_glow: "赞助柔光",
+        fx_gallery_pulse: "效果库脉冲",
+        fx_sec_beam: "效果库章节",
+        fx_catalog_grid: "效果库总览",
+        fx_anim_orbit: "效果库动画",
+        fx_text_svg: "效果库文字",
+        fx_util_spark: "效果库工具"
       };
 
       function particleLabel(key) {
@@ -2907,8 +3364,20 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       }
 
       var lastParticleKey = "";
+      var warnedMissingParticles = false;
       function refreshParticles(force) {
-        if (reducedMotion || !window.tsParticles) {
+        // 系统「减少动态效果」不再一刀切禁粒子：只要用户开着粒子开关就尝试渲染
+        // （旧版 CSS 还会把 .slide 卡在 opacity:0，导致整页空白——已在 base.css 修复）
+        if (!window.tsParticles) {
+          if (!warnedMissingParticles) {
+            warnedMissingParticles = true;
+            try {
+              console.error(
+                "[deck] tsParticles 未加载（粒子库缺失）。请确认已上传 assets/vendor/tsparticles.slim.bundle.min.js，" +
+                  "且与 harness_training.html 同级的目录结构完整（不要只上传单个 HTML）。"
+              );
+            } catch (e1) {}
+          }
           if (typeof syncParticlesUi === "function") syncParticlesUi();
           return;
         }
@@ -2934,7 +3403,11 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         var opts = buildParticlesOptions(profile);
         var p = tsParticles.load("tsparticles", opts);
         if (p && typeof p.then === "function") {
-          p.then(function (inst) { particlesInst = inst || null; }).catch(function () {});
+          p.then(function (inst) { particlesInst = inst || null; }).catch(function (err) {
+            try {
+              console.error("[deck] tsParticles.load 失败", profile && profile.flavor, err);
+            } catch (e2) {}
+          });
         }
         if (typeof syncParticlesUi === "function") syncParticlesUi();
       }
@@ -3046,8 +3519,93 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         });
       }
 
+      /**
+       * Anime.js v4（https://animejs.com/）— 离线 UMD：assets/vendor/anime.min.js
+       * 全局 `anime` 为命名导出对象：animate / createTimeline / stagger / utils …
+       */
+      function animeApi() {
+        var g = typeof window !== "undefined" ? window.anime : null;
+        if (!g || typeof g.animate !== "function" || typeof g.createTimeline !== "function") return null;
+        return g;
+      }
+      function animeReady() {
+        return !!animeApi();
+      }
+      function animeRemove(targets) {
+        var api = animeApi();
+        if (!api || !targets) return;
+        try {
+          if (typeof api.remove === "function") api.remove(targets);
+          else if (api.utils && typeof api.utils.remove === "function") api.utils.remove(targets);
+        } catch (e0) {}
+      }
+      function animeSet(targets, props) {
+        var api = animeApi();
+        if (!api || !targets) return;
+        var len = targets.length;
+        if (typeof len === "number" && len === 0) return;
+        try {
+          if (typeof api.set === "function") api.set(targets, props);
+          else if (api.utils && typeof api.utils.set === "function") api.utils.set(targets, props);
+        } catch (e1) {}
+      }
+      (function bootAnimeEngine() {
+        var api = animeApi();
+        if (!api || !api.engine) return;
+        try {
+          // 演示包强制动效时，避免切标签把入场动画挂起卡在透明
+          if (forceMotion) api.engine.pauseOnDocumentHidden = false;
+        } catch (e2) {}
+      })();
+
+      /** Docs: createTimer — 右上角仅秒级 elapsed https://animejs.com/documentation/timer */
+      function formatTalkElapsed(ms) {
+        var total = Math.max(0, Math.floor(Number(ms) / 1000));
+        var h = Math.floor(total / 3600);
+        var m = Math.floor((total % 3600) / 60);
+        var s = total % 60;
+        var mm = (m < 10 ? "0" : "") + m;
+        var ss = (s < 10 ? "0" : "") + s;
+        if (h > 0) return h + ":" + mm + ":" + ss;
+        return mm + ":" + ss;
+      }
+      function bootTalkTimer() {
+        var clockEl = document.getElementById("talkTimerValue");
+        var wrap = document.getElementById("talkTimer");
+        if (!clockEl) return;
+        clockEl.textContent = "00:00";
+        if (wrap) {
+          wrap.title = t("talkTimer");
+          wrap.setAttribute("aria-label", t("talkTimer"));
+        }
+        // 刷新从 0；墙钟计秒（切标签不丢时）
+        var started = Date.now();
+        var lastShown = "";
+        function paint() {
+          var text = formatTalkElapsed(Date.now() - started);
+          if (text === lastShown) return;
+          lastShown = text;
+          clockEl.textContent = text;
+        }
+        var api = animeApi();
+        if (api && typeof api.createTimer === "function") {
+          try {
+            api.createTimer({
+              duration: 1000,
+              loop: true,
+              autoplay: true,
+              frameRate: 2,
+              onUpdate: paint
+            });
+            return;
+          } catch (e0) {}
+        }
+        setInterval(paint, 500);
+      }
+
       function animateHighlightSequence(slide) {
-        if (reducedMotion || !window.anime) return;
+        var api = animeApi();
+        if (reducedMotion || !api) return;
         var flowNodes = slide.querySelectorAll(".flow .node");
         var title = slide.dataset.title || "";
         var h2t = slide.querySelector("h2") ? slide.querySelector("h2").textContent : "";
@@ -3076,11 +3634,10 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
             items.forEach(function (el) { el.classList.remove("is-lit"); });
             if (i < items.length) {
               items[i].classList.add("is-lit");
-              anime({
-                targets: items[i],
+              api.animate(items[i], {
                 scale: [1, 1.015, 1],
                 duration: Math.min(360, holdMs),
-                easing: "easeOutQuad"
+                ease: "outQuad"
               });
               i += 1;
               setTimeout(step, holdMs);
@@ -3104,6 +3661,169 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         if (codeLines.length && codeLines.length <= 16) pulseList(codeLines, 220);
       }
 
+      function isShowcaseEnter() {
+        var fx = String(DECK_CFG.enterFx || "showcase").toLowerCase();
+        if (fx === "classic" || fx === "subtle" || fx === "0" || fx === "false") return false;
+        return true;
+      }
+      function springEase(api, opts) {
+        if (!api || typeof api.createSpring !== "function") return "outBack";
+        try {
+          return api.createSpring(opts || { stiffness: 120, damping: 14 });
+        } catch (e0) {
+          return "outBack";
+        }
+      }
+      /** Docs: SVG createDrawable — 描线入场 https://animejs.com/documentation */
+      function playDrawableSweep(api) {
+        var svg = document.getElementById("animeFxSvg");
+        if (!svg || !api || typeof api.createDrawable !== "function") return;
+        var paths = svg.querySelectorAll(".fx-draw");
+        if (!paths.length) return;
+        try {
+          svg.classList.add("is-on");
+          var drawable = api.createDrawable(paths);
+          animeSet(drawable, { draw: "0 0" });
+          api.animate(drawable, {
+            draw: "0 1",
+            ease: "inOut(3)",
+            duration: 1100,
+            delay: api.stagger(140),
+            onComplete: function () {
+              setTimeout(function () {
+                try { svg.classList.remove("is-on"); } catch (e0) {}
+              }, 900);
+            }
+          });
+        } catch (e1) {
+          try { svg.classList.remove("is-on"); } catch (e2) {}
+        }
+      }
+      /** Docs: Text scrambleText — kicker 乱码揭示 */
+      function ensureKickerScrambleTarget(kicker) {
+        if (!kicker) return null;
+        var hit = kicker.querySelector(".fx-scramble");
+        if (hit) return hit;
+        var text = "";
+        var nodes = Array.prototype.slice.call(kicker.childNodes);
+        nodes.forEach(function (n) {
+          if (n.nodeType === 3) text += n.textContent || "";
+        });
+        text = text.replace(/\s+/g, " ").trim();
+        if (!text) {
+          // 仅图标+纯文本混排时，取去掉图标后的 textContent
+          var clone = kicker.cloneNode(true);
+          clone.querySelectorAll("i, svg, .icon").forEach(function (n) {
+            if (n.parentNode) n.parentNode.removeChild(n);
+          });
+          text = (clone.textContent || "").replace(/\s+/g, " ").trim();
+        }
+        if (!text || text.length > 64) return null;
+        nodes.forEach(function (n) {
+          if (n.nodeType === 3 && n.parentNode) n.parentNode.removeChild(n);
+        });
+        var span = document.createElement("span");
+        span.className = "fx-scramble";
+        span.textContent = text;
+        kicker.appendChild(span);
+        return span;
+      }
+      function playKickerScramble(slide, api) {
+        if (!api || typeof api.scrambleText !== "function") return;
+        var kicker = slide.querySelector(".kicker");
+        var target = ensureKickerScrambleTarget(kicker);
+        if (!target) return;
+        var finalText = target.textContent || "";
+        if (!finalText) return;
+        try {
+          api.animate(target, {
+            scrambleText: api.scrambleText({
+              text: finalText,
+              chars: "uppercase",
+              duration: 820,
+              from: "left",
+              ease: "out(3)",
+              perturbation: 0.35
+            })
+          });
+        } catch (e0) {
+          try {
+            // 部分版本把参数直接挂在属性上
+            api.animate(target, {
+              scrambleText: {
+                text: finalText,
+                chars: "uppercase",
+                duration: 820,
+                from: "left"
+              }
+            });
+          } catch (e1) {}
+        }
+      }
+      /** Docs: stagger grid — 卡片按网格从中心炸开 */
+      function cardGridStagger(api, slide, cards, baseDelay) {
+        var n = cards && cards.length ? cards.length : 0;
+        if (!n) return baseDelay || 75;
+        var host =
+          slide.querySelector(".grid6") ||
+          slide.querySelector(".grid4") ||
+          slide.querySelector(".grid3") ||
+          slide.querySelector(".grid2") ||
+          slide.querySelector(".toc-board") ||
+          slide.querySelector(".pain-grid");
+        var cols = 3;
+        if (host) {
+          if (host.classList.contains("grid2")) cols = 2;
+          else if (host.classList.contains("grid4")) cols = 4;
+          else if (host.classList.contains("grid6")) cols = 3;
+          else if (host.classList.contains("toc-board")) cols = 2;
+        }
+        var rows = Math.max(1, Math.ceil(n / cols));
+        try {
+          return api.stagger(baseDelay || 70, {
+            grid: [cols, rows],
+            from: "center",
+            jitter: 28
+          });
+        } catch (e0) {
+          return api.stagger(baseDelay || 75, { from: "center" });
+        }
+      }
+      /** 非封面 h2：Anime.js splitText 拆字，便于官网风格逐字入场 */
+      function prepareHeadingFx(slide, api) {
+        if (!slide || !api) return null;
+        var h2 = slide.querySelector("h2");
+        if (!h2 || slide.classList.contains("slide-cover")) return null;
+        if (h2.dataset.fxSplit === "1") {
+          var existed = h2.querySelectorAll(".fx-char, .char");
+          return existed.length ? existed : null;
+        }
+        // 含复杂子节点（图标等）时跳过，避免拆坏结构
+        if (h2.querySelector("i, svg, img, a, code, .badge")) return null;
+        try {
+          if (typeof api.splitText === "function") {
+            var split = api.splitText(h2, { chars: true, words: true });
+            h2.dataset.fxSplit = "1";
+            h2.classList.add("has-fx-chars");
+            return (split && split.chars && split.chars.length) ? split.chars : null;
+          }
+        } catch (e1) {}
+        // 兜底：纯文本拆字
+        try {
+          var plain = (h2.textContent || "").trim();
+          if (!plain || plain.length > 48) return null;
+          h2.innerHTML = Array.from(plain).map(function (ch) {
+            if (ch === " ") return '<span class="fx-char fx-space">&nbsp;</span>';
+            return '<span class="fx-char">' + ch + "</span>";
+          }).join("");
+          h2.dataset.fxSplit = "1";
+          h2.classList.add("has-fx-chars");
+          return h2.querySelectorAll(".fx-char");
+        } catch (e2) {
+          return null;
+        }
+      }
+
       function animateCoverTitle(slide) {
         prepareCoverBrand();
         var chars = slide.querySelectorAll("#coverBrand .char");
@@ -3112,21 +3832,53 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         chars.forEach(function (el) {
           el.style.removeProperty("opacity");
           el.style.removeProperty("transform");
+          el.style.removeProperty("filter");
         });
-        if (reducedMotion || !window.anime || !slide.classList.contains("slide-cover")) return;
-        try { anime.remove(chars); } catch (e) {}
-        anime.set(chars, { opacity: 0, translateY: 22 });
-        anime({
-          targets: chars,
+        var api = animeApi();
+        if (reducedMotion || !api || !slide.classList.contains("slide-cover")) return;
+        animeRemove(chars);
+        var showcase = isShowcaseEnter();
+        if (!showcase) {
+          animeSet(chars, { opacity: 0, translateY: 22 });
+          api.animate(chars, {
+            opacity: 1,
+            translateY: 0,
+            delay: api.stagger(28, { start: 80 }),
+            duration: 620,
+            ease: "outCubic",
+            onComplete: function () {
+              chars.forEach(function (el) {
+                el.style.removeProperty("opacity");
+                el.style.removeProperty("transform");
+              });
+            }
+          });
+          return;
+        }
+        // showcase：中心扩散 + 旋转弹入（对标官网 logo / stagger 演示）
+        animeSet(chars, {
+          opacity: 0,
+          y: 56,
+          rotateZ: function () {
+            return typeof api.random === "function" ? api.random(-18, 18) : 0;
+          },
+          scale: 0.45,
+          filter: "blur(6px)"
+        });
+        api.animate(chars, {
           opacity: 1,
-          translateY: 0,
-          delay: anime.stagger(28, { start: 80 }),
-          duration: 620,
-          easing: "easeOutCubic",
-          complete: function () {
+          y: 0,
+          rotateZ: 0,
+          scale: 1,
+          filter: "blur(0px)",
+          delay: api.stagger(26, { from: "center", start: 40 }),
+          duration: 980,
+          ease: springEase(api, { stiffness: 140, damping: 12 }),
+          onComplete: function () {
             chars.forEach(function (el) {
               el.style.removeProperty("opacity");
               el.style.removeProperty("transform");
+              el.style.removeProperty("filter");
             });
           }
         });
@@ -3135,6 +3887,7 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
       prepareCoverBrand();
       refreshParticles();
       refreshVanta();
+      bootTalkTimer();
 
       (function bindCoverMouseFx() {
         var glow = document.getElementById("coverCursorGlow");
@@ -3364,6 +4117,626 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         });
       }
 
+      /** Anime.js 效果库页 — https://animejs.com/documentation/ */
+      var fxGalleryCtl = { slide: null, handles: [], timers: [], draggables: [] };
+      function fxGalleryPush(handle) {
+        if (handle) fxGalleryCtl.handles.push(handle);
+        return handle;
+      }
+      function stopFxGallery(slide) {
+        if (slide && fxGalleryCtl.slide && slide !== fxGalleryCtl.slide) return;
+        fxGalleryCtl.handles.forEach(function (h) {
+          try {
+            if (h && typeof h.pause === "function") h.pause();
+            if (h && typeof h.cancel === "function") h.cancel();
+            else if (h && typeof h.revert === "function") h.revert();
+          } catch (e0) {}
+        });
+        fxGalleryCtl.draggables.forEach(function (d) {
+          try {
+            if (d && typeof d.revert === "function") d.revert();
+            else if (d && typeof d.disable === "function") d.disable();
+          } catch (e1) {}
+        });
+        fxGalleryCtl.timers.forEach(function (id) {
+          try { clearTimeout(id); } catch (e2) {}
+        });
+        fxGalleryCtl.handles = [];
+        fxGalleryCtl.draggables = [];
+        fxGalleryCtl.timers = [];
+        fxGalleryCtl.slide = null;
+      }
+      function bootFxGallery(slide) {
+        if (!slide || slide.getAttribute("data-fx-gallery") !== "1") return;
+        stopFxGallery();
+        fxGalleryCtl.slide = slide;
+        var api = animeApi();
+        if (!api || reducedMotion) return;
+
+        function playCard(card) {
+          if (!card || !fxGalleryCtl.slide) return;
+          var kind = card.getAttribute("data-fx") || "";
+          var stage = card.querySelector(".fx-stage");
+          if (!stage) return;
+
+          if (kind === "spring") {
+            var ball = stage.querySelector(".fx-ball");
+            if (!ball) return;
+            animeSet(ball, { y: 0, scale: 1 });
+            fxGalleryPush(
+              api.animate(ball, {
+                y: [
+                  { to: -28, ease: springEase(api, { stiffness: 180, damping: 10 }), duration: 700 },
+                  { to: 0, ease: springEase(api, { stiffness: 140, damping: 12 }), duration: 700 }
+                ],
+                scale: [
+                  { to: 1.15, duration: 350 },
+                  { to: 1, duration: 350 }
+                ],
+                loop: true,
+                loopDelay: 280
+              })
+            );
+            return;
+          }
+
+          if (kind === "stagger") {
+            var cells = stage.querySelectorAll("i");
+            if (!cells.length) return;
+            animeSet(cells, { scale: 0.2, opacity: 0.25 });
+            fxGalleryPush(
+              api.animate(cells, {
+                scale: 1,
+                opacity: 1,
+                delay: api.stagger(70, { grid: [3, 3], from: "center", jitter: 24 }),
+                ease: springEase(api, { stiffness: 160, damping: 14 }),
+                duration: 720,
+                loop: true,
+                alternate: true,
+                loopDelay: 420
+              })
+            );
+            return;
+          }
+
+          if (kind === "timeline") {
+            var bars = stage.querySelectorAll(".fx-bar");
+            if (!bars.length) return;
+            animeSet(bars, { scaleX: 0.12, opacity: 0.4 });
+            var tl = api.createTimeline({
+              loop: true,
+              loopDelay: 500,
+              defaults: { ease: "out(3)", duration: 520 }
+            });
+            bars.forEach(function (bar, i) {
+              tl.add(bar, { scaleX: 1, opacity: 1 }, i === 0 ? 0 : "-=220");
+            });
+            bars.forEach(function (bar, i) {
+              tl.add(bar, { scaleX: 0.12, opacity: 0.4 }, i === 0 ? "+=180" : "-=300");
+            });
+            fxGalleryPush(tl);
+            return;
+          }
+
+          if (kind === "split") {
+            var splitEl = stage.querySelector(".fx-split-target");
+            if (!splitEl) return;
+            var plain = "Harness";
+            try {
+              if (splitEl.dataset.fxSplit === "1" && typeof api.splitText === "function") {
+                /* keep existing splits */
+              } else {
+                splitEl.textContent = plain;
+              }
+            } catch (eKeep) {
+              splitEl.textContent = plain;
+            }
+            var chars = null;
+            try {
+              if (typeof api.splitText === "function") {
+                if (splitEl.dataset.fxSplit !== "1") {
+                  var split = api.splitText(splitEl, { chars: true });
+                  splitEl.dataset.fxSplit = "1";
+                  chars = split && split.chars ? split.chars : null;
+                } else {
+                  chars = splitEl.querySelectorAll(".char, .fx-char, span");
+                }
+              }
+            } catch (eSplit) {}
+            if (!chars || !chars.length) {
+              splitEl.innerHTML = Array.from(plain)
+                .map(function (ch) {
+                  return '<span class="fx-char">' + ch + "</span>";
+                })
+                .join("");
+              chars = splitEl.querySelectorAll(".fx-char");
+            }
+            animeSet(chars, { y: 22, opacity: 0, rotateZ: 12 });
+            fxGalleryPush(
+              api.animate(chars, {
+                y: 0,
+                opacity: 1,
+                rotateZ: 0,
+                delay: api.stagger(38, { from: "center" }),
+                ease: springEase(api, { stiffness: 150, damping: 12 }),
+                duration: 780,
+                loop: true,
+                alternate: true,
+                loopDelay: 600
+              })
+            );
+            return;
+          }
+
+          if (kind === "scramble") {
+            var scrEl = stage.querySelector(".fx-scramble-target");
+            if (!scrEl || typeof api.scrambleText !== "function") return;
+            var finalText = "Agent Loop";
+            scrEl.textContent = finalText;
+            fxGalleryPush(
+              api.animate(scrEl, {
+                scrambleText: api.scrambleText({
+                  text: finalText,
+                  chars: "uppercase",
+                  duration: 1100,
+                  from: "left",
+                  ease: "out(3)",
+                  perturbation: 0.4
+                }),
+                loop: true,
+                loopDelay: 900
+              })
+            );
+            return;
+          }
+
+          if (kind === "drawable") {
+            var path = stage.querySelector(".fx-draw-path");
+            if (!path || typeof api.createDrawable !== "function") return;
+            try {
+              var drawable = api.createDrawable(path);
+              animeSet(drawable, { draw: "0 0" });
+              fxGalleryPush(
+                api.animate(drawable, {
+                  draw: ["0 0", "0 1", "1 1"],
+                  ease: "inOut(3)",
+                  duration: 2200,
+                  loop: true,
+                  loopDelay: 400
+                })
+              );
+            } catch (eDraw) {}
+            return;
+          }
+
+          if (kind === "timer") {
+            var lcd = stage.querySelector(".fx-lcd-value") || document.getElementById("fxTimerLcd");
+            if (!lcd || typeof api.createTimer !== "function") return;
+            lcd.textContent = "0.00";
+            fxGalleryPush(
+              api.createTimer({
+                duration: 1000,
+                loop: true,
+                frameRate: 30,
+                onUpdate: function (self) {
+                  var ms = self && typeof self.currentTime === "number" ? self.currentTime : 0;
+                  lcd.textContent = (Math.round(ms * 100) / 100).toFixed(2);
+                }
+              })
+            );
+            return;
+          }
+
+          if (kind === "draggable") {
+            var chip = stage.querySelector(".fx-drag-chip");
+            if (!chip || typeof api.createDraggable !== "function") return;
+            try {
+              chip.style.transform = "";
+              var drag = api.createDraggable(chip, {
+                container: stage,
+                releaseEase: springEase(api, { stiffness: 120, damping: 14 })
+              });
+              fxGalleryCtl.draggables.push(drag);
+            } catch (eDrag) {}
+            return;
+          }
+
+          if (kind === "motion") {
+            var mPath = stage.querySelector(".fx-motion-path");
+            var dot = stage.querySelector(".fx-motion-dot");
+            if (!dot) return;
+            animeSet(dot, { x: -40, y: 10 });
+            if (mPath && typeof api.createMotionPath === "function") {
+              try {
+                var mp = api.createMotionPath(mPath);
+                if (mp && (mp.translateX || mp.x)) {
+                  fxGalleryPush(
+                    api.animate(dot, {
+                      translateX: mp.translateX || mp.x,
+                      translateY: mp.translateY || mp.y,
+                      rotate: mp.rotate || 0,
+                      duration: 2600,
+                      ease: "inOut(2)",
+                      loop: true,
+                      alternate: true
+                    })
+                  );
+                  return;
+                }
+              } catch (eMotion) {}
+            }
+            fxGalleryPush(
+              api.animate(dot, {
+                x: [-40, 0, 40, 0, -40],
+                y: [10, -14, -8, 6, 10],
+                duration: 2600,
+                ease: "inOut(2)",
+                loop: true
+              })
+            );
+            return;
+          }
+
+          if (kind === "keyframes") {
+            var box = stage.querySelector(".fx-key-box");
+            if (!box) return;
+            fxGalleryPush(
+              api.animate(box, {
+                rotate: 360,
+                borderRadius: ["18%", "50%", "18%"],
+                backgroundColor: ["#2dd4bf", "#67e8f9", "#a78bfa", "#2dd4bf"],
+                ease: "inOut(2)",
+                duration: 2400,
+                loop: true
+              })
+            );
+            return;
+          }
+
+          if (kind === "morph") {
+            var morphPath = stage.querySelector(".fx-morph-path");
+            var morphTarget = stage.querySelector(".fx-morph-target");
+            if (!morphPath) return;
+            var tri = "M8 40 L32 8 L56 40 Z";
+            var round = "M8 24 C8 10 56 10 56 24 C56 38 8 38 8 24 Z";
+            morphPath.setAttribute("d", tri);
+            try {
+              var morphVal =
+                typeof api.morphTo === "function"
+                  ? api.morphTo(morphTarget || round)
+                  : round;
+              fxGalleryPush(
+                api.animate(morphPath, {
+                  d: morphVal,
+                  ease: "inOut(3)",
+                  duration: 1200,
+                  loop: true,
+                  alternate: true,
+                  loopDelay: 350
+                })
+              );
+            } catch (eMorph) {
+              fxGalleryPush(
+                api.animate(morphPath, {
+                  d: [tri, round],
+                  ease: "inOut(3)",
+                  duration: 1200,
+                  loop: true,
+                  alternate: true
+                })
+              );
+            }
+            return;
+          }
+
+          if (kind === "playback") {
+            var rateDot = stage.querySelector(".fx-rate-dot");
+            var rateLabel = stage.querySelector(".fx-rate-label");
+            if (!rateDot) return;
+            animeSet(rateDot, { x: -36 });
+            var anim = api.animate(rateDot, {
+              x: 36,
+              duration: 1200,
+              ease: "inOut(2)",
+              loop: true,
+              alternate: true
+            });
+            fxGalleryPush(anim);
+            var rates = [0.5, 1, 2];
+            var ri = 0;
+            function tickRate() {
+              if (!fxGalleryCtl.slide) return;
+              ri = (ri + 1) % rates.length;
+              try {
+                if (anim && typeof anim.speed !== "undefined") anim.speed = rates[ri];
+                else if (anim) anim.playbackRate = rates[ri];
+              } catch (eRate) {}
+              if (rateLabel) rateLabel.textContent = "×" + rates[ri];
+              fxGalleryCtl.timers.push(setTimeout(tickRate, 1600));
+            }
+            if (rateLabel) rateLabel.textContent = "×1";
+            fxGalleryCtl.timers.push(setTimeout(tickRate, 1600));
+            return;
+          }
+
+          if (kind === "transforms") {
+            var xbox = stage.querySelector(".fx-xform-box");
+            if (!xbox) return;
+            fxGalleryPush(
+              api.animate(xbox, {
+                x: [-18, 18, -18],
+                y: [8, -12, 8],
+                rotate: [0, 180, 360],
+                scale: [1, 1.25, 1],
+                ease: "inOut(2)",
+                duration: 2200,
+                loop: true
+              })
+            );
+            return;
+          }
+
+          if (kind === "alternate") {
+            var abox = stage.querySelector(".fx-alt-box");
+            if (!abox) return;
+            animeSet(abox, { x: -28 });
+            fxGalleryPush(
+              api.animate(abox, {
+                x: 28,
+                ease: "inOut(3)",
+                duration: 900,
+                loop: true,
+                alternate: true
+              })
+            );
+            return;
+          }
+
+          if (kind === "words") {
+            var wordsEl = stage.querySelector(".fx-words-target");
+            if (!wordsEl) return;
+            var wPlain = "Agent Loop Gate";
+            wordsEl.textContent = wPlain;
+            var wordNodes = null;
+            try {
+              if (typeof api.splitText === "function") {
+                var wSplit = api.splitText(wordsEl, { words: true });
+                wordNodes = wSplit && wSplit.words ? wSplit.words : null;
+              }
+            } catch (eWords) {}
+            if (!wordNodes || !wordNodes.length) {
+              wordsEl.innerHTML = wPlain
+                .split(/\s+/)
+                .map(function (w) {
+                  return '<span class="fx-char">' + w + "</span>";
+                })
+                .join(" ");
+              wordNodes = wordsEl.querySelectorAll(".fx-char");
+            }
+            animeSet(wordNodes, { y: 16, opacity: 0 });
+            fxGalleryPush(
+              api.animate(wordNodes, {
+                y: 0,
+                opacity: 1,
+                delay: api.stagger(120),
+                ease: "out(3)",
+                duration: 700,
+                loop: true,
+                alternate: true,
+                loopDelay: 500
+              })
+            );
+            return;
+          }
+
+          if (kind === "animatable") {
+            var aBox = stage.querySelector(".fx-animatable-box");
+            if (!aBox) return;
+            try {
+              if (typeof api.createAnimatable === "function") {
+                var animObj = api.createAnimatable(aBox, {
+                  x: 0,
+                  rotate: 0,
+                  duration: 600,
+                  ease: "out(3)"
+                });
+                fxGalleryCtl.draggables.push(animObj);
+                var pulse = api.createTimer({
+                  duration: 900,
+                  loop: true,
+                  alternate: true,
+                  onUpdate: function (self) {
+                    var p = self && typeof self.progress === "number" ? self.progress : 0;
+                    try {
+                      if (typeof animObj.x === "function") animObj.x(-20 + p * 40);
+                      else animObj.x = -20 + p * 40;
+                      if (typeof animObj.rotate === "function") animObj.rotate(p * 180);
+                      else animObj.rotate = p * 180;
+                    } catch (eA) {}
+                  }
+                });
+                fxGalleryPush(pulse);
+                return;
+              }
+            } catch (eAnimatable) {}
+            fxGalleryPush(
+              api.animate(aBox, {
+                x: [-20, 20],
+                rotate: [0, 180],
+                duration: 900,
+                loop: true,
+                alternate: true,
+                ease: "out(3)"
+              })
+            );
+            return;
+          }
+
+          if (kind === "layout") {
+            var row = stage.querySelector(".fx-layout-row");
+            if (!row) return;
+            var kids = Array.prototype.slice.call(row.children);
+            function shuffleLayout() {
+              if (!fxGalleryCtl.slide || !row) return;
+              for (var i = kids.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var tmp = kids[i];
+                kids[i] = kids[j];
+                kids[j] = tmp;
+              }
+              kids.forEach(function (el) {
+                row.appendChild(el);
+              });
+              animeSet(kids, { scale: 0.7, opacity: 0.35 });
+              fxGalleryPush(
+                api.animate(kids, {
+                  scale: 1,
+                  opacity: 1,
+                  delay: api.stagger(60),
+                  duration: 420,
+                  ease: "out(3)"
+                })
+              );
+              fxGalleryCtl.timers.push(setTimeout(shuffleLayout, 1600));
+            }
+            shuffleLayout();
+            return;
+          }
+
+          if (kind === "easings") {
+            var dots = stage.querySelectorAll(".fx-ease-dot");
+            if (!dots.length) return;
+            dots.forEach(function (dot, i) {
+              var easeName = dot.getAttribute("data-ease") || "inOut(2)";
+              var easeVal = easeName;
+              if (easeName === "spring") easeVal = springEase(api, { stiffness: 160, damping: 12 });
+              animeSet(dot, { y: 14 - i * 2, x: -30 });
+              fxGalleryPush(
+                api.animate(dot, {
+                  x: 30,
+                  duration: 1100,
+                  ease: easeVal,
+                  loop: true,
+                  alternate: true,
+                  delay: i * 80
+                })
+              );
+            });
+            return;
+          }
+
+          if (kind === "random") {
+            var rBox = stage.querySelector(".fx-ease-box");
+            var rLabel = stage.querySelector(".fx-rand-label");
+            if (!rBox) return;
+            function randLoop() {
+              if (!fxGalleryCtl.slide) return;
+              var rx =
+                typeof api.random === "function" ? api.random(-26, 26) : Math.random() * 52 - 26;
+              var ry =
+                typeof api.random === "function" ? api.random(-12, 12) : Math.random() * 24 - 12;
+              var rr =
+                typeof api.random === "function" ? api.random(-40, 40) : Math.random() * 80 - 40;
+              if (rLabel) rLabel.textContent = Math.round(rx) + "," + Math.round(ry);
+              fxGalleryPush(
+                api.animate(rBox, {
+                  x: rx,
+                  y: ry,
+                  rotate: rr,
+                  duration: 700,
+                  ease: "out(3)"
+                })
+              );
+              fxGalleryCtl.timers.push(setTimeout(randLoop, 850));
+            }
+            randLoop();
+            return;
+          }
+
+          if (kind === "engine") {
+            var engLabel = stage.querySelector(".fx-engine-label") || stage.querySelector(".fx-lcd-value");
+            if (!engLabel) return;
+            fxGalleryPush(
+              api.createTimer({
+                duration: 500,
+                loop: true,
+                frameRate: 8,
+                onUpdate: function () {
+                  var eng = api.engine || {};
+                  var fps = eng.fps != null ? eng.fps : eng.frameRate;
+                  var spd = eng.speed != null ? eng.speed : 1;
+                  engLabel.textContent =
+                    (fps != null ? fps : "?") + "fps · ×" + (Math.round(Number(spd) * 100) / 100);
+                }
+              })
+            );
+            return;
+          }
+
+          if (kind === "waapi") {
+            var wBox = stage.querySelector(".fx-waapi-box") || stage.querySelector(".fx-key-box");
+            if (!wBox) return;
+            fxGalleryPush(
+              api.animate(wBox, {
+                scale: [1, 1.35, 1],
+                opacity: [1, 0.55, 1],
+                rotate: [0, 12, 0],
+                duration: 1400,
+                ease: "inOut(2)",
+                loop: true
+              })
+            );
+            return;
+          }
+
+          if (kind === "scope") {
+            var sBox = stage.querySelector(".fx-scope-box") || stage.querySelector(".fx-alt-box");
+            if (!sBox) return;
+            try {
+              if (typeof api.createScope === "function") {
+                var scope = api.createScope({ root: stage });
+                fxGalleryCtl.draggables.push(scope);
+                scope.add(function () {
+                  fxGalleryPush(
+                    api.animate(sBox, {
+                      y: [-10, 10],
+                      scale: [0.85, 1.15],
+                      duration: 900,
+                      ease: "inOut(2)",
+                      loop: true,
+                      alternate: true
+                    })
+                  );
+                });
+                return;
+              }
+            } catch (eScope) {}
+            fxGalleryPush(
+              api.animate(sBox, {
+                y: [-10, 10],
+                scale: [0.85, 1.15],
+                duration: 900,
+                ease: "inOut(2)",
+                loop: true,
+                alternate: true
+              })
+            );
+          }
+        }
+
+        slide.querySelectorAll(".fx-card[data-fx]").forEach(function (card) {
+          playCard(card);
+          var btn = card.querySelector(".fx-replay");
+          if (!btn || btn._fxBound) return;
+          btn._fxBound = true;
+          btn.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            bootFxGallery(slide);
+          });
+        });
+      }
+
       function animateActiveSlide(slide) {
         var kickers = slide.querySelectorAll(".kicker");
         kickers.forEach(function (k) {
@@ -3375,11 +4748,21 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         clearLit(slide);
         prepareCodeLines(slide);
 
-        if (reducedMotion) {
-          animateCoverTitle(slide);
+        // 效果库页：自管循环演示，跳过通用入场（避免 opacity:0 卡住卡片）
+        if (slide.getAttribute("data-fx-gallery") === "1") {
+          resetAnimStyles(slide);
+          bootFxGallery(slide);
           return;
         }
-        if (!window.anime) {
+
+        if (reducedMotion) {
+          resetAnimStyles(slide);
+          animateHighlightSequence(slide);
+          return;
+        }
+        var api = animeApi();
+        if (!api) {
+          resetAnimStyles(slide);
           animateCssFallback(slide);
           animateCoverTitle(slide);
           animateHighlightSequence(slide);
@@ -3387,140 +4770,220 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
         }
 
         var token = ++animToken;
-        try { anime.remove(animTargets(slide)); } catch (e) {}
-        resetAnimStyles(slide);
-        // 放在 remove 之后，避免标题入场被动效清理掐掉
-        animateCoverTitle(slide);
+        function finishEnter() {
+          if (token !== animToken) return;
+          resetAnimStyles(slide);
+          animateHighlightSequence(slide);
+        }
+        var showcase = isShowcaseEnter();
+        // showcase 弹簧更长，兜底时间放宽
+        var safety = setTimeout(finishEnter, showcase ? 2400 : 1600);
 
-        var sectionNum = slide.querySelector(".section-num");
-        var coverViz = slide.querySelector(".cover-viz");
-        var vantaEl = slide.querySelector("#vanta-cover");
-        var isCover = slide.classList.contains("slide-cover");
-        var tops = Array.prototype.slice.call(slide.querySelectorAll(":scope > *")).filter(function (el) {
-          if (el === sectionNum || el === vantaEl) return false;
-          // 封面标题走字级 stagger，避免父级 opacity 盖掉
-          if (isCover && el.classList.contains("cover-hero")) return false;
-          return true;
-        });
-        var coverMeta = isCover
-          ? slide.querySelectorAll(".cover-hero .kicker, .cover-hero .lead, .cover-hero .title-meta")
-          : [];
-        var cards = slide.querySelectorAll(".card, .case-card, .pain-card, .cover-foot-card, .toc-card");
-        var listItems = slide.querySelectorAll(".story-points li, .cmd-notes li, .pain-grid > *");
-        var rows = slide.querySelectorAll("table.fw-table tbody tr");
-        var nodes = slide.querySelectorAll(".flow .node");
-        var chips = slide.querySelectorAll(".chip-row .chip");
-
-        anime.set(tops, { opacity: 0, translateY: navDir >= 0 ? 26 : -18 });
-        if (coverMeta.length) anime.set(coverMeta, { opacity: 0, translateY: 16 });
-        if (cards.length) anime.set(cards, { opacity: 0, translateY: 32, scale: 0.96 });
-        if (listItems.length) anime.set(listItems, { opacity: 0, translateX: -18 });
-        if (rows.length) anime.set(rows, { opacity: 0, translateX: 14 });
-        if (nodes.length) anime.set(nodes, { opacity: 0, scale: 0.85 });
-        if (chips.length) anime.set(chips, { opacity: 0, translateY: 10 });
-        if (sectionNum) anime.set(sectionNum, { opacity: 0, scale: 0.65, rotate: -6 });
-        if (coverViz) anime.set(coverViz, { opacity: 0, scale: 0.88 });
-
-        var tl = anime.timeline({
-          easing: "easeOutCubic",
-          autoplay: true,
-          complete: function () {
-            if (token !== animToken) return;
-            resetAnimStyles(slide);
-            animateHighlightSequence(slide);
+        try {
+          animeRemove(animTargets(slide));
+          resetAnimStyles(slide);
+          // 放在 remove 之后，避免标题入场被动效清理掐掉
+          animateCoverTitle(slide);
+          if (showcase) {
+            playDrawableSweep(api);
+            playKickerScramble(slide, api);
           }
-        });
 
-        if (sectionNum) {
-          tl.add({
-            targets: sectionNum,
-            opacity: 1,
-            scale: 1,
-            rotate: 0,
-            duration: 720,
-            easing: "easeOutElastic(1, .72)"
+          var sectionNum = slide.querySelector(".section-num");
+          var coverViz = slide.querySelector(".cover-viz");
+          var vantaEl = slide.querySelector("#vanta-cover");
+          var isCover = slide.classList.contains("slide-cover");
+          var headingChars = showcase ? prepareHeadingFx(slide, api) : null;
+          var tops = Array.prototype.slice.call(slide.querySelectorAll(":scope > *")).filter(function (el) {
+            if (el === sectionNum || el === vantaEl) return false;
+            // 封面标题走字级 stagger，避免父级 opacity 盖掉
+            if (isCover && el.classList.contains("cover-hero")) return false;
+            // showcase 下 h2 改走拆字入场
+            if (headingChars && el.tagName === "H2") return false;
+            return true;
           });
-        }
+          var coverMeta = isCover
+            ? slide.querySelectorAll(".cover-hero .kicker, .cover-hero .lead, .cover-hero .title-meta")
+            : [];
+          var cards = slide.querySelectorAll(".card, .case-card, .pain-card, .cover-foot-card, .toc-card");
+          var listItems = slide.querySelectorAll(".story-points li, .cmd-notes li, .pain-grid > *");
+          var rows = slide.querySelectorAll("table.fw-table tbody tr");
+          var nodes = slide.querySelectorAll(".flow .node");
+          var chips = slide.querySelectorAll(".chip-row .chip, .title-meta .badge");
+          var media = slide.querySelectorAll(".story-fig, .media-fig, .hero-fig, .demo-player, .formula");
 
-        if (coverViz) {
-          tl.add({
-            targets: coverViz,
-            opacity: 1,
-            scale: 1,
-            duration: 780,
-            easing: "easeOutElastic(1, .78)"
-          }, sectionNum ? "-=520" : 0);
-        }
+          var dirY = navDir >= 0 ? (showcase ? 42 : 26) : (showcase ? -36 : -18);
+          if (showcase) animeSet(tops, { opacity: 0, translateY: dirY, filter: "blur(4px)" });
+          else animeSet(tops, { opacity: 0, translateY: dirY });
+          if (headingChars && headingChars.length) {
+            animeSet(headingChars, {
+              opacity: 0,
+              y: 36,
+              rotateZ: function () {
+                return typeof api.random === "function" ? api.random(-10, 10) : 0;
+              },
+              scale: 0.7
+            });
+          }
+          if (coverMeta.length) animeSet(coverMeta, { opacity: 0, translateY: showcase ? 22 : 16 });
+          if (cards.length) {
+            if (showcase) animeSet(cards, { opacity: 0, y: 56, scale: 0.84, rotateX: 14, filter: "blur(10px)" });
+            else animeSet(cards, { opacity: 0, translateY: 32, scale: 0.96 });
+          }
+          if (listItems.length) animeSet(listItems, { opacity: 0, translateX: showcase ? -28 : -18 });
+          if (rows.length) animeSet(rows, { opacity: 0, translateX: showcase ? 22 : 14 });
+          if (nodes.length) animeSet(nodes, { opacity: 0, scale: showcase ? 0.55 : 0.85 });
+          if (chips.length) animeSet(chips, { opacity: 0, y: 14, scale: showcase ? 0.6 : 1 });
+          if (sectionNum) animeSet(sectionNum, { opacity: 0, scale: 0.45, rotate: showcase ? -12 : -6 });
+          if (coverViz) {
+            if (showcase) animeSet(coverViz, { opacity: 0, scale: 0.8, rotateY: -18 });
+            else animeSet(coverViz, { opacity: 0, scale: 0.8 });
+          }
+          if (media.length && showcase) animeSet(media, { opacity: 0, y: 40, scale: 0.92, filter: "blur(8px)" });
 
-        tl.add({
-          targets: tops,
-          opacity: 1,
-          translateY: 0,
-          delay: anime.stagger(68),
-          duration: 480
-        }, sectionNum || coverViz ? "-=480" : 0);
+          // v4 Timeline：https://animejs.com/documentation/timeline
+          var tl = api.createTimeline({
+            defaults: { ease: showcase ? springEase(api, { stiffness: 110, damping: 16 }) : "outCubic" },
+            autoplay: true,
+            onComplete: function () {
+              clearTimeout(safety);
+              finishEnter();
+            }
+          });
 
-        if (coverMeta.length) {
-          tl.add({
-            targets: coverMeta,
-            opacity: 1,
-            translateY: 0,
-            delay: anime.stagger(90),
-            duration: 420
-          }, "-=420");
-        }
+          if (sectionNum) {
+            tl.add(sectionNum, {
+              opacity: 1,
+              scale: 1,
+              rotate: 0,
+              duration: showcase ? 900 : 720,
+              ease: showcase
+                ? springEase(api, { stiffness: 160, damping: 10 })
+                : "outElastic(1, .72)"
+            });
+          }
 
-        if (cards.length) {
-          tl.add({
-            targets: cards,
-            opacity: 1,
-            translateY: 0,
-            scale: 1,
-            delay: anime.stagger(75),
-            duration: 520,
-            easing: "easeOutBack"
-          }, "-=300");
-        }
+          if (coverViz) {
+            tl.add(coverViz, {
+              opacity: 1,
+              scale: 1,
+              rotateY: 0,
+              duration: showcase ? 920 : 780,
+              ease: showcase
+                ? springEase(api, { stiffness: 100, damping: 12 })
+                : "outElastic(1, .78)"
+            }, sectionNum ? "-=560" : 0);
+          }
 
-        if (listItems.length) {
-          tl.add({
-            targets: listItems,
-            opacity: 1,
-            translateX: 0,
-            delay: anime.stagger(48),
-            duration: 380
-          }, "-=360");
-        }
+          if (headingChars && headingChars.length) {
+            tl.add(headingChars, {
+              opacity: 1,
+              y: 0,
+              rotateZ: 0,
+              scale: 1,
+              delay: api.stagger(18, { from: "center", start: 20 }),
+              duration: 780,
+              ease: springEase(api, { stiffness: 150, damping: 13 })
+            }, sectionNum || coverViz ? "-=500" : 0);
+          }
 
-        if (rows.length) {
-          tl.add({
-            targets: rows,
-            opacity: 1,
-            translateX: 0,
-            delay: anime.stagger(36),
-            duration: 340
-          }, "-=280");
-        }
+          if (tops.length) {
+            tl.add(tops, {
+              opacity: 1,
+              translateY: 0,
+              filter: "blur(0px)",
+              delay: api.stagger(showcase ? 80 : 68),
+              duration: showcase ? 560 : 480
+            }, sectionNum || coverViz || (headingChars && headingChars.length) ? "-=480" : 0);
+          }
 
-        if (nodes.length) {
-          tl.add({
-            targets: nodes,
-            opacity: 1,
-            scale: 1,
-            delay: anime.stagger(70),
-            duration: 420,
-            easing: "easeOutBack"
-          }, "-=300");
-        }
+          if (coverMeta.length) {
+            tl.add(coverMeta, {
+              opacity: 1,
+              translateY: 0,
+              delay: api.stagger(90),
+              duration: 420
+            }, "-=420");
+          }
 
-        if (chips.length) {
-          tl.add({
-            targets: chips,
-            opacity: 1,
-            translateY: 0,
-            delay: anime.stagger(35),
-            duration: 320
-          }, "-=340");
+          if (cards.length) {
+            tl.add(cards, {
+              opacity: 1,
+              y: 0,
+              translateY: 0,
+              scale: 1,
+              rotateX: 0,
+              filter: "blur(0px)",
+              delay: showcase
+                ? cardGridStagger(api, slide, cards, 88)
+                : api.stagger(75),
+              duration: showcase ? 720 : 520,
+              ease: showcase
+                ? springEase(api, { stiffness: 120, damping: 14 })
+                : "outBack"
+            }, "-=280");
+          }
+
+          if (media.length && showcase) {
+            tl.add(media, {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              filter: "blur(0px)",
+              delay: api.stagger(70),
+              duration: 680,
+              ease: springEase(api, { stiffness: 100, damping: 15 })
+            }, "-=520");
+          }
+
+          if (listItems.length) {
+            tl.add(listItems, {
+              opacity: 1,
+              translateX: 0,
+              delay: api.stagger(showcase ? 55 : 48),
+              duration: showcase ? 420 : 380
+            }, "-=360");
+          }
+
+          if (rows.length) {
+            tl.add(rows, {
+              opacity: 1,
+              translateX: 0,
+              delay: api.stagger(showcase ? 42 : 36),
+              duration: 340
+            }, "-=280");
+          }
+
+          if (nodes.length) {
+            tl.add(nodes, {
+              opacity: 1,
+              scale: 1,
+              delay: api.stagger(showcase ? 85 : 70, showcase ? { from: "center" } : undefined),
+              duration: showcase ? 520 : 420,
+              ease: showcase
+                ? springEase(api, { stiffness: 180, damping: 12 })
+                : "outBack"
+            }, "-=300");
+          }
+
+          if (chips.length) {
+            tl.add(chips, {
+              opacity: 1,
+              y: 0,
+              scale: 1,
+              delay: api.stagger(showcase ? 40 : 35, { from: "last" }),
+              duration: showcase ? 480 : 320,
+              ease: showcase
+                ? springEase(api, { stiffness: 200, damping: 12 })
+                : "outCubic"
+            }, "-=340");
+          }
+        } catch (err) {
+          clearTimeout(safety);
+          try {
+            console.warn("[deck] Anime.js v4 入场失败，已强制显示正文", err);
+          } catch (e1) {}
+          finishEnter();
         }
       }
 
@@ -3591,7 +5054,8 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
           } else {
             s.style.display = "none";
             clearLit(s);
-            try { if (window.anime) anime.remove(animTargets(s)); } catch (e) {}
+            if (s.getAttribute("data-fx-gallery") === "1") stopFxGallery(s);
+            animeRemove(animTargets(s));
             resetAnimStyles(s);
             s.querySelectorAll("video").forEach(function (v) {
               try { v.pause(); } catch (e) {}
@@ -4077,13 +5541,8 @@ python -m harness.runner --status|--next|--advance|--lint s1_cleaned \
 
       function prepareSlideForCapture(slide) {
         if (!slide) return function () {};
-        try { if (window.anime) anime.remove(animTargets(slide)); } catch (e) {}
-        try {
-          if (window.anime) {
-            var chars = slide.querySelectorAll("#coverBrand .char, .brand-mark .char");
-            if (chars.length) anime.remove(chars);
-          }
-        } catch (e2) {}
+        animeRemove(animTargets(slide));
+        animeRemove(slide.querySelectorAll("#coverBrand .char, .brand-mark .char"));
         resetAnimStyles(slide);
         clearLit(slide);
 

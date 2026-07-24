@@ -171,12 +171,52 @@ def write_provenance_js() -> Path:
     return path
 
 
-def build(out: Path) -> Path:
+def load_config() -> dict:
+    cfg_path = DECK / "config.json"
+    if cfg_path.exists():
+        return loads_jsonc(read(cfg_path))
+    return {
+        "particles": True,
+        "theme": 1,
+        "speaker": "y",
+        "bgm": False,
+        "bgmSrc": "dylanf - 卡农 (经典钢琴版).mp3",
+        "present": False,
+    }
+
+
+def present_exclude_titles(cfg: dict) -> set[str]:
+    exclude = {str(x) for x in (cfg.get("excludeSlides") or []) if x}
+    if cfg.get("present"):
+        exclude.add("开源与赞助")
+    return exclude
+
+
+def filter_slides(slides: list, cfg: dict) -> list:
+    exclude = present_exclude_titles(cfg)
+    if not exclude:
+        return slides
+    return [s for s in slides if str(s.get("title") or "") not in exclude]
+
+
+def build(out: Path, *, present: bool = False, sync_config_js: bool = True) -> Path:
     if not (DECK / "manifest.json").exists():
         raise SystemExit(f"missing {DECK / 'manifest.json'} — see docs/deck/README.md")
 
     manifest = json.loads(read(DECK / "manifest.json"))
-    slides = manifest["slides"]
+    cfg_obj = load_config()
+    if present:
+        cfg_obj = dict(cfg_obj)
+        cfg_obj["present"] = True
+        cfg_obj["hideAttribution"] = True
+        cfg_obj["forceMotion"] = True
+        cfg_obj["enterFx"] = "showcase"
+        excl = list(cfg_obj.get("excludeSlides") or [])
+        if "开源与赞助" not in excl:
+            excl.append("开源与赞助")
+        cfg_obj["excludeSlides"] = excl
+
+    slides = filter_slides(manifest["slides"], cfg_obj)
 
     head = read(DECK / "partials" / "head.html")
     if "__PAGE_STYLES__" not in head:
@@ -206,19 +246,13 @@ def build(out: Path) -> Path:
     # strip decorative comment prefix from extracted JS
     deck_js = re.sub(r"^/\* ---- inline script \d+ ---- \*/\n?", "", deck_js)
 
-    cfg_path = DECK / "config.json"
-    if cfg_path.exists():
-        cfg_obj = loads_jsonc(read(cfg_path))
-    else:
-        cfg_obj = {
-            "particles": True,
-            "theme": 1,
-            "speaker": "y",
-            "bgm": False,
-            "bgmSrc": "dylanf - 卡农 (经典钢琴版).mp3",
-        }
     # 运行时加载：provenance → config → i18n → deck.js
-    write_config_js(cfg_obj)
+    # --present 只改本次产物用的 FALLBACK；默认仍同步仓库 config.json，避免污染开源默认
+    if sync_config_js:
+        if present:
+            write_config_js(cfg_obj)
+        else:
+            write_config_js(load_config())
     write_provenance_js()
     boot_scripts = "\n".join(
         [
@@ -253,10 +287,28 @@ def build(out: Path) -> Path:
 def main() -> None:
     ap = argparse.ArgumentParser(description="Build training deck HTML from docs/deck/")
     ap.add_argument("-o", "--out", type=Path, default=DEFAULT_OUT)
+    ap.add_argument(
+        "--present",
+        action="store_true",
+        help="现场演示包：隐藏右上角溯源、去掉「开源与赞助」页",
+    )
     args = ap.parse_args()
-    path = build(args.out.resolve())
+    out = args.out.resolve()
+    if args.present and args.out == DEFAULT_OUT:
+        out = (ROOT / "docs" / "harness_training.present.html").resolve()
+    path = build(out, present=args.present)
+    # --present 写过临时 FALLBACK 后，把 config.js 恢复为仓库 config.json
+    if args.present:
+        write_config_js(load_config())
     n = len(json.loads(read(DECK / "manifest.json"))["slides"])
-    print(f"built {path} ({path.stat().st_size} bytes, {n} slides)")
+    built_n = n
+    if args.present or load_config().get("present"):
+        cfg = load_config()
+        if args.present:
+            cfg = dict(cfg)
+            cfg["present"] = True
+        built_n = len(filter_slides(json.loads(read(DECK / "manifest.json"))["slides"], cfg))
+    print(f"built {path} ({path.stat().st_size} bytes, {built_n} slides)")
 
 
 if __name__ == "__main__":

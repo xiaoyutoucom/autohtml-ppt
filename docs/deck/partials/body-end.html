@@ -1,6 +1,15 @@
 </div><!-- /#deck -->
 
-  <div id="deckAttribution" class="deck-attribution" hidden aria-label="项目归属"></div>
+  <!-- Anime.js Timer look: https://animejs.com/documentation/timer -->
+  <div class="deck-top-rail" id="deckTopRail">
+    <div id="talkTimer" class="talk-timer" aria-live="off" aria-label="演示时长">
+      <div class="talk-timer-log">
+        <span class="talk-timer-label" data-i18n="talkTimer">elapsed</span>
+        <span class="talk-timer-value lcd talk-timer-clock" id="talkTimerValue">00:00</span>
+      </div>
+    </div>
+    <div id="deckAttribution" class="deck-attribution" hidden aria-label="项目归属"></div>
+  </div>
   <div class="progress"><i id="bar"></i></div>
   <div class="footer">
     <div class="hint" id="titleHint">封面</div>

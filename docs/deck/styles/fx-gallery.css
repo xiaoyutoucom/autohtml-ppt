@@ -1,0 +1,401 @@
+/* Anime.js 效果库页共用样式 — .slide-fx-gallery / .slide-fx-catalog */
+.slide-fx-gallery,
+.slide-fx-catalog {
+  justify-content: flex-start;
+  gap: 0.35rem;
+}
+
+.slide-fx-gallery h2,
+.slide-fx-catalog h2 {
+  max-width: none;
+  margin-bottom: 0.15rem;
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+}
+
+.slide-fx-gallery .fx-lead,
+.slide-fx-catalog .fx-lead {
+  margin: 0 0 0.45rem;
+  max-width: 58rem;
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.slide-fx-gallery .fx-lead a,
+.slide-fx-catalog .fx-lead a {
+  color: var(--teal);
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--teal) 45%, transparent);
+}
+
+.slide-fx-gallery .fx-gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 74rem;
+  margin-top: 0.15rem;
+}
+
+.slide-fx-gallery .fx-gallery.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.slide-fx-gallery .fx-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 8.6rem;
+  padding: 0.45rem 0.55rem 0.5rem;
+  border-radius: 0.55rem;
+  border: 1px solid color-mix(in srgb, var(--teal) 28%, transparent);
+  background:
+    linear-gradient(
+      165deg,
+      color-mix(in srgb, var(--panel) 92%, transparent) 0%,
+      color-mix(in srgb, var(--paper) 88%, #000) 100%
+    );
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--paper) 40%, transparent);
+  overflow: hidden;
+}
+
+.slide-fx-gallery .fx-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.35rem;
+}
+
+.slide-fx-gallery .fx-api {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--neon);
+  letter-spacing: 0.02em;
+}
+
+.slide-fx-gallery .fx-replay {
+  pointer-events: auto;
+  appearance: none;
+  border: 1px solid color-mix(in srgb, var(--teal) 35%, transparent);
+  background: color-mix(in srgb, var(--paper) 55%, transparent);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  width: 1.55rem;
+  height: 1.55rem;
+  line-height: 1;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.slide-fx-gallery .fx-replay:hover {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+
+.slide-fx-gallery .fx-desc {
+  margin: 0.15rem 0 0.3rem;
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.slide-fx-gallery .fx-stage {
+  position: relative;
+  flex: 1;
+  min-height: 3.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.35rem;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      color-mix(in srgb, var(--teal) 4%, transparent) 3px,
+      color-mix(in srgb, var(--teal) 4%, transparent) 4px
+    ),
+    color-mix(in srgb, #000 18%, transparent);
+  overflow: hidden;
+}
+
+.slide-fx-gallery .fx-ball {
+  display: block;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, var(--teal) 55%, var(--neon));
+  box-shadow: 0 0 14px color-mix(in srgb, var(--teal) 55%, transparent);
+  will-change: transform;
+}
+
+.slide-fx-gallery .fx-stage-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+  padding: 0.55rem 0.85rem;
+  place-items: center;
+}
+
+.slide-fx-gallery .fx-stage-grid i {
+  display: block;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 0.2rem;
+  background: color-mix(in srgb, var(--teal) 80%, #fff);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--teal) 40%, transparent);
+}
+
+.slide-fx-gallery .fx-stage-bars {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.35rem;
+  padding: 0.65rem 0.75rem;
+}
+
+.slide-fx-gallery .fx-bar {
+  display: block;
+  height: 0.42rem;
+  width: 18%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--teal), var(--neon));
+  transform-origin: left center;
+}
+
+.slide-fx-gallery .fx-stage-text {
+  font-family: var(--mono);
+  font-size: 1.05rem;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+}
+
+.slide-fx-gallery .fx-split-target,
+.slide-fx-gallery .fx-scramble-target,
+.slide-fx-gallery .fx-words-target {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.slide-fx-gallery .fx-svg {
+  width: 88%;
+  height: 2.6rem;
+  color: var(--teal);
+  overflow: visible;
+}
+
+.slide-fx-gallery .fx-stage-lcd {
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0.35rem 0.7rem 0.25rem;
+}
+
+.slide-fx-gallery .fx-lcd-label {
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  opacity: 0.6;
+  color: var(--muted);
+}
+
+.slide-fx-gallery .fx-lcd-value {
+  font-family: Digital-7, var(--mono), monospace;
+  font-size: 1.65rem;
+  line-height: 1;
+  color: var(--teal);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--teal) 50%, transparent);
+  min-width: 4.5em;
+  text-align: right;
+}
+
+.slide-fx-gallery .fx-stage-drag {
+  touch-action: none;
+}
+
+.slide-fx-gallery .fx-drag-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 3.2rem;
+  height: 1.7rem;
+  padding: 0 0.65rem;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--paper);
+  background: linear-gradient(135deg, var(--teal), var(--neon));
+  cursor: grab;
+  user-select: none;
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--teal) 35%, transparent);
+}
+
+.slide-fx-gallery .fx-drag-chip:active {
+  cursor: grabbing;
+}
+
+.slide-fx-gallery .fx-stage-motion {
+  position: relative;
+}
+
+.slide-fx-gallery .fx-stage-motion .fx-svg {
+  position: absolute;
+  inset: 0.45rem 0.55rem;
+  width: auto;
+  height: auto;
+}
+
+.slide-fx-gallery .fx-motion-dot {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--neon) 60%, transparent);
+  will-change: transform;
+}
+
+.slide-fx-gallery .fx-key-box,
+.slide-fx-gallery .fx-ease-box,
+.slide-fx-gallery .fx-xform-box,
+.slide-fx-gallery .fx-alt-box,
+.slide-fx-gallery .fx-animatable-box {
+  display: block;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 0.35rem;
+  background: var(--teal);
+  will-change: transform, background-color, opacity;
+}
+
+.slide-fx-gallery .fx-stage-rate,
+.slide-fx-gallery .fx-stage-ease {
+  gap: 0.55rem;
+}
+
+.slide-fx-gallery .fx-rate-dot,
+.slide-fx-gallery .fx-ease-dot {
+  display: block;
+  width: 0.95rem;
+  height: 0.95rem;
+  border-radius: 50%;
+  background: var(--neon);
+  box-shadow: 0 0 12px color-mix(in srgb, var(--neon) 55%, transparent);
+}
+
+.slide-fx-gallery .fx-rate-label,
+.slide-fx-gallery .fx-ease-label,
+.slide-fx-gallery .fx-rand-label,
+.slide-fx-gallery .fx-engine-label {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  min-width: 2rem;
+}
+
+.slide-fx-gallery .fx-layout-row {
+  display: flex;
+  gap: 0.35rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-fx-gallery .fx-layout-row span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 0.3rem;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--paper);
+  background: color-mix(in srgb, var(--teal) 75%, #000);
+}
+
+.slide-fx-gallery .fx-foot {
+  margin: 0.35rem 0 0;
+  font-size: 0.7rem;
+  opacity: 0.72;
+}
+
+.slide-fx-gallery .fx-card:hover {
+  transform: none;
+  z-index: auto;
+}
+
+/* 总览目录卡 */
+.slide-fx-catalog .fx-catalog {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.45rem;
+  width: 100%;
+  max-width: 74rem;
+  isolation: isolate;
+}
+
+.slide-fx-catalog .fx-cat {
+  position: relative;
+  z-index: 1;
+  padding: 0.48rem 0.55rem 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--neon) 22%, transparent);
+  background: color-mix(in srgb, var(--panel) 96%, var(--paper));
+  min-height: 0;
+  overflow: hidden;
+}
+
+.slide-fx-catalog .fx-cat h3 {
+  margin: 0 0 0.25rem;
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--neon);
+  font-weight: 600;
+}
+
+.slide-fx-catalog .fx-cat p {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  line-height: 1.35;
+}
+
+.slide-fx-catalog .fx-cat ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.22rem;
+}
+
+.slide-fx-catalog .fx-cat li {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--muted);
+  padding: 0.08rem 0.35rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--teal) 25%, transparent);
+  background: color-mix(in srgb, #000 16%, transparent);
+}
+
+html.exporting-ppt .slide-fx-gallery .fx-replay {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .slide-fx-gallery .fx-gallery,
+  .slide-fx-gallery .fx-gallery.cols-3,
+  .slide-fx-catalog .fx-catalog {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 780px) {
+  .slide-fx-gallery .fx-gallery,
+  .slide-fx-gallery .fx-gallery.cols-3,
+  .slide-fx-catalog .fx-catalog {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

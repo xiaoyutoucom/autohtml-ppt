@@ -67,6 +67,18 @@ python tools/build_deck.py
 `build` 会顺带把 `config.json` 同步进 `config.js` 的 FALLBACK。  
 浏览器 T/P/M 记入 localStorage；**config 字段相对上次有变化时以新 config 为准**。
 
+## 现场演示包（无右上角标识 / 无赞助页）
+
+| 方式 | 做法 |
+|------|------|
+| 配置 | `config.json` → `"present": true`，再 `python tools/build_deck.py` |
+| 构建 | `python tools/build_deck.py --present` → `docs/harness_training.present.html` |
+| 打包上传 | `python tools/pack_present.py --zip` → `dist/present-deck/`（整夹上传服务器） |
+| 临时 | 任意已部署地址加 `?present=1` |
+
+服务器最少带走：`harness_training.html` + `deck/` + `assets/vendor/` + `assets/themes.css` + `assets/*.png`（视频/BGM 可选）。  
+不必带：`screenshots*`、`skills/`、`sponsors/`、README 配图。
+
 ## 版式（避免连页左右图文）
 
 优先用 `layout-hero` / `media-top` / `icon-row` / `quote` / `cards` / `steps` / `contrast` / `comparison`（见 `docs/skills/tech-training-deck/layouts.md`），**不要**连续多页 `.story` 左文右图。
